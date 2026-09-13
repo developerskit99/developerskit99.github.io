@@ -10,6 +10,10 @@ def _get_site_url():
     except Exception:
         return "https://developerskit.github.io"
 SITE_URL=_get_site_url()
+# derive base path for subpath deploys (e.g. /developerskit.github.io/)
+from urllib.parse import urlparse as _urlparse
+_BP=_urlparse(SITE_URL).path.rstrip("/")
+BASE="" if not _BP else _BP
 DATE="2026-09-13"
 YEAR=datetime.datetime.now().year
 
@@ -46,20 +50,20 @@ def head_html(title,desc,canonical):
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
-<link rel="stylesheet" href="/assets/css/style.css">"""
+<link rel="stylesheet" href="{BASE}/assets/css/style.css">"""
 
 def header_html(search=False):
     s_input='<div class="search-wrap"><label for="q" class="sr-only">Search tools</label><input id="q" data-search-input type="search" class="search-input" placeholder="Search tools (e.g. JSON Formatter)" autocomplete="off"></div>' if search else ''
     return f"""<a href="#main" class="skip">Skip to content</a>
 <header class="header">
 <div class="container header-inner">
-<a href="/" class="logo" aria-label="DevelopersKit home">Developers<span>Kit</span></a>
+<a href="{BASE}/" class="logo" aria-label="DevelopersKit home">Developers<span>Kit</span></a>
 <nav class="nav" aria-label="Primary">
 <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">Menu</button>
 <ul id="nav-links" class="nav-links" data-nav-menu>
-<li><a href="/">Home</a></li>
-<li><a href="/#tools">Tools</a></li>
-<li><a href="/#categories">Categories</a></li>
+<li><a href="{BASE}/">Home</a></li>
+<li><a href="{BASE}/#tools">Tools</a></li>
+<li><a href="{BASE}/#categories">Categories</a></li>
 </ul>
 </nav>
 </div>
@@ -70,11 +74,11 @@ def footer_html():
     return f"""<footer class="footer">
 <div class="container footer-grid">
 <div><strong class="logo">Developers<span>Kit</span></strong><p style="margin-top:8px">Fast, free, browser-based tools for developers and everyday tasks. No uploads \u2014 everything runs locally.</p></div>
-<div><p><a href="/">Homepage</a> \u00b7 <a href="/sitemap.xml">Sitemap</a> \u00b7 <a href="/privacy/">Privacy</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
+<div><p><a href="{BASE}/">Homepage</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
 </div>
 </footer>
-<script src="/assets/js/common.js" defer></script>
-<script src="/assets/js/tools.js" defer></script>"""
+<script src="{BASE}/assets/js/common.js" defer></script>
+<script src="{BASE}/assets/js/tools.js" defer></script>"""
 
 def tool_ui(tool):
     slug=tool["slug"]; cat=tool["category"]; title=tool["title"]
@@ -366,9 +370,9 @@ def tool_page(tool, slug_map):
     for rslug in related:
         rt=slug_map.get(rslug)
         if rt:
-            rel_cards+=f'<a href="/{esc(rslug)}/" data-search="{esc(rt["title"]+" "+rt["description"])}"><h3>{esc_txt(rt["title"])}</h3><p>{esc_txt(rt["description"][:90])}</p></a>'
+            rel_cards+=f'<a href="{BASE}/{esc(rslug)}/" data-search="{esc(rt["title"]+" "+rt["description"])}"><h3>{esc_txt(rt["title"])}</h3><p>{esc_txt(rt["description"][:90])}</p></a>'
         else:
-            rel_cards+=f'<a href="/{esc(rslug)}/">{esc_txt(rslug.replace("-"," ").title())}</a>'
+            rel_cards+=f'<a href="{BASE}/{esc(rslug)}/">{esc_txt(rslug.replace("-"," ").title())}</a>'
     if not rel_cards:
         rel_cards='<p>No related tools.</p>'
     # Formula / examples logic
@@ -391,7 +395,7 @@ def tool_page(tool, slug_map):
 
     ui=tool_ui(tool)
     script=inline_script(tool)
-    breadcrumbs=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>\u203a</span><a href="/#categories">{esc_txt(cat)}</a><span>\u203a</span><span aria-current="page">{esc_txt(title)}</span></nav>'
+    breadcrumbs=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><a href="{BASE}/#categories">{esc_txt(cat)}</a><span>\u203a</span><span aria-current="page">{esc_txt(title)}</span></nav>'
 
     jsonld=f"""
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"SoftwareApplication","name":"{esc(title)}","description":"{esc(desc)}","url":"{esc(canonical)}","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{{"@type":"Offer","price":"0","priceCurrency":"USD"}}}}</script>
@@ -446,7 +450,7 @@ def hub_page(tools):
         total=len(sorted_lst)
         cards=""
         for t in display_lst:
-            cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"]+" "+t["category"])}"><h3><a href="/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
+            cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"]+" "+t["category"])}"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
         anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
         view_all=f' <a href="#{anchor}" class="view-all">View all \u2192</a>' if total>8 else ""
         sections+=f'<section class="cat-card" id="{anchor}"><h2>{esc_txt(cat)} <span class="cat-count">{total} tools</span></h2><p>Browse {total} tools in {esc_txt(cat)}.{view_all}</p><div class="tool-grid">{cards}</div></section>\n'
