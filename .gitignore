@@ -1,0 +1,11 @@
+.playwright-mcp/
+*.log
+*.pid
+*.png
+homepage.png
+home-viewport.png
+home-full.png
+home-fixed.png
+json-formatter.png
+json-formatter-result.png
+percentage-result.png
