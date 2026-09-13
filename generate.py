@@ -3,7 +3,13 @@ import json, os, html, datetime
 
 ROOT=os.path.dirname(os.path.abspath(__file__))
 TOOLS_JSON=os.path.join(ROOT,"tools.json")
-SITE_URL="https://developerskit.github.io"
+def _get_site_url():
+    try:
+        with open(TOOLS_JSON, encoding="utf-8-sig") as f:
+            return json.load(f).get("site",{}).get("url","https://developerskit.github.io")
+    except Exception:
+        return "https://developerskit.github.io"
+SITE_URL=_get_site_url()
 DATE="2026-09-13"
 YEAR=datetime.datetime.now().year
 
@@ -19,7 +25,7 @@ def seo_title(t):
     return f"{tt} \u2014 Free Online Tool | DevelopersKit"
 
 def read_data():
-    with open(TOOLS_JSON,encoding="utf-8") as f: d=json.load(f)
+    with open(TOOLS_JSON,encoding="utf-8-sig") as f: d=json.load(f)
     site=d.get("site",{})
     tools=d.get("tools",[])
     return site, tools
