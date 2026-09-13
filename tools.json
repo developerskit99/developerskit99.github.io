@@ -1,0 +1,4379 @@
+{
+  "site": {
+    "name": "DevelopersKit",
+    "url": "https://developerskit.github.io",
+    "description": "Free browser-based tools for developers, calculations, text, images and colors — fast, private, no uploads."
+  },
+  "tools": [
+    {
+      "slug": "json-formatter",
+      "title": "JSON Formatter",
+      "category": "Developer Tools",
+      "description": "Beautify and format JSON instantly in your browser. Collapse, sort keys and validate syntax with private local processing and one-click copy.",
+      "keywords": [
+        "json formatter",
+        "json formatter online",
+        "json formatter tool"
+      ],
+      "related": [
+        "json-validator",
+        "json-minifier",
+        "json-to-csv",
+        "csv-to-json",
+        "xml-formatter",
+        "xml-validator"
+      ]
+    },
+    {
+      "slug": "json-validator",
+      "title": "JSON Validator",
+      "category": "Developer Tools",
+      "description": "Validate JSON syntax instantly in your browser. Find errors with line numbers, preview structured data and fix issues privately without uploads.",
+      "keywords": [
+        "json validator",
+        "json validator online",
+        "json validator tool"
+      ],
+      "related": [
+        "json-minifier",
+        "json-to-csv",
+        "csv-to-json",
+        "xml-formatter",
+        "xml-validator",
+        "yaml-formatter"
+      ]
+    },
+    {
+      "slug": "json-minifier",
+      "title": "JSON Minifier",
+      "category": "Developer Tools",
+      "description": "Minify JSON instantly to reduce size. Remove whitespace and compress data in your browser with private processing and copy-ready output.",
+      "keywords": [
+        "json minifier",
+        "json minifier online",
+        "json minifier tool"
+      ],
+      "related": [
+        "json-to-csv",
+        "csv-to-json",
+        "xml-formatter",
+        "xml-validator",
+        "yaml-formatter",
+        "yaml-to-json"
+      ]
+    },
+    {
+      "slug": "json-to-csv",
+      "title": "JSON to CSV",
+      "category": "Developer Tools",
+      "description": "Convert JSON to CSV instantly in your browser. Map keys to columns, preview tables and download results privately without uploading data.",
+      "keywords": [
+        "json to csv",
+        "json to csv online",
+        "json to csv tool"
+      ],
+      "related": [
+        "csv-to-json",
+        "xml-formatter",
+        "xml-validator",
+        "yaml-formatter",
+        "yaml-to-json",
+        "json-to-yaml"
+      ]
+    },
+    {
+      "slug": "csv-to-json",
+      "title": "CSV to JSON",
+      "category": "Developer Tools",
+      "description": "Convert CSV to JSON instantly in your browser. Parse delimiters, preview objects and copy clean JSON privately with no data uploads.",
+      "keywords": [
+        "csv to json",
+        "csv to json online",
+        "csv to json tool"
+      ],
+      "related": [
+        "xml-formatter",
+        "xml-validator",
+        "yaml-formatter",
+        "yaml-to-json",
+        "json-to-yaml",
+        "base64-encoder"
+      ]
+    },
+    {
+      "slug": "xml-formatter",
+      "title": "XML Formatter",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform xml formatter instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "xml formatter",
+        "xml formatter online",
+        "xml formatter tool"
+      ],
+      "related": [
+        "xml-validator",
+        "yaml-formatter",
+        "yaml-to-json",
+        "json-to-yaml",
+        "base64-encoder",
+        "base64-decoder"
+      ]
+    },
+    {
+      "slug": "xml-validator",
+      "title": "XML Validator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform xml validator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "xml validator",
+        "xml validator online",
+        "xml validator tool"
+      ],
+      "related": [
+        "yaml-formatter",
+        "yaml-to-json",
+        "json-to-yaml",
+        "base64-encoder",
+        "base64-decoder",
+        "url-encoder"
+      ]
+    },
+    {
+      "slug": "yaml-formatter",
+      "title": "YAML Formatter",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform yaml formatter instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "yaml formatter",
+        "yaml formatter online",
+        "yaml formatter tool"
+      ],
+      "related": [
+        "yaml-to-json",
+        "json-to-yaml",
+        "base64-encoder",
+        "base64-decoder",
+        "url-encoder",
+        "url-decoder"
+      ]
+    },
+    {
+      "slug": "yaml-to-json",
+      "title": "YAML to JSON",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform yaml to json instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "yaml to json",
+        "yaml to json online",
+        "yaml to json tool"
+      ],
+      "related": [
+        "json-to-yaml",
+        "base64-encoder",
+        "base64-decoder",
+        "url-encoder",
+        "url-decoder",
+        "html-entity-encoder"
+      ]
+    },
+    {
+      "slug": "json-to-yaml",
+      "title": "JSON to YAML",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform json to yaml instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "json to yaml",
+        "json to yaml online",
+        "json to yaml tool"
+      ],
+      "related": [
+        "base64-encoder",
+        "base64-decoder",
+        "url-encoder",
+        "url-decoder",
+        "html-entity-encoder",
+        "html-entity-decoder"
+      ]
+    },
+    {
+      "slug": "base64-encoder",
+      "title": "Base64 Encoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform base64 encoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "base64 encoder",
+        "base64 encoder online",
+        "base64 encoder tool"
+      ],
+      "related": [
+        "base64-decoder",
+        "url-encoder",
+        "url-decoder",
+        "html-entity-encoder",
+        "html-entity-decoder",
+        "uuid-generator"
+      ]
+    },
+    {
+      "slug": "base64-decoder",
+      "title": "Base64 Decoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform base64 decoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "base64 decoder",
+        "base64 decoder online",
+        "base64 decoder tool"
+      ],
+      "related": [
+        "url-encoder",
+        "url-decoder",
+        "html-entity-encoder",
+        "html-entity-decoder",
+        "uuid-generator",
+        "random-string-generator"
+      ]
+    },
+    {
+      "slug": "url-encoder",
+      "title": "URL Encoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform url encoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "url encoder",
+        "url encoder online",
+        "url encoder tool"
+      ],
+      "related": [
+        "url-decoder",
+        "html-entity-encoder",
+        "html-entity-decoder",
+        "uuid-generator",
+        "random-string-generator",
+        "hash-generator"
+      ]
+    },
+    {
+      "slug": "url-decoder",
+      "title": "URL Decoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform url decoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "url decoder",
+        "url decoder online",
+        "url decoder tool"
+      ],
+      "related": [
+        "html-entity-encoder",
+        "html-entity-decoder",
+        "uuid-generator",
+        "random-string-generator",
+        "hash-generator",
+        "jwt-decoder"
+      ]
+    },
+    {
+      "slug": "html-entity-encoder",
+      "title": "HTML Entity Encoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform html entity encoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "html entity encoder",
+        "html entity encoder online",
+        "html entity encoder tool"
+      ],
+      "related": [
+        "html-entity-decoder",
+        "uuid-generator",
+        "random-string-generator",
+        "hash-generator",
+        "jwt-decoder",
+        "unix-timestamp-converter"
+      ]
+    },
+    {
+      "slug": "html-entity-decoder",
+      "title": "HTML Entity Decoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform html entity decoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "html entity decoder",
+        "html entity decoder online",
+        "html entity decoder tool"
+      ],
+      "related": [
+        "uuid-generator",
+        "random-string-generator",
+        "hash-generator",
+        "jwt-decoder",
+        "unix-timestamp-converter",
+        "cron-expression-generator"
+      ]
+    },
+    {
+      "slug": "uuid-generator",
+      "title": "UUID Generator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform uuid generator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "uuid generator",
+        "uuid generator online",
+        "uuid generator tool"
+      ],
+      "related": [
+        "random-string-generator",
+        "hash-generator",
+        "jwt-decoder",
+        "unix-timestamp-converter",
+        "cron-expression-generator",
+        "regex-tester"
+      ]
+    },
+    {
+      "slug": "random-string-generator",
+      "title": "Random String Generator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform random string generator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "random string generator",
+        "random string generator online",
+        "random string generator tool"
+      ],
+      "related": [
+        "hash-generator",
+        "jwt-decoder",
+        "unix-timestamp-converter",
+        "cron-expression-generator",
+        "regex-tester",
+        "regex-generator"
+      ]
+    },
+    {
+      "slug": "hash-generator",
+      "title": "Hash Generator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform hash generator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "hash generator",
+        "hash generator online",
+        "hash generator tool"
+      ],
+      "related": [
+        "jwt-decoder",
+        "unix-timestamp-converter",
+        "cron-expression-generator",
+        "regex-tester",
+        "regex-generator",
+        "lorem-ipsum-generator"
+      ]
+    },
+    {
+      "slug": "jwt-decoder",
+      "title": "JWT Decoder",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform jwt decoder instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "jwt decoder",
+        "jwt decoder online",
+        "jwt decoder tool"
+      ],
+      "related": [
+        "unix-timestamp-converter",
+        "cron-expression-generator",
+        "regex-tester",
+        "regex-generator",
+        "lorem-ipsum-generator",
+        "json-formatter"
+      ]
+    },
+    {
+      "slug": "unix-timestamp-converter",
+      "title": "Unix Timestamp Converter",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform unix timestamp converter instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "unix timestamp converter",
+        "unix timestamp converter online",
+        "unix timestamp converter tool"
+      ],
+      "related": [
+        "cron-expression-generator",
+        "regex-tester",
+        "regex-generator",
+        "lorem-ipsum-generator",
+        "json-formatter",
+        "json-validator"
+      ]
+    },
+    {
+      "slug": "cron-expression-generator",
+      "title": "Cron Expression Generator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform cron expression generator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "cron expression generator",
+        "cron expression generator online",
+        "cron expression generator tool"
+      ],
+      "related": [
+        "regex-tester",
+        "regex-generator",
+        "lorem-ipsum-generator",
+        "json-formatter",
+        "json-validator",
+        "json-minifier"
+      ]
+    },
+    {
+      "slug": "regex-tester",
+      "title": "Regex Tester",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform regex tester instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "regex tester",
+        "regex tester online",
+        "regex tester tool"
+      ],
+      "related": [
+        "regex-generator",
+        "lorem-ipsum-generator",
+        "json-formatter",
+        "json-validator",
+        "json-minifier",
+        "json-to-csv"
+      ]
+    },
+    {
+      "slug": "regex-generator",
+      "title": "Regex Generator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform regex generator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "regex generator",
+        "regex generator online",
+        "regex generator tool"
+      ],
+      "related": [
+        "lorem-ipsum-generator",
+        "json-formatter",
+        "json-validator",
+        "json-minifier",
+        "json-to-csv",
+        "csv-to-json"
+      ]
+    },
+    {
+      "slug": "lorem-ipsum-generator",
+      "title": "Lorem Ipsum Generator",
+      "category": "Developer Tools",
+      "description": "Format, validate and transform lorem ipsum generator instantly in your browser. Paste data, check errors and copy clean output privately with no uploads.",
+      "keywords": [
+        "lorem ipsum generator",
+        "lorem ipsum generator online",
+        "lorem ipsum generator tool"
+      ],
+      "related": [
+        "json-formatter",
+        "json-validator",
+        "json-minifier",
+        "json-to-csv",
+        "csv-to-json",
+        "xml-formatter"
+      ]
+    },
+    {
+      "slug": "css-minifier",
+      "title": "CSS Minifier",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css minifier styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css minifier",
+        "css minifier online",
+        "css minifier tool"
+      ],
+      "related": [
+        "css-beautifier",
+        "html-minifier",
+        "html-beautifier",
+        "javascript-minifier",
+        "javascript-beautifier",
+        "css-gradient-generator"
+      ]
+    },
+    {
+      "slug": "css-beautifier",
+      "title": "CSS Beautifier",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css beautifier styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css beautifier",
+        "css beautifier online",
+        "css beautifier tool"
+      ],
+      "related": [
+        "html-minifier",
+        "html-beautifier",
+        "javascript-minifier",
+        "javascript-beautifier",
+        "css-gradient-generator",
+        "css-box-shadow-generator"
+      ]
+    },
+    {
+      "slug": "html-minifier",
+      "title": "HTML Minifier",
+      "category": "CSS/HTML Tools",
+      "description": "Generate html minifier styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "html minifier",
+        "html minifier online",
+        "html minifier tool"
+      ],
+      "related": [
+        "html-beautifier",
+        "javascript-minifier",
+        "javascript-beautifier",
+        "css-gradient-generator",
+        "css-box-shadow-generator",
+        "css-border-radius-generator"
+      ]
+    },
+    {
+      "slug": "html-beautifier",
+      "title": "HTML Beautifier",
+      "category": "CSS/HTML Tools",
+      "description": "Generate html beautifier styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "html beautifier",
+        "html beautifier online",
+        "html beautifier tool"
+      ],
+      "related": [
+        "javascript-minifier",
+        "javascript-beautifier",
+        "css-gradient-generator",
+        "css-box-shadow-generator",
+        "css-border-radius-generator",
+        "css-text-shadow-generator"
+      ]
+    },
+    {
+      "slug": "javascript-minifier",
+      "title": "JavaScript Minifier",
+      "category": "CSS/HTML Tools",
+      "description": "Generate javascript minifier styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "javascript minifier",
+        "javascript minifier online",
+        "javascript minifier tool"
+      ],
+      "related": [
+        "javascript-beautifier",
+        "css-gradient-generator",
+        "css-box-shadow-generator",
+        "css-border-radius-generator",
+        "css-text-shadow-generator",
+        "css-button-generator"
+      ]
+    },
+    {
+      "slug": "javascript-beautifier",
+      "title": "JavaScript Beautifier",
+      "category": "CSS/HTML Tools",
+      "description": "Generate javascript beautifier styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "javascript beautifier",
+        "javascript beautifier online",
+        "javascript beautifier tool"
+      ],
+      "related": [
+        "css-gradient-generator",
+        "css-box-shadow-generator",
+        "css-border-radius-generator",
+        "css-text-shadow-generator",
+        "css-button-generator",
+        "css-glassmorphism-generator"
+      ]
+    },
+    {
+      "slug": "css-gradient-generator",
+      "title": "CSS Gradient Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css gradient generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css gradient generator",
+        "css gradient generator online",
+        "css gradient generator tool"
+      ],
+      "related": [
+        "css-box-shadow-generator",
+        "css-border-radius-generator",
+        "css-text-shadow-generator",
+        "css-button-generator",
+        "css-glassmorphism-generator",
+        "css-neumorphism-generator"
+      ]
+    },
+    {
+      "slug": "css-box-shadow-generator",
+      "title": "CSS Box Shadow Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css box shadow generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css box shadow generator",
+        "css box shadow generator online",
+        "css box shadow generator tool"
+      ],
+      "related": [
+        "css-border-radius-generator",
+        "css-text-shadow-generator",
+        "css-button-generator",
+        "css-glassmorphism-generator",
+        "css-neumorphism-generator",
+        "css-transform-generator"
+      ]
+    },
+    {
+      "slug": "css-border-radius-generator",
+      "title": "CSS Border Radius Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css border radius generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css border radius generator",
+        "css border radius generator online",
+        "css border radius generator tool"
+      ],
+      "related": [
+        "css-text-shadow-generator",
+        "css-button-generator",
+        "css-glassmorphism-generator",
+        "css-neumorphism-generator",
+        "css-transform-generator",
+        "css-animation-generator"
+      ]
+    },
+    {
+      "slug": "css-text-shadow-generator",
+      "title": "CSS Text Shadow Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css text shadow generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css text shadow generator",
+        "css text shadow generator online",
+        "css text shadow generator tool"
+      ],
+      "related": [
+        "css-button-generator",
+        "css-glassmorphism-generator",
+        "css-neumorphism-generator",
+        "css-transform-generator",
+        "css-animation-generator",
+        "css-flexbox-generator"
+      ]
+    },
+    {
+      "slug": "css-button-generator",
+      "title": "CSS Button Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css button generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css button generator",
+        "css button generator online",
+        "css button generator tool"
+      ],
+      "related": [
+        "css-glassmorphism-generator",
+        "css-neumorphism-generator",
+        "css-transform-generator",
+        "css-animation-generator",
+        "css-flexbox-generator",
+        "css-grid-generator"
+      ]
+    },
+    {
+      "slug": "css-glassmorphism-generator",
+      "title": "CSS Glassmorphism Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css glassmorphism generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css glassmorphism generator",
+        "css glassmorphism generator online",
+        "css glassmorphism generator tool"
+      ],
+      "related": [
+        "css-neumorphism-generator",
+        "css-transform-generator",
+        "css-animation-generator",
+        "css-flexbox-generator",
+        "css-grid-generator",
+        "css-clamp-generator"
+      ]
+    },
+    {
+      "slug": "css-neumorphism-generator",
+      "title": "CSS Neumorphism Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css neumorphism generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css neumorphism generator",
+        "css neumorphism generator online",
+        "css neumorphism generator tool"
+      ],
+      "related": [
+        "css-transform-generator",
+        "css-animation-generator",
+        "css-flexbox-generator",
+        "css-grid-generator",
+        "css-clamp-generator",
+        "css-filter-generator"
+      ]
+    },
+    {
+      "slug": "css-transform-generator",
+      "title": "CSS Transform Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css transform generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css transform generator",
+        "css transform generator online",
+        "css transform generator tool"
+      ],
+      "related": [
+        "css-animation-generator",
+        "css-flexbox-generator",
+        "css-grid-generator",
+        "css-clamp-generator",
+        "css-filter-generator",
+        "css-color-converter"
+      ]
+    },
+    {
+      "slug": "css-animation-generator",
+      "title": "CSS Animation Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css animation generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css animation generator",
+        "css animation generator online",
+        "css animation generator tool"
+      ],
+      "related": [
+        "css-flexbox-generator",
+        "css-grid-generator",
+        "css-clamp-generator",
+        "css-filter-generator",
+        "css-color-converter",
+        "css-minifier"
+      ]
+    },
+    {
+      "slug": "css-flexbox-generator",
+      "title": "CSS Flexbox Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css flexbox generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css flexbox generator",
+        "css flexbox generator online",
+        "css flexbox generator tool"
+      ],
+      "related": [
+        "css-grid-generator",
+        "css-clamp-generator",
+        "css-filter-generator",
+        "css-color-converter",
+        "css-minifier",
+        "css-beautifier"
+      ]
+    },
+    {
+      "slug": "css-grid-generator",
+      "title": "CSS Grid Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css grid generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css grid generator",
+        "css grid generator online",
+        "css grid generator tool"
+      ],
+      "related": [
+        "css-clamp-generator",
+        "css-filter-generator",
+        "css-color-converter",
+        "css-minifier",
+        "css-beautifier",
+        "html-minifier"
+      ]
+    },
+    {
+      "slug": "css-clamp-generator",
+      "title": "CSS Clamp Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css clamp generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css clamp generator",
+        "css clamp generator online",
+        "css clamp generator tool"
+      ],
+      "related": [
+        "css-filter-generator",
+        "css-color-converter",
+        "css-minifier",
+        "css-beautifier",
+        "html-minifier",
+        "html-beautifier"
+      ]
+    },
+    {
+      "slug": "css-filter-generator",
+      "title": "CSS Filter Generator",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css filter generator styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css filter generator",
+        "css filter generator online",
+        "css filter generator tool"
+      ],
+      "related": [
+        "css-color-converter",
+        "css-minifier",
+        "css-beautifier",
+        "html-minifier",
+        "html-beautifier",
+        "javascript-minifier"
+      ]
+    },
+    {
+      "slug": "css-color-converter",
+      "title": "CSS Color Converter",
+      "category": "CSS/HTML Tools",
+      "description": "Generate css color converter styles visually and copy clean code. Adjust live previews in your browser with instant, private results and no uploads.",
+      "keywords": [
+        "css color converter",
+        "css color converter online",
+        "css color converter tool"
+      ],
+      "related": [
+        "css-minifier",
+        "css-beautifier",
+        "html-minifier",
+        "html-beautifier",
+        "javascript-minifier",
+        "javascript-beautifier"
+      ]
+    },
+    {
+      "slug": "word-counter",
+      "title": "Word Counter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the word counter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "word counter",
+        "word counter online",
+        "word counter tool"
+      ],
+      "related": [
+        "character-counter",
+        "sentence-counter",
+        "paragraph-counter",
+        "reading-time-calculator",
+        "case-converter",
+        "uppercase-converter"
+      ]
+    },
+    {
+      "slug": "character-counter",
+      "title": "Character Counter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the character counter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "character counter",
+        "character counter online",
+        "character counter tool"
+      ],
+      "related": [
+        "sentence-counter",
+        "paragraph-counter",
+        "reading-time-calculator",
+        "case-converter",
+        "uppercase-converter",
+        "lowercase-converter"
+      ]
+    },
+    {
+      "slug": "sentence-counter",
+      "title": "Sentence Counter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the sentence counter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "sentence counter",
+        "sentence counter online",
+        "sentence counter tool"
+      ],
+      "related": [
+        "paragraph-counter",
+        "reading-time-calculator",
+        "case-converter",
+        "uppercase-converter",
+        "lowercase-converter",
+        "title-case-converter"
+      ]
+    },
+    {
+      "slug": "paragraph-counter",
+      "title": "Paragraph Counter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the paragraph counter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "paragraph counter",
+        "paragraph counter online",
+        "paragraph counter tool"
+      ],
+      "related": [
+        "reading-time-calculator",
+        "case-converter",
+        "uppercase-converter",
+        "lowercase-converter",
+        "title-case-converter",
+        "remove-duplicate-lines"
+      ]
+    },
+    {
+      "slug": "reading-time-calculator",
+      "title": "Reading Time Calculator",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the reading time calculator tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "reading time calculator",
+        "reading time calculator online",
+        "reading time calculator tool"
+      ],
+      "related": [
+        "case-converter",
+        "uppercase-converter",
+        "lowercase-converter",
+        "title-case-converter",
+        "remove-duplicate-lines",
+        "sort-lines-alphabetically"
+      ]
+    },
+    {
+      "slug": "case-converter",
+      "title": "Case Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the case converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "case converter",
+        "case converter online",
+        "case converter tool"
+      ],
+      "related": [
+        "uppercase-converter",
+        "lowercase-converter",
+        "title-case-converter",
+        "remove-duplicate-lines",
+        "sort-lines-alphabetically",
+        "reverse-text"
+      ]
+    },
+    {
+      "slug": "uppercase-converter",
+      "title": "Uppercase Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the uppercase converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "uppercase converter",
+        "uppercase converter online",
+        "uppercase converter tool"
+      ],
+      "related": [
+        "lowercase-converter",
+        "title-case-converter",
+        "remove-duplicate-lines",
+        "sort-lines-alphabetically",
+        "reverse-text",
+        "remove-extra-spaces"
+      ]
+    },
+    {
+      "slug": "lowercase-converter",
+      "title": "Lowercase Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the lowercase converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "lowercase converter",
+        "lowercase converter online",
+        "lowercase converter tool"
+      ],
+      "related": [
+        "title-case-converter",
+        "remove-duplicate-lines",
+        "sort-lines-alphabetically",
+        "reverse-text",
+        "remove-extra-spaces",
+        "find-and-replace-tool"
+      ]
+    },
+    {
+      "slug": "title-case-converter",
+      "title": "Title Case Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the title case converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "title case converter",
+        "title case converter online",
+        "title case converter tool"
+      ],
+      "related": [
+        "remove-duplicate-lines",
+        "sort-lines-alphabetically",
+        "reverse-text",
+        "remove-extra-spaces",
+        "find-and-replace-tool",
+        "text-diff-checker"
+      ]
+    },
+    {
+      "slug": "remove-duplicate-lines",
+      "title": "Remove Duplicate Lines",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the remove duplicate lines tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "remove duplicate lines",
+        "remove duplicate lines online",
+        "remove duplicate lines tool"
+      ],
+      "related": [
+        "sort-lines-alphabetically",
+        "reverse-text",
+        "remove-extra-spaces",
+        "find-and-replace-tool",
+        "text-diff-checker",
+        "text-cleaner"
+      ]
+    },
+    {
+      "slug": "sort-lines-alphabetically",
+      "title": "Sort Lines Alphabetically",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the sort lines alphabetically tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "sort lines alphabetically",
+        "sort lines alphabetically online",
+        "sort lines alphabetically tool"
+      ],
+      "related": [
+        "reverse-text",
+        "remove-extra-spaces",
+        "find-and-replace-tool",
+        "text-diff-checker",
+        "text-cleaner",
+        "text-to-slug-converter"
+      ]
+    },
+    {
+      "slug": "reverse-text",
+      "title": "Reverse Text",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the reverse text tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "reverse text",
+        "reverse text online",
+        "reverse text tool"
+      ],
+      "related": [
+        "remove-extra-spaces",
+        "find-and-replace-tool",
+        "text-diff-checker",
+        "text-cleaner",
+        "text-to-slug-converter",
+        "slug-generator"
+      ]
+    },
+    {
+      "slug": "remove-extra-spaces",
+      "title": "Remove Extra Spaces",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the remove extra spaces tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "remove extra spaces",
+        "remove extra spaces online",
+        "remove extra spaces tool"
+      ],
+      "related": [
+        "find-and-replace-tool",
+        "text-diff-checker",
+        "text-cleaner",
+        "text-to-slug-converter",
+        "slug-generator",
+        "markdown-previewer"
+      ]
+    },
+    {
+      "slug": "find-and-replace-tool",
+      "title": "Find and Replace Tool",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the find and replace tool tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "find and replace tool",
+        "find and replace tool online",
+        "find and replace tool tool"
+      ],
+      "related": [
+        "text-diff-checker",
+        "text-cleaner",
+        "text-to-slug-converter",
+        "slug-generator",
+        "markdown-previewer",
+        "markdown-table-generator"
+      ]
+    },
+    {
+      "slug": "text-diff-checker",
+      "title": "Text Diff Checker",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the text diff checker tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "text diff checker",
+        "text diff checker online",
+        "text diff checker tool"
+      ],
+      "related": [
+        "text-cleaner",
+        "text-to-slug-converter",
+        "slug-generator",
+        "markdown-previewer",
+        "markdown-table-generator",
+        "markdown-to-html-converter"
+      ]
+    },
+    {
+      "slug": "text-cleaner",
+      "title": "Text Cleaner",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the text cleaner tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "text cleaner",
+        "text cleaner online",
+        "text cleaner tool"
+      ],
+      "related": [
+        "text-to-slug-converter",
+        "slug-generator",
+        "markdown-previewer",
+        "markdown-table-generator",
+        "markdown-to-html-converter",
+        "html-to-markdown-converter"
+      ]
+    },
+    {
+      "slug": "text-to-slug-converter",
+      "title": "Text to Slug Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the text to slug converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "text to slug converter",
+        "text to slug converter online",
+        "text to slug converter tool"
+      ],
+      "related": [
+        "slug-generator",
+        "markdown-previewer",
+        "markdown-table-generator",
+        "markdown-to-html-converter",
+        "html-to-markdown-converter",
+        "text-to-ascii-generator"
+      ]
+    },
+    {
+      "slug": "slug-generator",
+      "title": "Slug Generator",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the slug generator tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "slug generator",
+        "slug generator online",
+        "slug generator tool"
+      ],
+      "related": [
+        "markdown-previewer",
+        "markdown-table-generator",
+        "markdown-to-html-converter",
+        "html-to-markdown-converter",
+        "text-to-ascii-generator",
+        "ascii-art-generator"
+      ]
+    },
+    {
+      "slug": "markdown-previewer",
+      "title": "Markdown Previewer",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the markdown previewer tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "markdown previewer",
+        "markdown previewer online",
+        "markdown previewer tool"
+      ],
+      "related": [
+        "markdown-table-generator",
+        "markdown-to-html-converter",
+        "html-to-markdown-converter",
+        "text-to-ascii-generator",
+        "ascii-art-generator",
+        "text-line-break-remover"
+      ]
+    },
+    {
+      "slug": "markdown-table-generator",
+      "title": "Markdown Table Generator",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the markdown table generator tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "markdown table generator",
+        "markdown table generator online",
+        "markdown table generator tool"
+      ],
+      "related": [
+        "markdown-to-html-converter",
+        "html-to-markdown-converter",
+        "text-to-ascii-generator",
+        "ascii-art-generator",
+        "text-line-break-remover",
+        "word-counter"
+      ]
+    },
+    {
+      "slug": "markdown-to-html-converter",
+      "title": "Markdown to HTML Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the markdown to html converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "markdown to html converter",
+        "markdown to html converter online",
+        "markdown to html converter tool"
+      ],
+      "related": [
+        "html-to-markdown-converter",
+        "text-to-ascii-generator",
+        "ascii-art-generator",
+        "text-line-break-remover",
+        "word-counter",
+        "character-counter"
+      ]
+    },
+    {
+      "slug": "html-to-markdown-converter",
+      "title": "HTML to Markdown Converter",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the html to markdown converter tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "html to markdown converter",
+        "html to markdown converter online",
+        "html to markdown converter tool"
+      ],
+      "related": [
+        "text-to-ascii-generator",
+        "ascii-art-generator",
+        "text-line-break-remover",
+        "word-counter",
+        "character-counter",
+        "sentence-counter"
+      ]
+    },
+    {
+      "slug": "text-to-ascii-generator",
+      "title": "Text to ASCII Generator",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the text to ascii generator tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "text to ascii generator",
+        "text to ascii generator online",
+        "text to ascii generator tool"
+      ],
+      "related": [
+        "ascii-art-generator",
+        "text-line-break-remover",
+        "word-counter",
+        "character-counter",
+        "sentence-counter",
+        "paragraph-counter"
+      ]
+    },
+    {
+      "slug": "ascii-art-generator",
+      "title": "ASCII Art Generator",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the ascii art generator tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "ascii art generator",
+        "ascii art generator online",
+        "ascii art generator tool"
+      ],
+      "related": [
+        "text-line-break-remover",
+        "word-counter",
+        "character-counter",
+        "sentence-counter",
+        "paragraph-counter",
+        "reading-time-calculator"
+      ]
+    },
+    {
+      "slug": "text-line-break-remover",
+      "title": "Text Line Break Remover",
+      "category": "Text Tools",
+      "description": "Analyze and transform text with the text line break remover tool. Count, convert or clean content instantly in your browser with private, local processing.",
+      "keywords": [
+        "text line break remover",
+        "text line break remover online",
+        "text line break remover tool"
+      ],
+      "related": [
+        "word-counter",
+        "character-counter",
+        "sentence-counter",
+        "paragraph-counter",
+        "reading-time-calculator",
+        "case-converter"
+      ]
+    },
+    {
+      "slug": "percentage-calculator",
+      "title": "Percentage Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate percentage calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "percentage calculator",
+        "percentage calculator online",
+        "percentage calculator tool"
+      ],
+      "related": [
+        "percentage-increase-calculator",
+        "percentage-decrease-calculator",
+        "ratio-calculator",
+        "proportion-calculator",
+        "average-calculator",
+        "median-calculator"
+      ]
+    },
+    {
+      "slug": "percentage-increase-calculator",
+      "title": "Percentage Increase Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate percentage increase calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "percentage increase calculator",
+        "percentage increase calculator online",
+        "percentage increase calculator tool"
+      ],
+      "related": [
+        "percentage-decrease-calculator",
+        "ratio-calculator",
+        "proportion-calculator",
+        "average-calculator",
+        "median-calculator",
+        "mode-calculator"
+      ]
+    },
+    {
+      "slug": "percentage-decrease-calculator",
+      "title": "Percentage Decrease Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate percentage decrease calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "percentage decrease calculator",
+        "percentage decrease calculator online",
+        "percentage decrease calculator tool"
+      ],
+      "related": [
+        "ratio-calculator",
+        "proportion-calculator",
+        "average-calculator",
+        "median-calculator",
+        "mode-calculator",
+        "standard-deviation-calculator"
+      ]
+    },
+    {
+      "slug": "ratio-calculator",
+      "title": "Ratio Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate ratio calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "ratio calculator",
+        "ratio calculator online",
+        "ratio calculator tool"
+      ],
+      "related": [
+        "proportion-calculator",
+        "average-calculator",
+        "median-calculator",
+        "mode-calculator",
+        "standard-deviation-calculator",
+        "mean-calculator"
+      ]
+    },
+    {
+      "slug": "proportion-calculator",
+      "title": "Proportion Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate proportion calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "proportion calculator",
+        "proportion calculator online",
+        "proportion calculator tool"
+      ],
+      "related": [
+        "average-calculator",
+        "median-calculator",
+        "mode-calculator",
+        "standard-deviation-calculator",
+        "mean-calculator",
+        "fraction-calculator"
+      ]
+    },
+    {
+      "slug": "average-calculator",
+      "title": "Average Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate average calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "average calculator",
+        "average calculator online",
+        "average calculator tool"
+      ],
+      "related": [
+        "median-calculator",
+        "mode-calculator",
+        "standard-deviation-calculator",
+        "mean-calculator",
+        "fraction-calculator",
+        "decimal-to-fraction"
+      ]
+    },
+    {
+      "slug": "median-calculator",
+      "title": "Median Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate median calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "median calculator",
+        "median calculator online",
+        "median calculator tool"
+      ],
+      "related": [
+        "mode-calculator",
+        "standard-deviation-calculator",
+        "mean-calculator",
+        "fraction-calculator",
+        "decimal-to-fraction",
+        "fraction-to-decimal"
+      ]
+    },
+    {
+      "slug": "mode-calculator",
+      "title": "Mode Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate mode calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "mode calculator",
+        "mode calculator online",
+        "mode calculator tool"
+      ],
+      "related": [
+        "standard-deviation-calculator",
+        "mean-calculator",
+        "fraction-calculator",
+        "decimal-to-fraction",
+        "fraction-to-decimal",
+        "mixed-number-calculator"
+      ]
+    },
+    {
+      "slug": "standard-deviation-calculator",
+      "title": "Standard Deviation Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate standard deviation calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "standard deviation calculator",
+        "standard deviation calculator online",
+        "standard deviation calculator tool"
+      ],
+      "related": [
+        "mean-calculator",
+        "fraction-calculator",
+        "decimal-to-fraction",
+        "fraction-to-decimal",
+        "mixed-number-calculator",
+        "gcd-calculator"
+      ]
+    },
+    {
+      "slug": "mean-calculator",
+      "title": "Mean Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate mean calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "mean calculator",
+        "mean calculator online",
+        "mean calculator tool"
+      ],
+      "related": [
+        "fraction-calculator",
+        "decimal-to-fraction",
+        "fraction-to-decimal",
+        "mixed-number-calculator",
+        "gcd-calculator",
+        "lcm-calculator"
+      ]
+    },
+    {
+      "slug": "fraction-calculator",
+      "title": "Fraction Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate fraction calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "fraction calculator",
+        "fraction calculator online",
+        "fraction calculator tool"
+      ],
+      "related": [
+        "decimal-to-fraction",
+        "fraction-to-decimal",
+        "mixed-number-calculator",
+        "gcd-calculator",
+        "lcm-calculator",
+        "prime-number-checker"
+      ]
+    },
+    {
+      "slug": "decimal-to-fraction",
+      "title": "Decimal to Fraction",
+      "category": "Math Calculators",
+      "description": "Calculate decimal to fraction results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "decimal to fraction",
+        "decimal to fraction online",
+        "decimal to fraction tool"
+      ],
+      "related": [
+        "fraction-to-decimal",
+        "mixed-number-calculator",
+        "gcd-calculator",
+        "lcm-calculator",
+        "prime-number-checker",
+        "prime-number-generator"
+      ]
+    },
+    {
+      "slug": "fraction-to-decimal",
+      "title": "Fraction to Decimal",
+      "category": "Math Calculators",
+      "description": "Calculate fraction to decimal results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "fraction to decimal",
+        "fraction to decimal online",
+        "fraction to decimal tool"
+      ],
+      "related": [
+        "mixed-number-calculator",
+        "gcd-calculator",
+        "lcm-calculator",
+        "prime-number-checker",
+        "prime-number-generator",
+        "factor-calculator"
+      ]
+    },
+    {
+      "slug": "mixed-number-calculator",
+      "title": "Mixed Number Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate mixed number calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "mixed number calculator",
+        "mixed number calculator online",
+        "mixed number calculator tool"
+      ],
+      "related": [
+        "gcd-calculator",
+        "lcm-calculator",
+        "prime-number-checker",
+        "prime-number-generator",
+        "factor-calculator",
+        "scientific-notation-converter"
+      ]
+    },
+    {
+      "slug": "gcd-calculator",
+      "title": "GCD Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate gcd calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "gcd calculator",
+        "gcd calculator online",
+        "gcd calculator tool"
+      ],
+      "related": [
+        "lcm-calculator",
+        "prime-number-checker",
+        "prime-number-generator",
+        "factor-calculator",
+        "scientific-notation-converter",
+        "binary-calculator"
+      ]
+    },
+    {
+      "slug": "lcm-calculator",
+      "title": "LCM Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate lcm calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "lcm calculator",
+        "lcm calculator online",
+        "lcm calculator tool"
+      ],
+      "related": [
+        "prime-number-checker",
+        "prime-number-generator",
+        "factor-calculator",
+        "scientific-notation-converter",
+        "binary-calculator",
+        "binary-to-decimal"
+      ]
+    },
+    {
+      "slug": "prime-number-checker",
+      "title": "Prime Number Checker",
+      "category": "Math Calculators",
+      "description": "Calculate prime number checker results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "prime number checker",
+        "prime number checker online",
+        "prime number checker tool"
+      ],
+      "related": [
+        "prime-number-generator",
+        "factor-calculator",
+        "scientific-notation-converter",
+        "binary-calculator",
+        "binary-to-decimal",
+        "decimal-to-binary"
+      ]
+    },
+    {
+      "slug": "prime-number-generator",
+      "title": "Prime Number Generator",
+      "category": "Math Calculators",
+      "description": "Calculate prime number generator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "prime number generator",
+        "prime number generator online",
+        "prime number generator tool"
+      ],
+      "related": [
+        "factor-calculator",
+        "scientific-notation-converter",
+        "binary-calculator",
+        "binary-to-decimal",
+        "decimal-to-binary",
+        "hex-to-decimal"
+      ]
+    },
+    {
+      "slug": "factor-calculator",
+      "title": "Factor Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate factor calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "factor calculator",
+        "factor calculator online",
+        "factor calculator tool"
+      ],
+      "related": [
+        "scientific-notation-converter",
+        "binary-calculator",
+        "binary-to-decimal",
+        "decimal-to-binary",
+        "hex-to-decimal",
+        "decimal-to-hex"
+      ]
+    },
+    {
+      "slug": "scientific-notation-converter",
+      "title": "Scientific Notation Converter",
+      "category": "Math Calculators",
+      "description": "Calculate scientific notation converter results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "scientific notation converter",
+        "scientific notation converter online",
+        "scientific notation converter tool"
+      ],
+      "related": [
+        "binary-calculator",
+        "binary-to-decimal",
+        "decimal-to-binary",
+        "hex-to-decimal",
+        "decimal-to-hex",
+        "octal-converter"
+      ]
+    },
+    {
+      "slug": "binary-calculator",
+      "title": "Binary Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate binary calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "binary calculator",
+        "binary calculator online",
+        "binary calculator tool"
+      ],
+      "related": [
+        "binary-to-decimal",
+        "decimal-to-binary",
+        "hex-to-decimal",
+        "decimal-to-hex",
+        "octal-converter",
+        "roman-numeral-converter"
+      ]
+    },
+    {
+      "slug": "binary-to-decimal",
+      "title": "Binary to Decimal",
+      "category": "Math Calculators",
+      "description": "Calculate binary to decimal results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "binary to decimal",
+        "binary to decimal online",
+        "binary to decimal tool"
+      ],
+      "related": [
+        "decimal-to-binary",
+        "hex-to-decimal",
+        "decimal-to-hex",
+        "octal-converter",
+        "roman-numeral-converter",
+        "random-number-generator"
+      ]
+    },
+    {
+      "slug": "decimal-to-binary",
+      "title": "Decimal to Binary",
+      "category": "Math Calculators",
+      "description": "Calculate decimal to binary results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "decimal to binary",
+        "decimal to binary online",
+        "decimal to binary tool"
+      ],
+      "related": [
+        "hex-to-decimal",
+        "decimal-to-hex",
+        "octal-converter",
+        "roman-numeral-converter",
+        "random-number-generator",
+        "exponent-calculator"
+      ]
+    },
+    {
+      "slug": "hex-to-decimal",
+      "title": "Hex to Decimal",
+      "category": "Math Calculators",
+      "description": "Calculate hex to decimal results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "hex to decimal",
+        "hex to decimal online",
+        "hex to decimal tool"
+      ],
+      "related": [
+        "decimal-to-hex",
+        "octal-converter",
+        "roman-numeral-converter",
+        "random-number-generator",
+        "exponent-calculator",
+        "square-root-calculator"
+      ]
+    },
+    {
+      "slug": "decimal-to-hex",
+      "title": "Decimal to Hex",
+      "category": "Math Calculators",
+      "description": "Calculate decimal to hex results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "decimal to hex",
+        "decimal to hex online",
+        "decimal to hex tool"
+      ],
+      "related": [
+        "octal-converter",
+        "roman-numeral-converter",
+        "random-number-generator",
+        "exponent-calculator",
+        "square-root-calculator",
+        "percentage-calculator"
+      ]
+    },
+    {
+      "slug": "octal-converter",
+      "title": "Octal Converter",
+      "category": "Math Calculators",
+      "description": "Calculate octal converter results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "octal converter",
+        "octal converter online",
+        "octal converter tool"
+      ],
+      "related": [
+        "roman-numeral-converter",
+        "random-number-generator",
+        "exponent-calculator",
+        "square-root-calculator",
+        "percentage-calculator",
+        "percentage-increase-calculator"
+      ]
+    },
+    {
+      "slug": "roman-numeral-converter",
+      "title": "Roman Numeral Converter",
+      "category": "Math Calculators",
+      "description": "Calculate roman numeral converter results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "roman numeral converter",
+        "roman numeral converter online",
+        "roman numeral converter tool"
+      ],
+      "related": [
+        "random-number-generator",
+        "exponent-calculator",
+        "square-root-calculator",
+        "percentage-calculator",
+        "percentage-increase-calculator",
+        "percentage-decrease-calculator"
+      ]
+    },
+    {
+      "slug": "random-number-generator",
+      "title": "Random Number Generator",
+      "category": "Math Calculators",
+      "description": "Calculate random number generator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "random number generator",
+        "random number generator online",
+        "random number generator tool"
+      ],
+      "related": [
+        "exponent-calculator",
+        "square-root-calculator",
+        "percentage-calculator",
+        "percentage-increase-calculator",
+        "percentage-decrease-calculator",
+        "ratio-calculator"
+      ]
+    },
+    {
+      "slug": "exponent-calculator",
+      "title": "Exponent Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate exponent calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "exponent calculator",
+        "exponent calculator online",
+        "exponent calculator tool"
+      ],
+      "related": [
+        "square-root-calculator",
+        "percentage-calculator",
+        "percentage-increase-calculator",
+        "percentage-decrease-calculator",
+        "ratio-calculator",
+        "proportion-calculator"
+      ]
+    },
+    {
+      "slug": "square-root-calculator",
+      "title": "Square Root Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate square root calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.",
+      "keywords": [
+        "square root calculator",
+        "square root calculator online",
+        "square root calculator tool"
+      ],
+      "related": [
+        "percentage-calculator",
+        "percentage-increase-calculator",
+        "percentage-decrease-calculator",
+        "ratio-calculator",
+        "proportion-calculator",
+        "average-calculator"
+      ]
+    },
+    {
+      "slug": "grade-calculator",
+      "title": "Grade Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this grade calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "grade calculator",
+        "grade calculator online",
+        "grade calculator tool"
+      ],
+      "related": [
+        "gpa-calculator",
+        "cgpa-calculator",
+        "percentage-to-gpa-calculator",
+        "exam-percentage-calculator",
+        "marks-percentage-calculator",
+        "final-grade-calculator"
+      ]
+    },
+    {
+      "slug": "gpa-calculator",
+      "title": "GPA Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this gpa calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "gpa calculator",
+        "gpa calculator online",
+        "gpa calculator tool"
+      ],
+      "related": [
+        "cgpa-calculator",
+        "percentage-to-gpa-calculator",
+        "exam-percentage-calculator",
+        "marks-percentage-calculator",
+        "final-grade-calculator",
+        "weighted-grade-calculator"
+      ]
+    },
+    {
+      "slug": "cgpa-calculator",
+      "title": "CGPA Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this cgpa calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "cgpa calculator",
+        "cgpa calculator online",
+        "cgpa calculator tool"
+      ],
+      "related": [
+        "percentage-to-gpa-calculator",
+        "exam-percentage-calculator",
+        "marks-percentage-calculator",
+        "final-grade-calculator",
+        "weighted-grade-calculator",
+        "study-time-calculator"
+      ]
+    },
+    {
+      "slug": "percentage-to-gpa-calculator",
+      "title": "Percentage to GPA Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this percentage to gpa calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "percentage to gpa calculator",
+        "percentage to gpa calculator online",
+        "percentage to gpa calculator tool"
+      ],
+      "related": [
+        "exam-percentage-calculator",
+        "marks-percentage-calculator",
+        "final-grade-calculator",
+        "weighted-grade-calculator",
+        "study-time-calculator",
+        "pomodoro-timer"
+      ]
+    },
+    {
+      "slug": "exam-percentage-calculator",
+      "title": "Exam Percentage Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this exam percentage calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "exam percentage calculator",
+        "exam percentage calculator online",
+        "exam percentage calculator tool"
+      ],
+      "related": [
+        "marks-percentage-calculator",
+        "final-grade-calculator",
+        "weighted-grade-calculator",
+        "study-time-calculator",
+        "pomodoro-timer",
+        "exam-countdown"
+      ]
+    },
+    {
+      "slug": "marks-percentage-calculator",
+      "title": "Marks Percentage Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this marks percentage calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "marks percentage calculator",
+        "marks percentage calculator online",
+        "marks percentage calculator tool"
+      ],
+      "related": [
+        "final-grade-calculator",
+        "weighted-grade-calculator",
+        "study-time-calculator",
+        "pomodoro-timer",
+        "exam-countdown",
+        "assignment-countdown"
+      ]
+    },
+    {
+      "slug": "final-grade-calculator",
+      "title": "Final Grade Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this final grade calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "final grade calculator",
+        "final grade calculator online",
+        "final grade calculator tool"
+      ],
+      "related": [
+        "weighted-grade-calculator",
+        "study-time-calculator",
+        "pomodoro-timer",
+        "exam-countdown",
+        "assignment-countdown",
+        "semester-countdown"
+      ]
+    },
+    {
+      "slug": "weighted-grade-calculator",
+      "title": "Weighted Grade Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this weighted grade calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "weighted grade calculator",
+        "weighted grade calculator online",
+        "weighted grade calculator tool"
+      ],
+      "related": [
+        "study-time-calculator",
+        "pomodoro-timer",
+        "exam-countdown",
+        "assignment-countdown",
+        "semester-countdown",
+        "study-schedule-generator"
+      ]
+    },
+    {
+      "slug": "study-time-calculator",
+      "title": "Study Time Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this study time calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "study time calculator",
+        "study time calculator online",
+        "study time calculator tool"
+      ],
+      "related": [
+        "pomodoro-timer",
+        "exam-countdown",
+        "assignment-countdown",
+        "semester-countdown",
+        "study-schedule-generator",
+        "revision-schedule-generator"
+      ]
+    },
+    {
+      "slug": "pomodoro-timer",
+      "title": "Pomodoro Timer",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this pomodoro timer tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "pomodoro timer",
+        "pomodoro timer online",
+        "pomodoro timer tool"
+      ],
+      "related": [
+        "exam-countdown",
+        "assignment-countdown",
+        "semester-countdown",
+        "study-schedule-generator",
+        "revision-schedule-generator",
+        "flashcard-generator"
+      ]
+    },
+    {
+      "slug": "exam-countdown",
+      "title": "Exam Countdown",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this exam countdown tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "exam countdown",
+        "exam countdown online",
+        "exam countdown tool"
+      ],
+      "related": [
+        "assignment-countdown",
+        "semester-countdown",
+        "study-schedule-generator",
+        "revision-schedule-generator",
+        "flashcard-generator",
+        "random-quiz-generator"
+      ]
+    },
+    {
+      "slug": "assignment-countdown",
+      "title": "Assignment Countdown",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this assignment countdown tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "assignment countdown",
+        "assignment countdown online",
+        "assignment countdown tool"
+      ],
+      "related": [
+        "semester-countdown",
+        "study-schedule-generator",
+        "revision-schedule-generator",
+        "flashcard-generator",
+        "random-quiz-generator",
+        "multiplication-table-generator"
+      ]
+    },
+    {
+      "slug": "semester-countdown",
+      "title": "Semester Countdown",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this semester countdown tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "semester countdown",
+        "semester countdown online",
+        "semester countdown tool"
+      ],
+      "related": [
+        "study-schedule-generator",
+        "revision-schedule-generator",
+        "flashcard-generator",
+        "random-quiz-generator",
+        "multiplication-table-generator",
+        "times-table-quiz"
+      ]
+    },
+    {
+      "slug": "study-schedule-generator",
+      "title": "Study Schedule Generator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this study schedule generator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "study schedule generator",
+        "study schedule generator online",
+        "study schedule generator tool"
+      ],
+      "related": [
+        "revision-schedule-generator",
+        "flashcard-generator",
+        "random-quiz-generator",
+        "multiplication-table-generator",
+        "times-table-quiz",
+        "random-math-quiz"
+      ]
+    },
+    {
+      "slug": "revision-schedule-generator",
+      "title": "Revision Schedule Generator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this revision schedule generator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "revision schedule generator",
+        "revision schedule generator online",
+        "revision schedule generator tool"
+      ],
+      "related": [
+        "flashcard-generator",
+        "random-quiz-generator",
+        "multiplication-table-generator",
+        "times-table-quiz",
+        "random-math-quiz",
+        "equation-solver"
+      ]
+    },
+    {
+      "slug": "flashcard-generator",
+      "title": "Flashcard Generator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this flashcard generator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "flashcard generator",
+        "flashcard generator online",
+        "flashcard generator tool"
+      ],
+      "related": [
+        "random-quiz-generator",
+        "multiplication-table-generator",
+        "times-table-quiz",
+        "random-math-quiz",
+        "equation-solver",
+        "quadratic-equation-solver"
+      ]
+    },
+    {
+      "slug": "random-quiz-generator",
+      "title": "Random Quiz Generator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this random quiz generator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "random quiz generator",
+        "random quiz generator online",
+        "random quiz generator tool"
+      ],
+      "related": [
+        "multiplication-table-generator",
+        "times-table-quiz",
+        "random-math-quiz",
+        "equation-solver",
+        "quadratic-equation-solver",
+        "factorial-calculator"
+      ]
+    },
+    {
+      "slug": "multiplication-table-generator",
+      "title": "Multiplication Table Generator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this multiplication table generator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "multiplication table generator",
+        "multiplication table generator online",
+        "multiplication table generator tool"
+      ],
+      "related": [
+        "times-table-quiz",
+        "random-math-quiz",
+        "equation-solver",
+        "quadratic-equation-solver",
+        "factorial-calculator",
+        "scientific-calculator"
+      ]
+    },
+    {
+      "slug": "times-table-quiz",
+      "title": "Times Table Quiz",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this times table quiz tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "times table quiz",
+        "times table quiz online",
+        "times table quiz tool"
+      ],
+      "related": [
+        "random-math-quiz",
+        "equation-solver",
+        "quadratic-equation-solver",
+        "factorial-calculator",
+        "scientific-calculator",
+        "unit-conversion-calculator"
+      ]
+    },
+    {
+      "slug": "random-math-quiz",
+      "title": "Random Math Quiz",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this random math quiz tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "random math quiz",
+        "random math quiz online",
+        "random math quiz tool"
+      ],
+      "related": [
+        "equation-solver",
+        "quadratic-equation-solver",
+        "factorial-calculator",
+        "scientific-calculator",
+        "unit-conversion-calculator",
+        "grade-calculator"
+      ]
+    },
+    {
+      "slug": "equation-solver",
+      "title": "Equation Solver",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this equation solver tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "equation solver",
+        "equation solver online",
+        "equation solver tool"
+      ],
+      "related": [
+        "quadratic-equation-solver",
+        "factorial-calculator",
+        "scientific-calculator",
+        "unit-conversion-calculator",
+        "grade-calculator",
+        "gpa-calculator"
+      ]
+    },
+    {
+      "slug": "quadratic-equation-solver",
+      "title": "Quadratic Equation Solver",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this quadratic equation solver tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "quadratic equation solver",
+        "quadratic equation solver online",
+        "quadratic equation solver tool"
+      ],
+      "related": [
+        "factorial-calculator",
+        "scientific-calculator",
+        "unit-conversion-calculator",
+        "grade-calculator",
+        "gpa-calculator",
+        "cgpa-calculator"
+      ]
+    },
+    {
+      "slug": "factorial-calculator",
+      "title": "Factorial Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this factorial calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "factorial calculator",
+        "factorial calculator online",
+        "factorial calculator tool"
+      ],
+      "related": [
+        "scientific-calculator",
+        "unit-conversion-calculator",
+        "grade-calculator",
+        "gpa-calculator",
+        "cgpa-calculator",
+        "percentage-to-gpa-calculator"
+      ]
+    },
+    {
+      "slug": "scientific-calculator",
+      "title": "Scientific Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this scientific calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "scientific calculator",
+        "scientific calculator online",
+        "scientific calculator tool"
+      ],
+      "related": [
+        "unit-conversion-calculator",
+        "grade-calculator",
+        "gpa-calculator",
+        "cgpa-calculator",
+        "percentage-to-gpa-calculator",
+        "exam-percentage-calculator"
+      ]
+    },
+    {
+      "slug": "unit-conversion-calculator",
+      "title": "Unit Conversion Calculator",
+      "category": "Student Tools",
+      "description": "Plan and calculate study results with this unit conversion calculator tool. Get instant answers, track progress and organize workload privately in your browser.",
+      "keywords": [
+        "unit conversion calculator",
+        "unit conversion calculator online",
+        "unit conversion calculator tool"
+      ],
+      "related": [
+        "grade-calculator",
+        "gpa-calculator",
+        "cgpa-calculator",
+        "percentage-to-gpa-calculator",
+        "exam-percentage-calculator",
+        "marks-percentage-calculator"
+      ]
+    },
+    {
+      "slug": "age-calculator",
+      "title": "Age Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the age calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "age calculator",
+        "age calculator online",
+        "age calculator tool"
+      ],
+      "related": [
+        "date-difference-calculator",
+        "days-between-dates",
+        "weeks-between-dates",
+        "months-between-dates",
+        "business-days-calculator",
+        "working-days-calculator"
+      ]
+    },
+    {
+      "slug": "date-difference-calculator",
+      "title": "Date Difference Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the date difference calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "date difference calculator",
+        "date difference calculator online",
+        "date difference calculator tool"
+      ],
+      "related": [
+        "days-between-dates",
+        "weeks-between-dates",
+        "months-between-dates",
+        "business-days-calculator",
+        "working-days-calculator",
+        "days-until-date"
+      ]
+    },
+    {
+      "slug": "days-between-dates",
+      "title": "Days Between Dates",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the days between dates tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "days between dates",
+        "days between dates online",
+        "days between dates tool"
+      ],
+      "related": [
+        "weeks-between-dates",
+        "months-between-dates",
+        "business-days-calculator",
+        "working-days-calculator",
+        "days-until-date",
+        "date-addition-calculator"
+      ]
+    },
+    {
+      "slug": "weeks-between-dates",
+      "title": "Weeks Between Dates",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the weeks between dates tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "weeks between dates",
+        "weeks between dates online",
+        "weeks between dates tool"
+      ],
+      "related": [
+        "months-between-dates",
+        "business-days-calculator",
+        "working-days-calculator",
+        "days-until-date",
+        "date-addition-calculator",
+        "date-subtraction-calculator"
+      ]
+    },
+    {
+      "slug": "months-between-dates",
+      "title": "Months Between Dates",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the months between dates tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "months between dates",
+        "months between dates online",
+        "months between dates tool"
+      ],
+      "related": [
+        "business-days-calculator",
+        "working-days-calculator",
+        "days-until-date",
+        "date-addition-calculator",
+        "date-subtraction-calculator",
+        "time-difference-calculator"
+      ]
+    },
+    {
+      "slug": "business-days-calculator",
+      "title": "Business Days Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the business days calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "business days calculator",
+        "business days calculator online",
+        "business days calculator tool"
+      ],
+      "related": [
+        "working-days-calculator",
+        "days-until-date",
+        "date-addition-calculator",
+        "date-subtraction-calculator",
+        "time-difference-calculator",
+        "time-duration-calculator"
+      ]
+    },
+    {
+      "slug": "working-days-calculator",
+      "title": "Working Days Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the working days calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "working days calculator",
+        "working days calculator online",
+        "working days calculator tool"
+      ],
+      "related": [
+        "days-until-date",
+        "date-addition-calculator",
+        "date-subtraction-calculator",
+        "time-difference-calculator",
+        "time-duration-calculator",
+        "hours-to-minutes-converter"
+      ]
+    },
+    {
+      "slug": "days-until-date",
+      "title": "Days Until Date",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the days until date tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "days until date",
+        "days until date online",
+        "days until date tool"
+      ],
+      "related": [
+        "date-addition-calculator",
+        "date-subtraction-calculator",
+        "time-difference-calculator",
+        "time-duration-calculator",
+        "hours-to-minutes-converter",
+        "minutes-to-seconds-converter"
+      ]
+    },
+    {
+      "slug": "date-addition-calculator",
+      "title": "Date Addition Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the date addition calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "date addition calculator",
+        "date addition calculator online",
+        "date addition calculator tool"
+      ],
+      "related": [
+        "date-subtraction-calculator",
+        "time-difference-calculator",
+        "time-duration-calculator",
+        "hours-to-minutes-converter",
+        "minutes-to-seconds-converter",
+        "seconds-to-hours-converter"
+      ]
+    },
+    {
+      "slug": "date-subtraction-calculator",
+      "title": "Date Subtraction Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the date subtraction calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "date subtraction calculator",
+        "date subtraction calculator online",
+        "date subtraction calculator tool"
+      ],
+      "related": [
+        "time-difference-calculator",
+        "time-duration-calculator",
+        "hours-to-minutes-converter",
+        "minutes-to-seconds-converter",
+        "seconds-to-hours-converter",
+        "unix-timestamp-generator"
+      ]
+    },
+    {
+      "slug": "time-difference-calculator",
+      "title": "Time Difference Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the time difference calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "time difference calculator",
+        "time difference calculator online",
+        "time difference calculator tool"
+      ],
+      "related": [
+        "time-duration-calculator",
+        "hours-to-minutes-converter",
+        "minutes-to-seconds-converter",
+        "seconds-to-hours-converter",
+        "unix-timestamp-generator",
+        "leap-year-checker"
+      ]
+    },
+    {
+      "slug": "time-duration-calculator",
+      "title": "Time Duration Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the time duration calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "time duration calculator",
+        "time duration calculator online",
+        "time duration calculator tool"
+      ],
+      "related": [
+        "hours-to-minutes-converter",
+        "minutes-to-seconds-converter",
+        "seconds-to-hours-converter",
+        "unix-timestamp-generator",
+        "leap-year-checker",
+        "day-of-week-calculator"
+      ]
+    },
+    {
+      "slug": "hours-to-minutes-converter",
+      "title": "Hours to Minutes Converter",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the hours to minutes converter tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "hours to minutes converter",
+        "hours to minutes converter online",
+        "hours to minutes converter tool"
+      ],
+      "related": [
+        "minutes-to-seconds-converter",
+        "seconds-to-hours-converter",
+        "unix-timestamp-generator",
+        "leap-year-checker",
+        "day-of-week-calculator",
+        "week-number-calculator"
+      ]
+    },
+    {
+      "slug": "minutes-to-seconds-converter",
+      "title": "Minutes to Seconds Converter",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the minutes to seconds converter tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "minutes to seconds converter",
+        "minutes to seconds converter online",
+        "minutes to seconds converter tool"
+      ],
+      "related": [
+        "seconds-to-hours-converter",
+        "unix-timestamp-generator",
+        "leap-year-checker",
+        "day-of-week-calculator",
+        "week-number-calculator",
+        "date-format-converter"
+      ]
+    },
+    {
+      "slug": "seconds-to-hours-converter",
+      "title": "Seconds to Hours Converter",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the seconds to hours converter tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "seconds to hours converter",
+        "seconds to hours converter online",
+        "seconds to hours converter tool"
+      ],
+      "related": [
+        "unix-timestamp-generator",
+        "leap-year-checker",
+        "day-of-week-calculator",
+        "week-number-calculator",
+        "date-format-converter",
+        "age-calculator"
+      ]
+    },
+    {
+      "slug": "unix-timestamp-generator",
+      "title": "Unix Timestamp Generator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the unix timestamp generator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "unix timestamp generator",
+        "unix timestamp generator online",
+        "unix timestamp generator tool"
+      ],
+      "related": [
+        "leap-year-checker",
+        "day-of-week-calculator",
+        "week-number-calculator",
+        "date-format-converter",
+        "age-calculator",
+        "date-difference-calculator"
+      ]
+    },
+    {
+      "slug": "leap-year-checker",
+      "title": "Leap Year Checker",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the leap year checker tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "leap year checker",
+        "leap year checker online",
+        "leap year checker tool"
+      ],
+      "related": [
+        "day-of-week-calculator",
+        "week-number-calculator",
+        "date-format-converter",
+        "age-calculator",
+        "date-difference-calculator",
+        "days-between-dates"
+      ]
+    },
+    {
+      "slug": "day-of-week-calculator",
+      "title": "Day of Week Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the day of week calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "day of week calculator",
+        "day of week calculator online",
+        "day of week calculator tool"
+      ],
+      "related": [
+        "week-number-calculator",
+        "date-format-converter",
+        "age-calculator",
+        "date-difference-calculator",
+        "days-between-dates",
+        "weeks-between-dates"
+      ]
+    },
+    {
+      "slug": "week-number-calculator",
+      "title": "Week Number Calculator",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the week number calculator tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "week number calculator",
+        "week number calculator online",
+        "week number calculator tool"
+      ],
+      "related": [
+        "date-format-converter",
+        "age-calculator",
+        "date-difference-calculator",
+        "days-between-dates",
+        "weeks-between-dates",
+        "months-between-dates"
+      ]
+    },
+    {
+      "slug": "date-format-converter",
+      "title": "Date Format Converter",
+      "category": "Date & Time",
+      "description": "Compute dates and time with the date format converter tool. Find differences, add or convert units instantly in your browser with accurate local results.",
+      "keywords": [
+        "date format converter",
+        "date format converter online",
+        "date format converter tool"
+      ],
+      "related": [
+        "age-calculator",
+        "date-difference-calculator",
+        "days-between-dates",
+        "weeks-between-dates",
+        "months-between-dates",
+        "business-days-calculator"
+      ]
+    },
+    {
+      "slug": "simple-interest-calculator",
+      "title": "Simple Interest Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate simple interest calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "simple interest calculator",
+        "simple interest calculator online",
+        "simple interest calculator tool"
+      ],
+      "related": [
+        "compound-interest-calculator",
+        "loan-emi-calculator",
+        "mortgage-calculator",
+        "loan-payment-calculator",
+        "loan-interest-calculator",
+        "investment-return-calculator"
+      ]
+    },
+    {
+      "slug": "compound-interest-calculator",
+      "title": "Compound Interest Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate compound interest calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "compound interest calculator",
+        "compound interest calculator online",
+        "compound interest calculator tool"
+      ],
+      "related": [
+        "loan-emi-calculator",
+        "mortgage-calculator",
+        "loan-payment-calculator",
+        "loan-interest-calculator",
+        "investment-return-calculator",
+        "cagr-calculator"
+      ]
+    },
+    {
+      "slug": "loan-emi-calculator",
+      "title": "Loan EMI Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate loan emi calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "loan emi calculator",
+        "loan emi calculator online",
+        "loan emi calculator tool"
+      ],
+      "related": [
+        "mortgage-calculator",
+        "loan-payment-calculator",
+        "loan-interest-calculator",
+        "investment-return-calculator",
+        "cagr-calculator",
+        "sip-calculator"
+      ]
+    },
+    {
+      "slug": "mortgage-calculator",
+      "title": "Mortgage Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate mortgage calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "mortgage calculator",
+        "mortgage calculator online",
+        "mortgage calculator tool"
+      ],
+      "related": [
+        "loan-payment-calculator",
+        "loan-interest-calculator",
+        "investment-return-calculator",
+        "cagr-calculator",
+        "sip-calculator",
+        "inflation-calculator"
+      ]
+    },
+    {
+      "slug": "loan-payment-calculator",
+      "title": "Loan Payment Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate loan payment calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "loan payment calculator",
+        "loan payment calculator online",
+        "loan payment calculator tool"
+      ],
+      "related": [
+        "loan-interest-calculator",
+        "investment-return-calculator",
+        "cagr-calculator",
+        "sip-calculator",
+        "inflation-calculator",
+        "savings-goal-calculator"
+      ]
+    },
+    {
+      "slug": "loan-interest-calculator",
+      "title": "Loan Interest Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate loan interest calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "loan interest calculator",
+        "loan interest calculator online",
+        "loan interest calculator tool"
+      ],
+      "related": [
+        "investment-return-calculator",
+        "cagr-calculator",
+        "sip-calculator",
+        "inflation-calculator",
+        "savings-goal-calculator",
+        "retirement-calculator"
+      ]
+    },
+    {
+      "slug": "investment-return-calculator",
+      "title": "Investment Return Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate investment return calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "investment return calculator",
+        "investment return calculator online",
+        "investment return calculator tool"
+      ],
+      "related": [
+        "cagr-calculator",
+        "sip-calculator",
+        "inflation-calculator",
+        "savings-goal-calculator",
+        "retirement-calculator",
+        "discount-calculator"
+      ]
+    },
+    {
+      "slug": "cagr-calculator",
+      "title": "CAGR Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate cagr calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "cagr calculator",
+        "cagr calculator online",
+        "cagr calculator tool"
+      ],
+      "related": [
+        "sip-calculator",
+        "inflation-calculator",
+        "savings-goal-calculator",
+        "retirement-calculator",
+        "discount-calculator",
+        "sale-price-calculator"
+      ]
+    },
+    {
+      "slug": "sip-calculator",
+      "title": "SIP Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate sip calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "sip calculator",
+        "sip calculator online",
+        "sip calculator tool"
+      ],
+      "related": [
+        "inflation-calculator",
+        "savings-goal-calculator",
+        "retirement-calculator",
+        "discount-calculator",
+        "sale-price-calculator",
+        "markup-calculator"
+      ]
+    },
+    {
+      "slug": "inflation-calculator",
+      "title": "Inflation Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate inflation calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "inflation calculator",
+        "inflation calculator online",
+        "inflation calculator tool"
+      ],
+      "related": [
+        "savings-goal-calculator",
+        "retirement-calculator",
+        "discount-calculator",
+        "sale-price-calculator",
+        "markup-calculator",
+        "profit-margin-calculator"
+      ]
+    },
+    {
+      "slug": "savings-goal-calculator",
+      "title": "Savings Goal Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate savings goal calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "savings goal calculator",
+        "savings goal calculator online",
+        "savings goal calculator tool"
+      ],
+      "related": [
+        "retirement-calculator",
+        "discount-calculator",
+        "sale-price-calculator",
+        "markup-calculator",
+        "profit-margin-calculator",
+        "break-even-calculator"
+      ]
+    },
+    {
+      "slug": "retirement-calculator",
+      "title": "Retirement Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate retirement calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "retirement calculator",
+        "retirement calculator online",
+        "retirement calculator tool"
+      ],
+      "related": [
+        "discount-calculator",
+        "sale-price-calculator",
+        "markup-calculator",
+        "profit-margin-calculator",
+        "break-even-calculator",
+        "tip-calculator"
+      ]
+    },
+    {
+      "slug": "discount-calculator",
+      "title": "Discount Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate discount calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "discount calculator",
+        "discount calculator online",
+        "discount calculator tool"
+      ],
+      "related": [
+        "sale-price-calculator",
+        "markup-calculator",
+        "profit-margin-calculator",
+        "break-even-calculator",
+        "tip-calculator",
+        "split-bill-calculator"
+      ]
+    },
+    {
+      "slug": "sale-price-calculator",
+      "title": "Sale Price Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate sale price calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "sale price calculator",
+        "sale price calculator online",
+        "sale price calculator tool"
+      ],
+      "related": [
+        "markup-calculator",
+        "profit-margin-calculator",
+        "break-even-calculator",
+        "tip-calculator",
+        "split-bill-calculator",
+        "salary-calculator"
+      ]
+    },
+    {
+      "slug": "markup-calculator",
+      "title": "Markup Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate markup calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "markup calculator",
+        "markup calculator online",
+        "markup calculator tool"
+      ],
+      "related": [
+        "profit-margin-calculator",
+        "break-even-calculator",
+        "tip-calculator",
+        "split-bill-calculator",
+        "salary-calculator",
+        "hourly-to-yearly-salary"
+      ]
+    },
+    {
+      "slug": "profit-margin-calculator",
+      "title": "Profit Margin Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate profit margin calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "profit margin calculator",
+        "profit margin calculator online",
+        "profit margin calculator tool"
+      ],
+      "related": [
+        "break-even-calculator",
+        "tip-calculator",
+        "split-bill-calculator",
+        "salary-calculator",
+        "hourly-to-yearly-salary",
+        "yearly-to-hourly-salary"
+      ]
+    },
+    {
+      "slug": "break-even-calculator",
+      "title": "Break Even Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate break even calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "break even calculator",
+        "break even calculator online",
+        "break even calculator tool"
+      ],
+      "related": [
+        "tip-calculator",
+        "split-bill-calculator",
+        "salary-calculator",
+        "hourly-to-yearly-salary",
+        "yearly-to-hourly-salary",
+        "tax-percentage-calculator"
+      ]
+    },
+    {
+      "slug": "tip-calculator",
+      "title": "Tip Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate tip calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "tip calculator",
+        "tip calculator online",
+        "tip calculator tool"
+      ],
+      "related": [
+        "split-bill-calculator",
+        "salary-calculator",
+        "hourly-to-yearly-salary",
+        "yearly-to-hourly-salary",
+        "tax-percentage-calculator",
+        "budget-calculator"
+      ]
+    },
+    {
+      "slug": "split-bill-calculator",
+      "title": "Split Bill Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate split bill calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "split bill calculator",
+        "split bill calculator online",
+        "split bill calculator tool"
+      ],
+      "related": [
+        "salary-calculator",
+        "hourly-to-yearly-salary",
+        "yearly-to-hourly-salary",
+        "tax-percentage-calculator",
+        "budget-calculator",
+        "net-worth-calculator"
+      ]
+    },
+    {
+      "slug": "salary-calculator",
+      "title": "Salary Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate salary calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "salary calculator",
+        "salary calculator online",
+        "salary calculator tool"
+      ],
+      "related": [
+        "hourly-to-yearly-salary",
+        "yearly-to-hourly-salary",
+        "tax-percentage-calculator",
+        "budget-calculator",
+        "net-worth-calculator",
+        "simple-interest-calculator"
+      ]
+    },
+    {
+      "slug": "hourly-to-yearly-salary",
+      "title": "Hourly to Yearly Salary",
+      "category": "Finance Calculators",
+      "description": "Estimate hourly to yearly salary amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "hourly to yearly salary",
+        "hourly to yearly salary online",
+        "hourly to yearly salary tool"
+      ],
+      "related": [
+        "yearly-to-hourly-salary",
+        "tax-percentage-calculator",
+        "budget-calculator",
+        "net-worth-calculator",
+        "simple-interest-calculator",
+        "compound-interest-calculator"
+      ]
+    },
+    {
+      "slug": "yearly-to-hourly-salary",
+      "title": "Yearly to Hourly Salary",
+      "category": "Finance Calculators",
+      "description": "Estimate yearly to hourly salary amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "yearly to hourly salary",
+        "yearly to hourly salary online",
+        "yearly to hourly salary tool"
+      ],
+      "related": [
+        "tax-percentage-calculator",
+        "budget-calculator",
+        "net-worth-calculator",
+        "simple-interest-calculator",
+        "compound-interest-calculator",
+        "loan-emi-calculator"
+      ]
+    },
+    {
+      "slug": "tax-percentage-calculator",
+      "title": "Tax Percentage Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate tax percentage calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "tax percentage calculator",
+        "tax percentage calculator online",
+        "tax percentage calculator tool"
+      ],
+      "related": [
+        "budget-calculator",
+        "net-worth-calculator",
+        "simple-interest-calculator",
+        "compound-interest-calculator",
+        "loan-emi-calculator",
+        "mortgage-calculator"
+      ]
+    },
+    {
+      "slug": "budget-calculator",
+      "title": "Budget Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate budget calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "budget calculator",
+        "budget calculator online",
+        "budget calculator tool"
+      ],
+      "related": [
+        "net-worth-calculator",
+        "simple-interest-calculator",
+        "compound-interest-calculator",
+        "loan-emi-calculator",
+        "mortgage-calculator",
+        "loan-payment-calculator"
+      ]
+    },
+    {
+      "slug": "net-worth-calculator",
+      "title": "Net Worth Calculator",
+      "category": "Finance Calculators",
+      "description": "Estimate net worth calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear breakdowns privately without uploads.",
+      "keywords": [
+        "net worth calculator",
+        "net worth calculator online",
+        "net worth calculator tool"
+      ],
+      "related": [
+        "simple-interest-calculator",
+        "compound-interest-calculator",
+        "loan-emi-calculator",
+        "mortgage-calculator",
+        "loan-payment-calculator",
+        "loan-interest-calculator"
+      ]
+    },
+    {
+      "slug": "profit-calculator",
+      "title": "Profit Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the profit calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "profit calculator",
+        "profit calculator online",
+        "profit calculator tool"
+      ],
+      "related": [
+        "revenue-calculator",
+        "roi-calculator",
+        "roas-calculator",
+        "conversion-rate-calculator",
+        "ctr-calculator",
+        "cpm-calculator"
+      ]
+    },
+    {
+      "slug": "revenue-calculator",
+      "title": "Revenue Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the revenue calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "revenue calculator",
+        "revenue calculator online",
+        "revenue calculator tool"
+      ],
+      "related": [
+        "roi-calculator",
+        "roas-calculator",
+        "conversion-rate-calculator",
+        "ctr-calculator",
+        "cpm-calculator",
+        "cpc-calculator"
+      ]
+    },
+    {
+      "slug": "roi-calculator",
+      "title": "ROI Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the roi calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "roi calculator",
+        "roi calculator online",
+        "roi calculator tool"
+      ],
+      "related": [
+        "roas-calculator",
+        "conversion-rate-calculator",
+        "ctr-calculator",
+        "cpm-calculator",
+        "cpc-calculator",
+        "customer-acquisition-cost-calculator"
+      ]
+    },
+    {
+      "slug": "roas-calculator",
+      "title": "ROAS Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the roas calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "roas calculator",
+        "roas calculator online",
+        "roas calculator tool"
+      ],
+      "related": [
+        "conversion-rate-calculator",
+        "ctr-calculator",
+        "cpm-calculator",
+        "cpc-calculator",
+        "customer-acquisition-cost-calculator",
+        "customer-lifetime-value-calculator"
+      ]
+    },
+    {
+      "slug": "conversion-rate-calculator",
+      "title": "Conversion Rate Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the conversion rate calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "conversion rate calculator",
+        "conversion rate calculator online",
+        "conversion rate calculator tool"
+      ],
+      "related": [
+        "ctr-calculator",
+        "cpm-calculator",
+        "cpc-calculator",
+        "customer-acquisition-cost-calculator",
+        "customer-lifetime-value-calculator",
+        "churn-rate-calculator"
+      ]
+    },
+    {
+      "slug": "ctr-calculator",
+      "title": "CTR Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the ctr calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "ctr calculator",
+        "ctr calculator online",
+        "ctr calculator tool"
+      ],
+      "related": [
+        "cpm-calculator",
+        "cpc-calculator",
+        "customer-acquisition-cost-calculator",
+        "customer-lifetime-value-calculator",
+        "churn-rate-calculator",
+        "growth-rate-calculator"
+      ]
+    },
+    {
+      "slug": "cpm-calculator",
+      "title": "CPM Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the cpm calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "cpm calculator",
+        "cpm calculator online",
+        "cpm calculator tool"
+      ],
+      "related": [
+        "cpc-calculator",
+        "customer-acquisition-cost-calculator",
+        "customer-lifetime-value-calculator",
+        "churn-rate-calculator",
+        "growth-rate-calculator",
+        "gross-margin-calculator"
+      ]
+    },
+    {
+      "slug": "cpc-calculator",
+      "title": "CPC Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the cpc calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "cpc calculator",
+        "cpc calculator online",
+        "cpc calculator tool"
+      ],
+      "related": [
+        "customer-acquisition-cost-calculator",
+        "customer-lifetime-value-calculator",
+        "churn-rate-calculator",
+        "growth-rate-calculator",
+        "gross-margin-calculator",
+        "net-margin-calculator"
+      ]
+    },
+    {
+      "slug": "customer-acquisition-cost-calculator",
+      "title": "Customer Acquisition Cost Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the customer acquisition cost calculator tool. Enter metrics, see formulas and instant results privately in your browser.",
+      "keywords": [
+        "customer acquisition cost calculator",
+        "customer acquisition cost calculator online",
+        "customer acquisition cost calculator tool"
+      ],
+      "related": [
+        "customer-lifetime-value-calculator",
+        "churn-rate-calculator",
+        "growth-rate-calculator",
+        "gross-margin-calculator",
+        "net-margin-calculator",
+        "markup-vs-margin-calculator"
+      ]
+    },
+    {
+      "slug": "customer-lifetime-value-calculator",
+      "title": "Customer Lifetime Value Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the customer lifetime value calculator tool. Enter metrics, see formulas and instant results privately in your browser without.",
+      "keywords": [
+        "customer lifetime value calculator",
+        "customer lifetime value calculator online",
+        "customer lifetime value calculator tool"
+      ],
+      "related": [
+        "churn-rate-calculator",
+        "growth-rate-calculator",
+        "gross-margin-calculator",
+        "net-margin-calculator",
+        "markup-vs-margin-calculator",
+        "inventory-turnover-calculator"
+      ]
+    },
+    {
+      "slug": "churn-rate-calculator",
+      "title": "Churn Rate Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the churn rate calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "churn rate calculator",
+        "churn rate calculator online",
+        "churn rate calculator tool"
+      ],
+      "related": [
+        "growth-rate-calculator",
+        "gross-margin-calculator",
+        "net-margin-calculator",
+        "markup-vs-margin-calculator",
+        "inventory-turnover-calculator",
+        "sales-commission-calculator"
+      ]
+    },
+    {
+      "slug": "growth-rate-calculator",
+      "title": "Growth Rate Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the growth rate calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "growth rate calculator",
+        "growth rate calculator online",
+        "growth rate calculator tool"
+      ],
+      "related": [
+        "gross-margin-calculator",
+        "net-margin-calculator",
+        "markup-vs-margin-calculator",
+        "inventory-turnover-calculator",
+        "sales-commission-calculator",
+        "break-even-units-calculator"
+      ]
+    },
+    {
+      "slug": "gross-margin-calculator",
+      "title": "Gross Margin Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the gross margin calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "gross margin calculator",
+        "gross margin calculator online",
+        "gross margin calculator tool"
+      ],
+      "related": [
+        "net-margin-calculator",
+        "markup-vs-margin-calculator",
+        "inventory-turnover-calculator",
+        "sales-commission-calculator",
+        "break-even-units-calculator",
+        "saas-pricing-calculator"
+      ]
+    },
+    {
+      "slug": "net-margin-calculator",
+      "title": "Net Margin Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the net margin calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "net margin calculator",
+        "net margin calculator online",
+        "net margin calculator tool"
+      ],
+      "related": [
+        "markup-vs-margin-calculator",
+        "inventory-turnover-calculator",
+        "sales-commission-calculator",
+        "break-even-units-calculator",
+        "saas-pricing-calculator",
+        "freelance-hourly-rate-calculator"
+      ]
+    },
+    {
+      "slug": "markup-vs-margin-calculator",
+      "title": "Markup vs Margin Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the markup vs margin calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "markup vs margin calculator",
+        "markup vs margin calculator online",
+        "markup vs margin calculator tool"
+      ],
+      "related": [
+        "inventory-turnover-calculator",
+        "sales-commission-calculator",
+        "break-even-units-calculator",
+        "saas-pricing-calculator",
+        "freelance-hourly-rate-calculator",
+        "profit-calculator"
+      ]
+    },
+    {
+      "slug": "inventory-turnover-calculator",
+      "title": "Inventory Turnover Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the inventory turnover calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "inventory turnover calculator",
+        "inventory turnover calculator online",
+        "inventory turnover calculator tool"
+      ],
+      "related": [
+        "sales-commission-calculator",
+        "break-even-units-calculator",
+        "saas-pricing-calculator",
+        "freelance-hourly-rate-calculator",
+        "profit-calculator",
+        "revenue-calculator"
+      ]
+    },
+    {
+      "slug": "sales-commission-calculator",
+      "title": "Sales Commission Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the sales commission calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "sales commission calculator",
+        "sales commission calculator online",
+        "sales commission calculator tool"
+      ],
+      "related": [
+        "break-even-units-calculator",
+        "saas-pricing-calculator",
+        "freelance-hourly-rate-calculator",
+        "profit-calculator",
+        "revenue-calculator",
+        "roi-calculator"
+      ]
+    },
+    {
+      "slug": "break-even-units-calculator",
+      "title": "Break Even Units Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the break even units calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "break even units calculator",
+        "break even units calculator online",
+        "break even units calculator tool"
+      ],
+      "related": [
+        "saas-pricing-calculator",
+        "freelance-hourly-rate-calculator",
+        "profit-calculator",
+        "revenue-calculator",
+        "roi-calculator",
+        "roas-calculator"
+      ]
+    },
+    {
+      "slug": "saas-pricing-calculator",
+      "title": "SaaS Pricing Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the saas pricing calculator tool. Enter metrics, see formulas and instant results privately in your browser without uploads.",
+      "keywords": [
+        "saas pricing calculator",
+        "saas pricing calculator online",
+        "saas pricing calculator tool"
+      ],
+      "related": [
+        "freelance-hourly-rate-calculator",
+        "profit-calculator",
+        "revenue-calculator",
+        "roi-calculator",
+        "roas-calculator",
+        "conversion-rate-calculator"
+      ]
+    },
+    {
+      "slug": "freelance-hourly-rate-calculator",
+      "title": "Freelance Hourly Rate Calculator",
+      "category": "Business Calculators",
+      "description": "Measure business performance with the freelance hourly rate calculator tool. Enter metrics, see formulas and instant results privately in your browser without.",
+      "keywords": [
+        "freelance hourly rate calculator",
+        "freelance hourly rate calculator online",
+        "freelance hourly rate calculator tool"
+      ],
+      "related": [
+        "profit-calculator",
+        "revenue-calculator",
+        "roi-calculator",
+        "roas-calculator",
+        "conversion-rate-calculator",
+        "ctr-calculator"
+      ]
+    },
+    {
+      "slug": "image-resizer",
+      "title": "Image Resizer",
+      "category": "Image Tools",
+      "description": "Process images with the image resizer tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image resizer",
+        "image resizer online",
+        "image resizer tool"
+      ],
+      "related": [
+        "image-cropper",
+        "image-compressor",
+        "jpg-to-png",
+        "png-to-jpg",
+        "webp-to-jpg",
+        "jpg-to-webp"
+      ]
+    },
+    {
+      "slug": "image-cropper",
+      "title": "Image Cropper",
+      "category": "Image Tools",
+      "description": "Process images with the image cropper tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image cropper",
+        "image cropper online",
+        "image cropper tool"
+      ],
+      "related": [
+        "image-compressor",
+        "jpg-to-png",
+        "png-to-jpg",
+        "webp-to-jpg",
+        "jpg-to-webp",
+        "png-to-webp"
+      ]
+    },
+    {
+      "slug": "image-compressor",
+      "title": "Image Compressor",
+      "category": "Image Tools",
+      "description": "Process images with the image compressor tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image compressor",
+        "image compressor online",
+        "image compressor tool"
+      ],
+      "related": [
+        "jpg-to-png",
+        "png-to-jpg",
+        "webp-to-jpg",
+        "jpg-to-webp",
+        "png-to-webp",
+        "gif-frame-extractor"
+      ]
+    },
+    {
+      "slug": "jpg-to-png",
+      "title": "JPG to PNG",
+      "category": "Image Tools",
+      "description": "Process images with the jpg to png tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "jpg to png",
+        "jpg to png online",
+        "jpg to png tool"
+      ],
+      "related": [
+        "png-to-jpg",
+        "webp-to-jpg",
+        "jpg-to-webp",
+        "png-to-webp",
+        "gif-frame-extractor",
+        "image-metadata-viewer"
+      ]
+    },
+    {
+      "slug": "png-to-jpg",
+      "title": "PNG to JPG",
+      "category": "Image Tools",
+      "description": "Process images with the png to jpg tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "png to jpg",
+        "png to jpg online",
+        "png to jpg tool"
+      ],
+      "related": [
+        "webp-to-jpg",
+        "jpg-to-webp",
+        "png-to-webp",
+        "gif-frame-extractor",
+        "image-metadata-viewer",
+        "image-dimension-checker"
+      ]
+    },
+    {
+      "slug": "webp-to-jpg",
+      "title": "WebP to JPG",
+      "category": "Image Tools",
+      "description": "Process images with the webp to jpg tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "webp to jpg",
+        "webp to jpg online",
+        "webp to jpg tool"
+      ],
+      "related": [
+        "jpg-to-webp",
+        "png-to-webp",
+        "gif-frame-extractor",
+        "image-metadata-viewer",
+        "image-dimension-checker",
+        "image-aspect-ratio-calculator"
+      ]
+    },
+    {
+      "slug": "jpg-to-webp",
+      "title": "JPG to WebP",
+      "category": "Image Tools",
+      "description": "Process images with the jpg to webp tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "jpg to webp",
+        "jpg to webp online",
+        "jpg to webp tool"
+      ],
+      "related": [
+        "png-to-webp",
+        "gif-frame-extractor",
+        "image-metadata-viewer",
+        "image-dimension-checker",
+        "image-aspect-ratio-calculator",
+        "favicon-generator"
+      ]
+    },
+    {
+      "slug": "png-to-webp",
+      "title": "PNG to WebP",
+      "category": "Image Tools",
+      "description": "Process images with the png to webp tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "png to webp",
+        "png to webp online",
+        "png to webp tool"
+      ],
+      "related": [
+        "gif-frame-extractor",
+        "image-metadata-viewer",
+        "image-dimension-checker",
+        "image-aspect-ratio-calculator",
+        "favicon-generator",
+        "app-icon-generator"
+      ]
+    },
+    {
+      "slug": "gif-frame-extractor",
+      "title": "GIF Frame Extractor",
+      "category": "Image Tools",
+      "description": "Process images with the gif frame extractor tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "gif frame extractor",
+        "gif frame extractor online",
+        "gif frame extractor tool"
+      ],
+      "related": [
+        "image-metadata-viewer",
+        "image-dimension-checker",
+        "image-aspect-ratio-calculator",
+        "favicon-generator",
+        "app-icon-generator",
+        "social-media-image-resizer"
+      ]
+    },
+    {
+      "slug": "image-metadata-viewer",
+      "title": "Image Metadata Viewer",
+      "category": "Image Tools",
+      "description": "Process images with the image metadata viewer tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image metadata viewer",
+        "image metadata viewer online",
+        "image metadata viewer tool"
+      ],
+      "related": [
+        "image-dimension-checker",
+        "image-aspect-ratio-calculator",
+        "favicon-generator",
+        "app-icon-generator",
+        "social-media-image-resizer",
+        "youtube-thumbnail-resizer"
+      ]
+    },
+    {
+      "slug": "image-dimension-checker",
+      "title": "Image Dimension Checker",
+      "category": "Image Tools",
+      "description": "Process images with the image dimension checker tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image dimension checker",
+        "image dimension checker online",
+        "image dimension checker tool"
+      ],
+      "related": [
+        "image-aspect-ratio-calculator",
+        "favicon-generator",
+        "app-icon-generator",
+        "social-media-image-resizer",
+        "youtube-thumbnail-resizer",
+        "instagram-image-resizer"
+      ]
+    },
+    {
+      "slug": "image-aspect-ratio-calculator",
+      "title": "Image Aspect Ratio Calculator",
+      "category": "Image Tools",
+      "description": "Process images with the image aspect ratio calculator tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload.",
+      "keywords": [
+        "image aspect ratio calculator",
+        "image aspect ratio calculator online",
+        "image aspect ratio calculator tool"
+      ],
+      "related": [
+        "favicon-generator",
+        "app-icon-generator",
+        "social-media-image-resizer",
+        "youtube-thumbnail-resizer",
+        "instagram-image-resizer",
+        "image-pixel-color-picker"
+      ]
+    },
+    {
+      "slug": "favicon-generator",
+      "title": "Favicon Generator",
+      "category": "Image Tools",
+      "description": "Process images with the favicon generator tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "favicon generator",
+        "favicon generator online",
+        "favicon generator tool"
+      ],
+      "related": [
+        "app-icon-generator",
+        "social-media-image-resizer",
+        "youtube-thumbnail-resizer",
+        "instagram-image-resizer",
+        "image-pixel-color-picker",
+        "image-to-base64"
+      ]
+    },
+    {
+      "slug": "app-icon-generator",
+      "title": "App Icon Generator",
+      "category": "Image Tools",
+      "description": "Process images with the app icon generator tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "app icon generator",
+        "app icon generator online",
+        "app icon generator tool"
+      ],
+      "related": [
+        "social-media-image-resizer",
+        "youtube-thumbnail-resizer",
+        "instagram-image-resizer",
+        "image-pixel-color-picker",
+        "image-to-base64",
+        "base64-to-image"
+      ]
+    },
+    {
+      "slug": "social-media-image-resizer",
+      "title": "Social Media Image Resizer",
+      "category": "Image Tools",
+      "description": "Process images with the social media image resizer tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "social media image resizer",
+        "social media image resizer online",
+        "social media image resizer tool"
+      ],
+      "related": [
+        "youtube-thumbnail-resizer",
+        "instagram-image-resizer",
+        "image-pixel-color-picker",
+        "image-to-base64",
+        "base64-to-image",
+        "image-resizer"
+      ]
+    },
+    {
+      "slug": "youtube-thumbnail-resizer",
+      "title": "YouTube Thumbnail Resizer",
+      "category": "Image Tools",
+      "description": "Process images with the youtube thumbnail resizer tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "youtube thumbnail resizer",
+        "youtube thumbnail resizer online",
+        "youtube thumbnail resizer tool"
+      ],
+      "related": [
+        "instagram-image-resizer",
+        "image-pixel-color-picker",
+        "image-to-base64",
+        "base64-to-image",
+        "image-resizer",
+        "image-cropper"
+      ]
+    },
+    {
+      "slug": "instagram-image-resizer",
+      "title": "Instagram Image Resizer",
+      "category": "Image Tools",
+      "description": "Process images with the instagram image resizer tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "instagram image resizer",
+        "instagram image resizer online",
+        "instagram image resizer tool"
+      ],
+      "related": [
+        "image-pixel-color-picker",
+        "image-to-base64",
+        "base64-to-image",
+        "image-resizer",
+        "image-cropper",
+        "image-compressor"
+      ]
+    },
+    {
+      "slug": "image-pixel-color-picker",
+      "title": "Image Pixel Color Picker",
+      "category": "Image Tools",
+      "description": "Process images with the image pixel color picker tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image pixel color picker",
+        "image pixel color picker online",
+        "image pixel color picker tool"
+      ],
+      "related": [
+        "image-to-base64",
+        "base64-to-image",
+        "image-resizer",
+        "image-cropper",
+        "image-compressor",
+        "jpg-to-png"
+      ]
+    },
+    {
+      "slug": "image-to-base64",
+      "title": "Image to Base64",
+      "category": "Image Tools",
+      "description": "Process images with the image to base64 tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "image to base64",
+        "image to base64 online",
+        "image to base64 tool"
+      ],
+      "related": [
+        "base64-to-image",
+        "image-resizer",
+        "image-cropper",
+        "image-compressor",
+        "jpg-to-png",
+        "png-to-jpg"
+      ]
+    },
+    {
+      "slug": "base64-to-image",
+      "title": "Base64 to Image",
+      "category": "Image Tools",
+      "description": "Process images with the base64 to image tool directly in your browser. Convert, resize or inspect files locally with fast, private and no-upload handling.",
+      "keywords": [
+        "base64 to image",
+        "base64 to image online",
+        "base64 to image tool"
+      ],
+      "related": [
+        "image-resizer",
+        "image-cropper",
+        "image-compressor",
+        "jpg-to-png",
+        "png-to-jpg",
+        "webp-to-jpg"
+      ]
+    },
+    {
+      "slug": "hex-to-rgb",
+      "title": "HEX to RGB",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the hex to rgb tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "hex to rgb",
+        "hex to rgb online",
+        "hex to rgb tool"
+      ],
+      "related": [
+        "rgb-to-hex",
+        "rgb-to-hsl",
+        "hsl-to-rgb",
+        "hex-to-hsl",
+        "color-picker",
+        "color-palette-generator"
+      ]
+    },
+    {
+      "slug": "rgb-to-hex",
+      "title": "RGB to HEX",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the rgb to hex tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "rgb to hex",
+        "rgb to hex online",
+        "rgb to hex tool"
+      ],
+      "related": [
+        "rgb-to-hsl",
+        "hsl-to-rgb",
+        "hex-to-hsl",
+        "color-picker",
+        "color-palette-generator",
+        "random-color-generator"
+      ]
+    },
+    {
+      "slug": "rgb-to-hsl",
+      "title": "RGB to HSL",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the rgb to hsl tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "rgb to hsl",
+        "rgb to hsl online",
+        "rgb to hsl tool"
+      ],
+      "related": [
+        "hsl-to-rgb",
+        "hex-to-hsl",
+        "color-picker",
+        "color-palette-generator",
+        "random-color-generator",
+        "gradient-generator"
+      ]
+    },
+    {
+      "slug": "hsl-to-rgb",
+      "title": "HSL to RGB",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the hsl to rgb tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "hsl to rgb",
+        "hsl to rgb online",
+        "hsl to rgb tool"
+      ],
+      "related": [
+        "hex-to-hsl",
+        "color-picker",
+        "color-palette-generator",
+        "random-color-generator",
+        "gradient-generator",
+        "complementary-color-generator"
+      ]
+    },
+    {
+      "slug": "hex-to-hsl",
+      "title": "HEX to HSL",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the hex to hsl tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "hex to hsl",
+        "hex to hsl online",
+        "hex to hsl tool"
+      ],
+      "related": [
+        "color-picker",
+        "color-palette-generator",
+        "random-color-generator",
+        "gradient-generator",
+        "complementary-color-generator",
+        "analogous-color-generator"
+      ]
+    },
+    {
+      "slug": "color-picker",
+      "title": "Color Picker",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the color picker tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "color picker",
+        "color picker online",
+        "color picker tool"
+      ],
+      "related": [
+        "color-palette-generator",
+        "random-color-generator",
+        "gradient-generator",
+        "complementary-color-generator",
+        "analogous-color-generator",
+        "triadic-color-generator"
+      ]
+    },
+    {
+      "slug": "color-palette-generator",
+      "title": "Color Palette Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the color palette generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "color palette generator",
+        "color palette generator online",
+        "color palette generator tool"
+      ],
+      "related": [
+        "random-color-generator",
+        "gradient-generator",
+        "complementary-color-generator",
+        "analogous-color-generator",
+        "triadic-color-generator",
+        "contrast-checker"
+      ]
+    },
+    {
+      "slug": "random-color-generator",
+      "title": "Random Color Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the random color generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "random color generator",
+        "random color generator online",
+        "random color generator tool"
+      ],
+      "related": [
+        "gradient-generator",
+        "complementary-color-generator",
+        "analogous-color-generator",
+        "triadic-color-generator",
+        "contrast-checker",
+        "wcag-contrast-checker"
+      ]
+    },
+    {
+      "slug": "gradient-generator",
+      "title": "Gradient Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the gradient generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "gradient generator",
+        "gradient generator online",
+        "gradient generator tool"
+      ],
+      "related": [
+        "complementary-color-generator",
+        "analogous-color-generator",
+        "triadic-color-generator",
+        "contrast-checker",
+        "wcag-contrast-checker",
+        "color-blindness-simulator"
+      ]
+    },
+    {
+      "slug": "complementary-color-generator",
+      "title": "Complementary Color Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the complementary color generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "complementary color generator",
+        "complementary color generator online",
+        "complementary color generator tool"
+      ],
+      "related": [
+        "analogous-color-generator",
+        "triadic-color-generator",
+        "contrast-checker",
+        "wcag-contrast-checker",
+        "color-blindness-simulator",
+        "css-color-generator"
+      ]
+    },
+    {
+      "slug": "analogous-color-generator",
+      "title": "Analogous Color Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the analogous color generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "analogous color generator",
+        "analogous color generator online",
+        "analogous color generator tool"
+      ],
+      "related": [
+        "triadic-color-generator",
+        "contrast-checker",
+        "wcag-contrast-checker",
+        "color-blindness-simulator",
+        "css-color-generator",
+        "tailwind-color-converter"
+      ]
+    },
+    {
+      "slug": "triadic-color-generator",
+      "title": "Triadic Color Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the triadic color generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "triadic color generator",
+        "triadic color generator online",
+        "triadic color generator tool"
+      ],
+      "related": [
+        "contrast-checker",
+        "wcag-contrast-checker",
+        "color-blindness-simulator",
+        "css-color-generator",
+        "tailwind-color-converter",
+        "material-color-converter"
+      ]
+    },
+    {
+      "slug": "contrast-checker",
+      "title": "Contrast Checker",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the contrast checker tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "contrast checker",
+        "contrast checker online",
+        "contrast checker tool"
+      ],
+      "related": [
+        "wcag-contrast-checker",
+        "color-blindness-simulator",
+        "css-color-generator",
+        "tailwind-color-converter",
+        "material-color-converter",
+        "rgb-color-mixer"
+      ]
+    },
+    {
+      "slug": "wcag-contrast-checker",
+      "title": "WCAG Contrast Checker",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the wcag contrast checker tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "wcag contrast checker",
+        "wcag contrast checker online",
+        "wcag contrast checker tool"
+      ],
+      "related": [
+        "color-blindness-simulator",
+        "css-color-generator",
+        "tailwind-color-converter",
+        "material-color-converter",
+        "rgb-color-mixer",
+        "color-name-finder"
+      ]
+    },
+    {
+      "slug": "color-blindness-simulator",
+      "title": "Color Blindness Simulator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the color blindness simulator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "color blindness simulator",
+        "color blindness simulator online",
+        "color blindness simulator tool"
+      ],
+      "related": [
+        "css-color-generator",
+        "tailwind-color-converter",
+        "material-color-converter",
+        "rgb-color-mixer",
+        "color-name-finder",
+        "hex-to-rgb"
+      ]
+    },
+    {
+      "slug": "css-color-generator",
+      "title": "CSS Color Generator",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the css color generator tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "css color generator",
+        "css color generator online",
+        "css color generator tool"
+      ],
+      "related": [
+        "tailwind-color-converter",
+        "material-color-converter",
+        "rgb-color-mixer",
+        "color-name-finder",
+        "hex-to-rgb",
+        "rgb-to-hex"
+      ]
+    },
+    {
+      "slug": "tailwind-color-converter",
+      "title": "Tailwind Color Converter",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the tailwind color converter tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "tailwind color converter",
+        "tailwind color converter online",
+        "tailwind color converter tool"
+      ],
+      "related": [
+        "material-color-converter",
+        "rgb-color-mixer",
+        "color-name-finder",
+        "hex-to-rgb",
+        "rgb-to-hex",
+        "rgb-to-hsl"
+      ]
+    },
+    {
+      "slug": "material-color-converter",
+      "title": "Material Color Converter",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the material color converter tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "material color converter",
+        "material color converter online",
+        "material color converter tool"
+      ],
+      "related": [
+        "rgb-color-mixer",
+        "color-name-finder",
+        "hex-to-rgb",
+        "rgb-to-hex",
+        "rgb-to-hsl",
+        "hsl-to-rgb"
+      ]
+    },
+    {
+      "slug": "rgb-color-mixer",
+      "title": "RGB Color Mixer",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the rgb color mixer tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "rgb color mixer",
+        "rgb color mixer online",
+        "rgb color mixer tool"
+      ],
+      "related": [
+        "color-name-finder",
+        "hex-to-rgb",
+        "rgb-to-hex",
+        "rgb-to-hsl",
+        "hsl-to-rgb",
+        "hex-to-hsl"
+      ]
+    },
+    {
+      "slug": "color-name-finder",
+      "title": "Color Name Finder",
+      "category": "Color Tools",
+      "description": "Convert and design colors with the color name finder tool. Pick, preview and copy palettes instantly in your browser with accurate, private results.",
+      "keywords": [
+        "color name finder",
+        "color name finder online",
+        "color name finder tool"
+      ],
+      "related": [
+        "hex-to-rgb",
+        "rgb-to-hex",
+        "rgb-to-hsl",
+        "hsl-to-rgb",
+        "hex-to-hsl",
+        "color-picker"
+      ]
+    }
+  ]
+}

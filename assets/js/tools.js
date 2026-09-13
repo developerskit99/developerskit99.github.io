@@ -1,0 +1,150 @@
+/* ToolKit v1 - vanilla helpers for 230 tools (<30KB, no deps, XSS-safe) */
+(()=>{'use strict';const TK={};
+// core
+TK.escapeHTML=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+TK.validateRequired=v=>v!=null&&String(v).trim().length>0;
+TK.showError=(el,msg)=>{if(!el)return;try{el.textContent=String(msg||'Invalid input');el.hidden=false;el.setAttribute('role','alert')}catch{}};
+TK.clearError=el=>{if(!el)return;try{el.textContent='';el.hidden=true;el.removeAttribute('role')}catch{}};
+TK.copyText=async(str,btn)=>{const t=String(str??'');if(!t)return false;const done=ok=>{if(btn){const o=btn.textContent;btn.textContent=ok?'Copied!':'Failed';setTimeout(()=>btn.textContent=o,1500)}};try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(t);done(true);return true}}catch{}try{const ta=document.createElement('textarea');ta.value=t;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');document.body.removeChild(ta);done(!!ok);return !!ok}catch{done(false);return false}};
+TK.downloadText=(str,fn,mime)=>{try{const b=new Blob([String(str??'')],{type:mime||'text/plain;charset=utf-8'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=fn||'download.txt';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000);return true}catch{return false}};
+// parse
+TK.safeJSONParse=(str,fb)=>{try{if(!TK.validateRequired(str))throw new Error('Empty');return{ok:true,data:JSON.parse(String(str)),error:''}}catch(e){return{ok:false,data:fb??null,error:e.message||'Invalid JSON'}}};
+TK.csvParse=txt=>{const s=String(txt??'');if(!s.trim())return{ok:false,data:[],error:'Empty CSV'};try{const rows=[];let row=[],cur='',q=false;for(let i=0;i<s.length;i++){const c=s[i],n=s[i+1];if(c=='"'){if(q&&n=='"'){cur+='"';i++}else q=!q}else if(c==','&&!q){row.push(cur);cur=''}else if((c=='\n'||c=='\r')&&!q){if(cur!==''||row.length){row.push(cur);rows.push(row);row=[];cur=''}if(c=='\r'&&n=='\n')i++}else cur+=c}if(cur!==''||row.length){row.push(cur);rows.push(row)}return{ok:true,data:rows,error:''}}catch(e){return{ok:false,data:[],error:e.message}}};
+TK.csvStringify=rows=>{try{return rows.map(r=>r.map(v=>{const s=String(v??'');return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}).join(',')).join('\n')}catch{return''}};
+TK.xmlValidate=str=>{try{if(!TK.validateRequired(str))return{ok:false,error:'Empty XML'};const d=new DOMParser().parseFromString(String(str),'application/xml');const e=d.querySelector('parsererror');if(e)return{ok:false,error:e.textContent.slice(0,400)};return{ok:true,error:''}}catch(e){return{ok:false,error:e.message}}};
+TK.yamlParse=str=>{try{const s=String(str??'');if(!s.trim())return{ok:false,data:null,error:'Empty YAML'};const out={};let ak=null;for(const raw of s.split('\n')){const line=raw.trim();if(!line||line.startsWith('#'))continue;if(line.startsWith('- ')){if(!ak)throw new Error('Array without key');(out[ak]=out[ak]||[]).push(line.slice(2).trim().replace(/^["']|["']$/g,''))}else{const i=line.indexOf(':');if(i==-1)continue;const k=line.slice(0,i).trim(),v=line.slice(i+1).trim().replace(/^["']|["']$/g,'');if(!v){ak=k;out[k]=[]}else{ak=null;out[k]=/^-?\d+(\.\d+)?$/.test(v)?Number(v):v==='true'?true:v==='false'?false:v==='null'?null:v}}}return{ok:true,data:out,error:''}}catch(e){return{ok:false,data:null,error:e.message}}};
+TK.yamlStringify=obj=>{try{if(obj==null||typeof obj!=='object')return String(obj??'');return Object.entries(obj).map(([k,v])=>Array.isArray(v)?k+':\n'+v.map(x=>'  - '+String(x)).join('\n'):k+': '+String(v)).join('\n')}catch{return''}};
+// encoding
+TK.base64Encode=s=>{try{return btoa(unescape(encodeURIComponent(String(s??''))))}catch{return''}};
+TK.base64Decode=s=>{try{const t=String(s??'').trim();if(!t)throw new Error('Empty');return decodeURIComponent(escape(atob(t)))}catch{return''}};
+TK.base64UrlDecode=s=>{try{let t=String(s??'').replace(/-/g,'+').replace(/_/g,'/');while(t.length%4)t+='=';return TK.base64Decode(t)}catch{return''}};
+TK.urlEncode=s=>{try{return encodeURIComponent(String(s??''))}catch{return''}};
+TK.urlDecode=s=>{try{return decodeURIComponent(String(s??''))}catch{return''}};
+TK.htmlEncode=s=>TK.escapeHTML(s);
+TK.htmlDecode=s=>{try{const t=String(s??''),ta=document.createElement('textarea');ta.innerHTML=t;const v=ta.value;if(v===t&&/&/.test(t)){const m={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&apos;':"'"};return t.replace(/&(amp|lt|gt|quot|#39|apos);/g,x=>m[x]||x)}return v}catch{return String(s??'')}};
+// hash / uuid / jwt / time
+TK.hash=async(t,a)=>{try{let al=String(a||'SHA-256').toUpperCase().replace('SHA1','SHA-1');if(!['SHA-1','SHA-256','SHA-384','SHA-512'].includes(al))al='SHA-256';const b=new TextEncoder().encode(String(t??'')),d=await crypto.subtle.digest(al,b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}catch{return''}};
+TK.uuid=()=>{try{return crypto.randomUUID()}catch{return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c=='x'?r:r&0x3|0x8).toString(16)})}};
+TK.jwtDecode=tok=>{try{const p=String(tok??'').trim().split('.');if(p.length<2)throw new Error('Invalid JWT');return{ok:true,header:JSON.parse(TK.base64UrlDecode(p[0])||'{}'),payload:JSON.parse(TK.base64UrlDecode(p[1])||'{}'),error:''}}catch(e){return{ok:false,header:null,payload:null,error:e.message}}};
+TK.toTimestamp=(d,ms)=>{try{const v=d?new Date(d).getTime():Date.now();if(isNaN(v))throw new Error('x');return ms?v:Math.floor(v/1000)}catch{return NaN}};
+TK.fromTimestamp=(ts,ms)=>{try{const n=Number(ts);if(!isFinite(n))throw new Error('x');const d=new Date(ms?n:n*1000);if(isNaN(d))throw new Error('x');return d.toISOString()}catch{return''}};
+// cron
+TK.validateCron=expr=>{try{const s=String(expr??'').trim();if(!s)return{ok:false,error:'Empty'};const p=s.split(/\s+/);if(p.length!==5)return{ok:false,error:'Need 5 fields'};const R=[[0,59],[0,23],[1,31],[1,12],[0,7]];for(let i=0;i<5;i++){if(p[i]=='*')continue;for(const seg of p[i].split(',')){if(!/^(\*\/\d+|\d+(-\d+)?(\/\d+)?|\*)$/.test(seg))return{ok:false,error:'Invalid f'+(i+1)};const ns=seg.match(/\d+/g)||[];for(const n of ns){const v=Number(n);if(v<R[i][0]||v>R[i][1])return{ok:false,error:'Range f'+(i+1)}}}}return{ok:true,error:''}}catch(e){return{ok:false,error:e.message}}};
+// regex
+TK.regexTest=(pat,flags,txt)=>{try{const p=String(pat??'');if(flags&&/[^gimsuy]/.test(flags))return{ok:false,matches:[],error:'Bad flags'};const re=new RegExp(p,flags||''),s=String(txt??''),ms=[];let m;if(re.global){while((m=re.exec(s))!==null){ms.push({match:m[0],index:m.index,groups:m.slice(1)});if(m[0]=='')re.lastIndex++;if(ms.length>500)break}}else{const r=s.match(re);if(r)ms.push({match:r[0],index:r.index,groups:r.slice(1)})}return{ok:true,matches:ms,error:''}}catch(e){return{ok:false,matches:[],error:e.message}}};
+// lorem
+TK.lorem=(type,count)=>{const w='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'.split(' '),n=Math.max(1,Math.min(1000,Number(count)||3)),sent=()=>{const l=6+Math.floor(Math.random()*8);let s=[];for(let i=0;i<l;i++)s.push(w[Math.floor(Math.random()*w.length)]);s[0]=s[0][0].toUpperCase()+s[0].slice(1);return s.join(' ')+'.'};try{if(type=='words'){let o=[];for(let i=0;i<n;i++)o.push(w[Math.floor(Math.random()*w.length)]);return o.join(' ')}if(type=='sentences'){let o=[];for(let i=0;i<n;i++)o.push(sent());return o.join(' ')}let out=[];for(let i=0;i<n;i++){let p=[],sc=3+Math.floor(Math.random()*3);for(let j=0;j<sc;j++)p.push(sent());out.push(p.join(' '))}return out.join('\n\n')}catch{return''}};
+// minify/beautify
+TK.cssMinify=s=>{try{return String(s??'').replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s+/g,' ').replace(/\s*([{}:;,>+~])\s*/g,'$1').replace(/;}/g,'}').trim()}catch{return''}};
+TK.cssBeautify=s=>{try{let x=String(s??'').replace(/\/\*[\s\S]*?\*\//g,'').trim();x=x.replace(/\s*{\s*/g,' {\n  ').replace(/;\s*/g,';\n  ').replace(/\s*}\s*/g,'\n}\n').replace(/\n\s*\n/g,'\n').trim();return x}catch{return''}};
+TK.htmlMinify=s=>{try{return String(s??'').replace(/<!--[\s\S]*?-->/g,'').replace(/\s+/g,' ').replace(/>\s+</g,'><').trim()}catch{return''}};
+TK.htmlBeautify=s=>{try{return String(s??'').replace(/>\s+</g,'>\n<').split('\n').map(l=>l.trim()).join('\n')}catch{return''}};
+TK.jsMinify=s=>{try{let x=String(s??'');x=x.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\/\/[^\n]*\n/g,'\n');return x.replace(/\s+/g,' ').replace(/\s*([{}();,:=+\-*/<>])\s*/g,'$1').trim()}catch{return''}};
+TK.jsBeautify=s=>{try{return String(s??'').replace(/;/g,';\n').replace(/{/g,' {\n').replace(/}/g,'\n}\n').replace(/\n\s*\n/g,'\n').trim()}catch{return''}};
+// gradient/shadow
+TK.buildGradient=(type,colors,ang)=>{try{const cs=Array.isArray(colors)?colors:String(colors??'').split(',').map(x=>x.trim()).filter(Boolean);if(!cs.length)throw new Error('x');cs.forEach(c=>{if(!/^#([0-9a-f]{3,8})$/i.test(c)&&!/^rgba?\(/i.test(c)&&!/^hsla?\(/i.test(c))throw new Error('bad '+c)});if(type=='radial')return'radial-gradient(circle, '+cs.join(', ')+')';const a=isFinite(ang)?Number(ang)+'deg':'90deg';return'linear-gradient('+a+', '+cs.join(', ')+')'}catch{return''}};
+TK.buildBoxShadow=o=>{try{const x=Number(o?.x??0),y=Number(o?.y??4),b=Number(o?.blur??10),s=Number(o?.spread??0),c=String(o?.color??'rgba(0,0,0,0.15)'),ins=o?.inset?'inset ':'';if([x,y,b,s].some(v=>!isFinite(v)))throw new Error('x');return ins+x+'px '+y+'px '+b+'px '+s+'px '+c}catch{return''}};
+TK.buildTextShadow=o=>{try{return Number(o?.x??1)+'px '+Number(o?.y??1)+'px '+Number(o?.blur??2)+'px '+String(o?.color??'rgba(0,0,0,0.4)')}catch{return''}};
+// text
+TK.wordCount=t=>{const s=String(t??'').trim();if(!s)return{words:0,chars:0,charsNoSpaces:0,sentences:0,paragraphs:0,readingTime:0};return{words:(s.match(/\S+/g)||[]).length,chars:s.length,charsNoSpaces:s.replace(/\s/g,'').length,sentences:(s.match(/[.!?]+/g)||[]).length,paragraphs:s.split(/\n+/).filter(x=>x.trim()).length,readingTime:Math.ceil((s.match(/\S+/g)||[]).length/200)}};
+TK.toUpper=s=>String(s??'').toUpperCase();
+TK.toLower=s=>String(s??'').toLowerCase();
+TK.toTitleCase=s=>String(s??'').toLowerCase().replace(/\b\w/g,m=>m.toUpperCase());
+TK.toSlug=s=>String(s??'').toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,120);
+TK.textDiff=(a,b)=>{const A=String(a??'').split('\n'),B=String(b??'').split('\n'),mx=Math.max(A.length,B.length),out=[];for(let i=0;i<mx;i++){if(A[i]===B[i])out.push({line:i+1,type:'same',text:A[i]??''});else{if(A[i]!==undefined)out.push({line:i+1,type:'removed',text:A[i]});if(B[i]!==undefined)out.push({line:i+1,type:'added',text:B[i]})}}return out};
+TK.markdownBasic=md=>{try{let s=TK.escapeHTML(String(md??''));s=s.replace(/^### (.+)$/gm,'<h3>$1</h3>').replace(/^## (.+)$/gm,'<h2>$1</h2>').replace(/^# (.+)$/gm,'<h1>$1</h1>');s=s.replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>').replace(/\*(.+?)\*/g,'<em>$1</em>').replace(/`(.+?)`/g,'<code>$1</code>');s=s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2" rel="noopener">$1</a>');s=s.replace(/^\- (.+)$/gm,'<li>$1</li>');s=s.replace(/(<li>.*<\/li>)/s,'<ul>$1</ul>');s=s.replace(/\n\n/g,'</p><p>');return'<p>'+s+'</p>'}catch{return''}};
+TK.toAscii=s=>String(s??'').split('').map(c=>c.charCodeAt(0)).join(' ');
+TK.removeDuplicates=s=>[...new Set(String(s??'').split('\n'))].join('\n');
+TK.sortLines=(s,rev)=>String(s??'').split('\n').sort((a,b)=>rev?b.localeCompare(a):a.localeCompare(b)).join('\n');
+// math
+TK.pct=(v,p)=>{const a=Number(v),b=Number(p);return!isFinite(a)||!isFinite(b)?NaN:a*b/100};
+TK.pctChange=(f,t)=>{const a=Number(f),b=Number(t);return!isFinite(a)||!isFinite(b)||a===0?NaN:(b-a)/Math.abs(a)*100};
+TK.ratio=(a,b)=>{const x=Number(a),y=Number(b);if(!isFinite(x)||!isFinite(y)||y===0)return'';const g=TK.gcd(x,y);return(x/g)+':'+(y/g)};
+TK.mean=a=>{const v=a.map(Number).filter(isFinite);return v.length?v.reduce((s,x)=>s+x,0)/v.length:NaN};
+TK.median=a=>{const v=a.map(Number).filter(isFinite).sort((x,y)=>x-y);if(!v.length)return NaN;const m=Math.floor(v.length/2);return v.length%2?v[m]:(v[m-1]+v[m])/2};
+TK.mode=a=>{const v=a.map(Number).filter(isFinite);if(!v.length)return[];const f={};let mx=0;v.forEach(x=>{f[x]=(f[x]||0)+1;mx=Math.max(mx,f[x])});return Object.keys(f).filter(k=>f[k]==mx).map(Number)};
+TK.stddev=(a,pop)=>{const v=a.map(Number).filter(isFinite);if(!v.length)return NaN;const m=TK.mean(v),vr=v.reduce((s,x)=>s+(x-m)**2,0)/(pop?v.length:Math.max(1,v.length-1));return Math.sqrt(vr)};
+TK.gcd=(a,b)=>{let x=Math.abs(Number(a)|0),y=Math.abs(Number(b)|0);if(!isFinite(x)||!isFinite(y))return NaN;while(y){const t=y;y=x%y;x=t}return x};
+TK.lcm=(a,b)=>{const g=TK.gcd(a,b);return!g?0:Math.abs(Number(a)*Number(b))/g};
+TK.isPrime=n=>{const x=Number(n);if(!Number.isInteger(x)||x<2)return false;if(x%2===0)return x===2;for(let i=3;i*i<=x;i+=2)if(x%i===0)return false;return true};
+TK.factors=n=>{const x=Math.abs(Number(n)|0);if(!x)return[];const o=[];for(let i=1;i*i<=x;i++)if(x%i===0){o.push(i);if(i!==x/i)o.push(x/i)}return o.sort((a,b)=>a-b)};
+TK.toFraction=(d,tol)=>{let v=Number(d);if(!isFinite(v))return'';const t=tol||1e-6;let n=1,de=1;for(de=1;de<=1000;de++){n=Math.round(v*de);if(Math.abs(n/de-v)<t)break}const g=TK.gcd(n,de);return(n/g)+'/'+(de/g)};
+TK.toBinary=n=>(Number(n)>>>0).toString(2);
+TK.toHex=n=>Number(n).toString(16);
+TK.toOctal=n=>Number(n).toString(8);
+TK.toRoman=num=>{let n=Number(num)|0;if(n<=0||n>3999)return'';const m=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let o='';for(const[v,s]of m)while(n>=v){o+=s;n-=v}return o};
+TK.randomInt=(mn,mx)=>{const a=Math.ceil(Number(mn)),b=Math.floor(Number(mx));if(!isFinite(a)||!isFinite(b)||a>b)return NaN;const r=crypto.getRandomValues?crypto.getRandomValues(new Uint32Array(1))[0]/4294967296:Math.random();return Math.floor(r*(b-a+1))+a};
+TK.pow=(b,e)=>Math.pow(Number(b),Number(e));
+TK.sqrt=n=>{const v=Number(n);return v<0?NaN:Math.sqrt(v)};
+// student
+TK.grade=(sc,mx)=>{const s=Number(sc),m=Number(mx)||100;if(!isFinite(s)||!isFinite(m)||m<=0)return{pct:NaN,letter:''};const pct=s/m*100;let l='F';if(pct>=90)l='A';else if(pct>=80)l='B';else if(pct>=70)l='C';else if(pct>=60)l='D';return{pct:+pct.toFixed(2),letter:l}};
+TK.gpa=(grades,sc)=>{const s=Number(sc)||4,map={A:4,B:3,C:2,D:1,F:0},arr=(Array.isArray(grades)?grades:String(grades??'').split(',')).map(x=>String(x).trim().toUpperCase()).filter(Boolean);if(!arr.length)return NaN;const pts=arr.map(g=>map[g]??Number(g)).filter(isFinite);if(!pts.length)return NaN;return +(pts.reduce((a,b)=>a+b,0)/pts.length/4*s).toFixed(2)};
+TK.cgpa=(sg,c)=>{const s=sg.map(Number).filter(isFinite);if(!s.length)return NaN;if(c&&c.length===s.length){const cr=c.map(Number),tot=cr.reduce((a,b)=>a+b,0);return tot?s.reduce((a,v,i)=>a+v*cr[i],0)/tot:TK.mean(s)}return TK.mean(s)};
+TK.factorial=n=>{let x=Number(n);if(!Number.isInteger(x)||x<0||x>170)return NaN;let r=1;for(let i=2;i<=x;i++)r*=i;return r};
+TK.quadratic=(a,b,c)=>{const A=Number(a),B=Number(b),C=Number(c);if(!isFinite(A)||!isFinite(B)||!isFinite(C)||A===0)return{roots:[],disc:NaN,error:'Invalid'};const d=B*B-4*A*C;if(d<0)return{roots:[],disc:d,error:'No real roots'};if(d===0)return{roots:[-B/(2*A)],disc:d,error:''};return{roots:[(-B+Math.sqrt(d))/(2*A),(-B-Math.sqrt(d))/(2*A)],disc:d,error:''}};
+TK.safeEval=expr=>{try{const s=String(expr??'').trim();if(!s)throw new Error('Empty');if(!/^[0-9+\-*/().%\s^a-z,]+$/i.test(s))throw new Error('Invalid chars');if(/__proto__|constructor|import|process|require|window|document|eval|Function/.test(s))throw new Error('Blocked');const san=s.replace(/\^/g,'**'),r=Function('Math','"use strict";return ('+san+')')(Math);if(!isFinite(r))throw new Error('Not finite');return{ok:true,result:r,error:''}}catch(e){return{ok:false,result:NaN,error:e.message}}};
+TK.convertLength=(v,f,t)=>{const m={mm:0.001,cm:0.01,m:1,km:1000,inch:0.0254,ft:0.3048,yd:0.9144,mile:1609.344},a=Number(v);return!isFinite(a)||!m[f]||!m[t]?NaN:a*m[f]/m[t]};
+TK.convertWeight=(v,f,t)=>{const m={mg:0.001,g:1,kg:1000,lb:453.592,oz:28.3495},a=Number(v);return!isFinite(a)||!m[f]||!m[t]?NaN:a*m[f]/m[t]};
+TK.convertTemp=(v,f,t)=>{const a=Number(v);if(!isFinite(a))return NaN;let c;if(f=='c')c=a;else if(f=='f')c=(a-32)*5/9;else if(f=='k')c=a-273.15;else return NaN;if(t=='c')return c;if(t=='f')return c*9/5+32;if(t=='k')return c+273.15;return NaN};
+// date
+TK.age=dob=>{try{const d=new Date(dob);if(isNaN(d))throw new Error('x');const n=new Date();let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();if(m<0||(m===0&&n.getDate()<d.getDate()))y--;return y}catch{return NaN}};
+TK.dateDiff=(a,b,u)=>{try{const d1=new Date(a),d2=new Date(b);if(isNaN(d1)||isNaN(d2))throw new Error('x');const ms=Math.abs(d2-d1),mp={days:ms/86400000,hours:ms/3600000,minutes:ms/60000,seconds:ms/1000};return u?(mp[u]??ms/86400000):ms/86400000}catch{return NaN}};
+TK.businessDays=(s,e)=>{try{let a=new Date(s),b=new Date(e);if(isNaN(a)||isNaN(b))throw new Error('x');if(a>b)[a,b]=[b,a];let c=0,cur=new Date(a);while(cur<=b){const d=cur.getDay();if(d!==0&&d!==6)c++;cur.setDate(cur.getDate()+1)}return c}catch{return NaN}};
+TK.addDays=(d,n)=>{try{const x=new Date(d);if(isNaN(x))throw new Error('x');x.setDate(x.getDate()+Number(n));return x.toISOString().slice(0,10)}catch{return''}};
+TK.duration=ms=>{const n=Math.abs(Number(ms));if(!isFinite(n))return'';const d=Math.floor(n/86400000),h=Math.floor(n%86400000/3600000),m=Math.floor(n%3600000/60000),s=Math.floor(n%60000/1000);return(d?d+'d ':'')+(h?h+'h ':'')+(m?m+'m ':'')+s+'s'};
+TK.isLeap=y=>{const n=Number(y);return(n%4===0&&n%100!==0)||n%400===0};
+TK.dayOfWeek=d=>{try{const x=new Date(d);return isNaN(x)?'':['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][x.getDay()]}catch{return''}};
+TK.weekNumber=d=>{try{const x=new Date(d);if(isNaN(x))return NaN;const t=new Date(Date.UTC(x.getFullYear(),x.getMonth(),x.getDate()));const day=t.getUTCDay()||7;t.setUTCDate(t.getUTCDate()+4-day);const y0=new Date(Date.UTC(t.getUTCFullYear(),0,1));return Math.ceil(((t-y0)/86400000+1)/7)}catch{return NaN}};
+// finance
+TK.simpleInterest=(p,r,t)=>{const P=Number(p),R=Number(r),T=Number(t);return[P,R,T].some(v=>!isFinite(v))?NaN:P*R*T/100};
+TK.compoundInterest=(p,r,n,t)=>{const P=Number(p),R=Number(r)/100,N=Number(n)||1,T=Number(t);return[P,R,N,T].some(v=>!isFinite(v))?NaN:P*Math.pow(1+R/N,N*T)-P};
+TK.emi=(p,r,n)=>{const P=Number(p),R=Number(r)/12/100,N=Number(n);if([P,R,N].some(v=>!isFinite(v))||N<=0)return NaN;return R===0?P/N:P*R*Math.pow(1+R,N)/(Math.pow(1+R,N)-1)};
+TK.cagr=(pv,fv,y)=>{const a=Number(pv),b=Number(fv),n=Number(y);return!isFinite(a)||!isFinite(b)||!isFinite(n)||a<=0||n<=0?NaN:(Math.pow(b/a,1/n)-1)*100};
+TK.sip=(p,r,n)=>{const P=Number(p),R=Number(r)/12/100,N=Number(n);if([P,R,N].some(v=>!isFinite(v))||N<=0)return NaN;return R===0?P*N:P*((Math.pow(1+R,N)-1)/R)*(1+R)};
+TK.inflation=(a,r,y)=>{const x=Number(a),R=Number(r)/100,Y=Number(y);return[x,R,Y].some(v=>!isFinite(v))?NaN:x*Math.pow(1+R,Y)};
+TK.discount=(p,d)=>{const a=Number(p),b=Number(d);return!isFinite(a)||!isFinite(b)?NaN:a-a*b/100};
+TK.margin=(c,p)=>{const a=Number(c),b=Number(p);return!isFinite(a)||!isFinite(b)||b===0?NaN:(b-a)/b*100};
+TK.markup=(c,p)=>{const a=Number(c),b=Number(p);return!isFinite(a)||!isFinite(b)?NaN:a*(1+b/100)};
+TK.tip=(a,p,n)=>{const x=Number(a),y=Number(p),c=Math.max(1,Number(n)||1);if(!isFinite(x)||!isFinite(y))return{tip:NaN,total:NaN,perPerson:NaN};const t=x*y/100;return{tip:t,total:x+t,perPerson:(x+t)/c}};
+TK.salary=(a,m)=>{const x=Number(a),n=Number(m)||12;return!isFinite(x)||!isFinite(n)||n<=0?NaN:x/n};
+TK.tax=(i,r)=>{const a=Number(i),b=Number(r);return!isFinite(a)||!isFinite(b)?NaN:a*b/100};
+TK.budget=(inc,ex)=>{const a=Number(inc);if(!isFinite(a))return NaN;const b=(Array.isArray(ex)?ex:[ex]).map(Number).filter(isFinite).reduce((s,x)=>s+x,0);return a-b};
+TK.netWorth=(as,li)=>{const a=(Array.isArray(as)?as:[as]).map(Number).filter(isFinite).reduce((s,x)=>s+x,0),l=(Array.isArray(li)?li:[li]).map(Number).filter(isFinite).reduce((s,x)=>s+x,0);return a-l};
+// business
+TK.roi=(g,c)=>{const a=Number(g),b=Number(c);return!isFinite(a)||!isFinite(b)||b===0?NaN:(a-b)/b*100};
+TK.roas=(r,a)=>{const x=Number(r),y=Number(a);return!isFinite(x)||!isFinite(y)||y===0?NaN:x/y};
+TK.conversionRate=(c,t)=>{const a=Number(c),b=Number(t);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b*100};
+TK.ctr=(c,i)=>TK.conversionRate(c,i);
+TK.cpm=(c,i)=>{const a=Number(c),b=Number(i);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b*1000};
+TK.cpc=(c,k)=>{const a=Number(c),b=Number(k);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b};
+TK.cac=(s,c)=>TK.cpc(s,c);
+TK.clv=(a,f,l)=>{const x=Number(a),y=Number(f),z=Number(l);return[x,y,z].some(v=>!isFinite(v))?NaN:x*y*z};
+TK.churn=(l,t)=>TK.conversionRate(l,t);
+TK.growthRate=(p,a)=>TK.pctChange(a,p);
+TK.profitMargin=(r,c)=>{const a=Number(r),b=Number(c);return!isFinite(a)||!isFinite(b)||a===0?NaN:(a-b)/a*100};
+TK.markupVsMargin=(c,p)=>({markup:c?(p-c)/c*100:NaN,margin:p?(p-c)/p*100:NaN});
+TK.turnover=(c,a)=>{const x=Number(c),y=Number(a);return!isFinite(x)||!isFinite(y)||y===0?NaN:x/y};
+TK.commission=(s,r)=>{const a=Number(s),b=Number(r);return!isFinite(a)||!isFinite(b)?NaN:a*b/100};
+TK.breakEven=(f,p,v)=>{const a=Number(f),b=Number(p),c=Number(v);return[a,b,c].some(x=>!isFinite(x))||b<=c?NaN:a/(b-c)};
+TK.saasMetrics=(mrr,ch,arpu)=>{const m=Number(mrr),c=Number(ch),a=Number(arpu);return{arr:isFinite(m)?m*12:NaN,churned:isFinite(m)&&isFinite(c)?m*c/100:NaN,customers:isFinite(m)&&isFinite(a)&&a?m/a:NaN}};
+TK.freelanceRate=(sal,h)=>{const a=Number(sal),b=Number(h);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b};
+// image
+TK.MAX_FILE_SIZE=10*1024*1024;
+TK.ALLOWED_IMAGE_TYPES=['image/jpeg','image/png','image/webp','image/gif','image/svg+xml','image/bmp'];
+TK.validateImageFile=f=>{if(!f||typeof f!=='object')return{ok:false,error:'No file'};if(f.size>TK.MAX_FILE_SIZE)return{ok:false,error:'Max 10MB'};if(f.type&&!TK.ALLOWED_IMAGE_TYPES.includes(f.type)&&!f.type.startsWith('image/'))return{ok:false,error:'Unsupported: '+f.type};return{ok:true,error:''}};
+TK.fileToBase64=f=>new Promise((res,rej)=>{const c=TK.validateImageFile(f);if(!c.ok)return rej(new Error(c.error));const r=new FileReader();r.onerror=()=>rej(new Error('Read fail'));r.onload=()=>res(String(r.result));r.readAsDataURL(f)});
+TK.imageMetadata=f=>f?{name:f.name||'',type:f.type||'',size:f.size||0,sizeKB:f.size?+(f.size/1024).toFixed(1):0,lastModified:f.lastModified?new Date(f.lastModified).toISOString():''}:null;
+TK.loadImage=src=>new Promise((res,rej)=>{const i=new Image();i.decoding='async';i.onload=()=>res(i);i.onerror=()=>rej(new Error('Corrupt image'));i.src=src});
+TK.resizeImage=async(f,W,H,q)=>{const c=TK.validateImageFile(f);if(!c.ok)throw new Error(c.error);const u=URL.createObjectURL(f);try{const img=await TK.loadImage(u),w=Number(W)||img.naturalWidth,h=Number(H)||img.naturalHeight,r=Math.min(w/img.naturalWidth,h/img.naturalHeight,1),cw=Math.round(img.naturalWidth*r),ch=Math.round(img.naturalHeight*r),cv=document.createElement('canvas');cv.width=cw;cv.height=ch;const ctx=cv.getContext('2d');if(!ctx)throw new Error('Canvas');ctx.drawImage(img,0,0,cw,ch);const qu=Math.min(1,Math.max(0.1,Number(q)||0.85)),ty=f.type=='image/png'?'image/png':'image/jpeg';return cv.toDataURL(ty,qu)}finally{URL.revokeObjectURL(u)}};
+TK.compressImage=(f,q)=>TK.resizeImage(f,1920,1920,q);
+TK.cropImage=async(f,x,y,w,h)=>{const c=TK.validateImageFile(f);if(!c.ok)throw new Error(c.error);const u=URL.createObjectURL(f);try{const img=await TK.loadImage(u),sx=Math.max(0,Number(x)|0),sy=Math.max(0,Number(y)|0),sw=Math.min(img.naturalWidth-sx,Number(w)|0),sh=Math.min(img.naturalHeight-sy,Number(h)|0);if(sw<=0||sh<=0)throw new Error('Bad crop');const cv=document.createElement('canvas');cv.width=sw;cv.height=sh;cv.getContext('2d').drawImage(img,sx,sy,sw,sh,0,0,sw,sh);return cv.toDataURL(f.type||'image/png')}finally{URL.revokeObjectURL(u)}};
+// color
+TK.hexToRgb=h=>{try{let s=String(h??'').trim().replace(/^#/,'');if(s.length==3)s=s.split('').map(c=>c+c).join('');if(!/^[0-9a-f]{6}$/i.test(s))throw new Error('x');return{r:parseInt(s.slice(0,2),16),g:parseInt(s.slice(2,4),16),b:parseInt(s.slice(4,6),16)}}catch{return null}};
+TK.rgbToHex=(r,g,b)=>{const c=[r,g,b].map(v=>Math.max(0,Math.min(255,Number(v)|0)).toString(16).padStart(2,'0'));return c.some(x=>x=='NaN')?'':'#'+c.join('')};
+TK.rgbToHsl=(r,g,b)=>{const R=Number(r)/255,G=Number(g)/255,B=Number(b)/255,mx=Math.max(R,G,B),mn=Math.min(R,G,B);let h=0,s=0,l=(mx+mn)/2;if(mx!==mn){const d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case R:h=(G-B)/d+(G<B?6:0);break;case G:h=(B-R)/d+2;break;case B:h=(R-G)/d+4;break}h/=6}return{h:Math.round(h*360),s:Math.round(s*100),l:Math.round(l*100)}};
+TK.hslToRgb=(h,s,l)=>{const H=((Number(h)%360)+360)%360/360,S=Math.max(0,Math.min(100,Number(s)))/100,L=Math.max(0,Math.min(100,Number(l)))/100;if(S===0){const v=Math.round(L*255);return{r:v,g:v,b:v}}const q=L<0.5?L*(1+S):L+S-L*S,p=2*L-q,hue=t=>{if(t<0)t+=1;if(t>1)t-=1;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p};return{r:Math.round(hue(H+1/3)*255),g:Math.round(hue(H)*255),b:Math.round(hue(H-1/3)*255)}};
+TK.palette=(hex,type)=>{const rgb=TK.hexToRgb(hex);if(!rgb)return[];const hsl=TK.rgbToHsl(rgb.r,rgb.g,rgb.b),out=[],shifts=type=='analogous'?[-30,0,30]:type=='triadic'?[0,120,240]:type=='complementary'?[0,180]:[0,30,60,90];shifts.forEach(d=>{const h=(hsl.h+d+360)%360,c=TK.hslToRgb(h,hsl.s,hsl.l);out.push(TK.rgbToHex(c.r,c.g,c.b))});return out};
+TK.contrastRatio=(a,b)=>{const lum=h=>{const c=TK.hexToRgb(h);if(!c)return 0;const s=[c.r,c.g,c.b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*s[0]+0.7152*s[1]+0.0722*s[2]};const L1=lum(a),L2=lum(b),hi=Math.max(L1,L2),lo=Math.min(L1,L2);return+((hi+0.05)/(lo+0.05)).toFixed(2)};
+TK.simulateColorBlind=(hex,type)=>{const c=TK.hexToRgb(hex);if(!c)return'';let r=c.r,g=c.g,b=c.b;if(type=='protanopia'){r=0.567*c.r+0.433*c.g;g=0.558*c.r+0.442*c.g;b=0.242*c.g+0.758*c.b}else if(type=='deuteranopia'){r=0.625*c.r+0.375*c.g;g=0.7*c.r+0.3*c.g;b=0.3*c.g+0.7*c.b}else if(type=='tritanopia'){r=0.95*c.r+0.05*c.g;g=0.433*c.g+0.567*c.b;b=0.475*c.g+0.525*c.b}return TK.rgbToHex(r,g,b)};
+TK.colorName=hex=>{const m={'#ff0000':'Red','#00ff00':'Lime','#0000ff':'Blue','#ffff00':'Yellow','#00ffff':'Cyan','#ff00ff':'Magenta','#000000':'Black','#ffffff':'White','#ffa500':'Orange','#800080':'Purple','#008000':'Green','#ffc0cb':'Pink','#a52a2a':'Brown','#808080':'Gray'},k=String(hex??'').toLowerCase();if(m[k])return m[k];const rgb=TK.hexToRgb(k);if(!rgb)return'Unknown';let best='Unknown',dist=Infinity;for(const[h,n]of Object.entries(m)){const c=TK.hexToRgb(h),d=(c.r-rgb.r)**2+(c.g-rgb.g)**2+(c.b-rgb.b)**2;if(d<dist){dist=d;best=n}}return best};
+window.ToolKit=TK})();
