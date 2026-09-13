@@ -38,6 +38,7 @@ def head_html(title,desc,canonical):
     og=esc(canonical)
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="_LFM9G4uH81w3sp_bIwp7BGQTwWR5vq_BrqW4hGFofc" />
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{og}">
