@@ -6,11 +6,11 @@ TOOLS_JSON=os.path.join(ROOT,"tools.json")
 def _get_site_url():
     try:
         with open(TOOLS_JSON, encoding="utf-8-sig") as f:
-            return json.load(f).get("site",{}).get("url","https://developerskit.github.io")
+            return json.load(f).get("site",{}).get("url","https://developerskit99.github.io")
     except Exception:
-        return "https://developerskit.github.io"
+        return "https://developerskit99.github.io"
 SITE_URL=_get_site_url()
-# derive base path for subpath deploys (e.g. /developerskit.github.io/)
+# derive base path for subpath deploys (e.g. /developerskit99.github.io/)
 from urllib.parse import urlparse as _urlparse
 _BP=_urlparse(SITE_URL).path.rstrip("/")
 BASE="" if not _BP else _BP
@@ -514,7 +514,7 @@ def main():
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+ "\n".join(urls) + '\n</urlset>'
     with open(os.path.join(ROOT,"sitemap.xml"),"w",encoding="utf-8",newline="\n") as f: f.write(sitemap)
     # robots
-    with open(os.path.join(ROOT,"robots.txt"),"w",encoding="utf-8",newline="\n") as f: f.write("User-agent: *\nAllow: /\nSitemap: https://developerskit.github.io/sitemap.xml\n")
+    with open(os.path.join(ROOT,"robots.txt"),"w",encoding="utf-8",newline="\n") as f: f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
     print(f"Generated {len(tools)} tools + hub + sitemap")
 
 if __name__=="__main__":

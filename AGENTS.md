@@ -1,6 +1,6 @@
 # DevelopersKit — Project Rules (Enforced on Every Task)
 
-You are working on a production-grade static SEO tools platform hosted at https://developerskit.github.io.
+You are working on a production-grade static SEO tools platform hosted at https://developerskit99.github.io.
 
 ## PROJECT GOAL
 Build a fast, professional, accessible, SEO-focused collection of 230 browser-based online tools hosted entirely on GitHub Pages. Priorities: Search usefulness > Technical correctness > UX > Performance > Accessibility > Maintainability > Security > Scalable architecture.
@@ -19,7 +19,7 @@ Every tool must have: dedicated route (/<slug>/), config in tools.json, reusable
 Shared: assets/css/style.css, assets/js/common.js, assets/js/tools.js
 
 ## SEO — Every indexable page
-- unique URL, title (50-60ch), meta description (150-160ch), canonical https://developerskit.github.io/<slug>/, correct H1, heading hierarchy, useful content (formula + 2 worked examples + 3-4 FAQ), internal links (6-8 related), breadcrumbs, JSON-LD (SoftwareApplication + FAQPage + BreadcrumbList), sitemap.xml inclusion
+- unique URL, title (50-60ch), meta description (150-160ch), canonical https://developerskit99.github.io/<slug>/, correct H1, heading hierarchy, useful content (formula + 2 worked examples + 3-4 FAQ), internal links (6-8 related), breadcrumbs, JSON-LD (SoftwareApplication + FAQPage + BreadcrumbList), sitemap.xml inclusion
 - No thin pages, no keyword stuffing, no fake stats/testimonials, no "best" claims.
 
 ## INTERNAL LINKING — Topic clusters
