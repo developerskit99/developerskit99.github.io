@@ -1,0 +1,127 @@
+- generic [ref=f3e1]:
+  - link "Skip to content" [ref=f3e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f3e3]:
+    - generic [ref=f3e4]:
+      - link "DevelopersKit home" [ref=f3e5] [cursor=pointer]:
+        - /url: /
+        - text: DevelopersKit
+      - navigation "Primary" [ref=f3e6]:
+        - list [ref=f3e7]:
+          - listitem [ref=f3e8]:
+            - link "Home" [ref=f3e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f3e10]:
+            - link "Tools" [ref=f3e11] [cursor=pointer]:
+              - /url: /#tools
+          - listitem [ref=f3e12]:
+            - link "Categories" [ref=f3e13] [cursor=pointer]:
+              - /url: /#categories
+  - main [ref=f3e14]:
+    - navigation "Breadcrumb" [ref=f3e15]:
+      - link "Home" [ref=f3e16] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f3e17]: ›
+      - link "Math Calculators" [ref=f3e18] [cursor=pointer]:
+        - /url: /#categories
+      - generic [ref=f3e19]: ›
+      - generic [ref=f3e20]: Percentage Calculator
+    - heading "Percentage Calculator" [level=1] [ref=f3e21]
+    - paragraph [ref=f3e22]: Calculate percentage calculator results accurately in your browser. Enter values, see formulas and steps, and copy answers instantly without uploads.
+    - generic [ref=f3e24]:
+      - generic [ref=f3e25]:
+        - generic [ref=f3e26]:
+          - generic [ref=f3e27]: Value A
+          - spinbutton "Value A" [ref=f3e28]: "200"
+        - generic [ref=f3e29]:
+          - generic [ref=f3e30]: Value B
+          - spinbutton "Value B" [ref=f3e31]: "15"
+      - generic [ref=f3e32]:
+        - generic [ref=f3e33]:
+          - generic [ref=f3e34]: Value C (optional)
+          - spinbutton "Value C (optional)" [ref=f3e35]
+        - generic [ref=f3e36]:
+          - generic [ref=f3e37]: Extra / Expression
+          - textbox "Extra / Expression" [ref=f3e38]:
+            - /placeholder: e.g. 2+2 or text
+      - button "Calculate" [active] [ref=f3e40] [cursor=pointer]
+      - generic [ref=f3e41]: Result
+      - textbox "Result" [ref=f3e42]:
+        - /placeholder: Result will appear here...
+        - text: 30 (15% of 200)
+      - generic [ref=f3e43]:
+        - button "Copy" [ref=f3e44] [cursor=pointer]
+        - button "Download" [ref=f3e45] [cursor=pointer]
+        - button "Reset" [ref=f3e46] [cursor=pointer]
+    - generic [ref=f3e47]:
+      - heading "How to use" [level=2] [ref=f3e48]
+      - list [ref=f3e49]:
+        - listitem [ref=f3e50]: Paste or enter your input in the field above.
+        - listitem [ref=f3e51]: Click Process / Calculate to transform it locally in your browser.
+        - listitem [ref=f3e52]: Copy or Download the result; use Reset to clear.
+      - heading "Formula" [level=2] [ref=f3e53]
+      - paragraph [ref=f3e54]:
+        - text: Used formula depends on the calculation; e.g. Simple Interest = P×R×T/100, Percentage = value×percent/100, CAGR = (FV/PV)
+        - superscript [ref=f3e55]: 1/n
+        - text: "-1."
+      - heading "Worked examples" [level=2] [ref=f3e56]
+      - generic [ref=f3e57]:
+        - generic [ref=f3e58]:
+          - heading "Example 1" [level=3] [ref=f3e59]
+          - paragraph [ref=f3e60]: "Input: Example data for Percentage Calculator → Output: processed result instantly with copy-ready formatting."
+        - generic [ref=f3e61]:
+          - heading "Example 2" [level=3] [ref=f3e62]
+          - paragraph [ref=f3e63]: For Percentage Calculator, try entering realistic sample values (e.g. numbers 42 and 8 or a JSON snippet) and click Calculate/Process to see the output.
+      - generic [ref=f3e64]:
+        - heading "FAQ" [level=2] [ref=f3e65]
+        - group [ref=f3e66]:
+          - generic "How do I use Percentage Calculator? +" [ref=f3e67] [cursor=pointer]
+        - group [ref=f3e68]:
+          - generic "Is Percentage Calculator free and private? +" [ref=f3e69] [cursor=pointer]
+        - group [ref=f3e70]:
+          - generic "Can I use Percentage Calculator on mobile? +" [ref=f3e71] [cursor=pointer]
+        - group [ref=f3e72]:
+          - generic "What makes Percentage Calculator accurate? +" [ref=f3e73] [cursor=pointer]
+      - generic [ref=f3e74]:
+        - heading "Related tools" [level=2] [ref=f3e75]
+        - generic [ref=f3e76]:
+          - link [ref=f3e77] [cursor=pointer]:
+            - /url: /percentage-increase-calculator/
+            - heading "Percentage Increase Calculator" [level=3] [ref=f3e78]
+            - paragraph [ref=f3e79]: Calculate percentage increase calculator results accurately in your browser. Enter values,
+          - link [ref=f3e80] [cursor=pointer]:
+            - /url: /percentage-decrease-calculator/
+            - heading "Percentage Decrease Calculator" [level=3] [ref=f3e81]
+            - paragraph [ref=f3e82]: Calculate percentage decrease calculator results accurately in your browser. Enter values,
+          - link [ref=f3e83] [cursor=pointer]:
+            - /url: /ratio-calculator/
+            - heading "Ratio Calculator" [level=3] [ref=f3e84]
+            - paragraph [ref=f3e85]: Calculate ratio calculator results accurately in your browser. Enter values, see formulas
+          - link [ref=f3e86] [cursor=pointer]:
+            - /url: /proportion-calculator/
+            - heading "Proportion Calculator" [level=3] [ref=f3e87]
+            - paragraph [ref=f3e88]: Calculate proportion calculator results accurately in your browser. Enter values, see form
+          - link [ref=f3e89] [cursor=pointer]:
+            - /url: /average-calculator/
+            - heading "Average Calculator" [level=3] [ref=f3e90]
+            - paragraph [ref=f3e91]: Calculate average calculator results accurately in your browser. Enter values, see formula
+          - link [ref=f3e92] [cursor=pointer]:
+            - /url: /median-calculator/
+            - heading "Median Calculator" [level=3] [ref=f3e93]
+            - paragraph [ref=f3e94]: Calculate median calculator results accurately in your browser. Enter values, see formulas
+  - contentinfo [ref=f3e95]:
+    - generic [ref=f3e96]:
+      - generic [ref=f3e97]:
+        - strong [ref=f3e98]: DevelopersKit
+        - paragraph [ref=f3e99]: Fast, free, browser-based tools for developers and everyday tasks. No uploads — everything runs locally.
+      - generic [ref=f3e100]:
+        - paragraph [ref=f3e101]:
+          - link "Homepage" [ref=f3e102] [cursor=pointer]:
+            - /url: /
+          - text: ·
+          - link "Sitemap" [ref=f3e103] [cursor=pointer]:
+            - /url: /sitemap.xml
+          - text: ·
+          - link "Privacy" [ref=f3e104] [cursor=pointer]:
+            - /url: /privacy/
+        - paragraph [ref=f3e105]: © 2026 DevelopersKit. All tools run client-side.

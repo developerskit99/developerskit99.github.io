@@ -435,26 +435,39 @@ def hub_page(tools):
     for cat in order:
         lst=cats.get(cat,[])
         if not lst: continue
+        sorted_lst=sorted(lst, key=lambda x:x["title"])
+        display_lst=sorted_lst[:8]
+        total=len(sorted_lst)
         cards=""
-        for t in sorted(lst, key=lambda x:x["title"]):
+        for t in display_lst:
             cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"]+" "+t["category"])}"><h3><a href="/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
-        sections+=f'<section class="cat-card" id="cat-{esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))}"><h2>{esc_txt(cat)} ({len(lst)})</h2><p>Browse {len(lst)} tools in {esc_txt(cat)}.</p><div class="tool-grid">{cards}</div></section>\n'
+        anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
+        view_all=f' <a href="#{anchor}" class="view-all">View all \u2192</a>' if total>8 else ""
+        sections+=f'<section class="cat-card" id="{anchor}"><h2>{esc_txt(cat)} <span class="cat-count">{total} tools</span></h2><p>Browse {total} tools in {esc_txt(cat)}.{view_all}</p><div class="tool-grid">{cards}</div></section>\n'
 
     seo_title_hub="Developer & Calculator Tools — 230 Free Online Tools | DevelopersKit"
     desc_hub="Discover 230 free browser-based tools for developers, text, math, finance, dates, colors and images. Private, fast and works offline — no uploads."
     head=head_html(seo_title_hub,desc_hub,SITE_URL+"/")
-    # hero search is inside header + extra
+    # category quick-links for hero
+    quick_cats=""
+    for cat in order:
+        lst=cats.get(cat,[])
+        if not lst: continue
+        anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
+        quick_cats+=f'<a href="#{anchor}" class="popular-pill">{esc_txt(cat)}</a>\n'
     hero=f"""
 <main id="main" class="container">
 <section class="hero">
-<h1>Free Developer &amp; Calculator Tools — 230 browser-based tools, private &amp; fast</h1>
-<p>230 Tools \u2022 No uploads \u2022 Works offline. Search and run any tool instantly in your browser.</p>
-<div class="search-wrap" style="margin:0 auto;max-width:480px"><label for="q" class="sr-only">Search tools</label><input id="q" data-search-input type="search" class="search-input" placeholder="Search 230 tools (e.g. JSON Formatter, Word Counter)" autocomplete="off"></div>
+<h1>Free Developer &amp; Calculator Tools</h1>
+<p class="hero-sub">230 browser-based tools \u2014 private, fast, works offline.</p>
+<p class="stats-bar">Everything runs in your browser. No sign-up. No uploads.</p>
+<div class="hero-search"><div class="search-wrap"><label for="q" class="sr-only">Search tools</label><input id="q" data-search-input type="search" class="search-input" placeholder="Search 230 tools (e.g. JSON Formatter, Word Counter)" autocomplete="off"></div></div>
+<div class="popular">{quick_cats}</div>
 </section>
 <div class="category-grid" id="categories">
 {sections}
 </div>
-<section id="tools" style="padding-bottom:32px"><p style="text-align:center;color:#64748b">All tools run locally — your data never leaves your device.</p></section>
+<section id="tools" style="padding-bottom:32px"><p style="text-align:center;color:#64748b">All tools run locally \u2014 your data never leaves your device.</p></section>
 </main>"""
 
     doc=f"""<!doctype html>

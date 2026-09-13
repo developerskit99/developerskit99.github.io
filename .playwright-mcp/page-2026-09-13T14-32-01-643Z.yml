@@ -1,0 +1,536 @@
+- generic [active] [ref=f1e1]:
+  - link "Skip to content" [ref=f1e2] [cursor=pointer]:
+    - /url: "#main"
+  - banner [ref=f1e3]:
+    - generic [ref=f1e4]:
+      - link "DevelopersKit home" [ref=f1e5] [cursor=pointer]:
+        - /url: /
+        - text: DevelopersKit
+      - navigation "Primary" [ref=f1e6]:
+        - list [ref=f1e7]:
+          - listitem [ref=f1e8]:
+            - link "Home" [ref=f1e9] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f1e10]:
+            - link "Tools" [ref=f1e11] [cursor=pointer]:
+              - /url: /#tools
+          - listitem [ref=f1e12]:
+            - link "Categories" [ref=f1e13] [cursor=pointer]:
+              - /url: /#categories
+  - main [ref=f1e14]:
+    - generic [ref=f1e15]:
+      - heading "Free Developer & Calculator Tools" [level=1] [ref=f1e16]
+      - paragraph [ref=f1e17]: 230 browser-based tools — private, fast, works offline.
+      - paragraph [ref=f1e18]: Everything runs in your browser. No sign-up. No uploads.
+      - generic [ref=f1e20]:
+        - generic [ref=f1e21]: Search tools
+        - searchbox "Search tools" [ref=f1e22]
+      - generic [ref=f1e23]:
+        - link "Developer Tools" [ref=f1e24] [cursor=pointer]:
+          - /url: "#cat-developer-tools"
+        - link "CSS/HTML Tools" [ref=f1e25] [cursor=pointer]:
+          - /url: "#cat-css-html-tools"
+        - link "Text Tools" [ref=f1e26] [cursor=pointer]:
+          - /url: "#cat-text-tools"
+        - link "Math Calculators" [ref=f1e27] [cursor=pointer]:
+          - /url: "#cat-math-calculators"
+        - link "Student Tools" [ref=f1e28] [cursor=pointer]:
+          - /url: "#cat-student-tools"
+        - link "Date & Time" [ref=f1e29] [cursor=pointer]:
+          - /url: "#cat-date--time"
+        - link "Finance Calculators" [ref=f1e30] [cursor=pointer]:
+          - /url: "#cat-finance-calculators"
+        - link "Business Calculators" [ref=f1e31] [cursor=pointer]:
+          - /url: "#cat-business-calculators"
+        - link "Color Tools" [ref=f1e32] [cursor=pointer]:
+          - /url: "#cat-color-tools"
+        - link "Image Tools" [ref=f1e33] [cursor=pointer]:
+          - /url: "#cat-image-tools"
+    - generic [ref=f1e34]:
+      - generic [ref=f1e35]:
+        - heading "Developer Tools 25 tools" [level=2] [ref=f1e36]
+        - paragraph [ref=f1e37]:
+          - text: Browse 25 tools in Developer Tools.
+          - link "View all →" [ref=f1e38] [cursor=pointer]:
+            - /url: "#cat-developer-tools"
+        - generic [ref=f1e39]:
+          - generic [ref=f1e40]:
+            - heading [level=3] [ref=f1e41]:
+              - link "Base64 Decoder" [ref=f1e42] [cursor=pointer]:
+                - /url: /base64-decoder/
+            - paragraph [ref=f1e43]: Format, validate and transform base64 decoder instantly in your browser. Paste data, check errors and copy cle
+          - generic [ref=f1e44]:
+            - heading [level=3] [ref=f1e45]:
+              - link "Base64 Encoder" [ref=f1e46] [cursor=pointer]:
+                - /url: /base64-encoder/
+            - paragraph [ref=f1e47]: Format, validate and transform base64 encoder instantly in your browser. Paste data, check errors and copy cle
+          - generic [ref=f1e48]:
+            - heading [level=3] [ref=f1e49]:
+              - link "CSV to JSON" [ref=f1e50] [cursor=pointer]:
+                - /url: /csv-to-json/
+            - paragraph [ref=f1e51]: Convert CSV to JSON instantly in your browser. Parse delimiters, preview objects and copy clean JSON privately
+          - generic [ref=f1e52]:
+            - heading [level=3] [ref=f1e53]:
+              - link "Cron Expression Generator" [ref=f1e54] [cursor=pointer]:
+                - /url: /cron-expression-generator/
+            - paragraph [ref=f1e55]: Format, validate and transform cron expression generator instantly in your browser. Paste data, check errors a
+          - generic [ref=f1e56]:
+            - heading [level=3] [ref=f1e57]:
+              - link "HTML Entity Decoder" [ref=f1e58] [cursor=pointer]:
+                - /url: /html-entity-decoder/
+            - paragraph [ref=f1e59]: Format, validate and transform html entity decoder instantly in your browser. Paste data, check errors and cop
+          - generic [ref=f1e60]:
+            - heading [level=3] [ref=f1e61]:
+              - link "HTML Entity Encoder" [ref=f1e62] [cursor=pointer]:
+                - /url: /html-entity-encoder/
+            - paragraph [ref=f1e63]: Format, validate and transform html entity encoder instantly in your browser. Paste data, check errors and cop
+          - generic [ref=f1e64]:
+            - heading [level=3] [ref=f1e65]:
+              - link "Hash Generator" [ref=f1e66] [cursor=pointer]:
+                - /url: /hash-generator/
+            - paragraph [ref=f1e67]: Format, validate and transform hash generator instantly in your browser. Paste data, check errors and copy cle
+          - generic [ref=f1e68]:
+            - heading [level=3] [ref=f1e69]:
+              - link "JSON Formatter" [ref=f1e70] [cursor=pointer]:
+                - /url: /json-formatter/
+            - paragraph [ref=f1e71]: Beautify and format JSON instantly in your browser. Collapse, sort keys and validate syntax with private local
+      - generic [ref=f1e72]:
+        - heading "CSS/HTML Tools 20 tools" [level=2] [ref=f1e73]
+        - paragraph [ref=f1e74]:
+          - text: Browse 20 tools in CSS/HTML Tools.
+          - link "View all →" [ref=f1e75] [cursor=pointer]:
+            - /url: "#cat-css-html-tools"
+        - generic [ref=f1e76]:
+          - generic [ref=f1e77]:
+            - heading [level=3] [ref=f1e78]:
+              - link "CSS Animation Generator" [ref=f1e79] [cursor=pointer]:
+                - /url: /css-animation-generator/
+            - paragraph [ref=f1e80]: Generate css animation generator styles visually and copy clean code. Adjust live previews in your browser wit
+          - generic [ref=f1e81]:
+            - heading [level=3] [ref=f1e82]:
+              - link "CSS Beautifier" [ref=f1e83] [cursor=pointer]:
+                - /url: /css-beautifier/
+            - paragraph [ref=f1e84]: Generate css beautifier styles visually and copy clean code. Adjust live previews in your browser with instant
+          - generic [ref=f1e85]:
+            - heading [level=3] [ref=f1e86]:
+              - link "CSS Border Radius Generator" [ref=f1e87] [cursor=pointer]:
+                - /url: /css-border-radius-generator/
+            - paragraph [ref=f1e88]: Generate css border radius generator styles visually and copy clean code. Adjust live previews in your browser
+          - generic [ref=f1e89]:
+            - heading [level=3] [ref=f1e90]:
+              - link "CSS Box Shadow Generator" [ref=f1e91] [cursor=pointer]:
+                - /url: /css-box-shadow-generator/
+            - paragraph [ref=f1e92]: Generate css box shadow generator styles visually and copy clean code. Adjust live previews in your browser wi
+          - generic [ref=f1e93]:
+            - heading [level=3] [ref=f1e94]:
+              - link "CSS Button Generator" [ref=f1e95] [cursor=pointer]:
+                - /url: /css-button-generator/
+            - paragraph [ref=f1e96]: Generate css button generator styles visually and copy clean code. Adjust live previews in your browser with i
+          - generic [ref=f1e97]:
+            - heading [level=3] [ref=f1e98]:
+              - link "CSS Clamp Generator" [ref=f1e99] [cursor=pointer]:
+                - /url: /css-clamp-generator/
+            - paragraph [ref=f1e100]: Generate css clamp generator styles visually and copy clean code. Adjust live previews in your browser with in
+          - generic [ref=f1e101]:
+            - heading [level=3] [ref=f1e102]:
+              - link "CSS Color Converter" [ref=f1e103] [cursor=pointer]:
+                - /url: /css-color-converter/
+            - paragraph [ref=f1e104]: Generate css color converter styles visually and copy clean code. Adjust live previews in your browser with in
+          - generic [ref=f1e105]:
+            - heading [level=3] [ref=f1e106]:
+              - link "CSS Filter Generator" [ref=f1e107] [cursor=pointer]:
+                - /url: /css-filter-generator/
+            - paragraph [ref=f1e108]: Generate css filter generator styles visually and copy clean code. Adjust live previews in your browser with i
+      - generic [ref=f1e109]:
+        - heading "Text Tools 25 tools" [level=2] [ref=f1e110]
+        - paragraph [ref=f1e111]:
+          - text: Browse 25 tools in Text Tools.
+          - link "View all →" [ref=f1e112] [cursor=pointer]:
+            - /url: "#cat-text-tools"
+        - generic [ref=f1e113]:
+          - generic [ref=f1e114]:
+            - heading [level=3] [ref=f1e115]:
+              - link "ASCII Art Generator" [ref=f1e116] [cursor=pointer]:
+                - /url: /ascii-art-generator/
+            - paragraph [ref=f1e117]: Analyze and transform text with the ascii art generator tool. Count, convert or clean content instantly in you
+          - generic [ref=f1e118]:
+            - heading [level=3] [ref=f1e119]:
+              - link "Case Converter" [ref=f1e120] [cursor=pointer]:
+                - /url: /case-converter/
+            - paragraph [ref=f1e121]: Analyze and transform text with the case converter tool. Count, convert or clean content instantly in your bro
+          - generic [ref=f1e122]:
+            - heading [level=3] [ref=f1e123]:
+              - link "Character Counter" [ref=f1e124] [cursor=pointer]:
+                - /url: /character-counter/
+            - paragraph [ref=f1e125]: Analyze and transform text with the character counter tool. Count, convert or clean content instantly in your
+          - generic [ref=f1e126]:
+            - heading [level=3] [ref=f1e127]:
+              - link "Find and Replace Tool" [ref=f1e128] [cursor=pointer]:
+                - /url: /find-and-replace-tool/
+            - paragraph [ref=f1e129]: Analyze and transform text with the find and replace tool tool. Count, convert or clean content instantly in y
+          - generic [ref=f1e130]:
+            - heading [level=3] [ref=f1e131]:
+              - link "HTML to Markdown Converter" [ref=f1e132] [cursor=pointer]:
+                - /url: /html-to-markdown-converter/
+            - paragraph [ref=f1e133]: Analyze and transform text with the html to markdown converter tool. Count, convert or clean content instantly
+          - generic [ref=f1e134]:
+            - heading [level=3] [ref=f1e135]:
+              - link "Lowercase Converter" [ref=f1e136] [cursor=pointer]:
+                - /url: /lowercase-converter/
+            - paragraph [ref=f1e137]: Analyze and transform text with the lowercase converter tool. Count, convert or clean content instantly in you
+          - generic [ref=f1e138]:
+            - heading [level=3] [ref=f1e139]:
+              - link "Markdown Previewer" [ref=f1e140] [cursor=pointer]:
+                - /url: /markdown-previewer/
+            - paragraph [ref=f1e141]: Analyze and transform text with the markdown previewer tool. Count, convert or clean content instantly in your
+          - generic [ref=f1e142]:
+            - heading [level=3] [ref=f1e143]:
+              - link "Markdown Table Generator" [ref=f1e144] [cursor=pointer]:
+                - /url: /markdown-table-generator/
+            - paragraph [ref=f1e145]: Analyze and transform text with the markdown table generator tool. Count, convert or clean content instantly i
+      - generic [ref=f1e146]:
+        - heading "Math Calculators 30 tools" [level=2] [ref=f1e147]
+        - paragraph [ref=f1e148]:
+          - text: Browse 30 tools in Math Calculators.
+          - link "View all →" [ref=f1e149] [cursor=pointer]:
+            - /url: "#cat-math-calculators"
+        - generic [ref=f1e150]:
+          - generic [ref=f1e151]:
+            - heading [level=3] [ref=f1e152]:
+              - link "Average Calculator" [ref=f1e153] [cursor=pointer]:
+                - /url: /average-calculator/
+            - paragraph [ref=f1e154]: Calculate average calculator results accurately in your browser. Enter values, see formulas and steps, and cop
+          - generic [ref=f1e155]:
+            - heading [level=3] [ref=f1e156]:
+              - link "Binary Calculator" [ref=f1e157] [cursor=pointer]:
+                - /url: /binary-calculator/
+            - paragraph [ref=f1e158]: Calculate binary calculator results accurately in your browser. Enter values, see formulas and steps, and copy
+          - generic [ref=f1e159]:
+            - heading [level=3] [ref=f1e160]:
+              - link "Binary to Decimal" [ref=f1e161] [cursor=pointer]:
+                - /url: /binary-to-decimal/
+            - paragraph [ref=f1e162]: Calculate binary to decimal results accurately in your browser. Enter values, see formulas and steps, and copy
+          - generic [ref=f1e163]:
+            - heading [level=3] [ref=f1e164]:
+              - link "Decimal to Binary" [ref=f1e165] [cursor=pointer]:
+                - /url: /decimal-to-binary/
+            - paragraph [ref=f1e166]: Calculate decimal to binary results accurately in your browser. Enter values, see formulas and steps, and copy
+          - generic [ref=f1e167]:
+            - heading [level=3] [ref=f1e168]:
+              - link "Decimal to Fraction" [ref=f1e169] [cursor=pointer]:
+                - /url: /decimal-to-fraction/
+            - paragraph [ref=f1e170]: Calculate decimal to fraction results accurately in your browser. Enter values, see formulas and steps, and co
+          - generic [ref=f1e171]:
+            - heading [level=3] [ref=f1e172]:
+              - link "Decimal to Hex" [ref=f1e173] [cursor=pointer]:
+                - /url: /decimal-to-hex/
+            - paragraph [ref=f1e174]: Calculate decimal to hex results accurately in your browser. Enter values, see formulas and steps, and copy an
+          - generic [ref=f1e175]:
+            - heading [level=3] [ref=f1e176]:
+              - link "Exponent Calculator" [ref=f1e177] [cursor=pointer]:
+                - /url: /exponent-calculator/
+            - paragraph [ref=f1e178]: Calculate exponent calculator results accurately in your browser. Enter values, see formulas and steps, and co
+          - generic [ref=f1e179]:
+            - heading [level=3] [ref=f1e180]:
+              - link "Factor Calculator" [ref=f1e181] [cursor=pointer]:
+                - /url: /factor-calculator/
+            - paragraph [ref=f1e182]: Calculate factor calculator results accurately in your browser. Enter values, see formulas and steps, and copy
+      - generic [ref=f1e183]:
+        - heading "Student Tools 25 tools" [level=2] [ref=f1e184]
+        - paragraph [ref=f1e185]:
+          - text: Browse 25 tools in Student Tools.
+          - link "View all →" [ref=f1e186] [cursor=pointer]:
+            - /url: "#cat-student-tools"
+        - generic [ref=f1e187]:
+          - generic [ref=f1e188]:
+            - heading [level=3] [ref=f1e189]:
+              - link "Assignment Countdown" [ref=f1e190] [cursor=pointer]:
+                - /url: /assignment-countdown/
+            - paragraph [ref=f1e191]: Plan and calculate study results with this assignment countdown tool. Get instant answers, track progress and
+          - generic [ref=f1e192]:
+            - heading [level=3] [ref=f1e193]:
+              - link "CGPA Calculator" [ref=f1e194] [cursor=pointer]:
+                - /url: /cgpa-calculator/
+            - paragraph [ref=f1e195]: Plan and calculate study results with this cgpa calculator tool. Get instant answers, track progress and organ
+          - generic [ref=f1e196]:
+            - heading [level=3] [ref=f1e197]:
+              - link "Equation Solver" [ref=f1e198] [cursor=pointer]:
+                - /url: /equation-solver/
+            - paragraph [ref=f1e199]: Plan and calculate study results with this equation solver tool. Get instant answers, track progress and organ
+          - generic [ref=f1e200]:
+            - heading [level=3] [ref=f1e201]:
+              - link "Exam Countdown" [ref=f1e202] [cursor=pointer]:
+                - /url: /exam-countdown/
+            - paragraph [ref=f1e203]: Plan and calculate study results with this exam countdown tool. Get instant answers, track progress and organi
+          - generic [ref=f1e204]:
+            - heading [level=3] [ref=f1e205]:
+              - link "Exam Percentage Calculator" [ref=f1e206] [cursor=pointer]:
+                - /url: /exam-percentage-calculator/
+            - paragraph [ref=f1e207]: Plan and calculate study results with this exam percentage calculator tool. Get instant answers, track progres
+          - generic [ref=f1e208]:
+            - heading [level=3] [ref=f1e209]:
+              - link "Factorial Calculator" [ref=f1e210] [cursor=pointer]:
+                - /url: /factorial-calculator/
+            - paragraph [ref=f1e211]: Plan and calculate study results with this factorial calculator tool. Get instant answers, track progress and
+          - generic [ref=f1e212]:
+            - heading [level=3] [ref=f1e213]:
+              - link "Final Grade Calculator" [ref=f1e214] [cursor=pointer]:
+                - /url: /final-grade-calculator/
+            - paragraph [ref=f1e215]: Plan and calculate study results with this final grade calculator tool. Get instant answers, track progress an
+          - generic [ref=f1e216]:
+            - heading [level=3] [ref=f1e217]:
+              - link "Flashcard Generator" [ref=f1e218] [cursor=pointer]:
+                - /url: /flashcard-generator/
+            - paragraph [ref=f1e219]: Plan and calculate study results with this flashcard generator tool. Get instant answers, track progress and o
+      - generic [ref=f1e220]:
+        - heading "Date & Time 20 tools" [level=2] [ref=f1e221]
+        - paragraph [ref=f1e222]:
+          - text: Browse 20 tools in Date & Time.
+          - link "View all →" [ref=f1e223] [cursor=pointer]:
+            - /url: "#cat-date--time"
+        - generic [ref=f1e224]:
+          - generic [ref=f1e225]:
+            - heading [level=3] [ref=f1e226]:
+              - link "Age Calculator" [ref=f1e227] [cursor=pointer]:
+                - /url: /age-calculator/
+            - paragraph [ref=f1e228]: Compute dates and time with the age calculator tool. Find differences, add or convert units instantly in your
+          - generic [ref=f1e229]:
+            - heading [level=3] [ref=f1e230]:
+              - link "Business Days Calculator" [ref=f1e231] [cursor=pointer]:
+                - /url: /business-days-calculator/
+            - paragraph [ref=f1e232]: Compute dates and time with the business days calculator tool. Find differences, add or convert units instantl
+          - generic [ref=f1e233]:
+            - heading [level=3] [ref=f1e234]:
+              - link "Date Addition Calculator" [ref=f1e235] [cursor=pointer]:
+                - /url: /date-addition-calculator/
+            - paragraph [ref=f1e236]: Compute dates and time with the date addition calculator tool. Find differences, add or convert units instantl
+          - generic [ref=f1e237]:
+            - heading [level=3] [ref=f1e238]:
+              - link "Date Difference Calculator" [ref=f1e239] [cursor=pointer]:
+                - /url: /date-difference-calculator/
+            - paragraph [ref=f1e240]: Compute dates and time with the date difference calculator tool. Find differences, add or convert units instan
+          - generic [ref=f1e241]:
+            - heading [level=3] [ref=f1e242]:
+              - link "Date Format Converter" [ref=f1e243] [cursor=pointer]:
+                - /url: /date-format-converter/
+            - paragraph [ref=f1e244]: Compute dates and time with the date format converter tool. Find differences, add or convert units instantly i
+          - generic [ref=f1e245]:
+            - heading [level=3] [ref=f1e246]:
+              - link "Date Subtraction Calculator" [ref=f1e247] [cursor=pointer]:
+                - /url: /date-subtraction-calculator/
+            - paragraph [ref=f1e248]: Compute dates and time with the date subtraction calculator tool. Find differences, add or convert units insta
+          - generic [ref=f1e249]:
+            - heading [level=3] [ref=f1e250]:
+              - link "Day of Week Calculator" [ref=f1e251] [cursor=pointer]:
+                - /url: /day-of-week-calculator/
+            - paragraph [ref=f1e252]: Compute dates and time with the day of week calculator tool. Find differences, add or convert units instantly
+          - generic [ref=f1e253]:
+            - heading [level=3] [ref=f1e254]:
+              - link "Days Between Dates" [ref=f1e255] [cursor=pointer]:
+                - /url: /days-between-dates/
+            - paragraph [ref=f1e256]: Compute dates and time with the days between dates tool. Find differences, add or convert units instantly in y
+      - generic [ref=f1e257]:
+        - heading "Finance Calculators 25 tools" [level=2] [ref=f1e258]
+        - paragraph [ref=f1e259]:
+          - text: Browse 25 tools in Finance Calculators.
+          - link "View all →" [ref=f1e260] [cursor=pointer]:
+            - /url: "#cat-finance-calculators"
+        - generic [ref=f1e261]:
+          - generic [ref=f1e262]:
+            - heading [level=3] [ref=f1e263]:
+              - link "Break Even Calculator" [ref=f1e264] [cursor=pointer]:
+                - /url: /break-even-calculator/
+            - paragraph [ref=f1e265]: Estimate break even calculator amounts accurately in your browser. Enter figures, compare scenarios and see cl
+          - generic [ref=f1e266]:
+            - heading [level=3] [ref=f1e267]:
+              - link "Budget Calculator" [ref=f1e268] [cursor=pointer]:
+                - /url: /budget-calculator/
+            - paragraph [ref=f1e269]: Estimate budget calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear
+          - generic [ref=f1e270]:
+            - heading [level=3] [ref=f1e271]:
+              - link "CAGR Calculator" [ref=f1e272] [cursor=pointer]:
+                - /url: /cagr-calculator/
+            - paragraph [ref=f1e273]: Estimate cagr calculator amounts accurately in your browser. Enter figures, compare scenarios and see clear br
+          - generic [ref=f1e274]:
+            - heading [level=3] [ref=f1e275]:
+              - link "Compound Interest Calculator" [ref=f1e276] [cursor=pointer]:
+                - /url: /compound-interest-calculator/
+            - paragraph [ref=f1e277]: Estimate compound interest calculator amounts accurately in your browser. Enter figures, compare scenarios and
+          - generic [ref=f1e278]:
+            - heading [level=3] [ref=f1e279]:
+              - link "Discount Calculator" [ref=f1e280] [cursor=pointer]:
+                - /url: /discount-calculator/
+            - paragraph [ref=f1e281]: Estimate discount calculator amounts accurately in your browser. Enter figures, compare scenarios and see clea
+          - generic [ref=f1e282]:
+            - heading [level=3] [ref=f1e283]:
+              - link "Hourly to Yearly Salary" [ref=f1e284] [cursor=pointer]:
+                - /url: /hourly-to-yearly-salary/
+            - paragraph [ref=f1e285]: Estimate hourly to yearly salary amounts accurately in your browser. Enter figures, compare scenarios and see
+          - generic [ref=f1e286]:
+            - heading [level=3] [ref=f1e287]:
+              - link "Inflation Calculator" [ref=f1e288] [cursor=pointer]:
+                - /url: /inflation-calculator/
+            - paragraph [ref=f1e289]: Estimate inflation calculator amounts accurately in your browser. Enter figures, compare scenarios and see cle
+          - generic [ref=f1e290]:
+            - heading [level=3] [ref=f1e291]:
+              - link "Investment Return Calculator" [ref=f1e292] [cursor=pointer]:
+                - /url: /investment-return-calculator/
+            - paragraph [ref=f1e293]: Estimate investment return calculator amounts accurately in your browser. Enter figures, compare scenarios and
+      - generic [ref=f1e294]:
+        - heading "Business Calculators 20 tools" [level=2] [ref=f1e295]
+        - paragraph [ref=f1e296]:
+          - text: Browse 20 tools in Business Calculators.
+          - link "View all →" [ref=f1e297] [cursor=pointer]:
+            - /url: "#cat-business-calculators"
+        - generic [ref=f1e298]:
+          - generic [ref=f1e299]:
+            - heading [level=3] [ref=f1e300]:
+              - link "Break Even Units Calculator" [ref=f1e301] [cursor=pointer]:
+                - /url: /break-even-units-calculator/
+            - paragraph [ref=f1e302]: Measure business performance with the break even units calculator tool. Enter metrics, see formulas and instan
+          - generic [ref=f1e303]:
+            - heading [level=3] [ref=f1e304]:
+              - link "CPC Calculator" [ref=f1e305] [cursor=pointer]:
+                - /url: /cpc-calculator/
+            - paragraph [ref=f1e306]: Measure business performance with the cpc calculator tool. Enter metrics, see formulas and instant results pri
+          - generic [ref=f1e307]:
+            - heading [level=3] [ref=f1e308]:
+              - link "CPM Calculator" [ref=f1e309] [cursor=pointer]:
+                - /url: /cpm-calculator/
+            - paragraph [ref=f1e310]: Measure business performance with the cpm calculator tool. Enter metrics, see formulas and instant results pri
+          - generic [ref=f1e311]:
+            - heading [level=3] [ref=f1e312]:
+              - link "CTR Calculator" [ref=f1e313] [cursor=pointer]:
+                - /url: /ctr-calculator/
+            - paragraph [ref=f1e314]: Measure business performance with the ctr calculator tool. Enter metrics, see formulas and instant results pri
+          - generic [ref=f1e315]:
+            - heading [level=3] [ref=f1e316]:
+              - link "Churn Rate Calculator" [ref=f1e317] [cursor=pointer]:
+                - /url: /churn-rate-calculator/
+            - paragraph [ref=f1e318]: Measure business performance with the churn rate calculator tool. Enter metrics, see formulas and instant resu
+          - generic [ref=f1e319]:
+            - heading [level=3] [ref=f1e320]:
+              - link "Conversion Rate Calculator" [ref=f1e321] [cursor=pointer]:
+                - /url: /conversion-rate-calculator/
+            - paragraph [ref=f1e322]: Measure business performance with the conversion rate calculator tool. Enter metrics, see formulas and instant
+          - generic [ref=f1e323]:
+            - heading [level=3] [ref=f1e324]:
+              - link "Customer Acquisition Cost Calculator" [ref=f1e325] [cursor=pointer]:
+                - /url: /customer-acquisition-cost-calculator/
+            - paragraph [ref=f1e326]: Measure business performance with the customer acquisition cost calculator tool. Enter metrics, see formulas a
+          - generic [ref=f1e327]:
+            - heading [level=3] [ref=f1e328]:
+              - link "Customer Lifetime Value Calculator" [ref=f1e329] [cursor=pointer]:
+                - /url: /customer-lifetime-value-calculator/
+            - paragraph [ref=f1e330]: Measure business performance with the customer lifetime value calculator tool. Enter metrics, see formulas and
+      - generic [ref=f1e331]:
+        - heading "Color Tools 20 tools" [level=2] [ref=f1e332]
+        - paragraph [ref=f1e333]:
+          - text: Browse 20 tools in Color Tools.
+          - link "View all →" [ref=f1e334] [cursor=pointer]:
+            - /url: "#cat-color-tools"
+        - generic [ref=f1e335]:
+          - generic [ref=f1e336]:
+            - heading [level=3] [ref=f1e337]:
+              - link "Analogous Color Generator" [ref=f1e338] [cursor=pointer]:
+                - /url: /analogous-color-generator/
+            - paragraph [ref=f1e339]: Convert and design colors with the analogous color generator tool. Pick, preview and copy palettes instantly i
+          - generic [ref=f1e340]:
+            - heading [level=3] [ref=f1e341]:
+              - link "CSS Color Generator" [ref=f1e342] [cursor=pointer]:
+                - /url: /css-color-generator/
+            - paragraph [ref=f1e343]: Convert and design colors with the css color generator tool. Pick, preview and copy palettes instantly in your
+          - generic [ref=f1e344]:
+            - heading [level=3] [ref=f1e345]:
+              - link "Color Blindness Simulator" [ref=f1e346] [cursor=pointer]:
+                - /url: /color-blindness-simulator/
+            - paragraph [ref=f1e347]: Convert and design colors with the color blindness simulator tool. Pick, preview and copy palettes instantly i
+          - generic [ref=f1e348]:
+            - heading [level=3] [ref=f1e349]:
+              - link "Color Name Finder" [ref=f1e350] [cursor=pointer]:
+                - /url: /color-name-finder/
+            - paragraph [ref=f1e351]: Convert and design colors with the color name finder tool. Pick, preview and copy palettes instantly in your b
+          - generic [ref=f1e352]:
+            - heading [level=3] [ref=f1e353]:
+              - link "Color Palette Generator" [ref=f1e354] [cursor=pointer]:
+                - /url: /color-palette-generator/
+            - paragraph [ref=f1e355]: Convert and design colors with the color palette generator tool. Pick, preview and copy palettes instantly in
+          - generic [ref=f1e356]:
+            - heading [level=3] [ref=f1e357]:
+              - link "Color Picker" [ref=f1e358] [cursor=pointer]:
+                - /url: /color-picker/
+            - paragraph [ref=f1e359]: Convert and design colors with the color picker tool. Pick, preview and copy palettes instantly in your browse
+          - generic [ref=f1e360]:
+            - heading [level=3] [ref=f1e361]:
+              - link "Complementary Color Generator" [ref=f1e362] [cursor=pointer]:
+                - /url: /complementary-color-generator/
+            - paragraph [ref=f1e363]: Convert and design colors with the complementary color generator tool. Pick, preview and copy palettes instant
+          - generic [ref=f1e364]:
+            - heading [level=3] [ref=f1e365]:
+              - link "Contrast Checker" [ref=f1e366] [cursor=pointer]:
+                - /url: /contrast-checker/
+            - paragraph [ref=f1e367]: Convert and design colors with the contrast checker tool. Pick, preview and copy palettes instantly in your br
+      - generic [ref=f1e368]:
+        - heading "Image Tools 20 tools" [level=2] [ref=f1e369]
+        - paragraph [ref=f1e370]:
+          - text: Browse 20 tools in Image Tools.
+          - link "View all →" [ref=f1e371] [cursor=pointer]:
+            - /url: "#cat-image-tools"
+        - generic [ref=f1e372]:
+          - generic [ref=f1e373]:
+            - heading [level=3] [ref=f1e374]:
+              - link "App Icon Generator" [ref=f1e375] [cursor=pointer]:
+                - /url: /app-icon-generator/
+            - paragraph [ref=f1e376]: Process images with the app icon generator tool directly in your browser. Convert, resize or inspect files loc
+          - generic [ref=f1e377]:
+            - heading [level=3] [ref=f1e378]:
+              - link "Base64 to Image" [ref=f1e379] [cursor=pointer]:
+                - /url: /base64-to-image/
+            - paragraph [ref=f1e380]: Process images with the base64 to image tool directly in your browser. Convert, resize or inspect files locall
+          - generic [ref=f1e381]:
+            - heading [level=3] [ref=f1e382]:
+              - link "Favicon Generator" [ref=f1e383] [cursor=pointer]:
+                - /url: /favicon-generator/
+            - paragraph [ref=f1e384]: Process images with the favicon generator tool directly in your browser. Convert, resize or inspect files loca
+          - generic [ref=f1e385]:
+            - heading [level=3] [ref=f1e386]:
+              - link "GIF Frame Extractor" [ref=f1e387] [cursor=pointer]:
+                - /url: /gif-frame-extractor/
+            - paragraph [ref=f1e388]: Process images with the gif frame extractor tool directly in your browser. Convert, resize or inspect files lo
+          - generic [ref=f1e389]:
+            - heading [level=3] [ref=f1e390]:
+              - link "Image Aspect Ratio Calculator" [ref=f1e391] [cursor=pointer]:
+                - /url: /image-aspect-ratio-calculator/
+            - paragraph [ref=f1e392]: Process images with the image aspect ratio calculator tool directly in your browser. Convert, resize or inspec
+          - generic [ref=f1e393]:
+            - heading [level=3] [ref=f1e394]:
+              - link "Image Compressor" [ref=f1e395] [cursor=pointer]:
+                - /url: /image-compressor/
+            - paragraph [ref=f1e396]: Process images with the image compressor tool directly in your browser. Convert, resize or inspect files local
+          - generic [ref=f1e397]:
+            - heading [level=3] [ref=f1e398]:
+              - link "Image Cropper" [ref=f1e399] [cursor=pointer]:
+                - /url: /image-cropper/
+            - paragraph [ref=f1e400]: Process images with the image cropper tool directly in your browser. Convert, resize or inspect files locally
+          - generic [ref=f1e401]:
+            - heading [level=3] [ref=f1e402]:
+              - link "Image Dimension Checker" [ref=f1e403] [cursor=pointer]:
+                - /url: /image-dimension-checker/
+            - paragraph [ref=f1e404]: Process images with the image dimension checker tool directly in your browser. Convert, resize or inspect file
+    - paragraph [ref=f1e406]: All tools run locally — your data never leaves your device.
+  - contentinfo [ref=f1e407]:
+    - generic [ref=f1e408]:
+      - generic [ref=f1e409]:
+        - strong [ref=f1e410]: DevelopersKit
+        - paragraph [ref=f1e411]: Fast, free, browser-based tools for developers and everyday tasks. No uploads — everything runs locally.
+      - generic [ref=f1e412]:
+        - paragraph [ref=f1e413]:
+          - link "Homepage" [ref=f1e414] [cursor=pointer]:
+            - /url: /
+          - text: ·
+          - link "Sitemap" [ref=f1e415] [cursor=pointer]:
+            - /url: /sitemap.xml
+          - text: ·
+          - link "Privacy" [ref=f1e416] [cursor=pointer]:
+            - /url: /privacy/
+        - paragraph [ref=f1e417]: © 2026 DevelopersKit. All tools run client-side.

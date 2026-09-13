@@ -81,3 +81,28 @@ input:focus,textarea:focus,select:focus{outline:none;border-color:var(--primary)
 @media(min-width:1024px){.hero h1{font-size:2.5rem}.tool-grid{grid-template-columns:repeat(4,1fr)}}
 @media(min-width:1280px){.container{padding:0 var(--space-4)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+/* Homepage hub styles */
+.hero{background:linear-gradient(180deg,#f0f7ff 0%,#ffffff 100%);border-radius:var(--radius-lg);padding:var(--space-5) var(--space-4);margin-bottom:var(--space-4)}
+.hero h1{font-size:1.9rem;line-height:1.2;letter-spacing:-.03em;margin:0 auto var(--space-2);max-width:700px}
+.hero-sub{color:var(--muted);max-width:640px;margin:0 auto var(--space-2);font-size:1.05rem}
+.stats-bar{color:var(--muted);font-size:.95rem;margin-bottom:var(--space-3)}
+.hero-search{max-width:520px;margin:0 auto var(--space-3)}
+.hero-search .search-input{font-size:1rem;padding:12px 14px 12px 36px}
+.category-grid{grid-template-columns:1fr;gap:var(--space-4)}
+.cat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:var(--space-4);margin-bottom:var(--space-3)}
+.cat-card h2{font-size:1.1rem;font-weight:700}
+.cat-count{font-weight:400;font-size:.85rem;color:var(--muted);margin-left:4px}
+.cat-card > p{color:var(--muted);font-size:.9rem;margin-bottom:var(--space-2)}
+.view-all{display:inline-block;margin-top:var(--space-3);font-size:.9rem;font-weight:600;color:var(--primary);text-decoration:none}
+.view-all:hover{text-decoration:underline}
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:var(--space-3);margin-top:var(--space-3)}
+.tool-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:var(--space-3);transition:box-shadow .15s,border-color .15s;display:flex;flex-direction:column}
+.tool-card:hover{border-color:var(--primary);box-shadow:0 4px 12px rgba(37,99,235,.08)}
+.tool-card h3{font-size:.95rem;margin-bottom:2px;flex:1}
+.tool-card h3 a{color:var(--text);font-size:.95rem;text-decoration:none}
+.tool-card h3 a:hover{color:var(--primary)}
+.tool-card p{color:var(--muted);font-size:.85rem;margin-top:4px;line-height:1.4}
+.popular-pill{padding:8px 14px;border:1px solid var(--border);border-radius:999px;background:#fff;font-size:.88rem;color:var(--gray-700)}
+.popular-pill:hover{border-color:var(--primary);color:var(--primary);text-decoration:none}
+@media(min-width:768px){.category-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.category-grid{grid-template-columns:repeat(2,1fr)}}
