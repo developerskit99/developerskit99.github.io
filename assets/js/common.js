@@ -12,7 +12,7 @@ if(a)a.hidden=ex;var it=q.closest(".faq-item");if(it){if(ex)it.removeAttribute("
 document.querySelectorAll("[data-copy]").forEach(b=>{b.addEventListener("click",()=>{var sel=b.getAttribute("data-copy-target");
 var src=sel?document.querySelector(sel):null;var txt=src?src.value||src.textContent:"";
 copyText(txt,b)})})});
-function copyText(t,btn){if(!t)return;function done(ok){if(!btn)return;var o=btn.textContent;btn.textContent=ok?"Copied!":"Failed";
+function copyText(t,btn){if(window.ToolKit&&window.ToolKit.copyText){return window.ToolKit.copyText(t,btn)}if(!t)return;function done(ok){if(!btn)return;var o=btn.textContent;btn.textContent=ok?"Copied!":"Failed";
 setTimeout(()=>btn.textContent=o,1600)}
 if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(()=>done(1),()=>fallback(t,done))}
 else fallback(t,done)}

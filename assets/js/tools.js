@@ -11,7 +11,7 @@ TK.downloadText=(str,fn,mime)=>{try{const b=new Blob([String(str??'')],{type:mim
 TK.safeJSONParse=(str,fb)=>{try{if(!TK.validateRequired(str))throw new Error('Empty');return{ok:true,data:JSON.parse(String(str)),error:''}}catch(e){return{ok:false,data:fb??null,error:e.message||'Invalid JSON'}}};
 TK.csvParse=txt=>{const s=String(txt??'');if(!s.trim())return{ok:false,data:[],error:'Empty CSV'};try{const rows=[];let row=[],cur='',q=false;for(let i=0;i<s.length;i++){const c=s[i],n=s[i+1];if(c=='"'){if(q&&n=='"'){cur+='"';i++}else q=!q}else if(c==','&&!q){row.push(cur);cur=''}else if((c=='\n'||c=='\r')&&!q){if(cur!==''||row.length){row.push(cur);rows.push(row);row=[];cur=''}if(c=='\r'&&n=='\n')i++}else cur+=c}if(cur!==''||row.length){row.push(cur);rows.push(row)}return{ok:true,data:rows,error:''}}catch(e){return{ok:false,data:[],error:e.message}}};
 TK.csvStringify=rows=>{try{return rows.map(r=>r.map(v=>{const s=String(v??'');return /[",\n]/.test(s)?'"'+s.replace(/"/g,'""')+'"':s}).join(',')).join('\n')}catch{return''}};
-TK.xmlValidate=str=>{try{if(!TK.validateRequired(str))return{ok:false,error:'Empty XML'};const d=new DOMParser().parseFromString(String(str),'application/xml');const e=d.querySelector('parsererror');if(e)return{ok:false,error:e.textContent.slice(0,400)};return{ok:true,error:''}}catch(e){return{ok:false,error:e.message}}};
+TK.xmlValidate=str=>{try{if(!TK.validateRequired(str))return{ok:false,error:'Empty XML'};if(typeof DOMParser==='undefined'){const s=String(str).trim();if(!/^<[^>]+>[\s\S]*$/.test(s))return{ok:false,error:'Invalid XML'};const stack=[],re=/<\/?([A-Za-z_][\w:.-]*)(?:[^>"']|"[^"]*"|'[^']*')*\/?>/g;let m,self=false;while((m=re.exec(s))!==null){const full=m[0],tag=m[1];if(full[1]==='?')continue;if(full.startsWith('<!--'))continue;if(full.endsWith('/>'))continue;if(full[1]==='/'){if(!stack.length||stack.pop()!==tag)return{ok:false,error:'Mismatched tag: '+tag}}else{stack.push(tag)}}if(stack.length)return{ok:false,error:'Unclosed tag: '+stack.pop()};return{ok:true,error:''}}const d=new DOMParser().parseFromString(String(str),'application/xml');const e=d.querySelector('parsererror');if(e)return{ok:false,error:e.textContent.slice(0,400)};return{ok:true,error:''}}catch(e){return{ok:false,error:e.message}}};
 TK.yamlParse=str=>{try{const s=String(str??'');if(!s.trim())return{ok:false,data:null,error:'Empty YAML'};const out={};let ak=null;for(const raw of s.split('\n')){const line=raw.trim();if(!line||line.startsWith('#'))continue;if(line.startsWith('- ')){if(!ak)throw new Error('Array without key');(out[ak]=out[ak]||[]).push(line.slice(2).trim().replace(/^["']|["']$/g,''))}else{const i=line.indexOf(':');if(i==-1)continue;const k=line.slice(0,i).trim(),v=line.slice(i+1).trim().replace(/^["']|["']$/g,'');if(!v){ak=k;out[k]=[]}else{ak=null;out[k]=/^-?\d+(\.\d+)?$/.test(v)?Number(v):v==='true'?true:v==='false'?false:v==='null'?null:v}}}return{ok:true,data:out,error:''}}catch(e){return{ok:false,data:null,error:e.message}}};
 TK.yamlStringify=obj=>{try{if(obj==null||typeof obj!=='object')return String(obj??'');return Object.entries(obj).map(([k,v])=>Array.isArray(v)?k+':\n'+v.map(x=>'  - '+String(x)).join('\n'):k+': '+String(v)).join('\n')}catch{return''}};
 // encoding
@@ -21,7 +21,7 @@ TK.base64UrlDecode=s=>{try{let t=String(s??'').replace(/-/g,'+').replace(/_/g,'/
 TK.urlEncode=s=>{try{return encodeURIComponent(String(s??''))}catch{return''}};
 TK.urlDecode=s=>{try{return decodeURIComponent(String(s??''))}catch{return''}};
 TK.htmlEncode=s=>TK.escapeHTML(s);
-TK.htmlDecode=s=>{try{const t=String(s??''),ta=document.createElement('textarea');ta.innerHTML=t;const v=ta.value;if(v===t&&/&/.test(t)){const m={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&apos;':"'"};return t.replace(/&(amp|lt|gt|quot|#39|apos);/g,x=>m[x]||x)}return v}catch{return String(s??'')}};
+TK.htmlDecode=s=>{try{const t=String(s??'');if(typeof document==='undefined'){const m={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&apos;':"'",'&#x27;':"'",'&#x2F;':'/','&#60;':'<','&#62;':'>'};return t.replace(/&(amp|lt|gt|quot|#39|apos|#x27|#x2F|#60|#62);/g,x=>m[x]||x)}const ta=document.createElement('textarea');ta.innerHTML=t;const v=ta.value;if(v===t&&/&/.test(t)){const m={'&amp;':'&','&lt;':'<','&gt;':'>','&quot;':'"','&#39;':"'",'&apos;':"'"};return t.replace(/&(amp|lt|gt|quot|#39|apos);/g,x=>m[x]||x)}return v}catch{return String(s??'')}};
 // hash / uuid / jwt / time
 TK.hash=async(t,a)=>{try{let al=String(a||'SHA-256').toUpperCase().replace('SHA1','SHA-1');if(!['SHA-1','SHA-256','SHA-384','SHA-512'].includes(al))al='SHA-256';const b=new TextEncoder().encode(String(t??'')),d=await crypto.subtle.digest(al,b);return Array.from(new Uint8Array(d)).map(x=>x.toString(16).padStart(2,'0')).join('')}catch{return''}};
 TK.uuid=()=>{try{return crypto.randomUUID()}catch{return'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c=='x'?r:r&0x3|0x8).toString(16)})}};
@@ -34,12 +34,18 @@ TK.validateCron=expr=>{try{const s=String(expr??'').trim();if(!s)return{ok:false
 TK.regexTest=(pat,flags,txt)=>{try{const p=String(pat??'');if(flags&&/[^gimsuy]/.test(flags))return{ok:false,matches:[],error:'Bad flags'};const re=new RegExp(p,flags||''),s=String(txt??''),ms=[];let m;if(re.global){while((m=re.exec(s))!==null){ms.push({match:m[0],index:m.index,groups:m.slice(1)});if(m[0]=='')re.lastIndex++;if(ms.length>500)break}}else{const r=s.match(re);if(r)ms.push({match:r[0],index:r.index,groups:r.slice(1)})}return{ok:true,matches:ms,error:''}}catch(e){return{ok:false,matches:[],error:e.message}}};
 // lorem
 TK.lorem=(type,count)=>{const w='lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'.split(' '),n=Math.max(1,Math.min(1000,Number(count)||3)),sent=()=>{const l=6+Math.floor(Math.random()*8);let s=[];for(let i=0;i<l;i++)s.push(w[Math.floor(Math.random()*w.length)]);s[0]=s[0][0].toUpperCase()+s[0].slice(1);return s.join(' ')+'.'};try{if(type=='words'){let o=[];for(let i=0;i<n;i++)o.push(w[Math.floor(Math.random()*w.length)]);return o.join(' ')}if(type=='sentences'){let o=[];for(let i=0;i<n;i++)o.push(sent());return o.join(' ')}let out=[];for(let i=0;i<n;i++){let p=[],sc=3+Math.floor(Math.random()*3);for(let j=0;j<sc;j++)p.push(sent());out.push(p.join(' '))}return out.join('\n\n')}catch{return''}};
-// minify/beautify
-TK.cssMinify=s=>{try{return String(s??'').replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s+/g,' ').replace(/\s*([{}:;,>+~])\s*/g,'$1').replace(/;}/g,'}').trim()}catch{return''}};
+// minify/beautify — BASIC regex-based implementations (edge cases possible, not full parsers)
+// TK.cssMinify: BASIC — protects quoted strings via placeholders, then strips comments/whitespace
+TK.cssMinify=s=>{try{const src=String(s??'');const strs=[];const prot=src.replace(/("(?:\\[\s\S]|[^"\\\n])*?"|'(?:\\[\s\S]|[^'\\\n])*?')/g,m=>{strs.push(m);return'\x00'+(strs.length-1)+'\x00'});let x=prot.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\s+/g,' ').replace(/\s*([{}:;,>+~])\s*/g,'$1').replace(/;}/g,'}').trim();x=x.replace(/\x00(\d+)\x00/g,(m,i)=>strs[Number(i)]??m);return x}catch{return''}};
+// TK.cssBeautify: BASIC regex-based
 TK.cssBeautify=s=>{try{let x=String(s??'').replace(/\/\*[\s\S]*?\*\//g,'').trim();x=x.replace(/\s*{\s*/g,' {\n  ').replace(/;\s*/g,';\n  ').replace(/\s*}\s*/g,'\n}\n').replace(/\n\s*\n/g,'\n').trim();return x}catch{return''}};
+// TK.htmlMinify: BASIC regex-based
 TK.htmlMinify=s=>{try{return String(s??'').replace(/<!--[\s\S]*?-->/g,'').replace(/\s+/g,' ').replace(/>\s+</g,'><').trim()}catch{return''}};
+// TK.htmlBeautify: BASIC regex-based
 TK.htmlBeautify=s=>{try{return String(s??'').replace(/>\s+</g,'>\n<').split('\n').map(l=>l.trim()).join('\n')}catch{return''}};
-TK.jsMinify=s=>{try{let x=String(s??'');x=x.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\/\/[^\n]*\n/g,'\n');return x.replace(/\s+/g,' ').replace(/\s*([{}();,:=+\-*/<>])\s*/g,'$1').trim()}catch{return''}};
+// TK.jsMinify: BASIC — extracts string literals (single/double/backtick with backslash escapes) into placeholders, then strips comments/whitespace
+TK.jsMinify=s=>{try{const src=String(s??'');const strs=[];const prot=src.replace(/("(?:\\[\s\S]|[^"\\])*?"|'(?:\\[\s\S]|[^'\\])*?'|`(?:\\[\s\S]|[^`\\])*?`)/g,m=>{strs.push(m);return'\x00'+(strs.length-1)+'\x00'});let x=prot.replace(/\/\*[\s\S]*?\*\//g,'').replace(/\/\/[^\n\x00]*?(?=\n|$)/g,'');x=x.replace(/\s+/g,' ').replace(/\s*([{}();,:=+\-*/<>])\s*/g,'$1').trim();x=x.replace(/\x00(\d+)\x00/g,(m,i)=>strs[Number(i)]??m);return x}catch{return''}};
+// TK.jsBeautify: BASIC regex-based
 TK.jsBeautify=s=>{try{return String(s??'').replace(/;/g,';\n').replace(/{/g,' {\n').replace(/}/g,'\n}\n').replace(/\n\s*\n/g,'\n').trim()}catch{return''}};
 // gradient/shadow
 TK.buildGradient=(type,colors,ang)=>{try{const cs=Array.isArray(colors)?colors:String(colors??'').split(',').map(x=>x.trim()).filter(Boolean);if(!cs.length)throw new Error('x');cs.forEach(c=>{if(!/^#([0-9a-f]{3,8})$/i.test(c)&&!/^rgba?\(/i.test(c)&&!/^hsla?\(/i.test(c))throw new Error('bad '+c)});if(type=='radial')return'radial-gradient(circle, '+cs.join(', ')+')';const a=isFinite(ang)?Number(ang)+'deg':'90deg';return'linear-gradient('+a+', '+cs.join(', ')+')'}catch{return''}};
@@ -73,7 +79,7 @@ TK.toBinary=n=>(Number(n)>>>0).toString(2);
 TK.toHex=n=>Number(n).toString(16);
 TK.toOctal=n=>Number(n).toString(8);
 TK.toRoman=num=>{let n=Number(num)|0;if(n<=0||n>3999)return'';const m=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let o='';for(const[v,s]of m)while(n>=v){o+=s;n-=v}return o};
-TK.randomInt=(mn,mx)=>{const a=Math.ceil(Number(mn)),b=Math.floor(Number(mx));if(!isFinite(a)||!isFinite(b)||a>b)return NaN;const r=crypto.getRandomValues?crypto.getRandomValues(new Uint32Array(1))[0]/4294967296:Math.random();return Math.floor(r*(b-a+1))+a};
+TK.randomInt=(mn,mx)=>{const a=Math.ceil(Number(mn)),b=Math.floor(Number(mx));if(!isFinite(a)||!isFinite(b)||a>b)return NaN;const r=(typeof crypto!=='undefined'&&crypto.getRandomValues)?crypto.getRandomValues(new Uint32Array(1))[0]/4294967296:Math.random();return Math.floor(r*(b-a+1))+a};
 TK.pow=(b,e)=>Math.pow(Number(b),Number(e));
 TK.sqrt=n=>{const v=Number(n);return v<0?NaN:Math.sqrt(v)};
 // student
@@ -87,7 +93,7 @@ TK.convertLength=(v,f,t)=>{const m={mm:0.001,cm:0.01,m:1,km:1000,inch:0.0254,ft:
 TK.convertWeight=(v,f,t)=>{const m={mg:0.001,g:1,kg:1000,lb:453.592,oz:28.3495},a=Number(v);return!isFinite(a)||!m[f]||!m[t]?NaN:a*m[f]/m[t]};
 TK.convertTemp=(v,f,t)=>{const a=Number(v);if(!isFinite(a))return NaN;let c;if(f=='c')c=a;else if(f=='f')c=(a-32)*5/9;else if(f=='k')c=a-273.15;else return NaN;if(t=='c')return c;if(t=='f')return c*9/5+32;if(t=='k')return c+273.15;return NaN};
 // date
-TK.age=dob=>{try{const d=new Date(dob);if(isNaN(d))throw new Error('x');const n=new Date();let y=n.getFullYear()-d.getFullYear(),m=n.getMonth()-d.getMonth();if(m<0||(m===0&&n.getDate()<d.getDate()))y--;return y}catch{return NaN}};
+TK.age=dob=>{try{const d=new Date(dob);if(isNaN(d.getTime()))return null;const n=new Date();if(d>n)return null;let years=n.getFullYear()-d.getFullYear(),months=n.getMonth()-d.getMonth(),days=n.getDate()-d.getDate();if(days<0){months--;const prev=new Date(n.getFullYear(),n.getMonth(),0).getDate();days+=prev}if(months<0){years--;months+=12}if(years<0)return null;const totalDays=Math.floor((n-d)/86400000);return{years:years,months:months,days:days,totalDays:totalDays}}catch{return null}};
 TK.dateDiff=(a,b,u)=>{try{const d1=new Date(a),d2=new Date(b);if(isNaN(d1)||isNaN(d2))throw new Error('x');const ms=Math.abs(d2-d1),mp={days:ms/86400000,hours:ms/3600000,minutes:ms/60000,seconds:ms/1000};return u?(mp[u]??ms/86400000):ms/86400000}catch{return NaN}};
 TK.businessDays=(s,e)=>{try{let a=new Date(s),b=new Date(e);if(isNaN(a)||isNaN(b))throw new Error('x');if(a>b)[a,b]=[b,a];let c=0,cur=new Date(a);while(cur<=b){const d=cur.getDay();if(d!==0&&d!==6)c++;cur.setDate(cur.getDate()+1)}return c}catch{return NaN}};
 TK.addDays=(d,n)=>{try{const x=new Date(d);if(isNaN(x))throw new Error('x');x.setDate(x.getDate()+Number(n));return x.toISOString().slice(0,10)}catch{return''}};
@@ -104,7 +110,8 @@ TK.sip=(p,r,n)=>{const P=Number(p),R=Number(r)/12/100,N=Number(n);if([P,R,N].som
 TK.inflation=(a,r,y)=>{const x=Number(a),R=Number(r)/100,Y=Number(y);return[x,R,Y].some(v=>!isFinite(v))?NaN:x*Math.pow(1+R,Y)};
 TK.discount=(p,d)=>{const a=Number(p),b=Number(d);return!isFinite(a)||!isFinite(b)?NaN:a-a*b/100};
 TK.margin=(c,p)=>{const a=Number(c),b=Number(p);return!isFinite(a)||!isFinite(b)||b===0?NaN:(b-a)/b*100};
-TK.markup=(c,p)=>{const a=Number(c),b=Number(p);return!isFinite(a)||!isFinite(b)?NaN:a*(1+b/100)};
+// finance inputs: cost=c, price=p. markup formula: cost*(1+pct/100)
+TK.markup=(cost,pct)=>{const a=Number(cost),b=Number(pct);return!isFinite(a)||!isFinite(b)?NaN:a*(1+b/100)};
 TK.tip=(a,p,n)=>{const x=Number(a),y=Number(p),c=Math.max(1,Number(n)||1);if(!isFinite(x)||!isFinite(y))return{tip:NaN,total:NaN,perPerson:NaN};const t=x*y/100;return{tip:t,total:x+t,perPerson:(x+t)/c}};
 TK.salary=(a,m)=>{const x=Number(a),n=Number(m)||12;return!isFinite(x)||!isFinite(n)||n<=0?NaN:x/n};
 TK.tax=(i,r)=>{const a=Number(i),b=Number(r);return!isFinite(a)||!isFinite(b)?NaN:a*b/100};
@@ -114,13 +121,18 @@ TK.netWorth=(as,li)=>{const a=(Array.isArray(as)?as:[as]).map(Number).filter(isF
 TK.roi=(g,c)=>{const a=Number(g),b=Number(c);return!isFinite(a)||!isFinite(b)||b===0?NaN:(a-b)/b*100};
 TK.roas=(r,a)=>{const x=Number(r),y=Number(a);return!isFinite(x)||!isFinite(y)||y===0?NaN:x/y};
 TK.conversionRate=(c,t)=>{const a=Number(c),b=Number(t);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b*100};
-TK.ctr=(c,i)=>TK.conversionRate(c,i);
+// CTR % = clicks / impressions * 100
+TK.ctr=(clicks,impr)=>{const a=Number(clicks),b=Number(impr);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b*100};
 TK.cpm=(c,i)=>{const a=Number(c),b=Number(i);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b*1000};
 TK.cpc=(c,k)=>{const a=Number(c),b=Number(k);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b};
-TK.cac=(s,c)=>TK.cpc(s,c);
+// business: explicit domain formulas (inputs + formula documented)
+// CAC = spend / customers
+TK.cac=(spend,customers)=>{const s=+spend,c=+customers;return Number.isFinite(s)&&Number.isFinite(c)&&c!==0?s/c:NaN};
 TK.clv=(a,f,l)=>{const x=Number(a),y=Number(f),z=Number(l);return[x,y,z].some(v=>!isFinite(v))?NaN:x*y*z};
-TK.churn=(l,t)=>TK.conversionRate(l,t);
-TK.growthRate=(p,a)=>TK.pctChange(a,p);
+// churn % = lost / start * 100
+TK.churn=(lost,start)=>{const a=Number(lost),b=Number(start);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b*100};
+// growthRate % = (newV-oldV)/|oldV|*100 (arg order: old, new)
+TK.growthRate=(oldV,newV)=>{const a=Number(oldV),b=Number(newV);return!isFinite(a)||!isFinite(b)||a===0?NaN:(b-a)/Math.abs(a)*100};
 TK.profitMargin=(r,c)=>{const a=Number(r),b=Number(c);return!isFinite(a)||!isFinite(b)||a===0?NaN:(a-b)/a*100};
 TK.markupVsMargin=(c,p)=>({markup:c?(p-c)/c*100:NaN,margin:p?(p-c)/p*100:NaN});
 TK.turnover=(c,a)=>{const x=Number(c),y=Number(a);return!isFinite(x)||!isFinite(y)||y===0?NaN:x/y};
@@ -128,6 +140,28 @@ TK.commission=(s,r)=>{const a=Number(s),b=Number(r);return!isFinite(a)||!isFinit
 TK.breakEven=(f,p,v)=>{const a=Number(f),b=Number(p),c=Number(v);return[a,b,c].some(x=>!isFinite(x))||b<=c?NaN:a/(b-c)};
 TK.saasMetrics=(mrr,ch,arpu)=>{const m=Number(mrr),c=Number(ch),a=Number(arpu);return{arr:isFinite(m)?m*12:NaN,churned:isFinite(m)&&isFinite(c)?m*c/100:NaN,customers:isFinite(m)&&isFinite(a)&&a?m/a:NaN}};
 TK.freelanceRate=(sal,h)=>{const a=Number(sal),b=Number(h);return!isFinite(a)||!isFinite(b)||b===0?NaN:a/b};
+// fractions / proportion / primes / scientific
+// fractionToDecimal inputs: string like "3/4" or "1 1/2" (unicode halves supported); formula: int + num/den
+TK.fractionToDecimal=s=>{try{let t=String(s??'').trim();if(!t)return NaN;const uni={'½':'1/2','⅓':'1/3','⅔':'2/3','¼':'1/4','¾':'3/4','⅕':'1/5','⅖':'2/5','⅗':'3/5','⅘':'4/5','⅙':'1/6','⅚':'5/6','⅐':'1/7','⅛':'1/8','⅜':'3/8','⅝':'5/8','⅞':'7/8','⅑':'1/9','⅒':'1/10','↉':'0/3'};for(const[k,v]of Object.entries(uni)){if(t.includes(k)){if(new RegExp('\\d'+k+'$').test(t)||new RegExp('^\\d+'+k+'$').test(t.replace(/\s/g,'')))t=t.replaceAll(k,' '+v);else t=t.replaceAll(k,v)}}t=t.trim();let m=t.match(/^(-)?\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);if(m){const neg=m[1]?-1:1,whole=Number(m[2]),num=Number(m[3]),den=Number(m[4]);if(!den)return NaN;return neg*(whole+num/den)}m=t.match(/^(-)?\s*(\d+(?:\.\d+)?)\s*\/\s*(\d+(?:\.\d+)?)$/);if(m){const neg=m[1]?-1:1,num=Number(m[2]),den=Number(m[3]);if(!den)return NaN;return neg*num/den}const v=Number(t);return isFinite(v)?v:NaN}catch{return NaN}};
+// toMixed inputs: decimal number; formula: integer part + reduced remainder (denominator <= 1000)
+TK.toMixed=dec=>{try{const v=Number(dec);if(!isFinite(v))return'';const neg=v<0;const a=Math.abs(v);let ip=Math.floor(a+1e-9);let rem=a-ip;if(rem<1e-9)return(neg?'-':'')+String(ip);let n=1,de=1;for(de=1;de<=1000;de++){n=Math.round(rem*de);if(Math.abs(n/de-rem)<1e-6)break}if(n===0)return(neg?'-':'')+String(ip);const g=TK.gcd(n,de);n/=g;de/=g;if(n>=de){ip+=Math.floor(n/de);n=n%de;if(n===0)return(neg?'-':'')+String(ip)}const frac=n+'/'+de;return(neg?'-':'')+(ip===0?frac:ip+' '+frac)}catch{return''}};
+// solveProportion inputs: a/b = c/x; formula: x = b*c/a
+TK.solveProportion=(a,b,c)=>{const A=Number(a),B=Number(b),C=Number(c);if(!isFinite(A)||!isFinite(B)||!isFinite(C)||A===0)return NaN;return B*C/A};
+// primesUpTo inputs: n (capped at 100000); formula: sieve of Eratosthenes
+TK.primesUpTo=n=>{let lim=Math.floor(Number(n));if(!isFinite(lim)||lim<2)return[];lim=Math.min(lim,100000);const sieve=new Uint8Array(lim+1);const out=[];for(let i=2;i<=lim;i++){if(!sieve[i]){out.push(i);if(i*i<=lim)for(let j=i*i;j<=lim;j+=i)sieve[j]=1}}return out};
+// toScientific inputs: number; formula: Number.toExponential(2)
+TK.toScientific=n=>{const v=Number(n);return isFinite(v)?v.toExponential(2):''};
+// fromScientific inputs: string like "1.23e+5"; formula: Number(s)
+TK.fromScientific=s=>{try{const t=String(s??'').trim();if(!t)return NaN;const v=Number(t);return isFinite(v)?v:NaN}catch{return NaN}};
+// student extras
+// weightedGrade inputs: scores[], weights[]; formula: sum(s*w)/sum(w) with sum~=1 treated as fractions, sum~=100 as percents
+TK.weightedGrade=(scores,weights)=>{try{if(!Array.isArray(scores)||!Array.isArray(weights)||!scores.length||scores.length!==weights.length)return NaN;const s=scores.map(Number),w=weights.map(Number);if(s.some(v=>!isFinite(v))||w.some(v=>!isFinite(v)))return NaN;const sum=w.reduce((a,b)=>a+b,0);if(sum===0)return NaN;if(Math.abs(sum-1)<0.001)return s.reduce((a,v,i)=>a+v*w[i],0);if(Math.abs(sum-100)<0.5)return s.reduce((a,v,i)=>a+v*w[i]/100,0);return s.reduce((a,v,i)=>a+v*w[i],0)/sum}catch{return NaN}};
+// finalGradeNeeded inputs: current grade, final weight %, target; formula: (target-current*(1-w))/w, w=pct/100
+TK.finalGradeNeeded=(current,finalWeightPct,target)=>{const c=Number(current),t=Number(target),w=Number(finalWeightPct)/100;if(!isFinite(c)||!isFinite(t)||!isFinite(w)||w<=0||w>1)return NaN;return(t-c*(1-w))/w};
+// markdownTable inputs: rows/cols ints 1..20, headers bool; formula: markdown pipe table
+TK.markdownTable=(rows,cols,headers)=>{let r=Math.floor(Number(rows));let c=Math.floor(Number(cols));if(!isFinite(r))r=3;if(!isFinite(c))c=3;r=Math.max(1,Math.min(20,r));c=Math.max(1,Math.min(20,c));const h=headers===undefined?true:!!headers;const lines=[];if(h){const hh=[];for(let j=1;j<=c;j++)hh.push('Header '+j);lines.push('| '+hh.join(' | ')+' |');lines.push('| '+Array(c).fill('---').join(' | ')+' |')}for(let i=1;i<=r;i++){const cells=[];for(let j=1;j<=c;j++)cells.push('R'+i+'C'+j);lines.push('| '+cells.join(' | ')+' |')}return lines.join('\n')};
+// asciiArt inputs: text; formula: 5-row full-block banner font (A-Z 0-9 space punctuation), unknown skipped
+TK.asciiArt=text=>{const F={A:[' ███ ','█   █','█████','█   █','█   █'],B:['████ ','█   █','████ ','█   █','████ '],C:[' ████','█    ','█    ','█    ',' ████'],D:['████ ','█   █','█   █','█   █','████ '],E:['█████','█    ','████ ','█    ','█████'],F:['█████','█    ','████ ','█    ','█    '],G:[' ████','█    ','█ ███','█   █',' ████'],H:['█   █','█   █','█████','█   █','█   █'],I:['█████','  █  ','  █  ','  █  ','█████'],J:['  ███','   █ ','   █ ','█  █ ',' ███ '],K:['█   █','█  █ ','███  ','█  █ ','█   █'],L:['█    ','█    ','█    ','█    ','█████'],M:['█   █','██ ██','█ █ █','█   █','█   █'],N:['█   █','██  █','█ █ █','█  ██','█   █'],O:[' ███ ','█   █','█   █','█   █',' ███ '],P:['████ ','█   █','████ ','█    ','█    '],Q:[' ███ ','█   █','█   █','█  ██',' ████'],R:['████ ','█   █','████ ','█  █ ','█   █'],S:[' ████','█    ',' ███ ','    █','████ '],T:['█████','  █  ','  █  ','  █  ','  █  '],U:['█   █','█   █','█   █','█   █',' ███ '],V:['█   █','█   █','█   █','█   █',' ███ '],W:['█   █','█   █','█ █ █','██ ██','█   █'],X:['█   █','█   █',' ███ ','█   █','█   █'],Y:['█   █','█   █',' ███ ','  █  ','  █  '],Z:['█████','   █ ','  █  ',' █   ','█████'],'0':[' ███ ','█  ██','█ █ █','██  █',' ███ '],'1':['  █  ',' ██  ','  █  ','  █  ','█████'],'2':[' ███ ','█   █','   █ ','  █  ','█████'],'3':['████ ','    █',' ███ ','    █','████ '],'4':['   █ ','  ██ ',' █ █ ','█████','   █ '],'5':['█████','█    ','████ ','    █','████ '],'6':[' ███ ','█    ','████ ','█   █',' ███ '],'7':['█████','   █ ','  █  ',' █   ','█    '],'8':[' ███ ','█   █',' ███ ','█   █',' ███ '],'9':[' ███ ','█   █',' ████','    █',' ███ '],' ':['     ','     ','     ','     ','     '],'-':['     ','     ','█████','     ','     '],'_':['     ','     ','     ','     ','█████'],'!':['  █  ','  █  ','  █  ','     ','  █  '],'?':[' ███ ','█   █','   █ ','     ','  █  '],'.':['     ','     ','     ','     ','  █  '],',':['     ','     ','     ','  █  ',' █   '],':':['     ','  █  ','     ','  █  ','     '],"'":['  █  ','  █  ','     ','     ','     ']};const B='█';const s=String(text??'').toUpperCase();const rows=['','','','',''];let any=false;for(const ch of s){const g=F[ch];if(!g)continue;any=true;for(let i=0;i<5;i++)rows[i]+=g[i].replace(/#/g,B)+'  '}if(!any)return'';return rows.map(r=>r.replace(/\s+$/,'').replace(/ /g,' ').replace(/#/g,B)).join('\n')};
 // image
 TK.MAX_FILE_SIZE=10*1024*1024;
 TK.ALLOWED_IMAGE_TYPES=['image/jpeg','image/png','image/webp','image/gif','image/svg+xml','image/bmp'];
@@ -147,4 +181,4 @@ TK.palette=(hex,type)=>{const rgb=TK.hexToRgb(hex);if(!rgb)return[];const hsl=TK
 TK.contrastRatio=(a,b)=>{const lum=h=>{const c=TK.hexToRgb(h);if(!c)return 0;const s=[c.r,c.g,c.b].map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4)});return 0.2126*s[0]+0.7152*s[1]+0.0722*s[2]};const L1=lum(a),L2=lum(b),hi=Math.max(L1,L2),lo=Math.min(L1,L2);return+((hi+0.05)/(lo+0.05)).toFixed(2)};
 TK.simulateColorBlind=(hex,type)=>{const c=TK.hexToRgb(hex);if(!c)return'';let r=c.r,g=c.g,b=c.b;if(type=='protanopia'){r=0.567*c.r+0.433*c.g;g=0.558*c.r+0.442*c.g;b=0.242*c.g+0.758*c.b}else if(type=='deuteranopia'){r=0.625*c.r+0.375*c.g;g=0.7*c.r+0.3*c.g;b=0.3*c.g+0.7*c.b}else if(type=='tritanopia'){r=0.95*c.r+0.05*c.g;g=0.433*c.g+0.567*c.b;b=0.475*c.g+0.525*c.b}return TK.rgbToHex(r,g,b)};
 TK.colorName=hex=>{const m={'#ff0000':'Red','#00ff00':'Lime','#0000ff':'Blue','#ffff00':'Yellow','#00ffff':'Cyan','#ff00ff':'Magenta','#000000':'Black','#ffffff':'White','#ffa500':'Orange','#800080':'Purple','#008000':'Green','#ffc0cb':'Pink','#a52a2a':'Brown','#808080':'Gray'},k=String(hex??'').toLowerCase();if(m[k])return m[k];const rgb=TK.hexToRgb(k);if(!rgb)return'Unknown';let best='Unknown',dist=Infinity;for(const[h,n]of Object.entries(m)){const c=TK.hexToRgb(h),d=(c.r-rgb.r)**2+(c.g-rgb.g)**2+(c.b-rgb.b)**2;if(d<dist){dist=d;best=n}}return best};
-window.ToolKit=TK})();
+if(typeof window!=='undefined')window.ToolKit=TK;if(typeof module!=='undefined'&&module.exports)module.exports=TK})();

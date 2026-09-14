@@ -15,7 +15,10 @@
 <meta property="og:title" content="URL Decoder — Free Online Tool | DevelopersKit">
 <meta property="og:description" content="Decode percent-encoded URL strings back to readable text. Paste a messy URL with %20 and other codes to see the original characters.">
 <meta property="og:url" content="https://developerskit99.github.io/url-decoder/">
-<meta property="og:image" content="https://developerskit99.github.io/url-decoder/">
+<meta property="og:image" content="https://developerskit99.github.io/assets/images/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="URL Decoder — Free Online Tool | DevelopersKit">
 <meta name="twitter:description" content="Decode percent-encoded URL strings back to readable text. Paste a messy URL with %20 and other codes to see the original characters.">
@@ -42,6 +45,7 @@
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>›</span><a href="/#categories">Developer Tools</a><span>›</span><span aria-current="page">URL Decoder</span></nav>
 <h1>URL Decoder</h1>
 <p>Decode percent-encoded URL strings back to readable text. Paste a messy URL with %20 and other codes to see the original characters.</p>
+
 
 <div class="tool-layout">
 <div class="tool-main">
@@ -95,6 +99,7 @@ var input=$("#tool-input"), input2=$("#tool-input2"), output=$("#tool-output"), 
 var aEl=$("#tool-a"), bEl=$("#tool-b"), cEl=$("#tool-c");
 var dateA=$("#tool-date-a"), dateB=$("#tool-date-b");
 var colorEl=$("#tool-color"), preview=$("#tool-preview"), canvas=$("#tool-canvas");
+var wEl=$("#tool-w"), hEl=$("#tool-h"), qEl=$("#tool-q");
 var patternEl=$("#tool-pattern"), flagsEl=$("#tool-flags"), algoEl=$("#tool-algo"), loremType=$("#tool-lorem-type"), loremCount=$("#tool-lorem-count");
 var fileInput=input && input.type==="file" ? input : null;
 function showErr(m){if(!err) return; err.textContent=m; err.hidden=false; err.setAttribute("role","alert")}
@@ -104,46 +109,101 @@ function getVal(el){return el?el.value:""}
 async function process(){
  clearErr();
  try{
-  // Image tools
-  if(cat==="Image Tools"){
-   var f=fileInput && fileInput.files[0];
-   if(!f){ showErr("Please select an image file (max 10MB)."); return; }
-   var v=window.ToolKit.validateImageFile(f);
-   if(!v.ok){ showErr(v.error); return; }
-   var meta=window.ToolKit.imageMetadata(f);
-   var info="Name: "+meta.name+"\nType: "+meta.type+"\nSize: "+meta.sizeKB+" KB";
-   if(preview){ preview.textContent=""; var img=document.createElement("img"); img.style.maxWidth="100%"; img.style.borderRadius="8px"; preview.appendChild(img); var b64=await window.ToolKit.fileToBase64(f); img.src=b64; }
-   setOut(info+"\n\nLoaded successfully. Use Download to save processed image (if applicable).");
-   return;
-  }
-  // Color tools
-  if(cat==="Color Tools"){
-   var hex=getVal(input).trim() || getVal(colorEl);
-   var rgb=window.ToolKit.hexToRgb(hex);
-   if(!rgb){ // try rgb input like rgb(...)
-     var m=hex.match(/rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i);
-     if(m){ rgb={r:+m[1],g:+m[2],b:+m[3]}; hex=window.ToolKit.rgbToHex(rgb.r,rgb.g,rgb.b); }
+   // Image tools
+   if(cat==="Image Tools"){
+    var TK=window.ToolKit;
+    var f=fileInput && fileInput.files[0];
+    if(!f){ showErr("Please select an image file (max 10MB)."); return; }
+    var v=TK.validateImageFile(f);
+    if(!v.ok){ showErr(v.error); return; }
+    var wv=parseInt(getVal(wEl),10), hv=parseInt(getVal(hEl),10), qv=parseFloat(getVal(qEl));
+    if(getVal(qEl) && !(qv>=0.1 && qv<=1)){ showErr("Quality must be between 0.1 and 1."); return; }
+    function showPrev(url){ if(preview){ preview.textContent=""; var im=document.createElement("img"); im.style.maxWidth="100%"; im.style.borderRadius="8px"; im.alt="Processed image preview"; im.src=url; preview.appendChild(im); } window._lastImageDataURL=url; }
+    var meta=TK.imageMetadata(f);
+    var info="Name: "+meta.name+"\nType: "+meta.type+"\nSize: "+meta.sizeKB+" KB";
+    async function loadEl(){
+     var u=URL.createObjectURL(f);
+     try{ var im2=await TK.loadImage(u); return {img:im2,url:u}; }catch(e){ URL.revokeObjectURL(u); throw e; }
+    }
+    try{
+    if(slug==="image-resizer"){ if(!wv&&!hv){ showErr("Enter Width and/or Height in px."); return; } var r=await TK.resizeImage(f,wv||undefined,hv||undefined,qv||0.85); showPrev(r); var im0=await TK.loadImage(r); setOut(info+"\nWidth: "+im0.naturalWidth+" px\nHeight: "+im0.naturalHeight+" px\nResized successfully."); return; }
+    if(slug==="image-compressor"){ var c=await TK.compressImage(f,qv||0.7); showPrev(c); setOut(info+"\nCompressed (q="+(qv||0.7)+"). Use Download to save."); return; }
+    if(slug==="image-cropper"){ if(!wv||!hv){ showErr("Enter Width and Height for centered crop."); return; } var L=await loadEl(); var iw=L.img.naturalWidth, ih=L.img.naturalHeight, cw=Math.min(wv,iw), ch=Math.min(hv,ih), sx=Math.max(0,Math.floor((iw-cw)/2)), sy=Math.max(0,Math.floor((ih-ch)/2)); URL.revokeObjectURL(L.url); var cr=await TK.cropImage(f,sx,sy,cw,ch); showPrev(cr); setOut(info+"\nCropped: "+cw+"x"+ch+" (centered)."); return; }
+    if(slug==="jpg-to-png"||slug==="png-to-jpg"||slug==="webp-to-jpg"||slug==="jpg-to-webp"||slug==="png-to-webp"){ var mime=slug.indexOf("to-png")>-1?"image/png":slug.indexOf("to-webp")>-1?"image/webp":"image/jpeg"; var Ld=await loadEl(); var cv2=document.createElement("canvas"); cv2.width=Ld.img.naturalWidth; cv2.height=Ld.img.naturalHeight; cv2.getContext("2d").drawImage(Ld.img,0,0); URL.revokeObjectURL(Ld.url); var out=cv2.toDataURL(mime,qv||0.92); showPrev(out); setOut(info+"\nConverted to "+mime+". Use Download to save."); return; }
+    if(slug==="image-to-base64"){ var b64=await TK.fileToBase64(f); window._lastImageDataURL=""; setOut(b64); return; }
+    if(slug==="base64-to-image"){ var t0=getVal(input).trim(); if(!t0){ showErr("Paste a Base64 data URL or raw Base64."); return; } var src=t0.indexOf("data:")===0?t0:"data:image/png;base64,"+t0.replace(/\s+/g,""); try{ await TK.loadImage(src); }catch(e){ showErr("Invalid or corrupt Base64 image."); return; } showPrev(src); setOut("Preview loaded. Use Download to save as PNG."); return; }
+    if(slug==="favicon-generator"){ var fv=await TK.resizeImage(f,32,32,1); showPrev(fv); var fi=await TK.loadImage(fv); setOut(info+"\nFavicon: "+fi.naturalWidth+"x"+fi.naturalHeight+" (32x32)."); return; }
+    if(slug==="app-icon-generator"){ var ai=await TK.resizeImage(f,180,180,1); showPrev(ai); setOut(info+"\nApp icon: 180x180."); return; }
+    if(slug==="social-media-image-resizer"||slug==="instagram-image-resizer"){ var sm=await TK.resizeImage(f,1080,1080,qv||0.9); showPrev(sm); setOut(info+"\nResized to 1080x1080."); return; }
+    if(slug==="youtube-thumbnail-resizer"){ var yt=await TK.resizeImage(f,1280,720,qv||0.9); showPrev(yt); setOut(info+"\nResized to 1280x720."); return; }
+    if(slug==="image-metadata-viewer"){ var Md=await TK.loadImage(URL.createObjectURL(f)).catch(function(){return null}); var dims=""; if(Md&&Md.naturalWidth){ dims="\nWidth: "+Md.naturalWidth+" px\nHeight: "+Md.naturalHeight+" px"; } setOut(info+"\nLast modified: "+(meta.lastModified||"n/a")+dims); window._lastImageDataURL=""; if(preview) preview.textContent=""; return; }
+    if(slug==="image-dimension-checker"){ var u2=URL.createObjectURL(f); try{ var dm=await TK.loadImage(u2); setOut("Width: "+dm.naturalWidth+" px\nHeight: "+dm.naturalHeight+" px\nAspect: "+(dm.naturalWidth/dm.naturalHeight).toFixed(3)); }finally{ URL.revokeObjectURL(u2); } window._lastImageDataURL=""; if(preview) preview.textContent=""; return; }
+    if(slug==="image-aspect-ratio-calculator"){ var u3=URL.createObjectURL(f); try{ var ar2=await TK.loadImage(u3); var g=window.ToolKit.gcd(ar2.naturalWidth,ar2.naturalHeight); setOut(ar2.naturalWidth+"x"+ar2.naturalHeight+" → "+(ar2.naturalWidth/g)+":"+(ar2.naturalHeight/g)+" ("+(ar2.naturalWidth/ar2.naturalHeight).toFixed(3)+")"); }finally{ URL.revokeObjectURL(u3); } window._lastImageDataURL=""; if(preview) preview.textContent=""; return; }
+    if(slug==="gif-frame-extractor"){ var b6=await TK.fileToBase64(f); showPrev(b6); setOut(info+"\nNote: browsers decode GIFs to a single frame — showing first-frame preview only. For full frame extraction use desktop software."); return; }
+    if(slug==="image-pixel-color-picker"){ var u4=URL.createObjectURL(f); try{ var pk=await TK.loadImage(u4); var cvp=document.createElement("canvas"); var sc=Math.min(1,800/pk.naturalWidth); cvp.width=Math.round(pk.naturalWidth*sc); cvp.height=Math.round(pk.naturalHeight*sc); var cx=cvp.getContext("2d"); cx.drawImage(pk,0,0,cvp.width,cvp.height); if(preview){ preview.textContent=""; cvp.style.maxWidth="100%"; cvp.style.cursor="crosshair"; preview.appendChild(cvp); } setOut("Click on the image to read the pixel color."); cvp.addEventListener("click",function(e){ var r=cvp.getBoundingClientRect(), px=Math.floor((e.clientX-r.left)*cvp.width/r.width), py=Math.floor((e.clientY-r.top)*cvp.height/r.height); var d=cx.getImageData(px,py,1,1).data; var hx=TK.rgbToHex(d[0],d[1],d[2]); setOut("Pixel ("+px+","+py+"): "+hx+" rgb("+d[0]+","+d[1]+","+d[2]+")"); }); }finally{ URL.revokeObjectURL(u4); } return; }
+    }catch(e){ showErr(e.message||"Image processing failed (file may be corrupt or unsupported)."); return; }
+    var b64d=await TK.fileToBase64(f);
+    showPrev(b64d);
+    setOut(info+"\n\nLoaded successfully. Use Download to save processed image (if applicable).");
+    return;
    }
-   if(!rgb){ showErr("Enter valid HEX e.g. #2563eb or rgb(37,99,235)"); return; }
-   var hsl=window.ToolKit.rgbToHsl(rgb.r,rgb.g,rgb.b);
-   var out="HEX: "+window.ToolKit.rgbToHex(rgb.r,rgb.g,rgb.b)+"\nRGB: "+rgb.r+", "+rgb.g+", "+rgb.b+"\nHSL: "+hsl.h+", "+hsl.s+"%, "+hsl.l+"%\nName: "+window.ToolKit.colorName(hex)+"\nContrast vs white: "+window.ToolKit.contrastRatio(hex,"#ffffff")+":1";
-   if(preview) preview.style.background=hex;
-   setOut(out);
-   return;
-  }
+   // Color tools
+   if(cat==="Color Tools"){
+    var TK2=window.ToolKit;
+    function parseCol(s){ s=String(s||"").trim(); var r=TK2.hexToRgb(s); if(r) return {hex:TK2.rgbToHex(r.r,r.g,r.b),rgb:r}; var m=s.match(/rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i); if(m){ r={r:+m[1],g:+m[2],b:+m[3]}; return {hex:TK2.rgbToHex(r.r,r.g,r.b),rgb:r}; } var mh=s.match(/hsl\s*\(\s*(\d+)\s*,\s*(\d+)%?\s*,\s*(\d+)%?/i); if(mh){ r=TK2.hslToRgb(+mh[1],+mh[2],+mh[3]); return {hex:TK2.rgbToHex(r.r,r.g,r.b),rgb:r}; } return null; }
+    function fmtCol(p){ var h=TK2.rgbToHsl(p.rgb.r,p.rgb.g,p.rgb.b); return "HEX: "+p.hex+"\nRGB: "+p.rgb.r+", "+p.rgb.g+", "+p.rgb.b+"\nHSL: "+h.h+", "+h.s+"%, "+h.l+"%\nName: "+TK2.colorName(p.hex); }
+    var raw=getVal(input).trim() || getVal(colorEl);
+    if(slug==="color-palette-generator"){ var b=parseCol(raw); if(!b){ showErr("Enter a valid base color."); return; } var ty=["complementary","analogous","triadic","complementary"]; setOut(ty.map(function(t){return t+": "+TK2.palette(b.hex,t).join(", ")}).join("\n")); if(preview) preview.style.background=b.hex; return; }
+    if(slug==="random-color-generator"){ var n=Math.floor(Math.random()*16777215).toString(16).padStart(6,"0"); var p2=parseCol("#"+n); setOut(fmtCol(p2)+"\nContrast vs white: "+TK2.contrastRatio(p2.hex,"#ffffff")+":1"); if(preview) preview.style.background=p2.hex; return; }
+    if(slug==="gradient-generator"){ var parts=raw.split(",").map(function(s){return s.trim()}).filter(Boolean); if(parts.length<2){ showErr("Enter 2+ colors comma-separated."); return; } setOut(TK2.buildGradient("linear",parts,90)); if(preview) preview.style.background=""; return; }
+    if(slug==="complementary-color-generator"||slug==="analogous-color-generator"||slug==="triadic-color-generator"){ var bc=parseCol(raw); if(!bc){ showErr("Enter a valid color."); return; } var pt=slug.indexOf("complement")>-1?"complementary":slug.indexOf("analog")>-1?"analogous":"triadic"; setOut(pt+": "+TK2.palette(bc.hex,pt).join(", ")); if(preview) preview.style.background=bc.hex; return; }
+    if(slug==="contrast-checker"||slug==="wcag-contrast-checker"){ var pp=raw.split(",").map(function(s){return s.trim()}); if(pp.length<2){ showErr('Format: fg,bg — e.g. #000000,#ffffff'); return; } var A=parseCol(pp[0]), B=parseCol(pp[1]); if(!A||!B){ showErr("Enter two valid colors as fg,bg."); return; } var ra=TK2.contrastRatio(A.hex,B.hex); setOut("Ratio: "+ra+":1\nAA normal (4.5): "+(ra>=4.5?"PASS":"FAIL")+"\nAA large (3): "+(ra>=3?"PASS":"FAIL")+"\nAAA normal (7): "+(ra>=7?"PASS":"FAIL")+"\nAAA large (4.5): "+(ra>=4.5?"PASS":"FAIL")); return; }
+    if(slug==="color-blindness-simulator"){ var sb=parseCol(raw); if(!sb){ showErr("Enter a valid HEX color."); return; } setOut("Original: "+sb.hex+"\nProtanopia: "+TK2.simulateColorBlind(sb.hex,"protanopia")+"\nDeuteranopia: "+TK2.simulateColorBlind(sb.hex,"deuteranopia")+"\nTritanopia: "+TK2.simulateColorBlind(sb.hex,"tritanopia")); if(preview) preview.style.background=sb.hex; return; }
+    if(slug==="rgb-color-mixer"){ var np=raw.split(",").map(Number); if(np.length<6||np.some(function(x){return !isFinite(x)})){ showErr('Format: r1,g1,b1,r2,g2,b2 — e.g. 255,0,0,0,0,255'); return; } var mx=[Math.round((np[0]+np[3])/2),Math.round((np[1]+np[4])/2),Math.round((np[2]+np[5])/2)]; setOut("Mixed: "+TK2.rgbToHex(mx[0],mx[1],mx[2])+" rgb("+mx.join(",")+")"); if(preview) preview.style.background=TK2.rgbToHex(mx[0],mx[1],mx[2]); return; }
+    if(slug==="tailwind-color-converter"||slug==="material-color-converter"||slug==="color-name-finder"||slug==="css-color-generator"){ var cb=parseCol(raw); if(!cb){ showErr("Enter a valid HEX / RGB / HSL color."); return; } setOut(fmtCol(cb)+" (nearest family: "+TK2.colorName(cb.hex)+")"); if(preview) preview.style.background=cb.hex; return; }
+    if(slug==="hex-to-rgb"||slug==="rgb-to-hex"||slug==="rgb-to-hsl"||slug==="hsl-to-rgb"||slug==="hex-to-hsl"||slug==="css-color-converter"){ var cc2=parseCol(raw||getVal(colorEl)); if(!cc2){ showErr("Enter HEX e.g. #2563eb or rgb(37,99,235)"); return; } var hh=TK2.rgbToHsl(cc2.rgb.r,cc2.rgb.g,cc2.rgb.b); setOut("HEX: "+cc2.hex+"\nRGB: "+cc2.rgb.r+", "+cc2.rgb.g+", "+cc2.rgb.b+"\nHSL: "+hh.h+", "+hh.s+"%, "+hh.l+"%\nName: "+TK2.colorName(cc2.hex)); if(preview) preview.style.background=cc2.hex; return; }
+    var hex=raw;
+    var rgb=TK2.hexToRgb(hex);
+    if(!rgb){ // try rgb input like rgb(...)
+      var m=hex.match(/rgb\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/i);
+      if(m){ rgb={r:+m[1],g:+m[2],b:+m[3]}; hex=TK2.rgbToHex(rgb.r,rgb.g,rgb.b); }
+    }
+    if(!rgb){ showErr("Enter valid HEX e.g. #2563eb or rgb(37,99,235)"); return; }
+    var hsl=TK2.rgbToHsl(rgb.r,rgb.g,rgb.b);
+    var out="HEX: "+TK2.rgbToHex(rgb.r,rgb.g,rgb.b)+"\nRGB: "+rgb.r+", "+rgb.g+", "+rgb.b+"\nHSL: "+hsl.h+", "+hsl.s+"%, "+hsl.l+"%\nName: "+TK2.colorName(hex)+"\nContrast vs white: "+TK2.contrastRatio(hex,"#ffffff")+":1";
+    if(preview) preview.style.background=hex;
+    setOut(out);
+    return;
+   }
   // Date & Time
   if(cat==="Date & Time"){
    var d1=getVal(dateA)||getVal(input), d2=getVal(dateB);
    if(!d1){ showErr("Please enter a date."); return; }
    if(slug==="age-calculator"){
-    var age=window.ToolKit.age(d1); if(isNaN(age)){ showErr("Invalid date."); return;} setOut("Age: "+age+" years\nDOB: "+d1+"\nToday: "+new Date().toISOString().slice(0,10)); return;
-   }
+     var ag=window.ToolKit.age(d1);
+     if(ag&&typeof ag==="object"){ setOut(ag.years+" years, "+ag.months+" months, "+ag.days+" days ("+ag.totalDays+" days total)"); return; }
+     if(typeof ag!=="number"||isNaN(ag)){ showErr("Invalid date."); return; }
+     var _b=new Date(d1), _n=new Date(), _td=Math.floor(Math.abs(_n-_b)/86400000);
+     var _y=ag, _m=_n.getMonth()-_b.getMonth()+(_n.getDate()<_b.getDate()?-1:0); if(_m<0)_m+=12;
+     var _dm=new Date(_n.getFullYear(),_n.getMonth(),0).getDate()||30, _d=(_n.getDate()-_b.getDate()+_dm)%_dm;
+     setOut(_y+" years, "+_m+" months, "+_d+" days ("+_td+" days total)"); return;
+    }
    if(slug==="leap-year-checker"){ var y=new Date(d1).getFullYear()||Number(d1); var is=window.ToolKit.isLeap(y); setOut(y+" is "+(is?"a leap year":"not a leap year")); return; }
    if(slug==="day-of-week-calculator"){ setOut(window.ToolKit.dayOfWeek(d1)||"Invalid date"); return; }
    if(slug==="week-number-calculator"){ setOut("Week: "+window.ToolKit.weekNumber(d1)); return; }
    if(slug.includes("business")||slug.includes("working")){ if(!d2){ showErr("Enter both dates"); return;} setOut("Business days: "+window.ToolKit.businessDays(d1,d2)); return; }
    if(d1 && d2){ var diff=window.ToolKit.dateDiff(d1,d2,"days"); if(isNaN(diff)){ showErr("Invalid dates"); return;} setOut("Days: "+diff.toFixed(2)+"\nHours: "+(diff*24).toFixed(1)+"\n"+window.ToolKit.duration(Math.abs(new Date(d2)-new Date(d1)))); return; }
    if(slug==="unix-timestamp-generator"){ var ts=window.ToolKit.toTimestamp(d1,false); setOut("Timestamp: "+ts+"\nISO: "+window.ToolKit.fromTimestamp(ts,false)); return; }
+    if(slug==="weeks-between-dates"){ var dw=window.ToolKit.dateDiff(d1,d2||d1,"days"); if(isNaN(dw)){ showErr("Invalid dates"); return;} setOut((dw/7).toFixed(2)+" weeks ("+dw.toFixed(1)+" days)"); return; }
+    if(slug==="months-between-dates"){ var dm2=window.ToolKit.dateDiff(d1,d2||d1,"days"); if(isNaN(dm2)){ showErr("Invalid dates"); return;} setOut((dm2/30.44).toFixed(2)+" months ("+dm2.toFixed(1)+" days)"); return; }
+    if(slug==="days-until-date"){ var tvd=getVal(input)||d1; var today=new Date().toISOString().slice(0,10); var du=window.ToolKit.dateDiff(today,tvd,"days"); if(isNaN(du)){ showErr("Enter date as YYYY-MM-DD."); return;} setOut(Math.round(du)+" days"); return; }
+    if(slug==="date-addition-calculator"){ if(!d1){ showErr("Enter a start date."); return; } var addN=Number(getVal(input).trim()); if(!isFinite(addN)){ showErr("Enter days to add in the text field (number)."); return; } setOut(window.ToolKit.addDays(d1,addN)); return; }
+    if(slug==="date-subtraction-calculator"){ if(!d1){ showErr("Enter a start date."); return; } var subN=Number(getVal(input).trim()); if(!isFinite(subN)){ showErr("Enter days to subtract in the text field (number)."); return; } setOut(window.ToolKit.addDays(d1,-subN)); return; }
+    if(slug==="time-difference-calculator"||slug==="time-duration-calculator"){ var tp=(getVal(input)||"").split(",").map(function(s){return s.trim()}); if(tp.length<2||!/^\d(1, 2):\d2$/.test(tp[0])||!/^\d(1, 2):\d2$/.test(tp[1])){ showErr('Format: HH:MM,HH:MM — e.g. 09:00,17:30'); return; } var p1=tp[0].split(":"), p2=tp[1].split(":"); var ms=Math.abs((+p2[0]*60+ +p2[1])-(+p1[0]*60+ +p1[1]))*60000; setOut(window.ToolKit.duration(ms)+" ("+(ms/3600000).toFixed(2)+" hours)"); return; }
+    if(slug==="hours-to-minutes-converter"){ var hv2=Number((getVal(input)||"").trim()); if(!isFinite(hv2)||getVal(input).trim()===""){ showErr("Enter hours in the text field."); return; } setOut(hv2+"h = "+(hv2*60)+" min"); return; }
+    if(slug==="minutes-to-seconds-converter"){ var mv=Number((getVal(input)||"").trim()); if(!isFinite(mv)||getVal(input).trim()===""){ showErr("Enter minutes in the text field."); return; } setOut(mv+" min = "+(mv*60)+" sec"); return; }
+    if(slug==="seconds-to-hours-converter"){ var sv=Number((getVal(input)||"").trim()); if(!isFinite(sv)||getVal(input).trim()===""){ showErr("Enter seconds in the text field."); return; } setOut(sv+" sec = "+(sv/3600).toFixed(4)+" h"); return; }
+    if(slug==="date-format-converter"){ var tvf=getVal(input).trim()||d1; var df=new Date(tvf); if(isNaN(df)){ showErr("Enter a valid date."); return; } var iso=df.toISOString().slice(0,10); setOut("ISO: "+iso+"\nUS: "+(df.getMonth()+1)+"/"+df.getDate()+"/"+df.getFullYear()+"\nUK: "+String(df.getDate()).padStart(2,"0")+"/"+String(df.getMonth()+1).padStart(2,"0")+"/"+df.getFullYear()); return; }
    // generic date
    var diff2=window.ToolKit.dateDiff(d1,d2||new Date().toISOString(),"days"); setOut(isNaN(diff2)? new Date(d1).toString() : "Difference: "+diff2.toFixed(2)+" days");
    return;
@@ -180,6 +240,68 @@ async function process(){
    if(slug==="sip-calculator"){ setOut(window.ToolKit.sip(av,bv,cv).toFixed(2)); return; }
    if(slug==="grade-calculator"){ var g=window.ToolKit.grade(an,bn||100); setOut(g.pct+"% Grade "+g.letter); return; }
    if(slug==="scientific-calculator"||slug==="equation-solver"){ var r=window.ToolKit.safeEval(tv||av); if(!r.ok){ showErr(r.error); return;} setOut(String(r.result)); return; }
+    var TK3=window.ToolKit;
+    if(slug==="profit-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter revenue (A) and cost (B)."); return; } var pf=an-bn; setOut("Profit: "+pf.toFixed(2)+"\nMargin: "+(an?((pf/an*100).toFixed(2)+"%"):"n/a")); return; }
+    if(slug==="revenue-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter units (A) and price (B)."); return; } setOut("Revenue: "+(an*bn).toFixed(2)); return; }
+    if(slug==="roi-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter gain (A) and cost (B)."); return; } var ri=TK3.roi(an,bn); if(!isFinite(ri)){ showErr("Cost must not be zero."); return; } setOut(ri.toFixed(2)+"%"); return; }
+    if(slug==="roas-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter revenue (A) and spend (B)."); return; } var ra2=TK3.roas(an,bn); if(!isFinite(ra2)){ showErr("Spend must not be zero."); return; } setOut(ra2.toFixed(2)+"x"); return; }
+    if(slug==="conversion-rate-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter conversions (A) and visitors (B)."); return; } var cr2=TK3.conversionRate(an,bn); if(!isFinite(cr2)){ showErr("Visitors must not be zero."); return; } setOut(cr2.toFixed(2)+"%"); return; }
+    if(slug==="ctr-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter clicks (A) and impressions (B)."); return; } var ct=TK3.ctr(an,bn); if(!isFinite(ct)){ showErr("Impressions must not be zero."); return; } setOut(ct.toFixed(2)+"%"); return; }
+    if(slug==="cpm-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter spend (A) and impressions (B)."); return; } var cp=TK3.cpm(an,bn); if(!isFinite(cp)){ showErr("Impressions must not be zero."); return; } setOut(cp.toFixed(2)); return; }
+    if(slug==="cpc-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter spend (A) and clicks (B)."); return; } var cc3=TK3.cpc(an,bn); if(!isFinite(cc3)){ showErr("Clicks must not be zero."); return; } setOut(cc3.toFixed(2)); return; }
+    if(slug==="customer-acquisition-cost-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter spend (A) and customers (B)."); return; } var ca=TK3.cac(an,bn); if(!isFinite(ca)){ showErr("Customers must not be zero."); return; } setOut(ca.toFixed(2)); return; }
+    if(slug==="customer-lifetime-value-calculator"){ var cn3=Number(cv); if(!isFinite(an)||!isFinite(bn)||!isFinite(cn3)){ showErr("Enter avg value (A), frequency (B), lifespan (C)."); return; } setOut(TK3.clv(an,bn,cn3).toFixed(2)); return; }
+    if(slug==="churn-rate-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter lost (A) and start (B)."); return; } var ch=TK3.churn(an,bn); if(!isFinite(ch)){ showErr("Start must not be zero."); return; } setOut(ch.toFixed(2)+"%"); return; }
+    if(slug==="growth-rate-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter old value (A) and new value (B)."); return; } var gr=TK3.growthRate(an,bn); if(!isFinite(gr)){ showErr("Old value must not be zero."); return; } setOut(gr.toFixed(2)+"%"); return; }
+    if(slug==="gross-margin-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter revenue (A) and COGS (B)."); return; } var gm=(an-bn)/an*100; if(!isFinite(gm)){ showErr("Revenue must not be zero."); return; } setOut("Gross profit: "+(an-bn).toFixed(2)+"\nMargin: "+gm.toFixed(2)+"%"); return; }
+    if(slug==="net-margin-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter revenue (A) and costs (B)."); return; } var nm=(an-bn)/an*100; if(!isFinite(nm)){ showErr("Revenue must not be zero."); return; } setOut("Net: "+(an-bn).toFixed(2)+"\nMargin: "+nm.toFixed(2)+"%"); return; }
+    if(slug==="markup-vs-margin-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter cost (A) and price (B)."); return; } var mm=TK3.markupVsMargin(an,bn); setOut("Markup: "+mm.markup.toFixed(2)+"%\nMargin: "+mm.margin.toFixed(2)+"%"); return; }
+    if(slug==="inventory-turnover-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter COGS (A) and avg inventory (B)."); return; } var to=TK3.turnover(an,bn); if(!isFinite(to)){ showErr("Inventory must not be zero."); return; } setOut(to.toFixed(2)+"x"); return; }
+    if(slug==="sales-commission-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter sales (A) and rate % (B)."); return; } setOut(TK3.commission(an,bn).toFixed(2)); return; }
+    if(slug==="break-even-units-calculator"){ var vc=Number(cv); if(!isFinite(an)||!isFinite(bn)||!isFinite(vc)){ showErr("Enter fixed (A), price (B), variable (C)."); return; } var be=TK3.breakEven(an,bn,vc); if(!isFinite(be)){ showErr("Price must exceed variable cost."); return; } setOut(Math.ceil(be)+" units"); return; }
+    if(slug==="saas-pricing-calculator"){ var mc=Number(cv)||20; if(!isFinite(an)||!isFinite(bn)||!bn){ showErr("Enter costs (A) and customers (B)."); return; } setOut(((an/bn)*(1+mc/100)).toFixed(2)+" / customer"); return; }
+    if(slug==="freelance-hourly-rate-calculator"){ if(!isFinite(an)||!isFinite(bn)||!bn){ showErr("Enter annual income (A) and hours (B)."); return; } setOut(TK3.freelanceRate(an,bn).toFixed(2)+" / hour"); return; }
+    if(slug==="discount-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter price (A) and % off (B)."); return; } var sa=TK3.discount(an,bn); setOut("Sale: "+sa.toFixed(2)+"\nSavings: "+(an-sa).toFixed(2)); return; }
+    if(slug==="sale-price-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter original (A) and amount off (B)."); return; } setOut("Sale: "+(an-bn).toFixed(2)); return; }
+    if(slug==="markup-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter cost (A) and markup % (B)."); return; } setOut(TK3.markup(an,bn).toFixed(2)); return; }
+    if(slug==="profit-margin-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter revenue (A) and cost (B)."); return; } var pm=TK3.profitMargin(an,bn); if(!isFinite(pm)){ showErr("Revenue must not be zero."); return; } setOut(pm.toFixed(2)+"%"); return; }
+    if(slug==="break-even-calculator"){ var vc2=Number(cv); if(!isFinite(an)||!isFinite(bn)||!isFinite(vc2)){ showErr("Enter fixed (A), price (B), variable (C)."); return; } var be2=TK3.breakEven(an,bn,vc2); if(!isFinite(be2)){ showErr("Price must exceed variable cost."); return; } setOut(be2.toFixed(2)+" units"); return; }
+    if(slug==="tip-calculator"){ var tp3=Number(bv)||15, pp=Math.max(1,Number(cv)||1); if(!isFinite(an)){ showErr("Enter bill amount (A)."); return; } var t4=TK3.tip(an,tp3,pp); setOut("Tip: "+t4.tip.toFixed(2)+"\nTotal: "+t4.total.toFixed(2)+"\nEach ("+pp+"): "+t4.perPerson.toFixed(2)); return; }
+    if(slug==="split-bill-calculator"){ var sp=Math.max(2,Number(bv)||2); if(!isFinite(an)){ showErr("Enter total (A)."); return; } setOut((an/sp).toFixed(2)+" each ("+sp+" people)"); return; }
+    if(slug==="salary-calculator"){ if(!isFinite(an)){ showErr("Enter annual salary (A)."); return; } setOut("Monthly: "+(an/12).toFixed(2)+"\nWeekly: "+(an/52).toFixed(2)+"\nHourly: "+(an/2080).toFixed(2)); return; }
+    if(slug==="hourly-to-yearly-salary"){ var hb=Number(bv)||40; if(!isFinite(an)){ showErr("Enter hourly rate (A)."); return; } setOut("Yearly: "+(an*hb*52).toFixed(2)); return; }
+    if(slug==="yearly-to-hourly-salary"){ var yb=Number(bv)||40; if(!isFinite(an)){ showErr("Enter annual salary (A)."); return; } setOut("Hourly: "+(an/(yb*52)).toFixed(2)); return; }
+    if(slug==="tax-percentage-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter income (A) and tax paid (B)."); return; } setOut((bn/an*100).toFixed(2)+"%"); return; }
+    if(slug==="budget-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter income (A) and expenses (B)."); return; } var rem=an-bn; setOut("Remaining: "+rem.toFixed(2)+"\nSavings: "+(an?(rem/an*100).toFixed(2)+"%":"n/a")); return; }
+    if(slug==="net-worth-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter assets (A) and liabilities (B)."); return; } setOut(TK3.netWorth(an,bn).toFixed(2)); return; }
+    if(slug==="loan-payment-calculator"){ var nc=Number(cv); if(!isFinite(an)||!isFinite(bn)||!isFinite(nc)){ showErr("Enter principal (A), rate % (B), months (C)."); return; } setOut("Payment: "+TK3.emi(an,bn,nc).toFixed(2)); return; }
+    if(slug==="loan-interest-calculator"){ var nc2=Number(cv); if(!isFinite(an)||!isFinite(bn)||!isFinite(nc2)){ showErr("Enter principal (A), rate % (B), months (C)."); return; } var em=TK3.emi(an,bn,nc2); setOut("EMI: "+em.toFixed(2)+"\nTotal interest: "+(em*nc2-an).toFixed(2)); return; }
+    if(slug==="investment-return-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter initial (A) and final (B)."); return; } setOut(((bn-an)/Math.abs(an)*100).toFixed(2)+"% (gain "+(bn-an).toFixed(2)+")"); return; }
+    if(slug==="inflation-calculator"){ var yc=Number(cv); if(!isFinite(an)||!isFinite(bn)||!isFinite(yc)){ showErr("Enter amount (A), rate % (B), years (C)."); return; } setOut(TK3.inflation(an,bn,yc).toFixed(2)); return; }
+    if(slug==="savings-goal-calculator"){ if(!isFinite(an)||!isFinite(bn)||!bn){ showErr("Enter goal (A) and months (B)."); return; } setOut((an/bn).toFixed(2)+" / month"); return; }
+    if(slug==="retirement-calculator"){ if(!isFinite(an)){ showErr("Enter annual expenses (A)."); return; } setOut("Need: "+(an*25).toFixed(2)+" (4% rule: 25x annual expenses)"); return; }
+    if(slug==="proportion-calculator"){ var pts=(tv||av+","+bv+","+cv).split(/[,\s]+/).filter(function(s){return s!==""}); if(pts.length<3||!isFinite(Number(pts[0]))||!isFinite(Number(pts[1]))||!isFinite(Number(pts[2]))){ showErr("Enter three values a,b,c (a/b = c/x)."); return; } var pv=TK3.solveProportion(pts[0],pts[1],pts[2]); if(!isFinite(pv)){ showErr("First value (a) must not be zero."); return; } setOut("x = "+pv); return; }
+    if(slug==="mode-calculator"){ var ml=(tv||av+","+bv+","+cv).split(/[,\s]+/).filter(function(s){return s!==""}).map(Number).filter(isFinite); if(!ml.length){ showErr("Enter numbers comma-separated."); return; } setOut(TK3.mode(ml).join(", ")); return; }
+    if(slug==="decimal-to-fraction"){ var dv=tv||av; if(dv===""||!isFinite(Number(dv))){ showErr("Enter a decimal number."); return; } setOut(TK3.toFraction(dv)); return; }
+    if(slug==="fraction-to-decimal"){ var fv=String(tv||av||"").trim(); if(!fv){ showErr("Format: a/b — e.g. 3/4"); return; } var fd=TK3.fractionToDecimal(fv); if(!isFinite(fd)){ showErr("Format: a/b — e.g. 3/4"); return; } setOut(String(fd)); return; }
+    if(slug==="mixed-number-calculator"){ var mv2=String(tv||av||"").trim(); if(!mv2){ showErr("Enter a fraction (a/b) or decimal."); return; } if(mv2.indexOf("/")>-1){ var dec=TK3.fractionToDecimal(mv2); if(!isFinite(dec)){ showErr("Invalid fraction."); return; } setOut(TK3.toMixed(dec)+" ("+dec+")"); return; } if(!isFinite(Number(mv2))){ showErr("Enter a fraction (a/b) or decimal."); return; } setOut(TK3.toFraction(mv2)); return; }
+    if(slug==="prime-number-generator"){ var pn=Math.floor(Number(av)||100); if(pn<2){ showErr("Enter n ≥ 2."); return; } setOut(TK3.primesUpTo(pn).join(", ")); return; }
+    if(slug==="random-number-generator"){ var rmn=isFinite(Number(av))?Number(av):1, rmx=isFinite(Number(bv))?Number(bv):100; var ri2=TK3.randomInt(rmn,rmx); if(!isFinite(ri2)){ showErr("Min must be ≤ max."); return; } setOut(String(ri2)); return; }
+    if(slug==="scientific-notation-converter"){ var snv=String(tv||av||"").trim(); if(!snv){ showErr("Enter a number."); return; } if(/[eE]/.test(snv)){ var ex=TK3.fromScientific(snv); if(!isFinite(ex)){ showErr("Invalid scientific notation."); return; } setOut(String(ex)); return; } if(!isFinite(Number(snv))){ showErr("Enter a number."); return; } setOut(TK3.toScientific(snv)); return; }
+    if(slug==="gpa-calculator"){ var sc=Number(cv)||4; if(!tv.trim()){ showErr("Enter grades comma-separated (e.g. A,B,C)."); return; } var gp=TK3.gpa(tv,sc); if(!isFinite(gp)){ showErr("No valid grades found."); return; } setOut(String(gp)); return; }
+    if(slug==="cgpa-calculator"){ if(!tv.trim()){ showErr("Enter semesters comma-separated."); return; } var cg=TK3.cgpa(tv.split(",").map(Number)); if(!isFinite(cg)){ showErr("No valid numbers found."); return; } setOut(cg.toFixed(2)); return; }
+    if(slug==="percentage-to-gpa-calculator"){ if(!isFinite(an)){ showErr("Enter percentage (A)."); return; } setOut((an/100*4).toFixed(2)); return; }
+    if(slug==="exam-percentage-calculator"||slug==="marks-percentage-calculator"){ if(!isFinite(an)||!isFinite(bn)||!bn){ showErr("Enter obtained (A) and total (B)."); return; } setOut((an/bn*100).toFixed(2)+"%"); return; }
+    if(slug==="final-grade-calculator"){ if(!isFinite(an)||!isFinite(Number(bv))||!isFinite(Number(cv))){ showErr("Enter current (A), final weight % (B), target (C)."); return; } var fg=TK3.finalGradeNeeded(an,Number(bv),Number(cv)); if(!isFinite(fg)){ showErr("Weight must be between 0 and 100."); return; } setOut(fg.toFixed(2)+" needed on final"); return; }
+    if(slug==="weighted-grade-calculator"){ var ss=tv.split(",").map(Number), ws=String(cv||"").split(",").map(Number); if(!tv.trim()||!String(cv||"").trim()){ showErr("Enter scores in text (a,b,..) and weights in C (w1,w2,..)."); return; } var wg=TK3.weightedGrade(ss,ws); if(!isFinite(wg)){ showErr("Scores/weights must match in count and be numeric."); return; } setOut(wg.toFixed(2)); return; }
+    if(slug==="study-time-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter topics (A) and hours each (B)."); return; } setOut((an*bn).toFixed(1)+" hours total"); return; }
+    if(slug==="pomodoro-timer"){ var ses=Math.max(1,Math.floor(Number(av)||4)); setOut(ses+" sessions: 25m focus + 5m break each, long break 15m every 4 ("+(ses*25)+"m focus total)"); return; }
+    if(slug==="exam-countdown"||slug==="assignment-countdown"||slug==="semester-countdown"){ var dtv=tv.trim(); if(!/^\d4-\d2-\d2$/.test(dtv)){ showErr("Enter date as YYYY-MM-DD in the text field."); return; } var today2=new Date().toISOString().slice(0,10); var dd=TK3.dateDiff(today2,dtv,"days"); if(isNaN(dd)){ showErr("Invalid date."); return; } setOut(Math.round(dd)+" days"); return; }
+    if(slug==="study-schedule-generator"||slug==="revision-schedule-generator"){ var subs=tv.split(",").map(function(s){return s.trim()}).filter(Boolean); if(!subs.length||!isFinite(an)||!an){ showErr("Enter subjects comma-separated and hours (A)."); return; } var per=an/subs.length; setOut(subs.map(function(s){return s+": "+per.toFixed(1)+"h"}).join("\n")); return; }
+    if(slug==="flashcard-generator"){ var lines=tv.split("\n").map(function(s){return s.trim()}).filter(Boolean); if(!lines.length||lines.every(function(l){return l.indexOf("|")<0})){ showErr("One card per line as Question|Answer"); return; } setOut(lines.length+" cards:\n"+lines.map(function(l,i){ var p=l.split("|"); return (i+1)+". Q: "+(p[0]||"").trim()+" → A: "+(p[1]||"").trim()}).join("\n")); return; }
+    if(slug==="multiplication-table-generator"){ var nn=Math.floor(Number(av)||5), up=Math.floor(Number(bv)||10); if(nn<1||up<1){ showErr("Enter n (A) and up-to (B)."); return; } var o=[]; for(var k=1;k<=up;k++) o.push(nn+" × "+k+" = "+(nn*k)); setOut(o.join("\n")); return; }
+    if(slug==="times-table-quiz"||slug==="random-math-quiz"){ var qn=Math.floor(Number(av)||5); var x1=TK3.randomInt(2,12), x2=TK3.randomInt(2,12); setOut("Q: "+qn+" × "+x1+" = ?\nA: "+(qn*x1)+" (also try "+x2+" + "+qn+" = "+(x2+qn)+")"); return; }
+    if(slug==="unit-conversion-calculator"){ var up3=tv.split(",").map(function(s){return s.trim()}); if(up3.length<3){ showErr("Format: value,from,to — e.g. 10,km,mi"); return; } var val=Number(up3[0]), fr2=up3[1].toLowerCase(), to2=up3[2].toLowerCase(); var rr=TK3.convertLength(val,fr2,to2); if(!isFinite(rr)) rr=TK3.convertWeight(val,fr2,to2); if(!isFinite(rr)) rr=TK3.convertTemp(val,fr2[0],to2[0]); if(!isFinite(rr)){ showErr("Unsupported units. Length (mm,cm,m,km,inch,ft,yd,mile), weight (mg,g,kg,lb,oz), temp (c,f,k)."); return; } setOut(val+" "+fr2+" = "+rr+" "+to2); return; }
    // generic fallback numeric
    if(tv){ var ev=window.ToolKit.safeEval(tv); if(ev.ok){ setOut(String(ev.result)); return;} }
    if(isFinite(an) && isFinite(bn)){ setOut("Result A: "+an+" B: "+bn+"\nSum: "+(an+bn)+"\nAvg: "+window.ToolKit.mean([an,bn])); return; }
@@ -228,6 +350,27 @@ async function process(){
   if(slug==="html-beautifier"){ setOut(window.ToolKit.htmlBeautify(txt)); return; }
   if(slug==="javascript-minifier"){ setOut(window.ToolKit.jsMinify(txt)); return; }
   if(slug==="javascript-beautifier"){ setOut(window.ToolKit.jsBeautify(txt)); return; }
+  if(slug==="sentence-counter"){ var sc2=window.ToolKit.wordCount(txt); setOut("Sentences: "+sc2.sentences+"\nWords: "+sc2.words); return; }
+  if(slug==="paragraph-counter"){ var pc=window.ToolKit.wordCount(txt); setOut("Paragraphs: "+pc.paragraphs+"\nWords: "+pc.words); return; }
+  if(slug==="reading-time-calculator"){ var rc=window.ToolKit.wordCount(txt); setOut("Reading time: "+rc.readingTime+" min ("+rc.words+" words @200wpm)"); return; }
+  if(slug==="markdown-table-generator"){ var mr2=parseInt((document.querySelector("#tool-a")||{}).value,10), mc3=parseInt((document.querySelector("#tool-b")||{}).value,10); var mt=txt.trim().split(","); if(mt.length>=2&&isFinite(+mt[0])&&isFinite(+mt[1])){ mr2=+mt[0]; mc3=+mt[1]; } if(!isFinite(mr2)) mr2=3; if(!isFinite(mc3)) mc3=3; setOut(window.ToolKit.markdownTable(mr2,mc3)); return; }
+  if(slug==="text-to-ascii-generator"){ if(!txt){ showErr("Enter text."); return; } setOut(window.ToolKit.toAscii(txt)); return; }
+  if(slug==="ascii-art-generator"){ if(!txt.trim()){ showErr("Enter text."); return; } setOut(window.ToolKit.asciiArt(txt)); return; }
+  if(slug==="text-line-break-remover"){ if(!txt){ showErr("Enter text."); return; } setOut(txt.replace(/([^\n])\n(?!\n)/g,"$1 ").replace(/\n(3,)/g,"\n\n").trim()); return; }
+  if(slug==="css-gradient-generator"){ var gp=txt.split(",").map(function(s){return s.trim()}).filter(Boolean); if(gp.length<2){ showErr("Format: color1, color2[, angle] — e.g. #ff0000, #0000ff, 90"); return; } var ga=90; if(/deg$|^\d+$/.test(gp[gp.length-1])){ ga=parseFloat(gp.pop()); } var gg=window.ToolKit.buildGradient("linear",gp,ga); if(!gg){ showErr("Enter 2+ valid colors."); return; } setOut("background: "+gg+";"); return; }
+  if(slug==="css-box-shadow-generator"){ var bp=txt.trim().split(/\s+/); if(bp.length<5){ showErr("Format: x y blur spread color — e.g. 0 4 10 0 rgba(0,0,0,0.15)"); return; } var bs=window.ToolKit.buildBoxShadow({x:+bp[0],y:+bp[1],blur:+bp[2],spread:+bp[3],color:bp.slice(4).join(" ")}); if(!bs){ showErr("Invalid shadow values."); return; } setOut("box-shadow: "+bs+";"); return; }
+  if(slug==="css-border-radius-generator"){ var rp=txt.trim().split(/\s+/).filter(Boolean); if(!rp.length||rp.length>4){ showErr("Format: up to 4 values — e.g. 8px 8px 8px 8px"); return; } setOut("border-radius: "+rp.join(" ")+";"); return; }
+  if(slug==="css-text-shadow-generator"){ var sp2=txt.trim().split(/\s+/); if(sp2.length<4){ showErr("Format: x y blur color — e.g. 1 1 2 rgba(0,0,0,0.4)"); return; } var tsh=window.ToolKit.buildTextShadow({x:+sp2[0],y:+sp2[1],blur:+sp2[2],color:sp2.slice(3).join(" ")}); setOut("text-shadow: "+tsh+";"); return; }
+  if(slug==="css-button-generator"){ var btp=txt.split(",").map(function(s){return s.trim()}); if(btp.length<3){ showErr("Format: background,foreground,radius — e.g. #2563eb, #ffffff, 8px"); return; } setOut(".btn{\n  background: "+btp[0]+";\n  color: "+btp[1]+";\n  border-radius: "+btp[2]+";\n  padding: 10px 20px;\n  border: none;\n  cursor: pointer;\n}\n.btn:hover{\n  filter: brightness(1.1);\n}"); return; }
+  if(slug==="css-glassmorphism-generator"){ var glp=txt.split(",").map(function(s){return s.trim()}); if(glp.length<2){ showErr("Format: blur,alpha — e.g. 10px, 0.2"); return; } setOut(".glass{\n  background: rgba(255, 255, 255, "+glp[1]+");\n  backdrop-filter: blur("+glp[0]+");\n  -webkit-backdrop-filter: blur("+glp[0]+");\n  border: 1px solid rgba(255, 255, 255, 0.3);\n  border-radius: 12px;\n}"); return; }
+  if(slug==="css-neumorphism-generator"){ var nmp=txt.split(",").map(function(s){return s.trim()}); if(nmp.length<2){ showErr("Format: base,dist — e.g. #e0e5ec, 9px"); return; } setOut(".neu{\n  background: "+nmp[0]+";\n  box-shadow: "+nmp[1]+" "+nmp[1]+" "+(+parseFloat(nmp[1])*2)+"px #babecc, -"+nmp[1]+" -"+nmp[1]+" "+(+parseFloat(nmp[1])*2)+"px #ffffff;\n  border-radius: 12px;\n}"); return; }
+  if(slug==="css-transform-generator"){ var tfp=txt.split(",").map(function(s){return s.trim()}); if(tfp.length<4){ showErr("Format: rotate,scale,tx,ty — e.g. 15deg, 1.1, 10px, 5px"); return; } setOut("transform: rotate("+tfp[0]+") scale("+tfp[1]+") translate("+tfp[2]+", "+tfp[3]+");"); return; }
+  if(slug==="css-animation-generator"){ var anp=txt.split(",").map(function(s){return s.trim()}); if(anp.length<2||["fade","slide","bounce"].indexOf(anp[0])<0){ showErr("Format: preset(fade|slide|bounce),duration — e.g. fade, 1s"); return; } var kf=anp[0]==="fade"?"@keyframes fade{from{opacity:0}to{opacity:1}}":anp[0]==="slide"?"@keyframes slide{from{transform:translateY(20px);opacity:0}to{transform:none;opacity:1}}":"@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}"; setOut(kf+"\n.anim{\n  animation: "+anp[0]+" "+anp[1]+" ease both;\n}"); return; }
+  if(slug==="css-flexbox-generator"){ var flp=txt.split(",").map(function(s){return s.trim()}); if(flp.length<4){ showErr("Format: direction,justify,align,gap — e.g. row, center, center, 12px"); return; } setOut(".flex{\n  display: flex;\n  flex-direction: "+flp[0]+";\n  justify-content: "+flp[1]+";\n  align-items: "+flp[2]+";\n  gap: "+flp[3]+";\n}"); return; }
+  if(slug==="css-grid-generator"){ var grp=txt.split(",").map(function(s){return s.trim()}); if(grp.length<2){ showErr("Format: cols,gap — e.g. 3, 16px"); return; } setOut(".grid{\n  display: grid;\n  grid-template-columns: repeat("+grp[0]+", 1fr);\n  gap: "+grp[1]+";\n}"); return; }
+  if(slug==="css-clamp-generator"){ var clp=txt.split(",").map(function(s){return s.trim()}); if(clp.length<3){ showErr("Format: min,pref,max — e.g. 1rem, 2.5vw, 2rem"); return; } setOut("font-size: clamp("+clp[0]+", "+clp[1]+", "+clp[2]+");"); return; }
+  if(slug==="css-filter-generator"){ if(!txt.trim()){ showErr("Enter a filter value — e.g. blur(4px) brightness(1.1)"); return; } setOut("filter: "+txt.trim()+";"); return; }
+  if(slug==="css-color-converter"){ if(!txt.trim()){ showErr("Enter a color (HEX, RGB or HSL)."); return; } var cp3=window.ToolKit.hexToRgb(txt.trim()); if(cp3){ var h3=window.ToolKit.rgbToHsl(cp3.r,cp3.g,cp3.b); setOut("HEX: "+txt.trim()+"\nRGB: "+cp3.r+", "+cp3.g+", "+cp3.b+"\nHSL: "+h3.h+", "+h3.s+"%, "+h3.l+"%"); return; } var cm=txt.match(/rgba?\s*\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)/i); if(cm){ var hx2=window.ToolKit.rgbToHex(+cm[1],+cm[2],+cm[3]); var h4=window.ToolKit.rgbToHsl(+cm[1],+cm[2],+cm[3]); setOut("HEX: "+hx2+"\nRGB: "+cm[1]+", "+cm[2]+", "+cm[3]+"\nHSL: "+h4.h+", "+h4.s+"%, "+h4.l+"%"); return; } var hm=txt.match(/hsl\s*\(\s*(\d+)\s*,\s*(\d+)%?\s*,\s*(\d+)%?/i); if(hm){ var rr2=window.ToolKit.hslToRgb(+hm[1],+hm[2],+hm[3]); setOut("HEX: "+window.ToolKit.rgbToHex(rr2.r,rr2.g,rr2.b)+"\nRGB: "+rr2.r+", "+rr2.g+", "+rr2.b+"\nHSL: "+hm[1]+", "+hm[2]+"%, "+hm[3]+"%"); return; } showErr("Enter a valid HEX, RGB or HSL color."); return; }
   // fallback generic
   if(!txt.trim()){ showErr("Please enter input."); return; }
   setOut(txt);
@@ -235,8 +378,8 @@ async function process(){
 }
 if(btn) btn.addEventListener("click",process);
 var dl=$("#tool-download"), rs=$("#tool-reset");
-if(dl) dl.addEventListener("click",function(){ var t=getVal(output)||output.textContent; if(!t){ showErr("Nothing to download"); return;} window.ToolKit.downloadText(t,slug+".txt","text/plain") });
-if(rs) rs.addEventListener("click",function(){ if(input){ if(input.type==="file") input.value=""; else input.value="";} if(input2) input2.value=""; if(aEl) aEl.value=""; if(bEl) bEl.value=""; if(cEl) cEl.value=""; if(dateA) dateA.value=""; if(dateB) dateB.value=""; if(output){ output.value=""; output.textContent=""} clearErr(); if(preview){ preview.textContent=""; if(preview.style) preview.style.background=""} });
+if(dl) dl.addEventListener("click",function(){ if(window._lastImageDataURL){ var a=document.createElement("a"); a.href=window._lastImageDataURL; a.download=slug+".png"; document.body.appendChild(a); a.click(); a.remove(); return; } var t=getVal(output)||output.textContent; if(!t){ showErr("Nothing to download"); return;} window.ToolKit.downloadText(t,slug+".txt","text/plain") });
+if(rs) rs.addEventListener("click",function(){ window._lastImageDataURL=""; if(input){ if(input.type==="file") input.value=""; else input.value="";} if(input2) input2.value=""; if(aEl) aEl.value=""; if(bEl) bEl.value=""; if(cEl) cEl.value=""; if(dateA) dateA.value=""; if(dateB) dateB.value=""; var wE=$("#tool-w"),hE=$("#tool-h"),qE=$("#tool-q"); if(wE) wE.value=""; if(hE) hE.value=""; if(qE) qE.value=""; if(output){ output.value=""; output.textContent=""} clearErr(); if(preview){ preview.textContent=""; if(preview.style) preview.style.background=""} });
 })();
 </script>
 </body>
