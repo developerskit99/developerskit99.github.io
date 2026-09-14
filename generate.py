@@ -65,6 +65,7 @@ def header_html(search=False):
 <li><a href="{BASE}/">Home</a></li>
 <li><a href="{BASE}/#tools">Tools</a></li>
 <li><a href="{BASE}/#categories">Categories</a></li>
+<li><a href="{BASE}/about/">About</a></li>
 </ul>
 </nav>
 </div>
@@ -75,7 +76,7 @@ def footer_html():
     return f"""<footer class="footer">
 <div class="container footer-grid">
 <div><strong class="logo">Developers<span>Kit</span></strong><p style="margin-top:8px">Fast, free, browser-based tools for developers and everyday tasks. No uploads \u2014 everything runs locally.</p></div>
-<div><p><a href="{BASE}/">Homepage</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
+<div><p><a href="{BASE}/">Homepage</a> \u00b7 <a href="{BASE}/about/">About</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
 </div>
 </footer>
 <script src="{BASE}/assets/js/common.js" defer></script>
@@ -433,6 +434,72 @@ def tool_page(tool, slug_map):
 </html>"""
     return html_doc
 
+def about_page():
+    canonical=f"{SITE_URL}/about/"
+    title="About DevelopersKit — Free Online Browser Tools"
+    desc="Learn about DevelopersKit, a free collection of 230 browser-based tools for developers, students, and professionals. No uploads, no sign-up, fully private."
+    faq_qas=[
+        ("What is DevelopersKit?", "DevelopersKit is a free collection of 230 browser-based tools for developers, students, and professionals. Every tool runs entirely in your browser \u2014 no data is uploaded to any server."),
+        ("Is DevelopersKit really free?", "Yes, all 230 tools are completely free to use with no sign-up required. There are no hidden fees or premium tiers."),
+        ("How does DevelopersKit protect my privacy?", "All processing happens locally in your browser using JavaScript. Your data never leaves your device \u2014 there are no server uploads, databases, or tracking of your input."),
+        ("Who built DevelopersKit?", "DevelopersKit was created by a web developer passionate about building fast, accessible, and privacy-respecting tools that help people get things done without complicated software."),
+    ]
+    faq_json=json.dumps([{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas])
+    faq_html=""
+    for q,a in faq_qas:
+        faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+    faq_schema={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas]}
+    breadcrumb_schema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":f"{SITE_URL}/"},{"@type":"ListItem","position":2,"name":"About","item":f"{SITE_URL}/about/"}]}
+    jsonld=f"""
+<script type="application/ld+json">{json.dumps(faq_schema)}</script>
+<script type="application/ld+json">{json.dumps(breadcrumb_schema)}</script>"""
+    body=f"""{header_html(False)}
+<main id="main" class="container">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><span aria-current="page">About</span></nav>
+<h1>About DevelopersKit</h1>
+<p>We built DevelopersKit because finding reliable, fast, and private online tools shouldn't be hard. Most tool websites are cluttered with ads, require sign-ups, or upload your data to unknown servers. We wanted something different.</p>
+
+<section style="margin-top:24px">
+<h2>What We Offer</h2>
+<p>DevelopersKit is a collection of <strong>230 free browser-based tools</strong> spanning 10 categories: Developer Tools, CSS/HTML Tools, Text Tools, Math Calculators, Student Tools, Date & Time, Finance Calculators, Business Calculators, Color Tools, and Image Tools.</p>
+<p>Whether you need to format JSON, calculate your EMI, count words, resize an image, or pick a color palette \u2014 we have a tool for it. Every tool is designed to be fast, accurate, and easy to use.</p>
+
+<h2>How It Works</h2>
+<p>All tools run entirely in your browser using modern web APIs and JavaScript. When you paste text into the JSON Formatter or upload an image to the Resizer, the processing happens on your device. <strong>Your data never leaves your browser.</strong> There are no server uploads, no databases storing your input, and no analytics tracking what you do with the tools.</p>
+
+<h2>Our Principles</h2>
+<div class="tool-grid" style="margin-top:12px">
+<div class="tool-card"><h3>Privacy First</h3><p>Your data stays on your device. We cannot see what you enter or process. No cookies, no tracking, no uploads.</p></div>
+<div class="tool-card"><h3>Always Free</h3><p>No sign-ups, no premium tiers, no hidden costs. Every tool is free to use, today and tomorrow.</p></div>
+<div class="tool-card"><h3>Fast &amp; Lightweight</h3><p>No heavy frameworks or bloated libraries. Pages load fast and tools respond instantly.</p></div>
+<div class="tool-card"><h3>Works Offline</h3><p>Once loaded, most tools work without an internet connection. Use them anywhere, anytime.</p></div>
+<div class="tool-card"><h3>Accessible</h3><p>Built with keyboard navigation, screen reader support, and WCAG-compliant contrast ratios.</p></div>
+<div class="tool-card"><h3>No Account Required</h3><p>Jump in and use any tool immediately. No email, no password, no registration form.</p></div>
+</div>
+
+<h2>Built With</h2>
+<p>DevelopersKit is built with vanilla HTML, CSS, and JavaScript \u2014 no frameworks, no build tools, no dependencies. It is hosted on GitHub Pages and the source code is open for anyone to inspect.</p>
+
+<h2>FAQ</h2>
+<div class="faq" style="margin-top:12px">{faq_html}</div>
+
+<h2 style="margin-top:24px">Get Started</h2>
+<p>Ready to use our tools? <a href="{BASE}/" style="color:#2563eb;font-weight:600">Browse all 230 tools \u2192</a></p>
+</section>
+</main>
+{footer_html()}
+{jsonld}"""
+    doc=f"""<!doctype html>
+<html lang="en">
+<head>
+{head_html(title,desc,canonical)}
+</head>
+<body>
+{body}
+</body>
+</html>"""
+    return doc
+
 def hub_page(tools):
     # group by category
     from collections import defaultdict, OrderedDict
@@ -500,6 +567,11 @@ def main():
     # hub
     hub=hub_page(tools)
     with open(os.path.join(ROOT,"index.html"),"w",encoding="utf-8") as f: f.write(hub)
+    # about page
+    about=about_page()
+    about_dir=os.path.join(ROOT,"about")
+    os.makedirs(about_dir, exist_ok=True)
+    with open(os.path.join(about_dir,"index.html"),"w",encoding="utf-8") as f: f.write(about)
     # tool pages
     for t in tools:
         slug=t["slug"]
@@ -509,13 +581,14 @@ def main():
         with open(os.path.join(d,"index.html"),"w",encoding="utf-8") as f: f.write(html_doc)
     # sitemap
     urls=[f'  <url><loc>{SITE_URL}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>']
+    urls.append(f'  <url><loc>{SITE_URL}/about/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
     for t in sorted(tools, key=lambda x:x["slug"]):
         urls.append(f'  <url><loc>{SITE_URL}/{t["slug"]}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>')
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+ "\n".join(urls) + '\n</urlset>'
     with open(os.path.join(ROOT,"sitemap.xml"),"w",encoding="utf-8",newline="\n") as f: f.write(sitemap)
     # robots
     with open(os.path.join(ROOT,"robots.txt"),"w",encoding="utf-8",newline="\n") as f: f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
-    print(f"Generated {len(tools)} tools + hub + sitemap")
+    print(f"Generated {len(tools)} tools + hub + about + sitemap")
 
 if __name__=="__main__":
     main()
