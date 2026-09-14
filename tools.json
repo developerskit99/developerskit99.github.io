@@ -20,8 +20,8 @@
         "json-minifier",
         "json-to-csv",
         "csv-to-json",
-        "xml-formatter",
-        "xml-validator"
+        "json-to-yaml",
+        "yaml-to-json"
       ]
     },
     {
@@ -875,8 +875,8 @@
         "sentence-counter",
         "paragraph-counter",
         "reading-time-calculator",
-        "case-converter",
-        "uppercase-converter"
+        "text-cleaner",
+        "case-converter"
       ]
     },
     {
@@ -2396,7 +2396,7 @@
         "weeks-between-dates",
         "months-between-dates",
         "business-days-calculator",
-        "working-days-calculator"
+        "days-until-date"
       ]
     },
     {
@@ -2812,9 +2812,9 @@
         "mortgage-calculator",
         "loan-payment-calculator",
         "loan-interest-calculator",
-        "investment-return-calculator",
-        "cagr-calculator",
-        "sip-calculator"
+        "simple-interest-calculator",
+        "compound-interest-calculator",
+        "cagr-calculator"
       ]
     },
     {
