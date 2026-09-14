@@ -354,93 +354,13 @@ if(rs) rs.addEventListener("click",function(){{ if(input){{ if(input.type==="fil
 }})();
 </script>"""
 
-SPECIAL_PAGES={
-"json-formatter":{
- "faq":[
-  ("How does the JSON Formatter work?", "Paste or type your JSON data into the input box and click Process. The tool validates your JSON syntax, then reformats it with proper indentation (2 spaces) for easy reading. If your JSON has errors, it shows exactly where the problem is."),
-  ("Can I format minified or compressed JSON?", "Yes. Paste any compact, minified, or single-line JSON \u2014 even from API responses \u2014 and the formatter will expand it into a readable, indented structure instantly."),
-  ("What if my JSON has syntax errors?", "The tool catches syntax errors before formatting. It highlights the exact position (line and column) of the problem so you can fix it quickly, rather than guessing where the issue is."),
-  ("Is my JSON data uploaded anywhere?", "No. All formatting happens in your browser using JavaScript. Your JSON never leaves your device \u2014 no server processing, no logging, no tracking."),
- ],
- "formula":'<h2>How JSON Formatting Works</h2><p>JSON (JavaScript Object Notation) uses a strict syntax: keys and string values in double quotes, commas between properties, and proper nesting of objects and arrays. Our formatter parses the JSON using <code>JSON.parse()</code>, then re-serializes it with <code>JSON.stringify(data, null, 2)</code> for consistent 2-space indentation.</p><p>The validator checks for: missing commas, unquoted keys, trailing commas, mismatched brackets, and invalid Unicode escapes \u2014 all common mistakes when hand-writing JSON.</p>',
- "examples":"""<h2>Worked examples</h2>
-<div class="tool-grid">
-<div class="tool-card"><h3>Example 1: Format API Response</h3><p><strong>Input:</strong> <code>{"name":"Alice","age":30,"skills":["JavaScript","Python"]}</code><br><strong>Output:</strong> Pretty-printed JSON with proper indentation, making it easy to read nested structures.</p></div>
-<div class="tool-card"><h3>Example 2: Catch Syntax Error</h3><p><strong>Input:</strong> <code>{"name": "Bob" age: 25}</code> (missing comma + unquoted key)<br><strong>Output:</strong> Error message pinpointing the exact location of the syntax problem.</p></div>
-</div>""",
- "desc_override":"Beautify, format, and validate JSON instantly in your browser. Paste minified or raw JSON, get clean indented output with error detection. No uploads \u2014 your data stays private."
-},
-"percentage-calculator":{
- "faq":[
-  ("How do I calculate a percentage of a number?", "Enter the total number in the first field and the percentage in the second. For example, to find 15% of 200, enter 200 and 15. The tool calculates 200 \u00d7 15 / 100 = 30."),
-  ("Can I calculate percentage increase or decrease?", "Yes. Use the first field for the original value and the second for the new value. The tool shows the percentage change between them. For example, going from 80 to 100 is a 25% increase."),
-  ("What real-world calculations can I do?", "Shopping discounts (20% off $50), tax calculations (8.5% sales tax), tip splitting (18% tip on $65), markups, margins, and grade percentages."),
-  ("Is this percentage calculator accurate?", "Yes. It uses precise decimal arithmetic rather than floating-point approximations, so you get exact results for financial and academic calculations."),
- ],
- "formula":'<h2>Formulas Used</h2><p><strong>Percentage of a number:</strong> Result = Value \u00d7 Percent \u00f7 100</p><p><strong>Percentage change:</strong> Change % = ((New Value \u2013 Original Value) \u00f7 Original Value) \u00d7 100</p><p><strong>Reverse percentage:</strong> If X is P% of Y, then Y = X \u00f7 (P/100)</p>',
- "examples":"""<h2>Worked examples</h2>
-<div class="tool-grid">
-<div class="tool-card"><h3>Example 1: Shopping Discount</h3><p>A jacket costs $120 and is 30% off.<br><strong>Calculation:</strong> 120 \u00d7 30 \u00f7 100 = $36 discount<br><strong>You pay:</strong> $120 \u2013 $36 = $84</p></div>
-<div class="tool-card"><h3>Example 2: Grade Percentage</h3><p>You scored 45 out of 60 on a test.<br><strong>Calculation:</strong> (45 \u00f7 60) \u00d7 100 = 75%<br>The tool instantly converts your raw score to a percentage grade.</p></div>
-</div>""",
- "desc_override":"Calculate percentages, discounts, markups, and percentage changes instantly. Free, private, runs in your browser. Perfect for shopping, taxes, tips, and grades."
-},
-"word-counter":{
- "faq":[
-  ("What does the Word Counter measure?", "It counts words, characters (with and without spaces), sentences, paragraphs, and estimates reading time. All counting happens instantly as you type or paste text."),
-  ("How is reading time calculated?", "The average adult reads about 200\u2013250 words per minute. Our tool uses 200 WPM as the baseline, so a 500-word text shows approximately 2.5 minutes of reading time."),
-  ("Can I use it for essays and academic writing?", "Yes. Students use it to check essay length requirements (e.g., \u201c500-word limit\u201d), track word count for applications, and verify they\u2019ve met minimum or maximum requirements."),
-  ("Does it work offline?", "Once the page loads, the counter works without an internet connection. Your text is processed entirely in your browser \u2014 nothing is sent to any server."),
- ],
- "formula":'<h2>How Word Counting Works</h2><p><strong>Words:</strong> Text is split by whitespace (spaces, tabs, newlines). Each non-empty segment counts as one word.</p><p><strong>Characters:</strong> Simple <code>string.length</code> for characters with spaces; <code>string.replace(/\\s/g, "").length</code> for without spaces.</p><p><strong>Reading time:</strong> Word count \u00f7 200 words per minute.</p>',
- "examples":"""<h2>Worked examples</h2>
-<div class="tool-grid">
-<div class="tool-card"><h3>Example 1: Blog Post Check</h3><p>Paste a 1,200-word blog draft.<br><strong>Results:</strong> 1,200 words \u00b7 7,400 chars \u00b7 60 sentences \u00b7 ~6 min reading time. Ideal for SEO (Google prefers 1,000\u20132,000 words).</p></div>
-<div class="tool-card"><h3>Example 2: Tweet Character Count</h3><p>Paste a short message: \u201cJust launched our new tool! Check it out.\u201d<br><strong>Results:</strong> 9 words \u00b7 52 characters. Well under Twitter\u2019s 280-character limit.</p></div>
-</div>""",
- "desc_override":"Count words, characters, sentences, and estimate reading time instantly. Free, private, works offline. Perfect for essays, blog posts, and social media."
-},
-"age-calculator":{
- "faq":[
-  ("How does the Age Calculator work?", "Enter your date of birth (or any past date) and the tool calculates your exact age in years, months, and days. It accounts for varying month lengths and leap years automatically."),
-  ("Can I calculate the age between two dates?", "Yes. Enter a start date and end date to find the exact time difference. Useful for measuring project durations, historical timelines, or how long ago an event occurred."),
-  ("Does it handle leap years?", "Yes. The calculator correctly handles February 29 birthdays and leap year adjustments, so someone born on Feb 29, 2000 gets accurate age calculations even in non-leap years."),
-  ("What date format should I use?", "Use YYYY-MM-DD (e.g., 1995-07-15) or select from the date picker. The tool accepts most common date formats and interprets them correctly."),
- ],
- "formula":'<h2>How Age Calculation Works</h2><p>The tool computes the difference between your birth date and today using the Gregorian calendar. It subtracts years, then adjusts for months and days to give an exact breakdown (e.g., 28 years, 4 months, 12 days).</p><p><strong>Leap year rule:</strong> A year is a leap year if divisible by 4, except centuries unless also divisible by 400.</p>',
- "examples":"""<h2>Worked examples</h2>
-<div class="tool-grid">
-<div class="tool-card"><h3>Example 1: Exact Age</h3><p><strong>DOB:</strong> March 15, 1995<br><strong>Today:</strong> September 14, 2026<br><strong>Result:</strong> 31 years, 5 months, 30 days</p></div>
-<div class="tool-card"><h3>Example 2: Days Until Birthday</h3><p><strong>DOB:</strong> December 25, 2000<br><strong>Today:</strong> September 14, 2026<br><strong>Result:</strong> 25 years, 8 months, 20 days \u2014 and 102 days until your next birthday.</p></div>
-</div>""",
- "desc_override":"Calculate your exact age in years, months, and days. Also finds days between dates, business days, and week numbers. Free, private, runs in your browser."
-},
-"loan-emi-calculator":{
- "faq":[
-  ("What is EMI?", "EMI stands for Equated Monthly Installment. It is the fixed monthly payment you make to repay a loan over a set period. Each EMI includes both principal repayment and interest."),
-  ("How is EMI calculated?", "The formula is: EMI = P \u00d7 r \u00d7 (1+r)^n / ((1+r)^n \u2013 1), where P is the principal loan amount, r is the monthly interest rate, and n is the number of monthly installments."),
-  ("What is the difference between EMI and total interest?", "EMI is your monthly payment. Total interest is the extra amount you pay beyond the principal. For example, a $100,000 loan at 8% for 20 years has an EMI of ~$836, but you pay ~$100,700 in total interest over the life of the loan."),
-  ("Can I compare different loan scenarios?", "Yes. Change the loan amount, interest rate, or tenure to instantly see how each variable affects your EMI. This helps you decide between a shorter tenure (higher EMI, less interest) or longer tenure (lower EMI, more interest)."),
- ],
- "formula":'<h2>EMI Formula</h2><p><strong>EMI = P \u00d7 r \u00d7 (1 + r)<sup>n</sup> / ((1 + r)<sup>n</sup> \u2013 1)</strong></p><p>Where: <strong>P</strong> = Principal (loan amount), <strong>r</strong> = Monthly interest rate (annual rate \u00f7 12 \u00f7 100), <strong>n</strong> = Number of monthly installments (tenure in months).</p><p><strong>Total payment</strong> = EMI \u00d7 n<br><strong>Total interest</strong> = Total payment \u2013 P</p>',
- "examples":"""<h2>Worked examples</h2>
-<div class="tool-grid">
-<div class="tool-card"><h3>Example 1: Home Loan</h3><p><strong>Loan:</strong> $200,000 \u00b7 <strong>Rate:</strong> 7% \u00b7 <strong>Tenure:</strong> 20 years (240 months)<br><strong>Monthly rate:</strong> 7/12/100 = 0.00583<br><strong>EMI:</strong> $200,000 \u00d7 0.00583 \u00d7 (1.00583)^240 / ((1.00583)^240 \u2013 1) = <strong>$1,551</strong><br><strong>Total interest paid:</strong> $72,240</p></div>
-<div class="tool-card"><h3>Example 2: Car Loan</h3><p><strong>Loan:</strong> $25,000 \u00b7 <strong>Rate:</strong> 6% \u00b7 <strong>Tenure:</strong> 5 years (60 months)<br><strong>EMI:</strong> <strong>$483/month</strong><br><strong>Total interest:</strong> $3,980 \u2014 much less than the home loan because of the shorter tenure.</p></div>
-</div>""",
- "desc_override":"Calculate your loan EMI (Equated Monthly Installment) instantly. See monthly payment, total interest, and compare scenarios. Free, private, runs in your browser."
-},
-}
-
 def tool_page(tool, slug_map):
     title=tool["title"]; desc=tool["description"]; cat=tool["category"]; slug=tool["slug"]
     seo=seo_title(title)
     canonical=f"{SITE_URL}/{slug}/"
     related=tool.get("related",[])[:8]
-    sp=SPECIAL_PAGES.get(slug,{})
-    if sp:
-        desc=sp.get("desc_override",desc)
-    faq_qas=sp.get("faq") or [
+    # json-ld
+    faq_qas=[
         (f"How do I use {title}?", f"Paste your input into the {title} tool, click Process/Calculate, and copy the result. All processing happens in your browser."),
         (f"Is {title} free and private?", "Yes, it is free and runs 100% in your browser. No data is uploaded to any server."),
         (f"Can I use {title} on mobile?", "Yes, the tool is fully responsive and works on phones, tablets and desktops."),
@@ -457,23 +377,125 @@ def tool_page(tool, slug_map):
             rel_cards+=f'<a href="{BASE}/{esc(rslug)}/">{esc_txt(rslug.replace("-"," ").title())}</a>'
     if not rel_cards:
         rel_cards='<p>No related tools.</p>'
-    formula_html=sp.get("formula","")
-    if not formula_html:
-        if cat in ("Math Calculators","Finance Calculators","Business Calculators","Date & Time","Student Tools"):
-            formula_html='<h2>Formula</h2><p>Used formula depends on the calculation; e.g. Simple Interest = P\u00d7R\u00d7T/100, Percentage = value\u00d7percent/100, CAGR = (FV/PV)<sup>1/n</sup>-1.</p>'
-        else:
-            formula_html='<h2>How it works</h2><p>All transformations run locally using the ToolKit library (client-side, no uploads). Input is validated before processing.</p>'
-
-    examples=sp.get("examples") or f"""
+    # Custom hand-written content for top money pages
+    custom_content={
+        "json-formatter":{
+            "howto":'<h2>How to use the JSON Formatter</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste your raw, minified, or malformed JSON into the input box above.</li><li>Click <strong>Process</strong> to instantly pretty-print and validate it.</li><li>The formatted JSON appears in the output area with proper indentation (2 spaces).</li><li>Click <strong>Copy</strong> to grab the result, or <strong>Download</strong> to save it as a <code>.json</code> file.</li></ol>',
+            "formula":'<h2>How JSON formatting works</h2><p>The formatter parses your input using the browser\u2019s native <code>JSON.parse()</code> API, then re-serializes it with <code>JSON.stringify(data, null, 2)</code> to produce clean, indented output. If your JSON is invalid, the tool shows exactly where the syntax error is so you can fix it.</p>',
+            "examples":"""<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1 \u2014 Minified to formatted</h3><p><strong>Input:</strong> <code>{"name":"Alice","age":30,"hobbies":["reading","gaming"]}</code></p><p><strong>Output:</strong></p><pre style="background:#f1f5f9;padding:8px;border-radius:6px;overflow-x:auto;font-size:13px">{
+  "name": "Alice",
+  "age": 30,
+  "hobbies": [
+    "reading",
+    "gaming"
+  ]
+}</pre></div>
+<div class="tool-card"><h3>Example 2 \u2014 Catching errors</h3><p><strong>Input:</strong> <code>{"name": "Bob", age: 25}</code> (missing quotes around key)</p><p><strong>Output:</strong> Error: Unexpected token a in JSON at position 14. This tells you exactly where to fix the syntax.</p></div>
+</div>""",
+            "faq":[
+                ("What is a JSON Formatter?", "A JSON Formatter is a free online tool that takes raw, minified, or messy JSON data and pretty-prints it with proper indentation and line breaks. It also validates your JSON and shows syntax errors if any exist."),
+                ("Why is my JSON not formatting?", "If the formatter shows an error, your JSON has a syntax mistake \u2014 like a missing comma, unquoted key, or trailing comma. Fix the error shown and try again."),
+                ("Is my JSON data uploaded to a server?", "No. All formatting happens in your browser using JavaScript. Your JSON data never leaves your device, making it completely private."),
+                ("Can I format JSON from an API response?", "Yes. Copy the JSON response from any API (Postman, browser DevTools, curl output) and paste it into the formatter. It works with any valid JSON."),
+            ]
+        },
+        "percentage-calculator":{
+            "howto":'<h2>How to use the Percentage Calculator</h2><ol style="margin-left:20px;line-height:1.8"><li>Enter the <strong>base value</strong> in the first field (e.g. 200).</li><li>Enter the <strong>percentage</strong> in the second field (e.g. 15).</li><li>Click <strong>Calculate</strong> to see the result: 15% of 200 = 30.</li></ol>',
+            "formula":'<h2>Formula</h2><p>The percentage formula is: <strong>Result = (Value \u00d7 Percent) \u00f7 100</strong></p><p>For example, to find 15% of 200: (200 \u00d7 15) \u00f7 100 = 30.</p>',
+            "examples":"""<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1 \u2014 Discount calculation</h3><p>A $80 shirt is 25% off. What\u2019s the discount?</p><p>Enter 80 as Value A and 25 as Value B.</p><p><strong>Result:</strong> 25% of 80 = 20. So you save $20 and pay $60.</p></div>
+<div class="tool-card"><h3>Example 2 \u2014 Test score</h3><p>You scored 42 out of 50 on a test. What percentage is that?</p><p>Enter 42 as Value A and 50 as Value B, then the tool calculates 42/50 \u00d7 100 = 84%.</p></div>
+</div>""",
+            "faq":[
+                ("How do I calculate a percentage?", "Enter the base value and the percentage number, then click Calculate. The formula is: Result = (Value \u00d7 Percent) \u00f7 100."),
+                ("How do I find what percent A is of B?", "Divide A by B and multiply by 100. For example, 30 out of 50: (30 \u00f7 50) \u00d7 100 = 60%."),
+                ("Can I calculate percentage increase or decrease?", "Yes. Use the separate Percentage Increase and Percentage Decrease calculators linked below, or enter the old and new values."),
+                ("Is this percentage calculator accurate?", "Yes. It uses precise JavaScript math. For most real-world purposes (taxes, discounts, grades), the results are exact."),
+            ]
+        },
+        "word-counter":{
+            "howto":'<h2>How to use the Word Counter</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste or type your text into the input box above.</li><li>Click <strong>Process</strong> to instantly count.</li><li>See the word count, character count (with and without spaces), sentence count, and estimated reading time.</li></ol>',
+            "formula":'<h2>How word counting works</h2><p>The tool splits your text by whitespace to count words, counts each character for character totals, splits by sentence-ending punctuation (.!?) for sentences, and estimates reading time at <strong>200 words per minute</strong> (average adult reading speed).</p>',
+            "examples":"""<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1 \u2014 Short paragraph</h3><p><strong>Input:</strong> "The quick brown fox jumps over the lazy dog. This sentence contains every letter of the English alphabet."</p><p><strong>Result:</strong> Words: 16 | Characters: 86 | Characters (no spaces): 71 | Sentences: 2 | Reading time: 0 min</p></div>
+<div class="tool-card"><h3>Example 2 \u2014 Essay check</h3><p><strong>Input:</strong> Paste a 500-word essay draft.</p><p><strong>Result:</strong> Words: 500 | Characters: 3,200 | Reading time: 2 min. Great for checking if you\u2019re within a word limit.</p></div>
+</div>""",
+            "faq":[
+                ("How accurate is the word counter?", "Very accurate. It counts words by splitting on whitespace and characters by iterating each character. The reading time estimate uses 200 words per minute, the average adult reading speed."),
+                ("Does it count characters with or without spaces?", "Both. You\u2019ll see character count with spaces and without spaces, plus word count, sentence count, and estimated reading time."),
+                ("Can I use it to check essay word limits?", "Absolutely. Paste your essay or assignment text and instantly see if you\u2019re within the word limit."),
+                ("Does it work with multiple languages?", "It works with any text that uses spaces between words. For languages without spaces (Chinese, Japanese), the character count is more useful than word count."),
+            ]
+        },
+        "age-calculator":{
+            "howto":'<h2>How to use the Age Calculator</h2><ol style="margin-left:20px;line-height:1.8"><li>Enter your <strong>date of birth</strong> using the date picker, or type it in YYYY-MM-DD format.</li><li>Click <strong>Calculate</strong>.</li><li>See your exact age in years, and today\u2019s date for reference.</li></ol>',
+            "formula":'<h2>How age is calculated</h2><p>The calculator subtracts your birth date from today\u2019s date. It accounts for whether your birthday has occurred this year yet, giving you your <strong>exact age</strong> (not rounded). For example, if you were born on March 15, 2000 and today is September 14, 2026, you are 26 years old (not 26.5 or 27).</p>',
+            "examples":"""<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1 \u2014 Exact age</h3><p><strong>DOB:</strong> January 1, 2000</p><p><strong>Today:</strong> September 14, 2026</p><p><strong>Result:</strong> Age: 26 years. You turned 26 on January 1, 2026 and will turn 27 on January 1, 2027.</p></div>
+<div class="tool-card"><h3>Example 2 \u2014 Birthday not yet this year</h3><p><strong>DOB:</strong> December 25, 1995</p><p><strong>Today:</strong> September 14, 2026</p><p><strong>Result:</strong> Age: 30 years. Your 31st birthday is coming on December 25, 2026.</p></div>
+</div>""",
+            "faq":[
+                ("How accurate is the age calculator?", "It calculates your exact age based on the difference between your birth date and today\u2019s date, accounting for whether your birthday has passed this year."),
+                ("Does it show months and days too?", "Currently it shows age in complete years. For a more detailed breakdown, you can use the date difference calculator linked below."),
+                ("Can I calculate someone else\u2019s age?", "Yes. Enter any birth date \u2014 it doesn\u2019t have to be yours. Great for calculating a family member\u2019s or friend\u2019s age."),
+                ("Is my birth date stored anywhere?", "No. All calculations happen in your browser. Your date of birth is never sent to any server."),
+            ]
+        },
+        "loan-emi-calculator":{
+            "howto":'<h2>How to use the Loan EMI Calculator</h2><ol style="margin-left:20px;line-height:1.8"><li>Enter the <strong>loan amount</strong> (principal) in Value A \u2014 e.g. 500000.</li><li>Enter the <strong>annual interest rate</strong> (%) in Value B \u2014 e.g. 8.5.</li><li>Enter the <strong>loan tenure</strong> in months in Value C \u2014 e.g. 60.</li><li>Click <strong>Calculate</strong> to see your monthly EMI amount.</li></ol>',
+            "formula":'<h2>EMI Formula</h2><p>EMI = P \u00d7 r \u00d7 (1+r)<sup>n</sup> / ((1+r)<sup>n</sup> \u2212 1)</p><p>Where:</p><ul style="margin-left:20px;line-height:1.8"><li><strong>P</strong> = Principal loan amount</li><li><strong>r</strong> = Monthly interest rate (annual rate \u00f7 12 \u00f7 100)</li><li><strong>n</strong> = Loan tenure in months</li></ul>',
+            "examples":"""<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1 \u2014 Home loan</h3><p><strong>Loan:</strong> \u20b950,00,000 | <strong>Rate:</strong> 8.5% p.a. | <strong>Tenure:</strong> 240 months (20 years)</p><p><strong>Monthly EMI:</strong> \u20b943,391</p><p><strong>Total payment:</strong> \u20b91,04,13,840 | <strong>Total interest:</strong> \u20b954,13,840</p></div>
+<div class="tool-card"><h3>Example 2 \u2014 Car loan</h3><p><strong>Loan:</strong> \u20b98,00,000 | <strong>Rate:</strong> 9% p.a. | <strong>Tenure:</strong> 60 months (5 years)</p><p><strong>Monthly EMI:</strong> \u20b916,607</p><p><strong>Total payment:</strong> \u20b99,96,420 | <strong>Total interest:</strong> \u20b91,96,420</p></div>
+</div>""",
+            "faq":[
+                ("What is EMI?", "EMI stands for Equated Monthly Installment. It is the fixed amount you pay every month to repay a loan over a set tenure. It includes both principal and interest."),
+                ("How is EMI calculated?", "EMI = P \u00d7 r \u00d7 (1+r)^n / ((1+r)^n \u2212 1), where P is the loan amount, r is the monthly interest rate, and n is the tenure in months."),
+                ("Is this EMI calculator accurate?", "Yes. It uses the standard reducing balance formula used by all banks. The result matches what banks show in their EMI calculators."),
+                ("Can I compare different loan offers?", "Yes. Calculate the EMI for each offer with different interest rates and tenures, then compare the total interest paid to find the cheapest option."),
+            ]
+        }
+    }
+    # Formula / examples logic
+    formula_html=""
+    if slug in custom_content:
+        cc=custom_content[slug]
+        howto_html=cc.get("howto","")
+        formula_html=cc.get("formula","")
+        examples=cc.get("examples","")
+        faq_html=""
+        for q,a in cc.get("faq",faq_qas):
+            faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+    elif cat in ("Math Calculators","Finance Calculators","Business Calculators","Date & Time","Student Tools"):
+        formula_html='<h2>Formula</h2><p>Used formula depends on the calculation; e.g. Simple Interest = P\u00d7R\u00d7T/100, Percentage = value\u00d7percent/100, CAGR = (FV/PV)<sup>1/n</sup>-1.</p>'
+        howto_html='<h2>How to use</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste or enter your input in the field above.</li><li>Click Process / Calculate to transform it locally in your browser.</li><li>Copy or Download the result; use Reset to clear.</li></ol>'
+        examples=f"""
 <h2>Worked examples</h2>
 <div class="tool-grid">
 <div class="tool-card"><h3>Example 1</h3><p>Input: Example data for {esc_txt(title)} \u2192 Output: processed result instantly with copy-ready formatting.</p></div>
 <div class="tool-card"><h3>Example 2</h3><p>For {esc_txt(title)}, try entering realistic sample values (e.g. numbers 42 and 8 or a JSON snippet) and click Calculate/Process to see the output.</p></div>
 </div>"""
-
-    faq_html=""
-    for q,a in faq_qas:
-        faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+        faq_html=""
+        for q,a in faq_qas:
+            faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+    else:
+        formula_html='<h2>How it works</h2><p>All transformations run locally using the ToolKit library (client-side, no uploads). Input is validated before processing.</p>'
+        howto_html='<h2>How to use</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste or enter your input in the field above.</li><li>Click Process / Calculate to transform it locally in your browser.</li><li>Copy or Download the result; use Reset to clear.</li></ol>'
+        examples=f"""
+<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1</h3><p>Input: Example data for {esc_txt(title)} \u2192 Output: processed result instantly with copy-ready formatting.</p></div>
+<div class="tool-card"><h3>Example 2</h3><p>For {esc_txt(title)}, try entering realistic sample values (e.g. numbers 42 and 8 or a JSON snippet) and click Calculate/Process to see the output.</p></div>
+</div>"""
+        faq_html=""
+        for q,a in faq_qas:
+            faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
 
     ui=tool_ui(tool)
     script=inline_script(tool)
@@ -491,8 +513,7 @@ def tool_page(tool, slug_map):
 <p>{esc_txt(desc)}</p>
 {ui}
 <section style="margin-top:24px">
-<h2>How to use</h2>
-<ol style="margin-left:20px;line-height:1.8"><li>Paste or enter your input in the field above.</li><li>Click Process / Calculate to transform it locally in your browser.</li><li>Copy or Download the result; use Reset to clear.</li></ol>
+{howto_html}
 {formula_html}
 {examples}
 <div class="faq" style="margin-top:24px"><h2>FAQ</h2>{faq_html}</div>
