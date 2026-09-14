@@ -17,6 +17,81 @@ BASE="" if not _BP else _BP
 DATE="2026-09-13"
 YEAR=datetime.datetime.now().year
 
+SUBCATEGORIES = {
+    "Developer Tools": [
+        ("JSON Tools", ["json-formatter","json-validator","json-minifier","json-to-csv","csv-to-json","json-to-yaml","yaml-to-json","yaml-formatter"]),
+        ("Encoding Tools", ["base64-encoder","base64-decoder","url-encoder","url-decoder","html-entity-encoder","html-entity-decoder"]),
+        ("Dev Utilities", ["uuid-generator","random-string-generator","hash-generator","jwt-decoder","unix-timestamp-converter","cron-expression-generator","regex-tester","regex-generator","lorem-ipsum-generator"]),
+    ],
+    "CSS/HTML Tools": [
+        ("Minify & Beautify", ["css-minifier","css-beautifier","html-minifier","html-beautifier","javascript-minifier","javascript-beautifier"]),
+        ("CSS Generators", ["css-gradient-generator","css-box-shadow-generator","css-border-radius-generator","css-text-shadow-generator","css-button-generator","css-glassmorphism-generator","css-neumorphism-generator","css-transform-generator","css-animation-generator"]),
+        ("Layout & Utilities", ["css-flexbox-generator","css-grid-generator","css-clamp-generator","css-filter-generator","css-color-converter"]),
+    ],
+    "Text Tools": [
+        ("Word & Character Counts", ["word-counter","character-counter","sentence-counter","paragraph-counter","reading-time-calculator"]),
+        ("Case & Format", ["case-converter","uppercase-converter","lowercase-converter","title-case-converter","text-to-slug-converter","slug-generator"]),
+        ("Text Processing", ["remove-duplicate-lines","sort-lines-alphabetically","reverse-text","remove-extra-spaces","find-and-replace-tool","text-cleaner","text-diff-checker","text-line-break-remover"]),
+        ("Markdown & Conversion", ["markdown-previewer","markdown-table-generator","markdown-to-html-converter","html-to-markdown-converter","text-to-ascii-generator","ascii-art-generator"]),
+    ],
+    "Math Calculators": [
+        ("Percentage & Ratio", ["percentage-calculator","percentage-increase-calculator","percentage-decrease-calculator","ratio-calculator","proportion-calculator"]),
+        ("Statistics", ["average-calculator","median-calculator","mode-calculator","standard-deviation-calculator","mean-calculator"]),
+        ("Fractions & Numbers", ["fraction-calculator","decimal-to-fraction","fraction-to-decimal","mixed-number-calculator","gcd-calculator","lcm-calculator","prime-number-checker","prime-number-generator","factor-calculator"]),
+        ("Number Systems", ["binary-calculator","binary-to-decimal","decimal-to-binary","hex-to-decimal","decimal-to-hex","octal-converter","roman-numeral-converter","scientific-notation-converter"]),
+        ("Advanced Math", ["exponent-calculator","square-root-calculator","random-number-generator"]),
+    ],
+    "Student Tools": [
+        ("Grade Calculators", ["grade-calculator","gpa-calculator","cgpa-calculator","percentage-to-gpa-calculator","exam-percentage-calculator","marks-percentage-calculator","final-grade-calculator","weighted-grade-calculator"]),
+        ("Study Planning", ["study-time-calculator","pomodoro-timer","exam-countdown","assignment-countdown","semester-countdown","study-schedule-generator","revision-schedule-generator"]),
+        ("Practice & Quizzes", ["flashcard-generator","random-quiz-generator","multiplication-table-generator","times-table-quiz","random-math-quiz"]),
+        ("Advanced Math", ["equation-solver","quadratic-equation-solver","factorial-calculator","scientific-calculator","unit-conversion-calculator"]),
+    ],
+    "Date & Time": [
+        ("Age & Date Diff", ["age-calculator","date-difference-calculator","days-between-dates","weeks-between-dates","months-between-dates"]),
+        ("Business Days", ["business-days-calculator","working-days-calculator"]),
+        ("Date Operations", ["days-until-date","date-addition-calculator","date-subtraction-calculator"]),
+        ("Time & Conversion", ["time-difference-calculator","time-duration-calculator","hours-to-minutes-converter","minutes-to-seconds-converter","seconds-to-hours-converter"]),
+        ("Date Utilities", ["unix-timestamp-generator","leap-year-checker","day-of-week-calculator","week-number-calculator","date-format-converter"]),
+    ],
+    "Finance Calculators": [
+        ("Interest & Loans", ["simple-interest-calculator","compound-interest-calculator","loan-emi-calculator","mortgage-calculator","loan-payment-calculator","loan-interest-calculator"]),
+        ("Investments", ["investment-return-calculator","cagr-calculator","sip-calculator","inflation-calculator","savings-goal-calculator","retirement-calculator"]),
+        ("Shopping & Bills", ["discount-calculator","sale-price-calculator","markup-calculator","tip-calculator","split-bill-calculator"]),
+        ("Income & Tax", ["salary-calculator","hourly-to-yearly-salary","yearly-to-hourly-salary","tax-percentage-calculator","budget-calculator","net-worth-calculator"]),
+        ("Profit & Margin", ["profit-margin-calculator","break-even-calculator"]),
+    ],
+    "Business Calculators": [
+        ("Revenue & Profit", ["profit-calculator","revenue-calculator","roi-calculator","roas-calculator","gross-margin-calculator","net-margin-calculator","markup-vs-margin-calculator"]),
+        ("Marketing Metrics", ["conversion-rate-calculator","ctr-calculator","cpm-calculator","cpc-calculator","customer-acquisition-cost-calculator","customer-lifetime-value-calculator","churn-rate-calculator","growth-rate-calculator"]),
+        ("Operations", ["inventory-turnover-calculator","sales-commission-calculator","break-even-units-calculator","saas-pricing-calculator","freelance-hourly-rate-calculator"]),
+    ],
+    "Color Tools": [
+        ("Color Conversion", ["hex-to-rgb","rgb-to-hex","rgb-to-hsl","hsl-to-rgb","hex-to-hsl","css-color-converter","tailwind-color-converter","material-color-converter","css-color-generator"]),
+        ("Color Picking & Palettes", ["color-picker","color-palette-generator","random-color-generator","gradient-generator","complementary-color-generator","analogous-color-generator","triadic-color-generator","rgb-color-mixer","color-name-finder"]),
+        ("Accessibility", ["contrast-checker","wcag-contrast-checker","color-blindness-simulator"]),
+    ],
+    "Image Tools": [
+        ("Resize & Crop", ["image-resizer","image-cropper","social-media-image-resizer","youtube-thumbnail-resizer","instagram-image-resizer"]),
+        ("Convert & Compress", ["image-compressor","jpg-to-png","png-to-jpg","webp-to-jpg","jpg-to-webp","png-to-webp"]),
+        ("Metadata & Info", ["image-metadata-viewer","image-dimension-checker","image-aspect-ratio-calculator","image-pixel-color-picker"]),
+        ("Generate & Encode", ["favicon-generator","app-icon-generator","gif-frame-extractor","image-to-base64","base64-to-image"]),
+    ],
+}
+
+CATEGORY_SLUGS = {
+    "Developer Tools": "developer-tools",
+    "CSS/HTML Tools": "css-html-tools",
+    "Text Tools": "text-tools",
+    "Math Calculators": "math-calculators",
+    "Student Tools": "student-tools",
+    "Date & Time": "date-time",
+    "Finance Calculators": "finance-calculators",
+    "Business Calculators": "business-calculators",
+    "Color Tools": "color-tools",
+    "Image Tools": "image-tools",
+}
+
 def esc(s): return html.escape(str(s or ""),quote=True)
 def esc_txt(s): return html.escape(str(s or ""))
 
@@ -504,6 +579,14 @@ def tool_page(tool, slug_map):
     script=inline_script(tool)
     breadcrumbs=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><a href="{BASE}/#categories">{esc_txt(cat)}</a><span>\u203a</span><span aria-current="page">{esc_txt(title)}</span></nav>'
 
+    # Finance disclaimer and formula from tools.json
+    disclaimer_html=""
+    if tool.get("disclaimer"):
+        disclaimer_html=f'<div style="margin-top:16px;padding:12px 16px;background:#fef3c7;border:1px solid #f59e0b;border-radius:8px;font-size:14px;color:#92400e"><strong>Disclaimer:</strong> {esc_txt(tool["disclaimer"])}</div>'
+    formula_from_json=""
+    if tool.get("formula_text"):
+        formula_from_json=f'<div style="margin-top:12px;padding:12px 16px;background:#f0f9ff;border:1px solid #3b82f6;border-radius:8px;font-size:14px;color:#1e40af"><strong>Formula:</strong> {esc_txt(tool["formula_text"])}</div>'
+
     jsonld=f"""
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"SoftwareApplication","name":"{esc(title)}","description":"{esc(desc)}","url":"{esc(canonical)}","applicationCategory":"UtilitiesApplication","operatingSystem":"Web","offers":{{"@type":"Offer","price":"0","priceCurrency":"USD"}}}}</script>
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"FAQPage","mainEntity":{faq_json}}}</script>
@@ -518,7 +601,9 @@ def tool_page(tool, slug_map):
 <section style="margin-top:24px">
 {howto_html}
 {formula_html}
+{formula_from_json}
 {examples}
+{disclaimer_html}
 <div class="faq" style="margin-top:24px"><h2>FAQ</h2>{faq_html}</div>
 <div style="margin-top:24px"><h2>Related tools</h2><div class="related" style="display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))">{rel_cards}</div></div>
 </section>
@@ -617,15 +702,26 @@ def hub_page(tools):
     for cat in order:
         lst=cats.get(cat,[])
         if not lst: continue
-        sorted_lst=sorted(lst, key=lambda x:x["title"])
-        display_lst=sorted_lst[:8]
-        total=len(sorted_lst)
-        cards=""
-        for t in display_lst:
-            cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"]+" "+t["category"])}"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
+        total=len(lst)
+        slug_map_local={t["slug"]:t for t in lst}
+        cat_slug=CATEGORY_SLUGS.get(cat, cat.lower().replace(" ","-").replace("&","").replace("/","-"))
+        sub_sections_html=""
+        subcats=SUBCATEGORIES.get(cat,[])
+        if subcats:
+            for sub_name, sub_slugs in subcats:
+                sub_tools=[slug_map_local[s] for s in sub_slugs if s in slug_map_local]
+                if not sub_tools: continue
+                sub_cards=""
+                for t in sorted(sub_tools, key=lambda x:x["title"]):
+                    sub_cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"]+" "+t["category"])}"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
+                sub_sections_html+=f'<h3 class="sub-cat-heading">{esc_txt(sub_name)}</h3><div class="tool-grid">{sub_cards}</div>\n'
+        else:
+            sub_cards=""
+            for t in sorted(lst, key=lambda x:x["title"]):
+                sub_cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"]+" "+t["category"])}"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
+            sub_sections_html=f'<div class="tool-grid">{sub_cards}</div>\n'
         anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
-        view_all=f' <a href="#{anchor}" class="view-all">View all \u2192</a>' if total>8 else ""
-        sections+=f'<section class="cat-card" id="{anchor}"><h2>{esc_txt(cat)} <span class="cat-count">{total} tools</span></h2><p>Browse {total} tools in {esc_txt(cat)}.{view_all}</p><div class="tool-grid">{cards}</div></section>\n'
+        sections+=f'<section class="cat-card" id="{anchor}"><h2><a href="{BASE}/{cat_slug}/">{esc_txt(cat)}</a> <span class="cat-count">{total} tools</span></h2>{sub_sections_html}</section>\n'
 
     seo_title_hub="Free Online Developer & Utility Tools — 230 Browser Tools | DevelopersKit"
     desc_hub="230 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
@@ -661,6 +757,75 @@ def hub_page(tools):
 {header_html(False)}
 {hero}
 {footer_html()}
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebSite","name":"DevelopersKit","url":"{SITE_URL}","description":"230 free browser-based tools for developers, students, and professionals.","potentialAction":{{"@type":"SearchAction","target":"{SITE_URL}/?q={{search_term_string}}","query-input":"required name=search_term_string"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"DevelopersKit","url":"{SITE_URL}","logo":"{SITE_URL}/assets/images/logo.svg","description":"Free browser-based tools for developers, students, and professionals."}}</script>
+</body>
+</html>"""
+    return doc
+
+def category_page(cat_name, tools, slug_map):
+    cat_slug=CATEGORY_SLUGS.get(cat_name, cat_name.lower().replace(" ","-").replace("&","").replace("/","-"))
+    canonical=f"{SITE_URL}/{cat_slug}/"
+    title=f"{cat_name} \u2014 Free Online Tools | DevelopersKit"
+    desc=f"Free {cat_name.lower()} for developers, students, and professionals. All tools run in your browser \u2014 no uploads, no sign-up."
+    if len(desc)>160: desc=desc[:157]+"..."
+    breadcrumbs=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><span aria-current="page">{esc_txt(cat_name)}</span></nav>'
+    # sub-category sections
+    subcats=SUBCATEGORIES.get(cat_name,[])
+    sub_sections=""
+    if subcats:
+        for sub_name, sub_slugs in subcats:
+            sub_tools=[slug_map[s] for s in sub_slugs if s in slug_map]
+            if not sub_tools: continue
+            sub_cards=""
+            for t in sorted(sub_tools, key=lambda x:x["title"]):
+                sub_cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"])}"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
+            sub_sections+=f'<h2>{esc_txt(sub_name)}</h2><div class="tool-grid">{sub_cards}</div>\n'
+    else:
+        all_cards=""
+        for t in sorted(tools, key=lambda x:x["title"]):
+            all_cards+=f'<div class="tool-card" data-search="{esc(t["title"]+" "+t["description"])}"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>\n'
+        sub_sections=f'<div class="tool-grid">{all_cards}</div>\n'
+    # related categories
+    related_cats=[c for c in CATEGORY_SLUGS if c!=cat_name][:6]
+    rel_html=""
+    for rc in related_cats:
+        rc_slug=CATEGORY_SLUGS[rc]
+        rel_html+=f'<a href="{BASE}/{rc_slug}/" class="popular-pill">{esc_txt(rc)}</a>\n'
+    # FAQ
+    faq_qas=[
+        (f"What {cat_name.lower()} are available?", f"DevelopersKit offers {len(tools)} free {cat_name.lower()} including {', '.join(t['title'] for t in tools[:5])} and more."),
+        (f"Are {cat_name.lower()} really free?", "Yes. All tools are completely free with no sign-up, no premium tier, and no hidden costs."),
+        (f"Is my data safe with {cat_name.lower()}?", "Yes. Your data never leaves your browser. All processing happens locally on your device using JavaScript."),
+        (f"Can I use {cat_name.lower()} on my phone?", "Yes. All tools are fully responsive and work on phones, tablets, and desktops."),
+    ]
+    faq_html=""
+    for q,a in faq_qas:
+        faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+    faq_json=json.dumps([{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas])
+    jsonld=f"""
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{SITE_URL}/"}},{{"@type":"ListItem","position":2,"name":"{esc(cat_name)}","item":"{esc(canonical)}"}}]}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"FAQPage","mainEntity":{faq_json}}}</script>"""
+    body=f"""{header_html(True)}
+<main id="main" class="container">
+{breadcrumbs}
+<h1>{esc_txt(cat_name)} Tools</h1>
+<p>Free browser-based {cat_name.lower()} for developers, students, and professionals. Your data stays in your browser.</p>
+<section style="margin-top:24px">
+{sub_sections}
+<div class="faq" style="margin-top:24px"><h2>FAQ</h2>{faq_html}</div>
+<div style="margin-top:24px"><h2>Related categories</h2><div style="display:flex;flex-wrap:wrap;gap:8px">{rel_html}</div></div>
+</section>
+</main>
+{footer_html()}
+{jsonld}"""
+    doc=f"""<!doctype html>
+<html lang="en">
+<head>
+{head_html(title,desc,canonical)}
+</head>
+<body>
+{body}
 </body>
 </html>"""
     return doc
@@ -686,6 +851,17 @@ def main():
     # sitemap
     urls=[f'  <url><loc>{SITE_URL}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>']
     urls.append(f'  <url><loc>{SITE_URL}/about/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
+    # category pages
+    order=["Developer Tools","CSS/HTML Tools","Text Tools","Math Calculators","Student Tools","Date & Time","Finance Calculators","Business Calculators","Color Tools","Image Tools"]
+    for cat in order:
+        cat_tools=[t for t in tools if t["category"]==cat]
+        if not cat_tools: continue
+        cat_slug=CATEGORY_SLUGS.get(cat, cat.lower().replace(" ","-").replace("&","").replace("/","-"))
+        cat_dir=os.path.join(ROOT, cat_slug)
+        os.makedirs(cat_dir, exist_ok=True)
+        cat_html=category_page(cat, cat_tools, slug_map)
+        with open(os.path.join(cat_dir,"index.html"),"w",encoding="utf-8") as f: f.write(cat_html)
+        urls.append(f'  <url><loc>{SITE_URL}/{cat_slug}/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>')
     for t in sorted(tools, key=lambda x:x["slug"]):
         urls.append(f'  <url><loc>{SITE_URL}/{t["slug"]}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>')
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+ "\n".join(urls) + '\n</urlset>'

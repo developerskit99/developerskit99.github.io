@@ -22,7 +22,8 @@
         "csv-to-json",
         "json-to-yaml",
         "yaml-to-json"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "json-validator",
@@ -41,7 +42,8 @@
         "xml-validator",
         "yaml-formatter",
         "csv-to-json"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "json-minifier",
@@ -60,7 +62,8 @@
         "csv-to-json",
         "json-to-yaml",
         "yaml-to-json"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "json-to-csv",
@@ -79,7 +82,8 @@
         "yaml-to-json",
         "json-minifier",
         "json-validator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "csv-to-json",
@@ -98,7 +102,8 @@
         "yaml-to-json",
         "json-minifier",
         "xml-formatter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "xml-formatter",
@@ -117,7 +122,8 @@
         "json-minifier",
         "csv-to-json",
         "yaml-to-json"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "xml-validator",
@@ -136,7 +142,8 @@
         "json-formatter",
         "yaml-to-json",
         "csv-to-json"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "yaml-formatter",
@@ -155,7 +162,8 @@
         "json-formatter",
         "json-validator",
         "csv-to-json"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "yaml-to-json",
@@ -174,7 +182,8 @@
         "csv-to-json",
         "xml-formatter",
         "json-to-csv"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "json-to-yaml",
@@ -193,7 +202,8 @@
         "csv-to-json",
         "xml-formatter",
         "json-to-csv"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "base64-encoder",
@@ -212,7 +222,8 @@
         "html-entity-encoder",
         "html-entity-decoder",
         "image-to-base64"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "base64-decoder",
@@ -231,7 +242,8 @@
         "html-entity-decoder",
         "html-entity-encoder",
         "base64-to-image"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "url-encoder",
@@ -250,7 +262,8 @@
         "html-entity-encoder",
         "html-entity-decoder",
         "text-to-slug-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "url-decoder",
@@ -269,7 +282,8 @@
         "html-entity-decoder",
         "html-entity-encoder",
         "slug-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "html-entity-encoder",
@@ -288,7 +302,8 @@
         "base64-encoder",
         "base64-decoder",
         "html-minifier"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "html-entity-decoder",
@@ -307,7 +322,8 @@
         "base64-decoder",
         "base64-encoder",
         "html-beautifier"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "uuid-generator",
@@ -326,7 +342,8 @@
         "json-formatter",
         "timestamp-converter",
         "json-validator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "random-string-generator",
@@ -345,7 +362,8 @@
         "lorem-ipsum-generator",
         "json-formatter",
         "cron-expression-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "hash-generator",
@@ -364,7 +382,8 @@
         "base64-encoder",
         "json-formatter",
         "json-validator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "jwt-decoder",
@@ -383,7 +402,8 @@
         "url-decoder",
         "uuid-generator",
         "json-validator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "unix-timestamp-converter",
@@ -402,7 +422,8 @@
         "hash-generator",
         "uuid-generator",
         "json-formatter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "cron-expression-generator",
@@ -421,7 +442,8 @@
         "hash-generator",
         "random-string-generator",
         "lorem-ipsum-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "regex-tester",
@@ -440,7 +462,8 @@
         "text-diff-checker",
         "hash-generator",
         "url-encoder"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "regex-generator",
@@ -459,7 +482,8 @@
         "hash-generator",
         "random-string-generator",
         "text-to-slug-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "lorem-ipsum-generator",
@@ -478,7 +502,8 @@
         "text-to-slug-converter",
         "markdown-previewer",
         "markdown-table-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "css-minifier",
@@ -497,7 +522,8 @@
         "html-beautifier",
         "javascript-beautifier",
         "css-color-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "css-beautifier",
@@ -516,7 +542,8 @@
         "html-minifier",
         "javascript-minifier",
         "css-gradient-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "html-minifier",
@@ -535,7 +562,8 @@
         "css-beautifier",
         "javascript-beautifier",
         "html-entity-encoder"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "html-beautifier",
@@ -554,7 +582,8 @@
         "css-minifier",
         "javascript-minifier",
         "html-to-markdown-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "javascript-minifier",
@@ -573,7 +602,8 @@
         "css-beautifier",
         "html-beautifier",
         "json-minifier"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "javascript-beautifier",
@@ -592,7 +622,8 @@
         "css-minifier",
         "html-minifier",
         "json-formatter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-gradient-generator",
@@ -611,7 +642,8 @@
         "css-animation-generator",
         "color-palette-generator",
         "gradient-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-box-shadow-generator",
@@ -630,7 +662,8 @@
         "css-glassmorphism-generator",
         "css-neumorphism-generator",
         "css-button-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-border-radius-generator",
@@ -649,7 +682,8 @@
         "css-glassmorphism-generator",
         "css-transform-generator",
         "css-animation-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-text-shadow-generator",
@@ -668,7 +702,8 @@
         "css-gradient-generator",
         "css-color-converter",
         "css-filter-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-button-generator",
@@ -687,7 +722,8 @@
         "css-transform-generator",
         "css-text-shadow-generator",
         "css-border-radius-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-glassmorphism-generator",
@@ -706,7 +742,8 @@
         "css-filter-generator",
         "css-gradient-generator",
         "css-transform-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-neumorphism-generator",
@@ -725,7 +762,8 @@
         "css-transform-generator",
         "css-filter-generator",
         "css-gradient-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-transform-generator",
@@ -744,7 +782,8 @@
         "css-button-generator",
         "css-glassmorphism-generator",
         "css-neumorphism-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-animation-generator",
@@ -763,7 +802,8 @@
         "css-button-generator",
         "css-gradient-generator",
         "css-box-shadow-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-flexbox-generator",
@@ -782,7 +822,8 @@
         "css-clamp-generator",
         "css-filter-generator",
         "css-color-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-grid-generator",
@@ -801,7 +842,8 @@
         "css-animation-generator",
         "css-filter-generator",
         "css-color-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-clamp-generator",
@@ -820,7 +862,8 @@
         "css-filter-generator",
         "css-transform-generator",
         "css-animation-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-filter-generator",
@@ -839,7 +882,8 @@
         "css-flexbox-generator",
         "css-grid-generator",
         "css-clamp-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "css-color-converter",
@@ -858,7 +902,8 @@
         "rgb-to-hsl",
         "hsl-to-rgb",
         "hex-to-hsl"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "word-counter",
@@ -877,7 +922,8 @@
         "reading-time-calculator",
         "text-cleaner",
         "text-line-break-remover"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "character-counter",
@@ -896,7 +942,8 @@
         "text-to-slug-converter",
         "case-converter",
         "text-line-break-remover"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "sentence-counter",
@@ -915,7 +962,8 @@
         "uppercase-converter",
         "lowercase-converter",
         "title-case-converter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "paragraph-counter",
@@ -934,7 +982,8 @@
         "lowercase-converter",
         "title-case-converter",
         "remove-duplicate-lines"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "reading-time-calculator",
@@ -953,7 +1002,8 @@
         "title-case-converter",
         "remove-duplicate-lines",
         "sort-lines-alphabetically"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "case-converter",
@@ -972,7 +1022,8 @@
         "text-to-slug-converter",
         "slug-generator",
         "word-counter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "uppercase-converter",
@@ -991,7 +1042,8 @@
         "sort-lines-alphabetically",
         "reverse-text",
         "remove-extra-spaces"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "lowercase-converter",
@@ -1010,7 +1062,8 @@
         "reverse-text",
         "remove-extra-spaces",
         "find-and-replace-tool"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "title-case-converter",
@@ -1029,7 +1082,8 @@
         "remove-extra-spaces",
         "find-and-replace-tool",
         "text-diff-checker"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "remove-duplicate-lines",
@@ -1048,7 +1102,8 @@
         "find-and-replace-tool",
         "text-diff-checker",
         "text-cleaner"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "sort-lines-alphabetically",
@@ -1067,7 +1122,8 @@
         "text-diff-checker",
         "text-cleaner",
         "text-to-slug-converter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "reverse-text",
@@ -1086,7 +1142,8 @@
         "text-cleaner",
         "text-to-slug-converter",
         "slug-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "remove-extra-spaces",
@@ -1105,7 +1162,8 @@
         "text-to-slug-converter",
         "slug-generator",
         "markdown-previewer"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "find-and-replace-tool",
@@ -1124,7 +1182,8 @@
         "remove-duplicate-lines",
         "sort-lines-alphabetically",
         "case-converter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "text-diff-checker",
@@ -1143,7 +1202,8 @@
         "remove-duplicate-lines",
         "sort-lines-alphabetically",
         "character-counter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "text-cleaner",
@@ -1162,7 +1222,8 @@
         "markdown-table-generator",
         "markdown-to-html-converter",
         "html-to-markdown-converter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "text-to-slug-converter",
@@ -1181,7 +1242,8 @@
         "text-cleaner",
         "text-line-break-remover",
         "case-converter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "slug-generator",
@@ -1200,7 +1262,8 @@
         "html-to-markdown-converter",
         "text-to-ascii-generator",
         "ascii-art-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "markdown-previewer",
@@ -1219,7 +1282,8 @@
         "lorem-ipsum-generator",
         "text-cleaner",
         "slug-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "markdown-table-generator",
@@ -1238,7 +1302,8 @@
         "ascii-art-generator",
         "text-line-break-remover",
         "word-counter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "markdown-to-html-converter",
@@ -1257,7 +1322,8 @@
         "html-beautifier",
         "html-entity-encoder",
         "text-cleaner"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "html-to-markdown-converter",
@@ -1276,7 +1342,8 @@
         "html-minifier",
         "html-entity-decoder",
         "text-cleaner"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "text-to-ascii-generator",
@@ -1295,7 +1362,8 @@
         "character-counter",
         "sentence-counter",
         "paragraph-counter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "ascii-art-generator",
@@ -1314,7 +1382,8 @@
         "sentence-counter",
         "paragraph-counter",
         "reading-time-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "text-line-break-remover",
@@ -1333,7 +1402,8 @@
         "paragraph-counter",
         "reading-time-calculator",
         "case-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "percentage-calculator",
@@ -1352,7 +1422,9 @@
         "profit-margin-calculator",
         "ratio-calculator",
         "proportion-calculator"
-      ]
+      ],
+      "tier": "A",
+      "formula_text": "Result = (Value × Percent) / 100"
     },
     {
       "slug": "percentage-increase-calculator",
@@ -1371,7 +1443,9 @@
         "roi-calculator",
         "profit-margin-calculator",
         "investment-return-calculator"
-      ]
+      ],
+      "tier": "A",
+      "formula_text": "Increase % = ((New - Old) / Old) × 100"
     },
     {
       "slug": "percentage-decrease-calculator",
@@ -1390,7 +1464,9 @@
         "markup-calculator",
         "profit-margin-calculator",
         "break-even-calculator"
-      ]
+      ],
+      "tier": "A",
+      "formula_text": "Decrease % = ((Old - New) / Old) × 100"
     },
     {
       "slug": "ratio-calculator",
@@ -1409,7 +1485,8 @@
         "mode-calculator",
         "standard-deviation-calculator",
         "mean-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "proportion-calculator",
@@ -1428,7 +1505,8 @@
         "standard-deviation-calculator",
         "mean-calculator",
         "fraction-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "average-calculator",
@@ -1447,7 +1525,8 @@
         "mean-calculator",
         "ratio-calculator",
         "proportion-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "median-calculator",
@@ -1466,7 +1545,8 @@
         "fraction-calculator",
         "decimal-to-fraction",
         "fraction-to-decimal"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "mode-calculator",
@@ -1485,7 +1565,8 @@
         "decimal-to-fraction",
         "fraction-to-decimal",
         "mixed-number-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "standard-deviation-calculator",
@@ -1504,7 +1585,8 @@
         "fraction-to-decimal",
         "mixed-number-calculator",
         "gcd-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "mean-calculator",
@@ -1523,7 +1605,8 @@
         "mixed-number-calculator",
         "gcd-calculator",
         "lcm-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "fraction-calculator",
@@ -1542,7 +1625,8 @@
         "gcd-calculator",
         "lcm-calculator",
         "scientific-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "decimal-to-fraction",
@@ -1561,7 +1645,8 @@
         "lcm-calculator",
         "prime-number-checker",
         "prime-number-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "fraction-to-decimal",
@@ -1580,7 +1665,8 @@
         "prime-number-checker",
         "prime-number-generator",
         "factor-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "mixed-number-calculator",
@@ -1599,7 +1685,8 @@
         "prime-number-generator",
         "factor-calculator",
         "scientific-notation-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "gcd-calculator",
@@ -1618,7 +1705,8 @@
         "factor-calculator",
         "scientific-notation-converter",
         "binary-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "lcm-calculator",
@@ -1637,7 +1725,8 @@
         "scientific-notation-converter",
         "binary-calculator",
         "binary-to-decimal"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "prime-number-checker",
@@ -1656,7 +1745,8 @@
         "binary-calculator",
         "binary-to-decimal",
         "decimal-to-binary"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "prime-number-generator",
@@ -1675,7 +1765,8 @@
         "binary-to-decimal",
         "decimal-to-binary",
         "hex-to-decimal"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "factor-calculator",
@@ -1694,7 +1785,8 @@
         "decimal-to-binary",
         "hex-to-decimal",
         "decimal-to-hex"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "scientific-notation-converter",
@@ -1713,7 +1805,8 @@
         "hex-to-decimal",
         "decimal-to-hex",
         "octal-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "binary-calculator",
@@ -1732,7 +1825,8 @@
         "decimal-to-hex",
         "octal-converter",
         "roman-numeral-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "binary-to-decimal",
@@ -1751,7 +1845,8 @@
         "octal-converter",
         "binary-calculator",
         "scientific-notation-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "decimal-to-binary",
@@ -1770,7 +1865,8 @@
         "octal-converter",
         "binary-calculator",
         "scientific-notation-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "hex-to-decimal",
@@ -1789,7 +1885,8 @@
         "random-number-generator",
         "exponent-calculator",
         "square-root-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "decimal-to-hex",
@@ -1808,7 +1905,8 @@
         "exponent-calculator",
         "square-root-calculator",
         "percentage-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "octal-converter",
@@ -1827,7 +1925,8 @@
         "square-root-calculator",
         "percentage-calculator",
         "percentage-increase-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "roman-numeral-converter",
@@ -1846,7 +1945,8 @@
         "percentage-calculator",
         "percentage-increase-calculator",
         "percentage-decrease-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "random-number-generator",
@@ -1865,7 +1965,8 @@
         "percentage-increase-calculator",
         "percentage-decrease-calculator",
         "ratio-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "exponent-calculator",
@@ -1884,7 +1985,8 @@
         "percentage-decrease-calculator",
         "ratio-calculator",
         "proportion-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "square-root-calculator",
@@ -1903,7 +2005,8 @@
         "ratio-calculator",
         "proportion-calculator",
         "average-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "grade-calculator",
@@ -1922,7 +2025,8 @@
         "final-grade-calculator",
         "exam-percentage-calculator",
         "marks-percentage-calculator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "gpa-calculator",
@@ -1941,7 +2045,8 @@
         "weighted-grade-calculator",
         "final-grade-calculator",
         "exam-percentage-calculator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "cgpa-calculator",
@@ -1960,7 +2065,8 @@
         "final-grade-calculator",
         "weighted-grade-calculator",
         "study-time-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "percentage-to-gpa-calculator",
@@ -1979,7 +2085,8 @@
         "weighted-grade-calculator",
         "study-time-calculator",
         "pomodoro-timer"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "exam-percentage-calculator",
@@ -1998,7 +2105,8 @@
         "study-time-calculator",
         "pomodoro-timer",
         "exam-countdown"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "marks-percentage-calculator",
@@ -2017,7 +2125,8 @@
         "pomodoro-timer",
         "exam-countdown",
         "assignment-countdown"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "final-grade-calculator",
@@ -2036,7 +2145,8 @@
         "exam-countdown",
         "assignment-countdown",
         "semester-countdown"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "weighted-grade-calculator",
@@ -2055,7 +2165,8 @@
         "assignment-countdown",
         "semester-countdown",
         "study-schedule-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "study-time-calculator",
@@ -2074,7 +2185,8 @@
         "semester-countdown",
         "study-schedule-generator",
         "revision-schedule-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "pomodoro-timer",
@@ -2093,7 +2205,8 @@
         "exam-countdown",
         "assignment-countdown",
         "flashcard-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "exam-countdown",
@@ -2112,7 +2225,8 @@
         "study-time-calculator",
         "study-schedule-generator",
         "revision-schedule-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "assignment-countdown",
@@ -2131,7 +2245,8 @@
         "flashcard-generator",
         "random-quiz-generator",
         "multiplication-table-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "semester-countdown",
@@ -2150,7 +2265,8 @@
         "random-quiz-generator",
         "multiplication-table-generator",
         "times-table-quiz"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "study-schedule-generator",
@@ -2169,7 +2285,8 @@
         "multiplication-table-generator",
         "times-table-quiz",
         "random-math-quiz"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "revision-schedule-generator",
@@ -2188,7 +2305,8 @@
         "times-table-quiz",
         "random-math-quiz",
         "equation-solver"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "flashcard-generator",
@@ -2207,7 +2325,8 @@
         "random-math-quiz",
         "equation-solver",
         "quadratic-equation-solver"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "random-quiz-generator",
@@ -2226,7 +2345,8 @@
         "equation-solver",
         "quadratic-equation-solver",
         "factorial-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "multiplication-table-generator",
@@ -2245,7 +2365,8 @@
         "quadratic-equation-solver",
         "factorial-calculator",
         "scientific-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "times-table-quiz",
@@ -2264,7 +2385,8 @@
         "factorial-calculator",
         "scientific-calculator",
         "unit-conversion-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "random-math-quiz",
@@ -2283,7 +2405,8 @@
         "scientific-calculator",
         "unit-conversion-calculator",
         "grade-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "equation-solver",
@@ -2302,7 +2425,8 @@
         "unit-conversion-calculator",
         "grade-calculator",
         "gpa-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "quadratic-equation-solver",
@@ -2321,7 +2445,8 @@
         "grade-calculator",
         "gpa-calculator",
         "cgpa-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "factorial-calculator",
@@ -2340,7 +2465,8 @@
         "gpa-calculator",
         "cgpa-calculator",
         "percentage-to-gpa-calculator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "scientific-calculator",
@@ -2359,7 +2485,8 @@
         "cgpa-calculator",
         "percentage-to-gpa-calculator",
         "exam-percentage-calculator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "unit-conversion-calculator",
@@ -2378,7 +2505,8 @@
         "percentage-to-gpa-calculator",
         "exam-percentage-calculator",
         "marks-percentage-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "age-calculator",
@@ -2397,7 +2525,8 @@
         "day-of-week-calculator",
         "week-number-calculator",
         "date-format-converter"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "date-difference-calculator",
@@ -2416,7 +2545,8 @@
         "business-days-calculator",
         "time-difference-calculator",
         "age-calculator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "days-between-dates",
@@ -2435,7 +2565,8 @@
         "working-days-calculator",
         "days-until-date",
         "date-addition-calculator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "weeks-between-dates",
@@ -2454,7 +2585,8 @@
         "days-until-date",
         "date-addition-calculator",
         "date-subtraction-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "months-between-dates",
@@ -2473,7 +2605,8 @@
         "date-addition-calculator",
         "date-subtraction-calculator",
         "time-difference-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "business-days-calculator",
@@ -2492,7 +2625,8 @@
         "date-subtraction-calculator",
         "time-difference-calculator",
         "time-duration-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "working-days-calculator",
@@ -2511,7 +2645,8 @@
         "time-difference-calculator",
         "time-duration-calculator",
         "hours-to-minutes-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "days-until-date",
@@ -2530,7 +2665,8 @@
         "time-duration-calculator",
         "hours-to-minutes-converter",
         "minutes-to-seconds-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "date-addition-calculator",
@@ -2549,7 +2685,8 @@
         "hours-to-minutes-converter",
         "minutes-to-seconds-converter",
         "seconds-to-hours-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "date-subtraction-calculator",
@@ -2568,7 +2705,8 @@
         "minutes-to-seconds-converter",
         "seconds-to-hours-converter",
         "unix-timestamp-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "time-difference-calculator",
@@ -2587,7 +2725,8 @@
         "seconds-to-hours-converter",
         "unix-timestamp-generator",
         "leap-year-checker"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "time-duration-calculator",
@@ -2606,7 +2745,8 @@
         "unix-timestamp-generator",
         "leap-year-checker",
         "day-of-week-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "hours-to-minutes-converter",
@@ -2625,7 +2765,8 @@
         "leap-year-checker",
         "day-of-week-calculator",
         "week-number-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "minutes-to-seconds-converter",
@@ -2644,7 +2785,8 @@
         "day-of-week-calculator",
         "week-number-calculator",
         "date-format-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "seconds-to-hours-converter",
@@ -2663,7 +2805,8 @@
         "week-number-calculator",
         "date-format-converter",
         "age-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "unix-timestamp-generator",
@@ -2682,7 +2825,8 @@
         "day-of-week-calculator",
         "week-number-calculator",
         "time-difference-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "leap-year-checker",
@@ -2701,7 +2845,8 @@
         "age-calculator",
         "date-difference-calculator",
         "days-between-dates"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "day-of-week-calculator",
@@ -2720,7 +2865,8 @@
         "date-difference-calculator",
         "days-between-dates",
         "weeks-between-dates"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "week-number-calculator",
@@ -2739,7 +2885,8 @@
         "days-between-dates",
         "weeks-between-dates",
         "months-between-dates"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "date-format-converter",
@@ -2758,7 +2905,8 @@
         "weeks-between-dates",
         "months-between-dates",
         "business-days-calculator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "simple-interest-calculator",
@@ -2777,7 +2925,10 @@
         "investment-return-calculator",
         "cagr-calculator",
         "sip-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Simple Interest = P × R × T / 100 where P = Principal, R = Annual Interest Rate (%), T = Time in years"
     },
     {
       "slug": "compound-interest-calculator",
@@ -2796,7 +2947,10 @@
         "cagr-calculator",
         "retirement-calculator",
         "savings-goal-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "A = P(1 + r/n)^(nt) where P = Principal, r = annual rate, n = compounds per year, t = years"
     },
     {
       "slug": "loan-emi-calculator",
@@ -2815,7 +2969,10 @@
         "simple-interest-calculator",
         "compound-interest-calculator",
         "salary-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "EMI = P × r × (1+r)^n / ((1+r)^n - 1) where P = Principal, r = monthly rate, n = months"
     },
     {
       "slug": "mortgage-calculator",
@@ -2834,7 +2991,10 @@
         "cagr-calculator",
         "sip-calculator",
         "inflation-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "M = P[r(1+r)^n]/[(1+r)^n-1] where P = Principal, r = monthly rate, n = months"
     },
     {
       "slug": "loan-payment-calculator",
@@ -2853,7 +3013,10 @@
         "sip-calculator",
         "inflation-calculator",
         "savings-goal-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Monthly Payment = P × r × (1+r)^n / ((1+r)^n - 1)"
     },
     {
       "slug": "loan-interest-calculator",
@@ -2872,7 +3035,10 @@
         "inflation-calculator",
         "savings-goal-calculator",
         "retirement-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Total Interest = (Monthly Payment × Months) - Principal"
     },
     {
       "slug": "investment-return-calculator",
@@ -2891,7 +3057,10 @@
         "savings-goal-calculator",
         "retirement-calculator",
         "discount-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Return = ((Final Value - Initial Value) / Initial Value) × 100"
     },
     {
       "slug": "cagr-calculator",
@@ -2910,7 +3079,10 @@
         "compound-interest-calculator",
         "retirement-calculator",
         "growth-rate-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "CAGR = (FV/PV)^(1/n) - 1 where FV = Future Value, PV = Present Value, n = years"
     },
     {
       "slug": "sip-calculator",
@@ -2929,7 +3101,10 @@
         "discount-calculator",
         "sale-price-calculator",
         "markup-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "FV = P × [((1+r)^n - 1) / r] where P = Monthly investment, r = monthly rate, n = months"
     },
     {
       "slug": "inflation-calculator",
@@ -2948,7 +3123,10 @@
         "sale-price-calculator",
         "markup-calculator",
         "profit-margin-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Future Value = Present Value × (1 + Inflation Rate)^Years"
     },
     {
       "slug": "savings-goal-calculator",
@@ -2967,7 +3145,10 @@
         "markup-calculator",
         "profit-margin-calculator",
         "break-even-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Monthly Savings = Goal / (Months × (1 + Monthly Rate))"
     },
     {
       "slug": "retirement-calculator",
@@ -2986,7 +3167,10 @@
         "profit-margin-calculator",
         "break-even-calculator",
         "tip-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Required Savings = Annual Expenses × 25 (4% rule)"
     },
     {
       "slug": "discount-calculator",
@@ -3005,7 +3189,10 @@
         "profit-margin-calculator",
         "tip-calculator",
         "split-bill-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Sale Price = Original Price × (1 - Discount%/100)"
     },
     {
       "slug": "sale-price-calculator",
@@ -3024,7 +3211,10 @@
         "tip-calculator",
         "split-bill-calculator",
         "salary-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Sale Price = Original Price - (Original Price × Discount / 100)"
     },
     {
       "slug": "markup-calculator",
@@ -3043,7 +3233,10 @@
         "split-bill-calculator",
         "salary-calculator",
         "hourly-to-yearly-salary"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Selling Price = Cost × (1 + Markup%/100)"
     },
     {
       "slug": "profit-margin-calculator",
@@ -3062,7 +3255,10 @@
         "salary-calculator",
         "hourly-to-yearly-salary",
         "yearly-to-hourly-salary"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Margin = ((Revenue - Cost) / Revenue) × 100"
     },
     {
       "slug": "break-even-calculator",
@@ -3081,7 +3277,10 @@
         "hourly-to-yearly-salary",
         "yearly-to-hourly-salary",
         "tax-percentage-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Break-even units = Fixed Costs / (Price per unit - Variable cost per unit)"
     },
     {
       "slug": "tip-calculator",
@@ -3100,7 +3299,10 @@
         "yearly-to-hourly-salary",
         "tax-percentage-calculator",
         "budget-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Tip = Bill × (Tip% / 100), Total = Bill + Tip"
     },
     {
       "slug": "split-bill-calculator",
@@ -3119,7 +3321,10 @@
         "tax-percentage-calculator",
         "budget-calculator",
         "net-worth-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Per Person = Total Bill / Number of People"
     },
     {
       "slug": "salary-calculator",
@@ -3138,7 +3343,10 @@
         "loan-emi-calculator",
         "budget-calculator",
         "net-worth-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Annual = Monthly × 12, Weekly = Annual / 52, Hourly = Weekly / 40"
     },
     {
       "slug": "hourly-to-yearly-salary",
@@ -3157,7 +3365,10 @@
         "net-worth-calculator",
         "simple-interest-calculator",
         "compound-interest-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Annual = Hourly Rate × Hours per Week × 52"
     },
     {
       "slug": "yearly-to-hourly-salary",
@@ -3176,7 +3387,10 @@
         "simple-interest-calculator",
         "compound-interest-calculator",
         "loan-emi-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Hourly = Annual Salary / (Hours per Week × 52)"
     },
     {
       "slug": "tax-percentage-calculator",
@@ -3195,7 +3409,10 @@
         "compound-interest-calculator",
         "loan-emi-calculator",
         "mortgage-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Effective Tax Rate = (Tax Paid / Gross Income) × 100"
     },
     {
       "slug": "budget-calculator",
@@ -3214,7 +3431,10 @@
         "loan-emi-calculator",
         "mortgage-calculator",
         "loan-payment-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Remaining = Income - Total Expenses, Savings Rate = (Savings / Income) × 100"
     },
     {
       "slug": "net-worth-calculator",
@@ -3233,7 +3453,10 @@
         "mortgage-calculator",
         "loan-payment-calculator",
         "loan-interest-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Net Worth = Total Assets - Total Liabilities"
     },
     {
       "slug": "profit-calculator",
@@ -3252,7 +3475,10 @@
         "gross-margin-calculator",
         "net-margin-calculator",
         "break-even-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Profit = Revenue - Total Costs"
     },
     {
       "slug": "revenue-calculator",
@@ -3271,7 +3497,10 @@
         "ctr-calculator",
         "cpm-calculator",
         "cpc-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Revenue = Units Sold × Price per Unit"
     },
     {
       "slug": "roi-calculator",
@@ -3290,7 +3519,10 @@
         "profit-margin-calculator",
         "break-even-calculator",
         "growth-rate-calculator"
-      ]
+      ],
+      "tier": "A",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "ROI = ((Return - Cost) / Cost) × 100"
     },
     {
       "slug": "roas-calculator",
@@ -3309,7 +3541,10 @@
         "cpc-calculator",
         "customer-acquisition-cost-calculator",
         "customer-lifetime-value-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "ROAS = Revenue from Ads / Ad Spend"
     },
     {
       "slug": "conversion-rate-calculator",
@@ -3328,7 +3563,10 @@
         "roas-calculator",
         "customer-acquisition-cost-calculator",
         "customer-lifetime-value-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Conversion Rate = (Conversions / Total Visitors) × 100"
     },
     {
       "slug": "ctr-calculator",
@@ -3347,7 +3585,10 @@
         "customer-lifetime-value-calculator",
         "churn-rate-calculator",
         "growth-rate-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "CTR = (Clicks / Impressions) × 100"
     },
     {
       "slug": "cpm-calculator",
@@ -3366,7 +3607,10 @@
         "churn-rate-calculator",
         "growth-rate-calculator",
         "gross-margin-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "CPM = (Ad Spend / Impressions) × 1000"
     },
     {
       "slug": "cpc-calculator",
@@ -3385,7 +3629,10 @@
         "growth-rate-calculator",
         "gross-margin-calculator",
         "net-margin-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "CPC = Ad Spend / Clicks"
     },
     {
       "slug": "customer-acquisition-cost-calculator",
@@ -3404,7 +3651,10 @@
         "gross-margin-calculator",
         "net-margin-calculator",
         "markup-vs-margin-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "CAC = Total Marketing Spend / New Customers Acquired"
     },
     {
       "slug": "customer-lifetime-value-calculator",
@@ -3423,7 +3673,10 @@
         "net-margin-calculator",
         "markup-vs-margin-calculator",
         "inventory-turnover-calculator"
-      ]
+      ],
+      "tier": "B",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "CLTV = Average Purchase Value × Purchase Frequency × Customer Lifespan"
     },
     {
       "slug": "churn-rate-calculator",
@@ -3442,7 +3695,10 @@
         "markup-vs-margin-calculator",
         "inventory-turnover-calculator",
         "sales-commission-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Churn Rate = (Customers Lost / Starting Customers) × 100"
     },
     {
       "slug": "growth-rate-calculator",
@@ -3461,7 +3717,10 @@
         "inventory-turnover-calculator",
         "sales-commission-calculator",
         "break-even-units-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Growth Rate = ((New Value - Old Value) / Old Value) × 100"
     },
     {
       "slug": "gross-margin-calculator",
@@ -3480,7 +3739,10 @@
         "sales-commission-calculator",
         "break-even-units-calculator",
         "saas-pricing-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Gross Margin = ((Revenue - COGS) / Revenue) × 100"
     },
     {
       "slug": "net-margin-calculator",
@@ -3499,7 +3761,10 @@
         "break-even-units-calculator",
         "saas-pricing-calculator",
         "freelance-hourly-rate-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Net Margin = (Net Profit / Revenue) × 100"
     },
     {
       "slug": "markup-vs-margin-calculator",
@@ -3518,7 +3783,10 @@
         "saas-pricing-calculator",
         "freelance-hourly-rate-calculator",
         "profit-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Markup = (Price - Cost) / Cost × 100, Margin = (Price - Cost) / Price × 100"
     },
     {
       "slug": "inventory-turnover-calculator",
@@ -3537,7 +3805,10 @@
         "freelance-hourly-rate-calculator",
         "profit-calculator",
         "revenue-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Turnover = COGS / Average Inventory"
     },
     {
       "slug": "sales-commission-calculator",
@@ -3556,7 +3827,10 @@
         "profit-calculator",
         "revenue-calculator",
         "roi-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Commission = Revenue × Commission Rate / 100"
     },
     {
       "slug": "break-even-units-calculator",
@@ -3575,7 +3849,10 @@
         "revenue-calculator",
         "roi-calculator",
         "roas-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Break-even Units = Fixed Costs / (Price - Variable Cost per Unit)"
     },
     {
       "slug": "saas-pricing-calculator",
@@ -3594,7 +3871,10 @@
         "roi-calculator",
         "roas-calculator",
         "conversion-rate-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Price = (Target Revenue + Costs) / Expected Customers"
     },
     {
       "slug": "freelance-hourly-rate-calculator",
@@ -3613,7 +3893,10 @@
         "roas-calculator",
         "conversion-rate-calculator",
         "ctr-calculator"
-      ]
+      ],
+      "tier": "C",
+      "disclaimer": "This calculator is for informational and educational purposes only. It does not constitute financial advice. Consult a qualified financial advisor for decisions about loans, investments, or business strategy.",
+      "formula_text": "Hourly Rate = (Annual Target + Expenses + Profit) / Billable Hours"
     },
     {
       "slug": "image-resizer",
@@ -3632,7 +3915,8 @@
         "youtube-thumbnail-resizer",
         "instagram-image-resizer",
         "image-dimension-checker"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "image-cropper",
@@ -3651,7 +3935,8 @@
         "webp-to-jpg",
         "jpg-to-webp",
         "png-to-webp"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "image-compressor",
@@ -3670,7 +3955,8 @@
         "webp-to-jpg",
         "jpg-to-png",
         "png-to-jpg"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "jpg-to-png",
@@ -3689,7 +3975,8 @@
         "png-to-webp",
         "gif-frame-extractor",
         "image-metadata-viewer"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "png-to-jpg",
@@ -3708,7 +3995,8 @@
         "gif-frame-extractor",
         "image-metadata-viewer",
         "image-dimension-checker"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "webp-to-jpg",
@@ -3727,7 +4015,8 @@
         "image-metadata-viewer",
         "image-dimension-checker",
         "image-aspect-ratio-calculator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "jpg-to-webp",
@@ -3746,7 +4035,8 @@
         "image-dimension-checker",
         "image-aspect-ratio-calculator",
         "favicon-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "png-to-webp",
@@ -3765,7 +4055,8 @@
         "image-aspect-ratio-calculator",
         "favicon-generator",
         "app-icon-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "gif-frame-extractor",
@@ -3784,7 +4075,8 @@
         "favicon-generator",
         "app-icon-generator",
         "social-media-image-resizer"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "image-metadata-viewer",
@@ -3803,7 +4095,8 @@
         "image-resizer",
         "image-compressor",
         "image-to-base64"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "image-dimension-checker",
@@ -3822,7 +4115,8 @@
         "social-media-image-resizer",
         "youtube-thumbnail-resizer",
         "instagram-image-resizer"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "image-aspect-ratio-calculator",
@@ -3841,7 +4135,8 @@
         "youtube-thumbnail-resizer",
         "instagram-image-resizer",
         "image-pixel-color-picker"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "favicon-generator",
@@ -3860,7 +4155,8 @@
         "instagram-image-resizer",
         "image-pixel-color-picker",
         "image-to-base64"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "app-icon-generator",
@@ -3879,7 +4175,8 @@
         "image-pixel-color-picker",
         "image-to-base64",
         "base64-to-image"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "social-media-image-resizer",
@@ -3898,7 +4195,8 @@
         "image-to-base64",
         "base64-to-image",
         "image-resizer"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "youtube-thumbnail-resizer",
@@ -3917,7 +4215,8 @@
         "base64-to-image",
         "image-resizer",
         "image-cropper"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "instagram-image-resizer",
@@ -3936,7 +4235,8 @@
         "image-resizer",
         "image-cropper",
         "image-compressor"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "image-pixel-color-picker",
@@ -3955,7 +4255,8 @@
         "image-cropper",
         "image-compressor",
         "jpg-to-png"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "image-to-base64",
@@ -3974,7 +4275,8 @@
         "image-metadata-viewer",
         "favicon-generator",
         "app-icon-generator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "base64-to-image",
@@ -3993,7 +4295,8 @@
         "jpg-to-png",
         "png-to-jpg",
         "webp-to-jpg"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "hex-to-rgb",
@@ -4012,7 +4315,8 @@
         "hex-to-hsl",
         "css-color-converter",
         "color-picker"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "rgb-to-hex",
@@ -4031,7 +4335,8 @@
         "color-picker",
         "color-palette-generator",
         "random-color-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "rgb-to-hsl",
@@ -4050,7 +4355,8 @@
         "color-palette-generator",
         "random-color-generator",
         "gradient-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "hsl-to-rgb",
@@ -4069,7 +4375,8 @@
         "random-color-generator",
         "gradient-generator",
         "complementary-color-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "hex-to-hsl",
@@ -4088,7 +4395,8 @@
         "gradient-generator",
         "complementary-color-generator",
         "analogous-color-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "color-picker",
@@ -4107,7 +4415,8 @@
         "random-color-generator",
         "contrast-checker",
         "css-color-generator"
-      ]
+      ],
+      "tier": "A"
     },
     {
       "slug": "color-palette-generator",
@@ -4126,7 +4435,8 @@
         "gradient-generator",
         "random-color-generator",
         "color-picker"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "random-color-generator",
@@ -4145,7 +4455,8 @@
         "triadic-color-generator",
         "contrast-checker",
         "wcag-contrast-checker"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "gradient-generator",
@@ -4164,7 +4475,8 @@
         "contrast-checker",
         "wcag-contrast-checker",
         "color-blindness-simulator"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "complementary-color-generator",
@@ -4183,7 +4495,8 @@
         "wcag-contrast-checker",
         "color-blindness-simulator",
         "css-color-generator"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "analogous-color-generator",
@@ -4202,7 +4515,8 @@
         "color-blindness-simulator",
         "css-color-generator",
         "tailwind-color-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "triadic-color-generator",
@@ -4221,7 +4535,8 @@
         "css-color-generator",
         "tailwind-color-converter",
         "material-color-converter"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "contrast-checker",
@@ -4240,7 +4555,8 @@
         "hex-to-rgb",
         "rgb-to-hsl",
         "css-color-converter"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "wcag-contrast-checker",
@@ -4259,7 +4575,8 @@
         "material-color-converter",
         "rgb-color-mixer",
         "color-name-finder"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "color-blindness-simulator",
@@ -4278,7 +4595,8 @@
         "rgb-color-mixer",
         "color-name-finder",
         "hex-to-rgb"
-      ]
+      ],
+      "tier": "B"
     },
     {
       "slug": "css-color-generator",
@@ -4297,7 +4615,8 @@
         "color-name-finder",
         "hex-to-rgb",
         "rgb-to-hex"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "tailwind-color-converter",
@@ -4316,7 +4635,8 @@
         "hex-to-rgb",
         "rgb-to-hex",
         "rgb-to-hsl"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "material-color-converter",
@@ -4335,7 +4655,8 @@
         "rgb-to-hex",
         "rgb-to-hsl",
         "hsl-to-rgb"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "rgb-color-mixer",
@@ -4354,7 +4675,8 @@
         "rgb-to-hsl",
         "hsl-to-rgb",
         "hex-to-hsl"
-      ]
+      ],
+      "tier": "C"
     },
     {
       "slug": "color-name-finder",
@@ -4373,7 +4695,8 @@
         "hsl-to-rgb",
         "hex-to-hsl",
         "color-picker"
-      ]
+      ],
+      "tier": "C"
     }
   ]
 }
