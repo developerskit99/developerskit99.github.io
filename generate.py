@@ -43,6 +43,9 @@ def head_html(title,desc,canonical):
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{og}">
 <meta name="theme-color" content="#2563eb">
+<link rel="icon" type="image/svg+xml" href="{BASE}/assets/images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="{BASE}/assets/images/favicon-32x32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{BASE}/assets/images/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
@@ -58,7 +61,7 @@ def header_html(search=False):
     return f"""<a href="#main" class="skip">Skip to content</a>
 <header class="header">
 <div class="container header-inner">
-<a href="{BASE}/" class="logo" aria-label="DevelopersKit home">Developers<span>Kit</span></a>
+<a href="{BASE}/" class="logo" aria-label="DevelopersKit home"><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="32" width="160"></a>
 <nav class="nav" aria-label="Primary">
 <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">Menu</button>
 <ul id="nav-links" class="nav-links" data-nav-menu>
@@ -75,7 +78,7 @@ def header_html(search=False):
 def footer_html():
     return f"""<footer class="footer">
 <div class="container footer-grid">
-<div><strong class="logo">Developers<span>Kit</span></strong><p style="margin-top:8px">Fast, free, browser-based tools for developers and everyday tasks. No uploads \u2014 everything runs locally.</p></div>
+<div><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" style="margin-bottom:8px"><p style="margin-top:8px">Fast, free, browser-based tools for developers and everyday tasks. No uploads \u2014 everything runs locally.</p></div>
 <div><p><a href="{BASE}/">Homepage</a> \u00b7 <a href="{BASE}/about/">About</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
 </div>
 </footer>
