@@ -78,8 +78,8 @@ def header_html(search=False):
 def footer_html():
     return f"""<footer class="footer">
 <div class="container footer-grid">
-<div><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" style="margin-bottom:8px"><p style="margin-top:8px">Fast, free, browser-based tools for developers and everyday tasks. No uploads \u2014 everything runs locally.</p></div>
-<div><p><a href="{BASE}/">Homepage</a> \u00b7 <a href="{BASE}/about/">About</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
+<div><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" style="margin-bottom:8px"><p style="margin-top:8px">Free browser-based tools for developers, students, and professionals. Your data stays in your browser \u2014 no uploads, no sign-up.</p></div>
+<div><p><a href="{BASE}/">Home</a> \u00b7 <a href="{BASE}/about/">About</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a> \u00b7 <a href="https://github.com/developerskit99/developerskit99.github.io">GitHub</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
 </div>
 </footer>
 <script src="{BASE}/assets/js/common.js" defer></script>
@@ -364,10 +364,10 @@ def tool_page(tool, slug_map):
     related=tool.get("related",[])[:8]
     # json-ld
     faq_qas=[
-        (f"How do I use {title}?", f"Paste your input into the {title} tool, click Process/Calculate, and copy the result. All processing happens in your browser."),
-        (f"Is {title} free and private?", "Yes, it is free and runs 100% in your browser. No data is uploaded to any server."),
-        (f"Can I use {title} on mobile?", "Yes, the tool is fully responsive and works on phones, tablets and desktops."),
-        (f"What makes {title} accurate?", "We use well-tested browser APIs and ToolKit helpers with validation and edge-case handling."),
+        (f"What does {title} do?", f"{title} {desc.split('.')[0].lower()}. All processing happens in your browser with no data uploaded."),
+        (f"Is {title} really free?", "Yes. It is completely free with no sign-up, no premium tier, and no hidden costs."),
+        (f"Is my data safe with {title}?", "Yes. Your data never leaves your browser. All processing happens locally on your device using JavaScript."),
+        (f"Can I use {title} on my phone?", "Yes. The tool is fully responsive and works on phones, tablets, and desktops."),
     ]
     faq_json=json.dumps([{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas])
     # resolved related tools for display
@@ -476,25 +476,25 @@ def tool_page(tool, slug_map):
         for q,a in cc.get("faq",faq_qas):
             faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
     elif cat in ("Math Calculators","Finance Calculators","Business Calculators","Date & Time","Student Tools"):
-        formula_html='<h2>Formula</h2><p>Used formula depends on the calculation; e.g. Simple Interest = P\u00d7R\u00d7T/100, Percentage = value\u00d7percent/100, CAGR = (FV/PV)<sup>1/n</sup>-1.</p>'
-        howto_html='<h2>How to use</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste or enter your input in the field above.</li><li>Click Process / Calculate to transform it locally in your browser.</li><li>Copy or Download the result; use Reset to clear.</li></ol>'
+        formula_html='<h2>How it works</h2><p>This calculator processes your input entirely in your browser using JavaScript. The result is computed instantly and never sent to any server.</p>'
+        howto_html='<h2>How to use this calculator</h2><ol style="margin-left:20px;line-height:1.8"><li>Enter your values in the fields above.</li><li>Click <strong>Calculate</strong> to see the result instantly.</li><li>Click <strong>Copy</strong> to grab the result, or <strong>Download</strong> to save it as a text file.</li></ol>'
         examples=f"""
-<h2>Worked examples</h2>
+<h2>Try it yourself</h2>
 <div class="tool-grid">
-<div class="tool-card"><h3>Example 1</h3><p>Input: Example data for {esc_txt(title)} \u2192 Output: processed result instantly with copy-ready formatting.</p></div>
-<div class="tool-card"><h3>Example 2</h3><p>For {esc_txt(title)}, try entering realistic sample values (e.g. numbers 42 and 8 or a JSON snippet) and click Calculate/Process to see the output.</p></div>
+<div class="tool-card"><h3>Quick test</h3><p>Enter sample values in the fields above and click Calculate. The result appears instantly in the output area.</p></div>
+<div class="tool-card"><h3>Tip</h3><p>You can copy the result with one click, or download it as a text file for your records.</p></div>
 </div>"""
         faq_html=""
         for q,a in faq_qas:
             faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
     else:
-        formula_html='<h2>How it works</h2><p>All transformations run locally using the ToolKit library (client-side, no uploads). Input is validated before processing.</p>'
-        howto_html='<h2>How to use</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste or enter your input in the field above.</li><li>Click Process / Calculate to transform it locally in your browser.</li><li>Copy or Download the result; use Reset to clear.</li></ol>'
+        formula_html='<h2>How it works</h2><p>All processing happens locally in your browser. Your input is never uploaded to any server. The tool uses the ToolKit JavaScript library for fast, private results.</p>'
+        howto_html='<h2>How to use this tool</h2><ol style="margin-left:20px;line-height:1.8"><li>Paste or type your input in the text area above.</li><li>Click <strong>Process</strong> to transform it instantly.</li><li>Click <strong>Copy</strong> to grab the result, or <strong>Download</strong> to save it as a file.</li></ol>'
         examples=f"""
-<h2>Worked examples</h2>
+<h2>Try it yourself</h2>
 <div class="tool-grid">
-<div class="tool-card"><h3>Example 1</h3><p>Input: Example data for {esc_txt(title)} \u2192 Output: processed result instantly with copy-ready formatting.</p></div>
-<div class="tool-card"><h3>Example 2</h3><p>For {esc_txt(title)}, try entering realistic sample values (e.g. numbers 42 and 8 or a JSON snippet) and click Calculate/Process to see the output.</p></div>
+<div class="tool-card"><h3>Quick test</h3><p>Paste some sample text or data above and click Process. The result appears instantly in the output area.</p></div>
+<div class="tool-card"><h3>Tip</h3><p>You can copy the result with one click, or download it as a text file for your records.</p></div>
 </div>"""
         faq_html=""
         for q,a in faq_qas:
@@ -627,8 +627,8 @@ def hub_page(tools):
         view_all=f' <a href="#{anchor}" class="view-all">View all \u2192</a>' if total>8 else ""
         sections+=f'<section class="cat-card" id="{anchor}"><h2>{esc_txt(cat)} <span class="cat-count">{total} tools</span></h2><p>Browse {total} tools in {esc_txt(cat)}.{view_all}</p><div class="tool-grid">{cards}</div></section>\n'
 
-    seo_title_hub="Developer & Calculator Tools — 230 Free Online Tools | DevelopersKit"
-    desc_hub="Discover 230 free browser-based tools for developers, text, math, finance, dates, colors and images. Private, fast and works offline — no uploads."
+    seo_title_hub="Free Online Developer & Utility Tools — 230 Browser Tools | DevelopersKit"
+    desc_hub="230 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
     head=head_html(seo_title_hub,desc_hub,SITE_URL+"/")
     # category quick-links for hero
     quick_cats=""
@@ -640,9 +640,9 @@ def hub_page(tools):
     hero=f"""
 <main id="main" class="container">
 <section class="hero">
-<h1>Free Developer &amp; Calculator Tools</h1>
-<p class="hero-sub">230 browser-based tools \u2014 private, fast, works offline.</p>
-<p class="stats-bar">Everything runs in your browser. No sign-up. No uploads.</p>
+<h1>Free Online Developer &amp; Utility Tools</h1>
+<p class="hero-sub">230 browser-based tools — your data stays in your browser, no uploads.</p>
+<p class="stats-bar">No sign-up. No tracking. Everything runs locally on your device.</p>
 <div class="hero-search"><div class="search-wrap"><label for="q" class="sr-only">Search tools</label><input id="q" data-search-input type="search" class="search-input" placeholder="Search 230 tools (e.g. JSON Formatter, Word Counter)" autocomplete="off"></div></div>
 <div class="popular">{quick_cats}</div>
 </section>
