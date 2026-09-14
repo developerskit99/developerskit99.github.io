@@ -418,9 +418,9 @@
         "regex-tester",
         "regex-generator",
         "lorem-ipsum-generator",
-        "json-formatter",
-        "json-validator",
-        "json-minifier"
+        "uuid-generator",
+        "hash-generator",
+        "random-string-generator"
       ]
     },
     {
@@ -436,10 +436,10 @@
       "related": [
         "regex-generator",
         "lorem-ipsum-generator",
-        "json-formatter",
-        "json-validator",
-        "json-minifier",
-        "json-to-csv"
+        "uuid-generator",
+        "hash-generator",
+        "url-encoder",
+        "url-decoder"
       ]
     },
     {
@@ -453,12 +453,12 @@
         "regex generator tool"
       ],
       "related": [
+        "regex-tester",
         "lorem-ipsum-generator",
-        "json-formatter",
-        "json-validator",
-        "json-minifier",
-        "json-to-csv",
-        "csv-to-json"
+        "uuid-generator",
+        "hash-generator",
+        "cron-expression-generator",
+        "random-string-generator"
       ]
     },
     {
@@ -472,12 +472,12 @@
         "lorem ipsum generator tool"
       ],
       "related": [
-        "json-formatter",
-        "json-validator",
-        "json-minifier",
-        "json-to-csv",
-        "csv-to-json",
-        "xml-formatter"
+        "uuid-generator",
+        "random-string-generator",
+        "hash-generator",
+        "regex-tester",
+        "regex-generator",
+        "slug-generator"
       ]
     },
     {
