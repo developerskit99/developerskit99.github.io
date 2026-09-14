@@ -867,6 +867,57 @@ def about_page():
 </html>"""
     return doc
 
+def privacy_page():
+    canonical=f"{SITE_URL}/privacy/"
+    title="Privacy Policy — DevelopersKit"
+    desc="DevelopersKit privacy policy: all tools run locally in your browser. No uploads, no accounts, no analytics, no tracking of your input."
+    faq_qas=[
+        ("Does DevelopersKit collect my data?", "No. All tool processing happens locally in your browser using JavaScript. We do not collect, store, or transmit anything you type, paste, or upload into the tools."),
+        ("Does DevelopersKit use cookies or analytics?", "No. We do not set cookies and we do not run analytics, advertising, or tracking scripts on this site."),
+        ("What about hosting logs?", "This site is hosted on GitHub Pages. GitHub may collect standard server logs (such as IP addresses) as described in the GitHub Privacy Statement. We do not have access to those logs."),
+        ("How can I contact you about privacy?", "Open an issue on our GitHub repository: https://github.com/developerskit99/developerskit99.github.io."),
+    ]
+    faq_schema={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas]}
+    breadcrumb_schema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":f"{SITE_URL}/"},{"@type":"ListItem","position":2,"name":"Privacy","item":f"{SITE_URL}/privacy/"}]}
+    jsonld=f"""
+<script type="application/ld+json">{json.dumps(faq_schema)}</script>
+<script type="application/ld+json">{json.dumps(breadcrumb_schema)}</script>"""
+    faq_html=""
+    for q,a in faq_qas:
+        faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+    body=f"""{header_html(False)}
+<main id="main" class="container">
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><span aria-current="page">Privacy</span></nav>
+<h1>Privacy Policy</h1>
+<p><strong>Short version:</strong> everything you do with our tools stays in your browser. No uploads, no accounts, no analytics, no tracking of your input.</p>
+<section style="margin-top:24px">
+<h2>What we collect</h2>
+<p>Nothing. We do not collect, store, or transmit anything you type, paste, or upload into the tools. All processing happens locally on your device using JavaScript.</p>
+<h2>Cookies and tracking</h2>
+<p>We do not set cookies and we do not run analytics, advertising, or tracking scripts.</p>
+<h2>Hosting</h2>
+<p>This site is hosted on GitHub Pages. GitHub may collect standard server logs (such as IP addresses) as described in the GitHub Privacy Statement. We do not have access to those logs.</p>
+<h2>Third parties</h2>
+<p>We do not share data with third parties because we do not collect any data in the first place.</p>
+<h2>Contact</h2>
+<p>Questions about this policy? Open an issue at <a href="https://github.com/developerskit99/developerskit99.github.io" style="color:#2563eb;font-weight:600">our GitHub repository</a>.</p>
+<h2>FAQ</h2>
+<div class="faq" style="margin-top:12px">{faq_html}</div>
+</section>
+</main>
+{footer_html()}
+{jsonld}"""
+    doc=f"""<!doctype html>
+<html lang="en">
+<head>
+{head_html(title,desc,canonical)}
+</head>
+<body>
+{body}
+</body>
+</html>"""
+    return doc
+
 def hub_page(tools):
     # group by category
     from collections import defaultdict, OrderedDict
@@ -901,7 +952,7 @@ def hub_page(tools):
         anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
         sections+=f'<section class="cat-card" id="{anchor}"><h2><a href="{BASE}/{cat_slug}/">{esc_txt(cat)}</a> <span class="cat-count">{total} tools</span></h2>{sub_sections_html}</section>\n'
 
-    seo_title_hub="Free Online Developer & Utility Tools — 230 Browser Tools | DevelopersKit"
+    seo_title_hub="Free Developer & Utility Tools — 230 Online Tools | DevelopersKit"
     desc_hub="230 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
     head=head_html(seo_title_hub,desc_hub,SITE_URL+"/")
     # category quick-links for hero
@@ -1019,6 +1070,11 @@ def main():
     about_dir=os.path.join(ROOT,"about")
     os.makedirs(about_dir, exist_ok=True)
     with open(os.path.join(about_dir,"index.html"),"w",encoding="utf-8") as f: f.write(about)
+    # privacy page
+    priv=privacy_page()
+    priv_dir=os.path.join(ROOT,"privacy")
+    os.makedirs(priv_dir, exist_ok=True)
+    with open(os.path.join(priv_dir,"index.html"),"w",encoding="utf-8") as f: f.write(priv)
     # tool pages
     for t in tools:
         slug=t["slug"]
@@ -1029,6 +1085,7 @@ def main():
     # sitemap
     urls=[f'  <url><loc>{SITE_URL}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>']
     urls.append(f'  <url><loc>{SITE_URL}/about/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
+    urls.append(f'  <url><loc>{SITE_URL}/privacy/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>')
     # category pages
     order=["Developer Tools","CSS/HTML Tools","Text Tools","Math Calculators","Student Tools","Date & Time","Finance Calculators","Business Calculators","Color Tools","Image Tools"]
     for cat in order:

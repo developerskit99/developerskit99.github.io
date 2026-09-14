@@ -340,7 +340,7 @@
         "hash-generator",
         "random-number-generator",
         "json-formatter",
-        "timestamp-converter",
+        "unix-timestamp-converter",
         "json-validator"
       ],
       "tier": "A"
