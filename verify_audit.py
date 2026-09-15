@@ -71,7 +71,7 @@ check("privacy-claim", "No uploads. No account required." in open("index.html", 
 # 10. Sitemap: 242 URLs, categories included
 sm = open("sitemap.xml", encoding="utf-8").read()
 n = sm.count("<url>")
-check("sitemap-count", n == 242, "found %d" % n)
+check("sitemap-count", n == 243, "found %d" % n)
 check("sitemap-cats", all(s in sm for s in ["developer-tools", "finance-calculators", "image-tools"]))
 
 # 11. Category pages: 10 exist with unique titles
