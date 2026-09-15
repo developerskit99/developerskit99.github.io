@@ -881,7 +881,9 @@ def privacy_page():
     ]
     faq_schema={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas]}
     breadcrumb_schema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":f"{SITE_URL}/"},{"@type":"ListItem","position":2,"name":"Privacy","item":f"{SITE_URL}/privacy/"}]}
+    app_schema={"@context":"https://schema.org","@type":"SoftwareApplication","name":"DevelopersKit","url":SITE_URL,"applicationCategory":"DeveloperApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"230 free browser-based tools for developers, students, and professionals. Your data stays in your browser."}
     jsonld=f"""
+<script type="application/ld+json">{json.dumps(app_schema)}</script>
 <script type="application/ld+json">{json.dumps(faq_schema)}</script>
 <script type="application/ld+json">{json.dumps(breadcrumb_schema)}</script>"""
     faq_html=""
