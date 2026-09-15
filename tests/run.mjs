@@ -104,6 +104,77 @@ test('quadratic real + complex', () => {
   assert.ok(c.error.length > 0);
 });
 
+test('quadratic edge cases: repeated root, a=0, large discriminant', () => {
+  // repeated root: x^2 - 4x + 4 = (x-2)^2 => disc=0, root=2
+  const rep = TK.quadratic(1, -4, 4);
+  assert.equal(rep.disc, 0);
+  assert.ok(approx(rep.roots[0], 2));
+  // a=0 is not a quadratic => error
+  const a0 = TK.quadratic(0, -5, 6);
+  assert.ok(a0.error.length > 0);
+  // two distinct real roots: x^2 + x - 6 = (x+3)(x-2)
+  const dr = TK.quadratic(1, 1, -6);
+  assert.equal(dr.disc, 25);
+  assert.deepEqual([...dr.roots].sort((a, b) => a - b), [-3, 2]);
+});
+
+test('pctDecrease: correct sign and edge cases', () => {
+  // 100 -> 80 = 20% decrease
+  assert.ok(approx(TK.pctDecrease(100, 80), 20));
+  // equal values = 0% decrease
+  assert.ok(approx(TK.pctDecrease(50, 50), 0));
+  // decrease to zero = 100%
+  assert.ok(approx(TK.pctDecrease(200, 0), 100));
+  // zero denominator = NaN
+  assert.ok(Number.isNaN(TK.pctDecrease(0, 50)));
+  // non-finite inputs = NaN
+  assert.ok(Number.isNaN(TK.pctDecrease('abc', 50)));
+  assert.ok(Number.isNaN(TK.pctDecrease(100, 'xyz')));
+  // small values
+  assert.ok(approx(TK.pctDecrease(10, 5), 50));
+  // 1000 -> 900 = 10%
+  assert.ok(approx(TK.pctDecrease(1000, 900), 10));
+});
+
+test('binaryCalc: all operators and edge cases', () => {
+  // addition: 1010 + 0011 = 1101
+  const add = TK.binaryCalc('1010 + 0011');
+  assert.ok(add);
+  assert.equal(add.result, 13);
+  assert.equal(add.binResult, '1101');
+  // subtraction: 1100 - 0011 = 1001
+  const sub = TK.binaryCalc('1100 - 0011');
+  assert.ok(sub);
+  assert.equal(sub.result, 9);
+  assert.equal(sub.binResult, '1001');
+  // multiplication: 101 * 11 = 1111 (5*3=15)
+  const mul = TK.binaryCalc('101 * 11');
+  assert.ok(mul);
+  assert.equal(mul.result, 15);
+  // division: 1100 / 100 = 11 (12/4=3)
+  const div = TK.binaryCalc('1100 / 100');
+  assert.ok(div);
+  assert.equal(div.result, 3);
+  // division by zero
+  const div0 = TK.binaryCalc('101 / 0');
+  assert.ok(!div0);
+  // invalid format
+  assert.ok(!TK.binaryCalc(''));
+  assert.ok(!TK.binaryCalc('abc + 101'));
+  assert.ok(!TK.binaryCalc('101 + '));
+  assert.ok(!TK.binaryCalc('12 + 101')); // invalid binary char
+});
+
+test('toBinary: negative numbers use sign prefix not unsigned', () => {
+  // -1 should show "-1" not "4294967295"
+  assert.equal(TK.toBinary(-1), '-1');
+  assert.equal(TK.toBinary(0), '0');
+  assert.equal(TK.toBinary(10), '1010');
+  assert.equal(TK.toBinary(255), '11111111');
+  assert.equal(TK.toBinary(-5), '-101');
+  assert.equal(TK.toBinary(NaN), '');
+});
+
 test('safeEval', () => {
   assert.equal(TK.safeEval('2+3*4').result, 14);
   assert.equal(TK.safeEval('2+3*4').ok, true);

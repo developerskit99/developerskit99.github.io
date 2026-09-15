@@ -222,7 +222,7 @@ async function process(){
    // specific slugs
    if(slug==="percentage-calculator"){ if(!av||!bv){ showErr("Enter value and percentage."); return;} setOut(window.ToolKit.pct(an,bn)+" ("+bn+"% of "+an+")"); return; }
    if(slug==="percentage-increase-calculator"){ setOut(window.ToolKit.pctChange(an,bn).toFixed(2)+"%"); return; }
-    if(slug==="percentage-decrease-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter old value (A) and new value (B)."); return; } var dec=an!==0?((an-bn)/an*100):0; setOut(Math.abs(dec).toFixed(2)+"%"); return; }
+    if(slug==="percentage-decrease-calculator"){ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){ showErr("Enter old value (A) and new value (B). A must not be zero."); return; } setOut(d.toFixed(2)+"%"); return; }
    if(slug==="ratio-calculator"){ setOut(window.ToolKit.ratio(an,bn)); return; }
    if(slug==="gcd-calculator"){ setOut(String(window.ToolKit.gcd(an,bn))); return; }
    if(slug==="lcm-calculator"){ setOut(String(window.ToolKit.lcm(an,bn))); return; }
@@ -248,7 +248,7 @@ async function process(){
    if(slug==="grade-calculator"){ var g=window.ToolKit.grade(an,bn||100); setOut(g.pct+"% Grade "+g.letter); return; }
     if(slug==="scientific-calculator"||slug==="equation-solver"){ var r=window.ToolKit.safeEval(tv||av); if(!r.ok){ showErr(r.error); return;} setOut(String(r.result)); return; }
     if(slug==="quadratic-equation-solver"){ if(!isFinite(an)){ showErr("Enter coefficient a (A)."); return; } var qb=isFinite(bn)?bn:0, qc=isFinite(Number(cv))?Number(cv):0; var qres=window.ToolKit.quadratic(an,qb,qc); if(qres.error){ showErr(qres.error); return; } setOut("x = "+qres.roots.map(r=>r.toFixed(4)).join(", ")+"\nDiscriminant: "+qres.disc); return; }
-    if(slug==="binary-calculator"){ var bexpr=(tv||"").trim(); if(!bexpr){ showErr("Enter a binary expression (e.g. 1010 + 1100)."); return; } var bparts=bexpr.match(/^([01]+)\s*([+\-*\/])\s*([01]+)$/); if(!bparts){ showErr("Enter format: binary operator binary (e.g. 1010 + 1100). Use +, -, *, /."); return; } var bA=parseInt(bparts[1],2), bOp=bparts[2], bB=parseInt(bparts[3],2), bRes; if(bOp==="+")bRes=bA+bB; else if(bOp==="-")bRes=bA-bB; else if(bOp==="*")bRes=bA*bB; else if(bOp==="/")bRes=bB!==0?Math.floor(bA/bB):NaN; if(!isFinite(bRes)){ showErr("Division by zero or invalid operation."); return; } setOut(bA+" ("+bparts[1]+") "+bOp+" "+bB+" ("+bparts[3]+") = "+bRes+" ("+bRes.toString(2)+")"); return; }
+    if(slug==="binary-calculator"){ var bc=window.ToolKit.binaryCalc(tv); if(!bc){ showErr("Enter format: binary operator binary (e.g. 1010 + 1100). Use +, -, *, /."); return; } setOut(bc.decA+" ("+bc.a+") "+bc.op+" "+bc.decB+" ("+bc.b+") = "+bc.result+" ("+bc.binResult+")"); return; }
     var TK3=window.ToolKit;
     if(slug==="profit-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter revenue (A) and cost (B)."); return; } var pf=an-bn; setOut("Profit: "+pf.toFixed(2)+"\nMargin: "+(an?((pf/an*100).toFixed(2)+"%"):"n/a")); return; }
     if(slug==="revenue-calculator"){ if(!isFinite(an)||!isFinite(bn)){ showErr("Enter units (A) and price (B)."); return; } setOut("Revenue: "+(an*bn).toFixed(2)); return; }

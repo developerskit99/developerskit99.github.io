@@ -65,6 +65,7 @@ TK.sortLines=(s,rev)=>String(s??'').split('\n').sort((a,b)=>rev?b.localeCompare(
 // math
 TK.pct=(v,p)=>{const a=Number(v),b=Number(p);return!isFinite(a)||!isFinite(b)?NaN:a*b/100};
 TK.pctChange=(f,t)=>{const a=Number(f),b=Number(t);return!isFinite(a)||!isFinite(b)||a===0?NaN:(b-a)/Math.abs(a)*100};
+TK.pctDecrease=(oldVal,newVal)=>{const o=Number(oldVal),n=Number(newVal);if(!isFinite(o)||!isFinite(n)||o===0)return NaN;return((o-n)/o)*100};
 TK.ratio=(a,b)=>{const x=Number(a),y=Number(b);if(!isFinite(x)||!isFinite(y)||y===0)return'';const g=TK.gcd(x,y);return(x/g)+':'+(y/g)};
 TK.mean=a=>{const v=a.map(Number).filter(isFinite);return v.length?v.reduce((s,x)=>s+x,0)/v.length:NaN};
 TK.median=a=>{const v=a.map(Number).filter(isFinite).sort((x,y)=>x-y);if(!v.length)return NaN;const m=Math.floor(v.length/2);return v.length%2?v[m]:(v[m-1]+v[m])/2};
@@ -75,7 +76,8 @@ TK.lcm=(a,b)=>{const g=TK.gcd(a,b);return!g?0:Math.abs(Number(a)*Number(b))/g};
 TK.isPrime=n=>{const x=Number(n);if(!Number.isInteger(x)||x<2)return false;if(x%2===0)return x===2;for(let i=3;i*i<=x;i+=2)if(x%i===0)return false;return true};
 TK.factors=n=>{const x=Math.abs(Number(n)|0);if(!x)return[];const o=[];for(let i=1;i*i<=x;i++)if(x%i===0){o.push(i);if(i!==x/i)o.push(x/i)}return o.sort((a,b)=>a-b)};
 TK.toFraction=(d,tol)=>{let v=Number(d);if(!isFinite(v))return'';const t=tol||1e-6;let n=1,de=1;for(de=1;de<=1000;de++){n=Math.round(v*de);if(Math.abs(n/de-v)<t)break}const g=TK.gcd(n,de);return(n/g)+'/'+(de/g)};
-TK.toBinary=n=>(Number(n)>>>0).toString(2);
+TK.toBinary=n=>{const v=Number(n);if(!isFinite(v))return'';if(v<0)return'-'+(((-v)>>>0).toString(2));return(v>>>0).toString(2)};
+TK.binaryCalc=expr=>{const m=String(expr??'').trim().match(/^([01]+)\s*([+\-*\/])\s*([01]+)$/);if(!m)return null;const a=parseInt(m[1],2),op=m[2],b=parseInt(m[3],2);let r;if(op==='+')r=a+b;else if(op==='-')r=a-b;else if(op==='*')r=a*b;else if(op==='/')r=b!==0?Math.floor(a/b):NaN;else return null;if(!isFinite(r))return null;return{a,b,op,result:r,binResult:r.toString(2),decA:a,decB:b}};
 TK.toHex=n=>Number(n).toString(16);
 TK.toOctal=n=>Number(n).toString(8);
 TK.toRoman=num=>{let n=Number(num)|0;if(n<=0||n>3999)return'';const m=[[1000,'M'],[900,'CM'],[500,'D'],[400,'CD'],[100,'C'],[90,'XC'],[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']];let o='';for(const[v,s]of m)while(n>=v){o+=s;n-=v}return o};
