@@ -113,6 +113,8 @@ def head_html(title,desc,canonical):
     og=esc(canonical)
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
 <meta name="google-site-verification" content="_LFM9G4uH81w3sp_bIwp7BGQTwWR5vq_BrqW4hGFofc" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9Y55NSMZJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-W9Y55NSMZJ');</script>
@@ -133,7 +135,7 @@ def head_html(title,desc,canonical):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
 <link rel="stylesheet" href="{BASE}/assets/css/style.css">"""
@@ -838,7 +840,7 @@ def about_page():
 <p>Whether you need to format JSON, calculate your EMI, count words, resize an image, or pick a color palette \u2014 we have a tool for it. Every tool is designed to be fast, accurate, and easy to use.</p>
 
 <h2>How It Works</h2>
-<p>All tools run entirely in your browser using modern web APIs and JavaScript. When you paste text into the JSON Formatter or upload an image to the Resizer, the processing happens on your device. <strong>Your data never leaves your browser.</strong> There are no server uploads, no databases storing your input, and no analytics tracking what you do with the tools.</p>
+<p>All tools run entirely in your browser using modern web APIs and JavaScript. When you paste text into the JSON Formatter or upload an image to the Resizer, the processing happens on your device. <strong>Your data never leaves your browser.</strong> There are no server uploads and no databases storing your input. We use anonymous page-view analytics (Google Analytics) to understand overall traffic; this never captures what you type, paste, or upload into the tools.</p>
 
 <h2>Our Principles</h2>
 <div class="tool-grid" style="margin-top:12px">
@@ -876,10 +878,10 @@ def about_page():
 def privacy_page():
     canonical=f"{SITE_URL}/privacy/"
     title="Privacy Policy — DevelopersKit"
-    desc="DevelopersKit privacy policy: all tools run locally in your browser. No uploads, no accounts, no analytics, no tracking of your input."
+    desc="DevelopersKit privacy policy: all tools run locally in your browser. No uploads, no accounts, no tracking of your input. Anonymous page-view analytics only."
     faq_qas=[
         ("Does DevelopersKit collect my data?", "No. All tool processing happens locally in your browser using JavaScript. We do not collect, store, or transmit anything you type, paste, or upload into the tools."),
-        ("Does DevelopersKit use cookies or analytics?", "No. We do not set cookies and we do not run analytics, advertising, or tracking scripts on this site."),
+        ("Does DevelopersKit use cookies or analytics?", "We use Google Analytics to measure anonymous page views (no cookies, no personally identifiable data). We do not run advertising or tracking scripts, and no tool input is ever sent to any server."),
         ("What about hosting logs?", "This site is hosted on GitHub Pages. GitHub may collect standard server logs (such as IP addresses) as described in the GitHub Privacy Statement. We do not have access to those logs."),
         ("How can I contact you about privacy?", "Open an issue on our GitHub repository: https://github.com/developerskit99/developerskit99.github.io."),
     ]
@@ -897,12 +899,12 @@ def privacy_page():
 <main id="main" class="container">
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><span aria-current="page">Privacy</span></nav>
 <h1>Privacy Policy</h1>
-<p><strong>Short version:</strong> everything you do with our tools stays in your browser. No uploads, no accounts, no analytics, no tracking of your input.</p>
+<p><strong>Short version:</strong> everything you do with our tools stays in your browser. No uploads, no accounts, no tracking of your input. Anonymous page-view analytics help us understand traffic patterns.</p>
 <section style="margin-top:24px">
 <h2>What we collect</h2>
 <p>Nothing. We do not collect, store, or transmit anything you type, paste, or upload into the tools. All processing happens locally on your device using JavaScript.</p>
 <h2>Cookies and tracking</h2>
-<p>We do not set cookies and we do not run analytics, advertising, or tracking scripts.</p>
+<p>We do not set cookies and we do not run advertising or tracking scripts. We use Google Analytics for anonymous page-view statistics only, which does not track your tool input.</p>
 <h2>Hosting</h2>
 <p>This site is hosted on GitHub Pages. GitHub may collect standard server logs (such as IP addresses) as described in the GitHub Privacy Statement. We do not have access to those logs.</p>
 <h2>Third parties</h2>
@@ -1046,7 +1048,7 @@ def category_page(cat_name, tools, slug_map):
     body=f"""{header_html(True)}
 <main id="main" class="container">
 {breadcrumbs}
-<h1>{esc_txt(cat_name)} Tools</h1>
+<h1>{esc_txt(cat_name) if cat_name.endswith((" Tools","Calculators")) else esc_txt(cat_name)+" Tools"}</h1>
 <p>Free browser-based {cat_name.lower()} for developers, students, and professionals. Your data stays in your browser.</p>
 <section style="margin-top:24px">
 {sub_sections}
