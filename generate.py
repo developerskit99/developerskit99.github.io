@@ -131,6 +131,7 @@ def head_html(title,desc,canonical):
 <link rel="icon" type="image/png" sizes="32x32" href="{BASE}/assets/images/favicon-32x32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="{BASE}/assets/images/apple-touch-icon.png">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="DevelopersKit">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
 <meta property="og:url" content="{og}">
