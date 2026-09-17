@@ -113,8 +113,11 @@ def head_html(title,desc,canonical):
     og=esc(canonical)
     return f"""<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="preload" href="{BASE}/assets/css/style.css" as="style">
 <meta name="google-site-verification" content="_LFM9G4uH81w3sp_bIwp7BGQTwWR5vq_BrqW4hGFofc" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9Y55NSMZJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-W9Y55NSMZJ');</script>
@@ -138,6 +141,8 @@ def head_html(title,desc,canonical):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{esc(title)}">
 <meta name="twitter:description" content="{esc(desc)}">
+<meta name="twitter:image" content="{SITE_URL}/assets/images/og-default.png">
+<link rel="manifest" href="{BASE}/manifest.json">
 <link rel="stylesheet" href="{BASE}/assets/css/style.css">"""
 
 def header_html(search=False):
@@ -145,7 +150,7 @@ def header_html(search=False):
     return f"""<a href="#main" class="skip">Skip to content</a>
 <header class="header">
 <div class="container header-inner">
-<a href="{BASE}/" class="logo" aria-label="DevelopersKit home"><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="32" width="160"></a>
+<a href="{BASE}/" class="logo" aria-label="DevelopersKit home"><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="32" width="160" fetchpriority="high" decoding="async"></a>
 <nav class="nav" aria-label="Primary">
 <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">Menu</button>
 <ul id="nav-links" class="nav-links" data-nav-menu>
@@ -162,7 +167,7 @@ def header_html(search=False):
 def footer_html():
     return f"""<footer class="footer">
 <div class="container footer-grid">
-<div><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" style="margin-bottom:8px"><p style="margin-top:8px">Free browser-based tools for developers, students, and professionals. Your data stays in your browser \u2014 no uploads, no sign-up.</p></div>
+<div><img src="{BASE}/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" loading="lazy" decoding="async" style="margin-bottom:8px"><p style="margin-top:8px">Free browser-based tools for developers, students, and professionals. Your data stays in your browser \u2014 no uploads, no sign-up.</p></div>
 <div><p><a href="{BASE}/">Home</a> \u00b7 <a href="{BASE}/about/">About</a> \u00b7 <a href="{BASE}/sitemap.xml">Sitemap</a> \u00b7 <a href="{BASE}/privacy/">Privacy</a> \u00b7 <a href="https://github.com/developerskit99/developerskit99.github.io">GitHub</a></p><p style="margin-top:8px">\u00a9 <span id="year">{YEAR}</span> DevelopersKit. All tools run client-side.</p></div>
 </div>
 </footer>
@@ -962,7 +967,7 @@ def hub_page(tools):
         anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
         sections+=f'<section class="cat-card" id="{anchor}"><h2><a href="{BASE}/{cat_slug}/">{esc_txt(cat)}</a> <span class="cat-count">{total} tools</span></h2>{sub_sections_html}</section>\n'
 
-    seo_title_hub="Free Developer & Utility Tools — 230 Online Tools | DevelopersKit"
+    seo_title_hub="230 Free Developer Tools Online | DevelopersKit"
     desc_hub="230 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
     head=head_html(seo_title_hub,desc_hub,SITE_URL+"/")
     # category quick-links for hero

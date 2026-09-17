@@ -3,8 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://www.googletagmanager.com">
 <link rel="dns-prefetch" href="https://www.google-analytics.com">
+<link rel="preload" href="/assets/css/style.css" as="style">
 <meta name="google-site-verification" content="_LFM9G4uH81w3sp_bIwp7BGQTwWR5vq_BrqW4hGFofc" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9Y55NSMZJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W9Y55NSMZJ');</script>
@@ -28,13 +31,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="GPA Calculator — Free Online Tool | DevelopersKit">
 <meta name="twitter:description" content="Calculate your GPA by entering course grades and credit hours. Supports the standard 4.0 scale.">
+<meta name="twitter:image" content="https://developerskit99.github.io/assets/images/og-default.png">
+<link rel="manifest" href="/manifest.json">
 <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
 <a href="#main" class="skip">Skip to content</a>
 <header class="header">
 <div class="container header-inner">
-<a href="/" class="logo" aria-label="DevelopersKit home"><img src="/assets/images/logo.svg" alt="DevelopersKit" height="32" width="160"></a>
+<a href="/" class="logo" aria-label="DevelopersKit home"><img src="/assets/images/logo.svg" alt="DevelopersKit" height="32" width="160" fetchpriority="high" decoding="async"></a>
 <nav class="nav" aria-label="Primary">
 <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">Menu</button>
 <ul id="nav-links" class="nav-links" data-nav-menu>
@@ -91,7 +96,7 @@
 </main>
 <footer class="footer">
 <div class="container footer-grid">
-<div><img src="/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" style="margin-bottom:8px"><p style="margin-top:8px">Free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up.</p></div>
+<div><img src="/assets/images/logo.svg" alt="DevelopersKit" height="28" width="140" loading="lazy" decoding="async" style="margin-bottom:8px"><p style="margin-top:8px">Free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up.</p></div>
 <div><p><a href="/">Home</a> · <a href="/about/">About</a> · <a href="/sitemap.xml">Sitemap</a> · <a href="/privacy/">Privacy</a> · <a href="https://github.com/developerskit99/developerskit99.github.io">GitHub</a></p><p style="margin-top:8px">© <span id="year">2026</span> DevelopersKit. All tools run client-side.</p></div>
 </div>
 </footer>
