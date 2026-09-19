@@ -2,14 +2,14 @@
   "site": {
     "name": "DevelopersKit",
     "url": "https://developerskit99.github.io",
-    "description": "230 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
+      "description": "231 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
   },
   "tools": [
     {
       "slug": "json-formatter",
       "title": "JSON Formatter",
       "category": "Developer Tools",
-      "description": "Paste minified or messy JSON and get clean, indented output instantly. Validates syntax and highlights errors so you can fix them fast.",
+      "description": "Paste minified or messy JSON and get clean, indented output instantly. Validates syntax and highlights errors so you can fix them fast, even in large API payloads.",
       "keywords": [
         "json formatter",
         "json formatter online",
@@ -29,7 +29,7 @@
       "slug": "json-validator",
       "title": "JSON Validator",
       "category": "Developer Tools",
-      "description": "Check if your JSON is valid before deploying. Shows the exact error location with line numbers so you can fix syntax mistakes quickly.",
+      "description": "Check if your JSON is valid before deploying. Shows the exact error location with line numbers so you can fix syntax mistakes quickly in configs and API responses.",
       "keywords": [
         "json validator",
         "json validator online",
@@ -49,7 +49,7 @@
       "slug": "json-minifier",
       "title": "JSON Minifier",
       "category": "Developer Tools",
-      "description": "Strip whitespace and comments from JSON to reduce file size. Perfect for compressing API responses and config files before deployment.",
+      "description": "Strip whitespace and comments from JSON to reduce file size. Perfect for compressing API responses and config files before deployment to production.",
       "keywords": [
         "json minifier",
         "json minifier online",
@@ -69,7 +69,7 @@
       "slug": "json-to-csv",
       "title": "JSON to CSV",
       "category": "Developer Tools",
-      "description": "Turn nested or flat JSON arrays into CSV spreadsheets. Automatically maps keys to columns so you can open the data in Excel or Google Sheets.",
+      "description": "Turn nested or flat JSON arrays into CSV spreadsheets. Automatically maps keys to columns so you can open the data in Excel or Google Sheets. Fast and private.",
       "keywords": [
         "json to csv",
         "json to csv online",
@@ -89,7 +89,7 @@
       "slug": "csv-to-json",
       "title": "CSV to JSON",
       "category": "Developer Tools",
-      "description": "Convert CSV rows into clean JSON objects. Paste your spreadsheet data or delimited text and get structured JSON for APIs and databases.",
+      "description": "Convert CSV rows into clean JSON objects. Paste your spreadsheet data or delimited text and get structured JSON ready for APIs and databases. Handles quoted fields.",
       "keywords": [
         "csv to json",
         "csv to json online",
@@ -229,7 +229,7 @@
       "slug": "base64-decoder",
       "title": "Base64 Decoder",
       "category": "Developer Tools",
-      "description": "Decode Base64-encoded strings back to readable text or raw data. Paste an encoded string to reveal the original content instantly.",
+      "description": "Decode Base64-encoded strings back to readable text or raw data. Paste an encoded string to reveal the original content instantly in your browser.",
       "keywords": [
         "base64 decoder",
         "base64 decoder online",
@@ -249,7 +249,7 @@
       "slug": "url-encoder",
       "title": "URL Encoder",
       "category": "Developer Tools",
-      "description": "Convert special characters in URLs to percent-encoded format (%20 for spaces, %26 for &). Essential for building query strings and API requests.",
+      "description": "Convert special characters in URLs to percent-encoded format (%20 for spaces, %26 for &). Essential for building query strings and API requests. Copies in one click.",
       "keywords": [
         "url encoder",
         "url encoder online",
@@ -269,7 +269,7 @@
       "slug": "url-decoder",
       "title": "URL Decoder",
       "category": "Developer Tools",
-      "description": "Decode percent-encoded URL strings back to readable text. Paste a messy URL with %20 and other codes to see the original characters.",
+      "description": "Decode percent-encoded URL strings back to readable text. Paste a messy URL with %20 and other codes to see the original characters clearly. Works with full URLs.",
       "keywords": [
         "url decoder",
         "url decoder online",
@@ -329,7 +329,7 @@
       "slug": "uuid-generator",
       "title": "UUID Generator",
       "category": "Developer Tools",
-      "description": "Generate v4 UUIDs (random unique identifiers) for database primary keys, API tokens, session IDs, or any system that needs globally unique IDs.",
+      "description": "Generate v4 UUIDs (random unique identifiers) for database primary keys, API tokens, session IDs, or any system that needs globally unique IDs. v4 with bulk output.",
       "keywords": [
         "uuid generator",
         "uuid generator online",
@@ -389,7 +389,7 @@
       "slug": "jwt-decoder",
       "title": "JWT Decoder",
       "category": "Developer Tools",
-      "description": "Decode JWT (JSON Web Token) strings to view the header, payload, and signature. Debug authentication tokens without installing any tools.",
+      "description": "Decode JWT (JSON Web Token) strings to view the header, payload, and signature. Debug authentication tokens privately without installing any tools.",
       "keywords": [
         "jwt decoder",
         "jwt decoder online",
@@ -449,7 +449,7 @@
       "slug": "regex-tester",
       "title": "Regex Tester",
       "category": "Developer Tools",
-      "description": "Test regular expressions against sample text in real-time. See match positions and groups to debug patterns before using them in your code.",
+      "description": "Test regular expressions against sample text in real time. See match positions and capture groups to debug patterns before using them in your code.",
       "keywords": [
         "regex tester",
         "regex tester online",
@@ -469,7 +469,7 @@
       "slug": "regex-generator",
       "title": "Regex Generator",
       "category": "Developer Tools",
-      "description": "Describe what you want to match in plain English and get a working regular expression. No need to memorize regex syntax for common patterns.",
+      "description": "Describe what you want to match in plain English and get a working regular expression. No need to memorize regex syntax for common patterns. Plain-English to regex.",
       "keywords": [
         "regex generator",
         "regex generator online",
@@ -489,7 +489,7 @@
       "slug": "lorem-ipsum-generator",
       "title": "Lorem Ipsum Generator",
       "category": "Developer Tools",
-      "description": "Generate placeholder text for mockups, wireframes, and design prototypes. Choose paragraphs, sentences, or words in the quantity you need.",
+      "description": "Generate placeholder text for mockups, wireframes, and design prototypes. Choose paragraphs, sentences, or words in the exact quantity you need. No signup required.",
       "keywords": [
         "lorem ipsum generator",
         "lorem ipsum generator online",
@@ -509,7 +509,7 @@
       "slug": "css-minifier",
       "title": "CSS Minifier",
       "category": "CSS/HTML Tools",
-      "description": "Remove comments, whitespace, and line breaks from CSS to reduce file size. Faster page loads by shrinking your stylesheets.",
+      "description": "Remove comments, whitespace, and line breaks from CSS to reduce file size. Shrink stylesheets for faster page loads without changing any styles. with one-click copy.",
       "keywords": [
         "css minifier",
         "css minifier online",
@@ -529,7 +529,7 @@
       "slug": "css-beautifier",
       "title": "CSS Beautifier",
       "category": "CSS/HTML Tools",
-      "description": "Format compressed CSS with proper indentation and line breaks. Make minified stylesheets readable for debugging and editing.",
+      "description": "Format compressed CSS with proper indentation and line breaks. Make minified stylesheets readable again for debugging and editing work. Format and copy instantly.",
       "keywords": [
         "css beautifier",
         "css beautifier online",
@@ -549,7 +549,7 @@
       "slug": "html-minifier",
       "title": "HTML Minifier",
       "category": "CSS/HTML Tools",
-      "description": "Strip comments, whitespace, and redundant tags from HTML to reduce page size. Faster loads without changing visible content.",
+      "description": "Strip comments, whitespace, and redundant tags from HTML to reduce page size. Get faster loads without changing any visible content. Keeps visible content intact.",
       "keywords": [
         "html minifier",
         "html minifier online",
@@ -569,7 +569,7 @@
       "slug": "html-beautifier",
       "title": "HTML Beautifier",
       "category": "CSS/HTML Tools",
-      "description": "Add proper indentation and line breaks to minified or messy HTML. Read and edit generated or compressed markup easily.",
+      "description": "Add proper indentation and line breaks to minified or messy HTML. Read and edit generated or compressed markup easily in seconds. Handles large pasted markup.",
       "keywords": [
         "html beautifier",
         "html beautifier online",
@@ -929,7 +929,7 @@
       "slug": "character-counter",
       "title": "Character Counter",
       "category": "Text Tools",
-      "description": "Count characters with and without spaces. Check text length for social media posts, meta descriptions, and form input limits.",
+      "description": "Count characters with and without spaces. Check text length for social media posts, meta descriptions, SMS messages, and form input limits. Adds live word stats too.",
       "keywords": [
         "character counter",
         "character counter online",
@@ -1009,7 +1009,7 @@
       "slug": "case-converter",
       "title": "Case Converter",
       "category": "Text Tools",
-      "description": "Convert text between uppercase, lowercase, title case, and sentence case. Fix capitalization mistakes or format text for different contexts.",
+      "description": "Convert text between uppercase, lowercase, title case, and sentence case. Fix capitalization mistakes or format text for different contexts. UPPER, lower, Title Mix.",
       "keywords": [
         "case converter",
         "case converter online",
@@ -1189,7 +1189,7 @@
       "slug": "text-diff-checker",
       "title": "Text Diff Checker",
       "category": "Text Tools",
-      "description": "Compare two text inputs side-by-side and highlight the differences. Spot changes between document versions or code revisions.",
+      "description": "Compare two text inputs side-by-side and highlight the differences. Spot changes between document versions, drafts, or code revisions fast. Shows every changed line.",
       "keywords": [
         "text diff checker",
         "text diff checker online",
@@ -1249,7 +1249,7 @@
       "slug": "slug-generator",
       "title": "Slug Generator",
       "category": "Text Tools",
-      "description": "Generate URL slugs from page titles or headings. SEO-friendly format with lowercase, hyphens, and no special characters.",
+      "description": "Generate URL slugs from page titles or headings. Get SEO-friendly lowercase slugs with hyphens and no special characters automatically. Copy slugs in a single click.",
       "keywords": [
         "slug generator",
         "slug generator online",
@@ -1269,7 +1269,7 @@
       "slug": "markdown-previewer",
       "title": "Markdown Previewer",
       "category": "Text Tools",
-      "description": "Write Markdown on the left and see the rendered HTML on the right. Live preview for README files, documentation, and blog posts.",
+      "description": "Write Markdown on the left and see the rendered HTML on the right. Live preview for README files, documentation, and blog posts. Export the rendered HTML anytime.",
       "keywords": [
         "markdown previewer",
         "markdown previewer online",
@@ -1309,7 +1309,7 @@
       "slug": "markdown-to-html-converter",
       "title": "Markdown to HTML Converter",
       "category": "Text Tools",
-      "description": "Convert Markdown syntax to clean HTML. Paste your Markdown and get copy-ready HTML for emails, websites, or CMS content.",
+      "description": "Convert Markdown syntax to clean HTML. Paste your Markdown and get copy-ready HTML for emails, websites, or CMS content. Clean output ready for CMS paste-in.",
       "keywords": [
         "markdown to html converter",
         "markdown to html converter online",
@@ -1409,7 +1409,7 @@
       "slug": "percentage-calculator",
       "title": "Percentage Calculator",
       "category": "Math Calculators",
-      "description": "Find X% of any number, or calculate what percentage one number is of another. Instant results with the formula shown.",
+      "description": "Find X% of any number, or calculate what percentage one number is of another. Get instant results with the formula shown step by step. Works with decimals too.",
       "keywords": [
         "percentage calculator",
         "percentage calculator online",
@@ -1430,7 +1430,7 @@
       "slug": "percentage-increase-calculator",
       "title": "Percentage Increase Calculator",
       "category": "Math Calculators",
-      "description": "Calculate percentage increase between two numbers. Enter the original and new values to see the exact percentage change.",
+      "description": "Calculate percentage increase between two numbers. Enter the original and new values to see the exact percentage change with the formula. Percent result included.",
       "keywords": [
         "percentage increase calculator",
         "percentage increase calculator online",
@@ -1451,7 +1451,7 @@
       "slug": "percentage-decrease-calculator",
       "title": "Percentage Decrease Calculator",
       "category": "Math Calculators",
-      "description": "Calculate percentage decrease between two numbers. Enter the original and new values to see the exact drop.",
+      "description": "Calculate percentage decrease between two numbers. Enter the original and new values to see the exact drop and the final value. Shows remaining value after the drop.",
       "keywords": [
         "percentage decrease calculator",
         "percentage decrease calculator online",
@@ -1832,7 +1832,7 @@
       "slug": "binary-to-decimal",
       "title": "Binary to Decimal",
       "category": "Math Calculators",
-      "description": "Convert binary (base-2) numbers to decimal (base-10). Enter a binary string to get the decimal equivalent.",
+      "description": "Convert binary (base-2) numbers to decimal (base-10). Enter a binary string to get the decimal equivalent instantly for study or work. Steps shown for easy learning.",
       "keywords": [
         "binary to decimal",
         "binary to decimal online",
@@ -1852,7 +1852,7 @@
       "slug": "decimal-to-binary",
       "title": "Decimal to Binary",
       "category": "Math Calculators",
-      "description": "Convert decimal numbers to binary (base-2). Enter any number to see its binary representation.",
+      "description": "Convert decimal numbers to binary (base-2). Enter any number to see its binary representation for homework or programming tasks. Handles values up to 32-bit range.",
       "keywords": [
         "decimal to binary",
         "decimal to binary online",
@@ -2012,7 +2012,7 @@
       "slug": "grade-calculator",
       "title": "Grade Calculator",
       "category": "Student Tools",
-      "description": "Convert test scores to letter grades (A–F). Enter marks obtained and total to see your percentage and grade.",
+      "description": "Convert test scores to letter grades (A-F). Enter marks obtained and total to see your percentage and grade on standard scales. Supports custom grading scales.",
       "keywords": [
         "grade calculator",
         "grade calculator online",
@@ -2032,7 +2032,7 @@
       "slug": "gpa-calculator",
       "title": "GPA Calculator",
       "category": "Student Tools",
-      "description": "Calculate your GPA by entering course grades and credit hours. Supports the standard 4.0 scale.",
+      "description": "Calculate your GPA by entering course grades and credit hours. Supports the standard 4.0 scale used by most schools and colleges. Weighted and unweighted options.",
       "keywords": [
         "gpa calculator",
         "gpa calculator online",
@@ -2452,7 +2452,7 @@
       "slug": "factorial-calculator",
       "title": "Factorial Calculator",
       "category": "Student Tools",
-      "description": "Calculate n! (n factorial) for any non-negative integer. See the step-by-step multiplication.",
+      "description": "Calculate n! (n factorial) for any non-negative integer. See the step-by-step multiplication behind the result for learning. Handles large integers precisely.",
       "keywords": [
         "factorial calculator",
         "factorial calculator online",
@@ -2472,7 +2472,7 @@
       "slug": "scientific-calculator",
       "title": "Scientific Calculator",
       "category": "Student Tools",
-      "description": "Perform advanced math: trigonometry, logarithms, powers, roots, and more. A full scientific calculator in your browser.",
+      "description": "Perform advanced math: trigonometry, logarithms, powers, roots, and more. A full scientific calculator free in your browser. Includes memory and history keys.",
       "keywords": [
         "scientific calculator",
         "scientific calculator online",
@@ -2512,7 +2512,7 @@
       "slug": "age-calculator",
       "title": "Age Calculator",
       "category": "Date & Time",
-      "description": "Find your exact age in years, months, and days. Enter any birth date to see how old someone is today.",
+      "description": "Find your exact age in years, months, and days. Enter any birth date to see how old someone is today with total days counted. Leap years handled correctly.",
       "keywords": [
         "age calculator",
         "age calculator online",
@@ -2532,7 +2532,7 @@
       "slug": "date-difference-calculator",
       "title": "Date Difference Calculator",
       "category": "Date & Time",
-      "description": "Calculate the exact number of days between any two dates. Useful for project timelines, age gaps, and deadlines.",
+      "description": "Calculate the exact number of days between any two dates. Useful for project timelines, age gaps, travel plans, and deadlines. Counts weekends and weekdays too.",
       "keywords": [
         "date difference calculator",
         "date difference calculator online",
@@ -2552,7 +2552,7 @@
       "slug": "days-between-dates",
       "title": "Days Between Dates",
       "category": "Date & Time",
-      "description": "Find how many days are between two dates. Enter start and end dates for an instant count.",
+      "description": "Find how many days are between two dates. Enter start and end dates for an instant count, including business-day options. Inclusive and exclusive counting.",
       "keywords": [
         "days between dates",
         "days between dates online",
@@ -2912,7 +2912,7 @@
       "slug": "simple-interest-calculator",
       "title": "Simple Interest Calculator",
       "category": "Finance Calculators",
-      "description": "Calculate simple interest using I = P × R × T. Enter principal, rate, and time to see the interest earned or owed.",
+      "description": "Calculate simple interest using I = P x R x T. Enter principal, rate, and time to see the interest earned or owed precisely. See yearly breakdown of growth.",
       "keywords": [
         "simple interest calculator",
         "simple interest calculator online",
@@ -2934,7 +2934,7 @@
       "slug": "compound-interest-calculator",
       "title": "Compound Interest Calculator",
       "category": "Finance Calculators",
-      "description": "Calculate compound interest with monthly, quarterly, or annual compounding. See total amount and interest earned.",
+      "description": "Calculate compound interest with monthly, quarterly, or annual compounding. See the total amount and interest earned over time. Compare frequencies side by side.",
       "keywords": [
         "compound interest calculator",
         "compound interest calculator online",
@@ -2956,7 +2956,7 @@
       "slug": "loan-emi-calculator",
       "title": "Loan EMI Calculator",
       "category": "Finance Calculators",
-      "description": "Calculate your Equated Monthly Installment for any loan. Enter principal, interest rate, and tenure to see your EMI.",
+      "description": "Calculate your Equated Monthly Installment for any loan. Enter principal, interest rate, and tenure to see your EMI and total interest. Tenure planning made simple.",
       "keywords": [
         "loan emi calculator",
         "loan emi calculator online",
@@ -2978,7 +2978,7 @@
       "slug": "mortgage-calculator",
       "title": "Mortgage Calculator",
       "category": "Finance Calculators",
-      "description": "Estimate monthly mortgage payments for home loans. Enter loan amount, rate, and term to see principal and interest split.",
+      "description": "Estimate monthly mortgage payments for home loans. Enter loan amount, rate, and term to see the principal and interest split. Amortization totals made clear.",
       "keywords": [
         "mortgage calculator",
         "mortgage calculator online",
@@ -3176,7 +3176,7 @@
       "slug": "discount-calculator",
       "title": "Discount Calculator",
       "category": "Finance Calculators",
-      "description": "Calculate the discounted price and savings. Enter original price and discount percentage to see the final price.",
+      "description": "Calculate the discounted price and savings. Enter original price and discount percentage to see the final price you will pay. Sale price shown with savings.",
       "keywords": [
         "discount calculator",
         "discount calculator online",
@@ -3242,7 +3242,7 @@
       "slug": "profit-margin-calculator",
       "title": "Profit Margin Calculator",
       "category": "Finance Calculators",
-      "description": "Calculate net profit margin from revenue and costs. See your margin as a percentage.",
+      "description": "Calculate net profit margin from revenue and costs. See your margin as a percentage to judge business performance quickly. Gross and net views supported.",
       "keywords": [
         "profit margin calculator",
         "profit margin calculator online",
@@ -3264,7 +3264,7 @@
       "slug": "break-even-calculator",
       "title": "Break Even Calculator",
       "category": "Finance Calculators",
-      "description": "Find how many units you need to sell to break even. Enter fixed costs, variable cost per unit, and selling price.",
+      "description": "Find how many units you need to sell to break even. Enter fixed costs, variable cost per unit, and the selling price. Charts the path to profitability.",
       "keywords": [
         "break even calculator",
         "break even calculator online",
@@ -3286,7 +3286,7 @@
       "slug": "tip-calculator",
       "title": "Tip Calculator",
       "category": "Finance Calculators",
-      "description": "Calculate the tip and total bill. Enter the bill amount and tip percentage (10%, 15%, 20%) to see the split.",
+      "description": "Calculate the tip and total bill. Enter the bill amount and tip percentage (10%, 15%, 20%) to see the split per person. Bill-splitting help for groups.",
       "keywords": [
         "tip calculator",
         "tip calculator online",
@@ -3330,7 +3330,7 @@
       "slug": "salary-calculator",
       "title": "Salary Calculator",
       "category": "Finance Calculators",
-      "description": "Convert between annual, monthly, weekly, and hourly salary. See take-home pay after taxes.",
+      "description": "Convert between annual, monthly, weekly, and hourly salary. See take-home pay after taxes for budgeting and job offers. Compare offers across pay periods.",
       "keywords": [
         "salary calculator",
         "salary calculator online",
@@ -3506,7 +3506,7 @@
       "slug": "roi-calculator",
       "title": "ROI Calculator",
       "category": "Business Calculators",
-      "description": "Calculate Return on Investment (ROI). Enter cost and return to see the percentage gain or loss.",
+      "description": "Calculate Return on Investment (ROI). Enter cost and return to see the percentage gain or loss on any project or campaign. Annualized view for long projects.",
       "keywords": [
         "roi calculator",
         "roi calculator online",
@@ -3902,7 +3902,7 @@
       "slug": "image-resizer",
       "title": "Image Resizer",
       "category": "Image Tools",
-      "description": "Resize images to exact dimensions in pixels. Maintain aspect ratio or force specific width and height. All processing in your browser.",
+      "description": "Resize images to exact dimensions in pixels. Maintain aspect ratio or force specific width and height, all processed in your browser. Social-size presets included.",
       "keywords": [
         "image resizer",
         "image resizer online",
@@ -3922,7 +3922,7 @@
       "slug": "image-cropper",
       "title": "Image Cropper",
       "category": "Image Tools",
-      "description": "Crop images to remove unwanted areas. Set custom dimensions or drag to select the crop area. No uploads needed.",
+      "description": "Crop images to remove unwanted areas. Set custom dimensions or drag to select the crop area privately with no uploads needed. Aspect-ratio locks for precision.",
       "keywords": [
         "image cropper",
         "image cropper online",
@@ -3942,7 +3942,7 @@
       "slug": "image-compressor",
       "title": "Image Compressor",
       "category": "Image Tools",
-      "description": "Reduce image file size without visible quality loss. Supports JPEG, PNG, and WebP. Perfect for faster web pages.",
+      "description": "Reduce image file size without visible quality loss. Supports JPEG, PNG, and WebP - perfect for faster-loading web pages. Batch-friendly single-file workflow.",
       "keywords": [
         "image compressor",
         "image compressor online",
@@ -4302,7 +4302,7 @@
       "slug": "hex-to-rgb",
       "title": "HEX to RGB",
       "category": "Color Tools",
-      "description": "Convert HEX color codes (#2563eb) to RGB values (37, 99, 235). Instant conversion for CSS and design tools.",
+      "description": "Convert HEX color codes (#2563eb) to RGB values (37, 99, 235). Instant conversion for CSS files and graphic design tools. Alpha-channel values supported.",
       "keywords": [
         "hex to rgb",
         "hex to rgb online",
@@ -4322,7 +4322,7 @@
       "slug": "rgb-to-hex",
       "title": "RGB to HEX",
       "category": "Color Tools",
-      "description": "Convert RGB color values to HEX format. Enter red, green, and blue values to get the #hex code.",
+      "description": "Convert RGB color values to HEX format. Enter red, green, and blue values to get the #hex code for stylesheets. Paste rgb() strings directly for speed.",
       "keywords": [
         "rgb to hex",
         "rgb to hex online",
@@ -4402,7 +4402,7 @@
       "slug": "color-picker",
       "title": "Color Picker",
       "category": "Color Tools",
-      "description": "Pick any color visually or enter a HEX/RGB value. See the color preview with all format conversions.",
+      "description": "Pick any color visually or enter a HEX/RGB value. See the live color preview with all format conversions in one place. Save palettes from picked colors.",
       "keywords": [
         "color picker",
         "color picker online",
@@ -4697,6 +4697,27 @@
         "color-picker"
       ],
       "tier": "C"
+    },
+    {
+      "slug": "bmi-calculator",
+      "title": "BMI Calculator",
+      "category": "Math Calculators",
+      "description": "Calculate your Body Mass Index instantly from weight and height. Enter weight in kg and height in cm to get your BMI and WHO weight category. Private and instant.",
+      "disclaimer": "BMI is a screening measure, not a medical diagnosis. Consult a health professional for advice about your weight.",
+      "keywords": [
+        "bmi calculator",
+        "bmi calculator online",
+        "body mass index calculator"
+      ],
+      "related": [
+        "percentage-calculator",
+        "average-calculator",
+        "ratio-calculator",
+        "age-calculator",
+        "unit-conversion-calculator",
+        "mean-calculator"
+      ],
+      "tier": "A"
     }
   ]
 }

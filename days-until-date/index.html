@@ -230,7 +230,9 @@ async function process(){
    // specific slugs
    if(slug==="percentage-calculator"){ if(!av||!bv){ showErr("Enter value and percentage."); return;} setOut(window.ToolKit.pct(an,bn)+" ("+bn+"% of "+an+")"); return; }
    if(slug==="percentage-increase-calculator"){ setOut(window.ToolKit.pctChange(an,bn).toFixed(2)+"%"); return; }
-    if(slug==="percentage-decrease-calculator"){ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){ showErr("Enter old value (A) and new value (B). A must not be zero."); return; } setOut(d.toFixed(2)+"%"); return; }
+     if(slug==="percentage-decrease-calculator"){ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){ showErr("Enter old value (A) and new value (B). A must not be zero."); return; } setOut(d.toFixed(2)+"%"); return; }
+    if(slug==="bmi-calculator"){ if(!isFinite(an)||!isFinite(bn)||an<=0||bn<=0){ showErr("Enter weight in kg (A) and height in cm (B). Both must be positive."); return; } var b=window.ToolKit.bmi(an,bn); setOut("BMI: "+b.value.toFixed(1)+"
+Category: "+b.category); return; }
    if(slug==="ratio-calculator"){ setOut(window.ToolKit.ratio(an,bn)); return; }
    if(slug==="gcd-calculator"){ setOut(String(window.ToolKit.gcd(an,bn))); return; }
    if(slug==="lcm-calculator"){ setOut(String(window.ToolKit.lcm(an,bn))); return; }

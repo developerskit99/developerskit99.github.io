@@ -37,6 +37,7 @@ SUBCATEGORIES = {
     "Math Calculators": [
         ("Percentage & Ratio", ["percentage-calculator","percentage-increase-calculator","percentage-decrease-calculator","ratio-calculator","proportion-calculator"]),
         ("Statistics", ["average-calculator","median-calculator","mode-calculator","standard-deviation-calculator","mean-calculator"]),
+        ("Body & Health", ["bmi-calculator"]),
         ("Fractions & Numbers", ["fraction-calculator","decimal-to-fraction","fraction-to-decimal","mixed-number-calculator","gcd-calculator","lcm-calculator","prime-number-checker","prime-number-generator","factor-calculator"]),
         ("Number Systems", ["binary-calculator","binary-to-decimal","decimal-to-binary","hex-to-decimal","decimal-to-hex","octal-converter","roman-numeral-converter","scientific-notation-converter"]),
         ("Advanced Math", ["exponent-calculator","square-root-calculator","random-number-generator"]),
@@ -96,18 +97,41 @@ def esc(s): return html.escape(str(s or ""),quote=True)
 def esc_txt(s): return html.escape(str(s or ""))
 
 def seo_title(t):
-    base=f"{t} \u2014 Free Online Tool | DevelopersKit"
-    if len(base)<=60: return base
-    # truncate title part to fit 60
-    max_t=60-len(" \u2014 Free Online Tool | DevelopersKit")
+    full=f"{t} \u2014 Free Online Tool | DevelopersKit"
+    if len(full)<=60: return full
+    # suffix-first shortening: preserve the tool/query wording
+    short=f"{t} | DevelopersKit"
+    if len(short)<=60: return short
+    # last resort: trim tool name at a word boundary
+    max_t=60-len(" | DevelopersKit")
     tt=t[:max_t].rstrip()
-    return f"{tt} \u2014 Free Online Tool | DevelopersKit"
+    if " " in t and " " in tt:
+        tt=tt.rsplit(" ",1)[0]
+    return f"{tt} | DevelopersKit"
 
 def read_data():
     with open(TOOLS_JSON,encoding="utf-8-sig") as f: d=json.load(f)
     site=d.get("site",{})
     tools=d.get("tools",[])
     return site, tools
+
+def read_seo():
+    """Clusters + guides. Returns (slug->cluster_members, category->cluster, guides). Never throws."""
+    cmap, catmap, guides = {}, {}, []
+    try:
+        with open(os.path.join(ROOT,"seo","keyword-intelligence","clusters.json"),encoding="utf-8") as f:
+            for c in json.load(f).get("clusters",[]):
+                members=[s for s in c.get("tools",[])]
+                for s in members: cmap[s]=members
+                if c.get("category"): catmap[c["category"]]=c
+    except Exception:
+        pass
+    try:
+        with open(os.path.join(ROOT,"seo","guides.json"),encoding="utf-8") as f:
+            guides=json.load(f).get("guides",[])
+    except Exception:
+        pass
+    return cmap, catmap, guides
 
 def head_html(title,desc,canonical):
     og=esc(canonical)
@@ -423,7 +447,8 @@ async function process(){{
    // specific slugs
    if(slug==="percentage-calculator"){{ if(!av||!bv){{ showErr("Enter value and percentage."); return;}} setOut(window.ToolKit.pct(an,bn)+" ("+bn+"% of "+an+")"); return; }}
    if(slug==="percentage-increase-calculator"){{ setOut(window.ToolKit.pctChange(an,bn).toFixed(2)+"%"); return; }}
-    if(slug==="percentage-decrease-calculator"){{ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){{ showErr("Enter old value (A) and new value (B). A must not be zero."); return; }} setOut(d.toFixed(2)+"%"); return; }}
+     if(slug==="percentage-decrease-calculator"){{ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){{ showErr("Enter old value (A) and new value (B). A must not be zero."); return; }} setOut(d.toFixed(2)+"%"); return; }}
+    if(slug==="bmi-calculator"){{ if(!isFinite(an)||!isFinite(bn)||an<=0||bn<=0){{ showErr("Enter weight in kg (A) and height in cm (B). Both must be positive."); return; }} var b=window.ToolKit.bmi(an,bn); setOut("BMI: "+b.value.toFixed(1)+"\nCategory: "+b.category); return; }}
    if(slug==="ratio-calculator"){{ setOut(window.ToolKit.ratio(an,bn)); return; }}
    if(slug==="gcd-calculator"){{ setOut(String(window.ToolKit.gcd(an,bn))); return; }}
    if(slug==="lcm-calculator"){{ setOut(String(window.ToolKit.lcm(an,bn))); return; }}
@@ -593,11 +618,17 @@ if(rs) rs.addEventListener("click",function(){{ window._lastImageDataURL=""; if(
 }})();
 </script>"""
 
-def tool_page(tool, slug_map):
+def tool_page(tool, slug_map, cluster_map=None):
     title=tool["title"]; desc=tool["description"]; cat=tool["category"]; slug=tool["slug"]
     seo=seo_title(title)
     canonical=f"{SITE_URL}/{slug}/"
-    related=tool.get("related",[])[:8]
+    related=list(tool.get("related",[]))[:8]
+    # cluster-graph fill: manual list wins, top up to 8 from same cluster
+    if cluster_map:
+        for m in cluster_map.get(slug,[]):
+            if len(related)>=8: break
+            if m!=slug and m not in related and m in slug_map:
+                related.append(m)
     # generic FAQ (single source; custom pages override final_faq below)
     generic_faq_qas=[
         (f"What does {title} do?", f"{title} {desc.split('.')[0].lower()}. All processing happens in your browser with no data uploaded."),
@@ -697,6 +728,21 @@ def tool_page(tool, slug_map):
                 ("How is EMI calculated?", "EMI = P \u00d7 r \u00d7 (1+r)^n / ((1+r)^n \u2212 1), where P is the loan amount, r is the monthly interest rate, and n is the tenure in months."),
                 ("Is this EMI calculator accurate?", "Yes. It uses the standard reducing balance formula used by all banks. The result matches what banks show in their EMI calculators."),
                 ("Can I compare different loan offers?", "Yes. Calculate the EMI for each offer with different interest rates and tenures, then compare the total interest paid to find the cheapest option."),
+            ]
+        },
+        "bmi-calculator":{
+            "howto":'<h2>How to use the BMI Calculator</h2><ol style="margin-left:20px;line-height:1.8"><li>Enter your <strong>weight in kilograms</strong> in Value A \u2014 e.g. 70.</li><li>Enter your <strong>height in centimeters</strong> in Value B \u2014 e.g. 175.</li><li>Click <strong>Calculate</strong> to see your BMI and weight category instantly.</li></ol>',
+            "formula":'<h2>BMI Formula</h2><p>BMI = weight (kg) \u00f7 height (m)<sup>2</sup></p><p>For example: 70 kg \u00f7 (1.75 \u00d7 1.75) = <strong>22.9</strong> \u2014 Normal weight. Categories: Underweight (below 18.5), Normal (18.5\u201324.9), Overweight (25\u201329.9), Obese (30+).</p>',
+            "examples":"""<h2>Worked examples</h2>
+<div class="tool-grid">
+<div class="tool-card"><h3>Example 1 \u2014 Normal weight</h3><p><strong>Weight:</strong> 70 kg | <strong>Height:</strong> 175 cm</p><p><strong>Result:</strong> BMI 22.9 \u2014 Normal weight.</p></div>
+<div class="tool-card"><h3>Example 2 \u2014 Overweight</h3><p><strong>Weight:</strong> 90 kg | <strong>Height:</strong> 175 cm</p><p><strong>Result:</strong> BMI 29.4 \u2014 Overweight.</p></div>
+</div>""",
+            "faq":[
+                ("What is BMI?", "BMI (Body Mass Index) is a number calculated from your weight and height. It screens weight categories: Underweight (below 18.5), Normal (18.5-24.9), Overweight (25-29.9), Obese (30+)."),
+                ("How accurate is this BMI calculator?", "It uses the standard WHO BMI formula, the same math doctors use for screening. BMI does not distinguish muscle from fat, so athletes should interpret results with care."),
+                ("What BMI is considered healthy?", "A BMI between 18.5 and 24.9 is the Normal weight range used by the World Health Organization."),
+                ("Is my weight data stored anywhere?", "No. The calculation happens in your browser. Your weight and height are never sent to any server."),
             ]
         }
     }
@@ -818,10 +864,10 @@ def tool_page(tool, slug_map):
 def about_page():
     canonical=f"{SITE_URL}/about/"
     title="About DevelopersKit — Free Online Browser Tools"
-    desc="Learn about DevelopersKit, a free collection of 230 browser-based tools for developers, students, and professionals. No uploads, no sign-up, fully private."
+    desc="Learn about DevelopersKit, a free collection of 231 browser-based tools for developers, students, and professionals. No uploads, no sign-up, fully private."
     faq_qas=[
-        ("What is DevelopersKit?", "DevelopersKit is a free collection of 230 browser-based tools for developers, students, and professionals. Every tool runs entirely in your browser \u2014 no data is uploaded to any server."),
-        ("Is DevelopersKit really free?", "Yes, all 230 tools are completely free to use with no sign-up required. There are no hidden fees or premium tiers."),
+        ("What is DevelopersKit?", "DevelopersKit is a free collection of 231 browser-based tools for developers, students, and professionals. Every tool runs entirely in your browser \u2014 no data is uploaded to any server."),
+        ("Is DevelopersKit really free?", "Yes, all 231 tools are completely free to use with no sign-up required. There are no hidden fees or premium tiers."),
         ("How does DevelopersKit protect my privacy?", "All processing happens locally in your browser using JavaScript. Your data never leaves your device \u2014 there are no server uploads, databases, or tracking of your input."),
         ("Who built DevelopersKit?", "DevelopersKit was created by a web developer passionate about building fast, accessible, and privacy-respecting tools that help people get things done without complicated software."),
     ]
@@ -842,7 +888,7 @@ def about_page():
 
 <section style="margin-top:24px">
 <h2>What We Offer</h2>
-<p>DevelopersKit is a collection of <strong>230 free browser-based tools</strong> spanning 10 categories: Developer Tools, CSS/HTML Tools, Text Tools, Math Calculators, Student Tools, Date & Time, Finance Calculators, Business Calculators, Color Tools, and Image Tools.</p>
+<p>DevelopersKit is a collection of <strong>231 free browser-based tools</strong> spanning 10 categories: Developer Tools, CSS/HTML Tools, Text Tools, Math Calculators, Student Tools, Date & Time, Finance Calculators, Business Calculators, Color Tools, and Image Tools.</p>
 <p>Whether you need to format JSON, calculate your EMI, count words, resize an image, or pick a color palette \u2014 we have a tool for it. Every tool is designed to be fast, accurate, and easy to use.</p>
 
 <h2>How It Works</h2>
@@ -865,7 +911,7 @@ def about_page():
 <div class="faq" style="margin-top:12px">{faq_html}</div>
 
 <h2 style="margin-top:24px">Get Started</h2>
-<p>Ready to use our tools? <a href="{BASE}/" style="color:#2563eb;font-weight:600">Browse all 230 tools \u2192</a></p>
+<p>Ready to use our tools? <a href="{BASE}/" style="color:#2563eb;font-weight:600">Browse all 231 tools \u2192</a></p>
 </section>
 </main>
 {footer_html()}
@@ -893,7 +939,7 @@ def privacy_page():
     ]
     faq_schema={"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in faq_qas]}
     breadcrumb_schema={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":f"{SITE_URL}/"},{"@type":"ListItem","position":2,"name":"Privacy","item":f"{SITE_URL}/privacy/"}]}
-    app_schema={"@context":"https://schema.org","@type":"SoftwareApplication","name":"DevelopersKit","url":SITE_URL,"applicationCategory":"DeveloperApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"230 free browser-based tools for developers, students, and professionals. Your data stays in your browser."}
+    app_schema={"@context":"https://schema.org","@type":"SoftwareApplication","name":"DevelopersKit","url":SITE_URL,"applicationCategory":"DeveloperApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"231 free browser-based tools for developers, students, and professionals. Your data stays in your browser."}
     jsonld=f"""
 <script type="application/ld+json">{json.dumps(app_schema)}</script>
 <script type="application/ld+json">{json.dumps(faq_schema)}</script>
@@ -934,7 +980,7 @@ def privacy_page():
 </html>"""
     return doc
 
-def hub_page(tools):
+def hub_page(tools, guides=None):
     # group by category
     from collections import defaultdict, OrderedDict
     cats=defaultdict(list)
@@ -968,9 +1014,13 @@ def hub_page(tools):
         anchor="cat-"+esc(cat.lower().replace(" ","-").replace("&","").replace("/","-"))
         sections+=f'<section class="cat-card" id="{anchor}"><h2><a href="{BASE}/{cat_slug}/">{esc_txt(cat)}</a> <span class="cat-count">{total} tools</span></h2>{sub_sections_html}</section>\n'
 
-    seo_title_hub="230 Free Developer Tools Online | DevelopersKit"
-    desc_hub="230 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
+    seo_title_hub="231 Free Developer Tools Online | DevelopersKit"
+    desc_hub="231 free browser-based tools for developers, students, and professionals. Your data stays in your browser — no uploads, no sign-up."
     head=head_html(seo_title_hub,desc_hub,SITE_URL+"/")
+    g_strip=""
+    if guides:
+        pills="".join(f'<a href="{BASE}/guides/{esc(g["slug"])}/" class="popular-pill">{esc_txt(g["title"])}</a>\n' for g in guides)
+        g_strip=f'<section id="guides" style="margin-top:32px"><h2>Guides</h2><div class="popular">{pills}</div></section>'
     # category quick-links for hero
     quick_cats=""
     for cat in order:
@@ -982,14 +1032,15 @@ def hub_page(tools):
 <main id="main" class="container">
 <section class="hero">
 <h1>Free Online Developer &amp; Utility Tools</h1>
-<p class="hero-sub">230 browser-based tools — your data stays in your browser, no uploads.</p>
+<p class="hero-sub">231 browser-based tools — your data stays in your browser, no uploads.</p>
 <p class="stats-bar">No uploads. No account required. Processing happens locally in your browser.</p>
-<div class="hero-search"><div class="search-wrap"><label for="q" class="sr-only">Search tools</label><input id="q" data-search-input type="search" class="search-input" placeholder="Search 230 tools (e.g. JSON Formatter, Word Counter)" autocomplete="off"></div></div>
+<div class="hero-search"><div class="search-wrap"><label for="q" class="sr-only">Search tools</label><input id="q" data-search-input type="search" class="search-input" placeholder="Search 231 tools (e.g. JSON Formatter, Word Counter)" autocomplete="off"></div></div>
 <div class="popular">{quick_cats}</div>
 </section>
 <div class="category-grid" id="categories">
 {sections}
 </div>
+{g_strip}
 <section id="tools" style="padding-bottom:32px"><p style="text-align:center;color:#64748b">All tools run locally \u2014 your data never leaves your device.</p></section>
 </main>"""
 
@@ -1002,19 +1053,36 @@ def hub_page(tools):
 {header_html(False)}
 {hero}
 {footer_html()}
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebSite","name":"DevelopersKit","url":"{SITE_URL}","description":"230 free browser-based tools for developers, students, and professionals.","potentialAction":{{"@type":"SearchAction","target":"{SITE_URL}/?q={{search_term_string}}","query-input":"required name=search_term_string"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"WebSite","name":"DevelopersKit","url":"{SITE_URL}","description":"231 free browser-based tools for developers, students, and professionals.","potentialAction":{{"@type":"SearchAction","target":"{SITE_URL}/?q={{search_term_string}}","query-input":"required name=search_term_string"}}}}</script>
 <script type="application/ld+json">{{"@context":"https://schema.org","@type":"Organization","name":"DevelopersKit","url":"{SITE_URL}","logo":"{SITE_URL}/assets/images/logo.svg","description":"Free browser-based tools for developers, students, and professionals."}}</script>
 </body>
 </html>"""
     return doc
 
-def category_page(cat_name, tools, slug_map):
+def category_page(cat_name, tools, slug_map, cluster=None, guides=None):
     cat_slug=CATEGORY_SLUGS.get(cat_name, cat_name.lower().replace(" ","-").replace("&","").replace("/","-"))
     canonical=f"{SITE_URL}/{cat_slug}/"
     title=f"{cat_name} \u2014 Free Online Tools | DevelopersKit"
     desc=f"Free {cat_name.lower()} for developers, students, and professionals. All tools run in your browser \u2014 no uploads, no sign-up."
     if len(desc)>160: desc=desc[:157]+"..."
     breadcrumbs=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><span aria-current="page">{esc_txt(cat_name)}</span></nav>'
+    # cluster hub block: description + spotlight + guides
+    hub_extra=""
+    if cluster:
+        if cluster.get("description"):
+            hub_extra+=f'<p>{esc_txt(cluster["description"])}</p>'
+        spots=[slug_map[s] for s in cluster.get("spotlight",[]) if s in slug_map]
+        if spots:
+            cards="".join(f'<div class="tool-card"><h3><a href="{BASE}/{esc(t["slug"])}/">{esc_txt(t["title"])}</a></h3><p>{esc_txt(t["description"][:110])}</p></div>' for t in spots)
+            hub_extra+=f'<div style="margin-top:16px"><h2>Most used {esc_txt(cat_name.lower())}</h2><div class="tool-grid">{cards}</div></div>'
+    cat_slugs={t["slug"] for t in tools}
+    g_links=""
+    for g in (guides or []):
+        tg=g.get("target_tool","")
+        if tg in cat_slugs or any(r in cat_slugs for r in g.get("related_tools",[])):
+            g_links+=f'<div class="tool-card"><h3><a href="{BASE}/guides/{esc(g["slug"])}/">{esc_txt(g["title"])}</a></h3><p>{esc_txt(g["description"][:110])}</p></div>'
+    if g_links:
+        hub_extra+=f'<div style="margin-top:16px"><h2>Guides</h2><div class="tool-grid">{g_links}</div></div>'
     # sub-category sections
     subcats=SUBCATEGORIES.get(cat_name,[])
     sub_sections=""
@@ -1056,6 +1124,7 @@ def category_page(cat_name, tools, slug_map):
 {breadcrumbs}
 <h1>{esc_txt(cat_name) if cat_name.endswith((" Tools","Calculators")) else esc_txt(cat_name)+" Tools"}</h1>
 <p>Free browser-based {cat_name.lower()} for developers, students, and professionals. Your data stays in your browser.</p>
+{hub_extra}
 <section style="margin-top:24px">
 {sub_sections}
 <div class="faq" style="margin-top:24px"><h2>FAQ</h2>{faq_html}</div>
@@ -1075,11 +1144,60 @@ def category_page(cat_name, tools, slug_map):
 </html>"""
     return doc
 
+def guide_page(g, slug_map):
+    slug=g["slug"]; title=g["title"]; desc=g["description"]
+    canonical=f"{SITE_URL}/guides/{slug}/"
+    seo=f"{title} | DevelopersKit" if len(f"{title} | DevelopersKit")<=60 else title[:60].rsplit(" ",1)[0]
+    breadcrumbs=f'<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{BASE}/">Home</a><span>\u203a</span><a href="{BASE}/#guides">Guides</a><span>\u203a</span><span aria-current="page">{esc_txt(title)}</span></nav>'
+    sections="".join(f'<h2>{esc_txt(s[0])}</h2><p>{esc_txt(s[1])}</p>' for s in g.get("sections",[]))
+    # prominent target-tool card
+    tgt=slug_map.get(g.get("target_tool",""))
+    tgt_html=""
+    if tgt:
+        tgt_html=f'<div class="tool-card" style="border:2px solid #2563eb"><h3><a href="{BASE}/{esc(tgt["slug"])}/">Try it: {esc_txt(tgt["title"])}</a></h3><p>{esc_txt(tgt["description"][:140])}</p></div>'
+    rel_cards=""
+    for rslug in g.get("related_tools",[])[:6]:
+        rt=slug_map.get(rslug)
+        if rt:
+            rel_cards+=f'<div class="tool-card"><h3><a href="{BASE}/{esc(rslug)}/">{esc_txt(rt["title"])}</a></h3><p>{esc_txt(rt["description"][:110])}</p></div>'
+    faq_html=""
+    for q,a in g.get("faq",[])[:4]:
+        faq_html+=f'<details class="faq-item"><summary class="faq-q">{esc_txt(q)}</summary><div class="faq-a"><p>{esc_txt(a)}</p></div></details>'
+    faq_json=json.dumps([{"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}} for q,a in g.get("faq",[])[:4]])
+    jsonld=f"""
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"Article","headline":"{esc(title)}","description":"{esc(desc)}","url":"{esc(canonical)}","author":{{"@type":"Organization","name":"DevelopersKit","url":"{SITE_URL}"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"FAQPage","mainEntity":{faq_json}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{{"@type":"ListItem","position":1,"name":"Home","item":"{SITE_URL}/"}},{{"@type":"ListItem","position":2,"name":"Guides","item":"{SITE_URL}/#guides"}},{{"@type":"ListItem","position":3,"name":"{esc(title)}","item":"{esc(canonical)}"}}]}}</script>"""
+    body=f"""{header_html(False)}
+<main id="main" class="container">
+{breadcrumbs}
+<h1>{esc_txt(title)}</h1>
+<p>{esc_txt(desc)}</p>
+<div class="tool-grid" style="margin:16px 0">{tgt_html}</div>
+<section style="margin-top:24px">
+{sections}
+<div style="margin-top:24px"><h2>Related tools</h2><div class="tool-grid">{rel_cards}</div></div>
+<div class="faq" style="margin-top:24px"><h2>FAQ</h2>{faq_html}</div>
+</section>
+</main>
+{footer_html()}
+{jsonld}"""
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+{head_html(seo,desc,canonical)}
+</head>
+<body>
+{body}
+</body>
+</html>"""
+
 def main():
     site, tools=read_data()
     slug_map={t["slug"]:t for t in tools}
+    cluster_map, cat_clusters, guides=read_seo()
     # hub
-    hub=hub_page(tools)
+    hub=hub_page(tools, guides)
     with open(os.path.join(ROOT,"index.html"),"w",encoding="utf-8") as f: f.write(hub)
     # about page
     about=about_page()
@@ -1096,8 +1214,14 @@ def main():
         slug=t["slug"]
         d=os.path.join(ROOT, slug)
         os.makedirs(d, exist_ok=True)
-        html_doc=tool_page(t, slug_map)
+        html_doc=tool_page(t, slug_map, cluster_map)
         with open(os.path.join(d,"index.html"),"w",encoding="utf-8") as f: f.write(html_doc)
+    # guide pages
+    for g in guides:
+        gslug=g["slug"]
+        gd=os.path.join(ROOT, "guides", gslug)
+        os.makedirs(gd, exist_ok=True)
+        with open(os.path.join(gd,"index.html"),"w",encoding="utf-8") as f: f.write(guide_page(g, slug_map))
     # sitemap
     urls=[f'  <url><loc>{SITE_URL}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>']
     urls.append(f'  <url><loc>{SITE_URL}/about/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>')
@@ -1110,16 +1234,18 @@ def main():
         cat_slug=CATEGORY_SLUGS.get(cat, cat.lower().replace(" ","-").replace("&","").replace("/","-"))
         cat_dir=os.path.join(ROOT, cat_slug)
         os.makedirs(cat_dir, exist_ok=True)
-        cat_html=category_page(cat, cat_tools, slug_map)
+        cat_html=category_page(cat, cat_tools, slug_map, cat_clusters.get(cat), guides)
         with open(os.path.join(cat_dir,"index.html"),"w",encoding="utf-8") as f: f.write(cat_html)
         urls.append(f'  <url><loc>{SITE_URL}/{cat_slug}/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>')
+    for g in sorted(guides, key=lambda x:x["slug"]):
+        urls.append(f'  <url><loc>{SITE_URL}/guides/{g["slug"]}/</loc><lastmod>{DATE}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>')
     for t in sorted(tools, key=lambda x:x["slug"]):
         urls.append(f'  <url><loc>{SITE_URL}/{t["slug"]}/</loc><lastmod>{DATE}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>')
     sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+ "\n".join(urls) + '\n</urlset>'
     with open(os.path.join(ROOT,"sitemap.xml"),"w",encoding="utf-8",newline="\n") as f: f.write(sitemap)
     # robots
     with open(os.path.join(ROOT,"robots.txt"),"w",encoding="utf-8",newline="\n") as f: f.write(f"User-agent: *\nAllow: /\nSitemap: {SITE_URL}/sitemap.xml\n")
-    print(f"Generated {len(tools)} tools + hub + about + sitemap")
+    print(f"Generated {len(tools)} tools + {len(guides)} guides + hub + about + sitemap")
 
 if __name__=="__main__":
     main()

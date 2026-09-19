@@ -11,7 +11,7 @@
 <meta name="google-site-verification" content="_LFM9G4uH81w3sp_bIwp7BGQTwWR5vq_BrqW4hGFofc" />
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-W9Y55NSMZJ"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-W9Y55NSMZJ');</script>
-<title>CSS Glassmorphism Generat — Free Online Tool | DevelopersKit</title>
+<title>CSS Glassmorphism Generator | DevelopersKit</title>
 <meta name="description" content="Create frosted-glass effects with background blur, transparency, and border controls. Generate modern glassmorphism CSS for cards and overlays.">
 <link rel="canonical" href="https://developerskit99.github.io/css-glassmorphism-generator/">
 <meta name="theme-color" content="#2563eb">
@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="DevelopersKit">
-<meta property="og:title" content="CSS Glassmorphism Generat — Free Online Tool | DevelopersKit">
+<meta property="og:title" content="CSS Glassmorphism Generator | DevelopersKit">
 <meta property="og:description" content="Create frosted-glass effects with background blur, transparency, and border controls. Generate modern glassmorphism CSS for cards and overlays.">
 <meta property="og:url" content="https://developerskit99.github.io/css-glassmorphism-generator/">
 <meta property="og:image" content="https://developerskit99.github.io/assets/images/og-default.png">
@@ -30,7 +30,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="CSS Glassmorphism Generat — Free Online Tool | DevelopersKit">
+<meta name="twitter:title" content="CSS Glassmorphism Generator | DevelopersKit">
 <meta name="twitter:description" content="Create frosted-glass effects with background blur, transparency, and border controls. Generate modern glassmorphism CSS for cards and overlays.">
 <meta name="twitter:image" content="https://developerskit99.github.io/assets/images/og-default.png">
 <link rel="manifest" href="/manifest.json">
@@ -227,7 +227,9 @@ async function process(){
    // specific slugs
    if(slug==="percentage-calculator"){ if(!av||!bv){ showErr("Enter value and percentage."); return;} setOut(window.ToolKit.pct(an,bn)+" ("+bn+"% of "+an+")"); return; }
    if(slug==="percentage-increase-calculator"){ setOut(window.ToolKit.pctChange(an,bn).toFixed(2)+"%"); return; }
-    if(slug==="percentage-decrease-calculator"){ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){ showErr("Enter old value (A) and new value (B). A must not be zero."); return; } setOut(d.toFixed(2)+"%"); return; }
+     if(slug==="percentage-decrease-calculator"){ var d=window.ToolKit.pctDecrease(an,bn); if(isNaN(d)){ showErr("Enter old value (A) and new value (B). A must not be zero."); return; } setOut(d.toFixed(2)+"%"); return; }
+    if(slug==="bmi-calculator"){ if(!isFinite(an)||!isFinite(bn)||an<=0||bn<=0){ showErr("Enter weight in kg (A) and height in cm (B). Both must be positive."); return; } var b=window.ToolKit.bmi(an,bn); setOut("BMI: "+b.value.toFixed(1)+"
+Category: "+b.category); return; }
    if(slug==="ratio-calculator"){ setOut(window.ToolKit.ratio(an,bn)); return; }
    if(slug==="gcd-calculator"){ setOut(String(window.ToolKit.gcd(an,bn))); return; }
    if(slug==="lcm-calculator"){ setOut(String(window.ToolKit.lcm(an,bn))); return; }

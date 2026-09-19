@@ -66,6 +66,7 @@ TK.sortLines=(s,rev)=>String(s??'').split('\n').sort((a,b)=>rev?b.localeCompare(
 TK.pct=(v,p)=>{const a=Number(v),b=Number(p);return!isFinite(a)||!isFinite(b)?NaN:a*b/100};
 TK.pctChange=(f,t)=>{const a=Number(f),b=Number(t);return!isFinite(a)||!isFinite(b)||a===0?NaN:(b-a)/Math.abs(a)*100};
 TK.pctDecrease=(oldVal,newVal)=>{const o=Number(oldVal),n=Number(newVal);if(!isFinite(o)||!isFinite(n)||o===0)return NaN;return((o-n)/o)*100};
+TK.bmi=(kg,cm)=>{const w=Number(kg),h=Number(cm);if(!isFinite(w)||!isFinite(h)||w<=0||h<=0)return{value:NaN,category:''};const v=w/((h/100)*(h/100));const c=v<18.5?'Underweight':v<25?'Normal weight':v<30?'Overweight':'Obese';return{value:v,category:c}};
 TK.ratio=(a,b)=>{const x=Number(a),y=Number(b);if(!isFinite(x)||!isFinite(y)||y===0)return'';const g=TK.gcd(x,y);return(x/g)+':'+(y/g)};
 TK.mean=a=>{const v=a.map(Number).filter(isFinite);return v.length?v.reduce((s,x)=>s+x,0)/v.length:NaN};
 TK.median=a=>{const v=a.map(Number).filter(isFinite).sort((x,y)=>x-y);if(!v.length)return NaN;const m=Math.floor(v.length/2);return v.length%2?v[m]:(v[m-1]+v[m])/2};

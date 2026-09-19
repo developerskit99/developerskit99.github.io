@@ -175,6 +175,18 @@ test('toBinary: negative numbers use sign prefix not unsigned', () => {
   assert.equal(TK.toBinary(NaN), '');
 });
 
+test('bmi: value and WHO categories', () => {
+  const r = TK.bmi(70, 175);
+  assert.ok(approx(r.value, 22.857, 1e-3));
+  assert.equal(r.category, 'Normal weight');
+  assert.equal(TK.bmi(50, 175).category, 'Underweight');
+  assert.equal(TK.bmi(90, 175).category, 'Overweight');
+  assert.equal(TK.bmi(100, 170).category, 'Obese');
+  assert.ok(Number.isNaN(TK.bmi(0, 175).value));
+  assert.ok(Number.isNaN(TK.bmi(70, 0).value));
+  assert.ok(Number.isNaN(TK.bmi(-70, 175).value));
+});
+
 test('safeEval', () => {
   assert.equal(TK.safeEval('2+3*4').result, 14);
   assert.equal(TK.safeEval('2+3*4').ok, true);
