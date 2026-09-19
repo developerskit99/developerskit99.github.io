@@ -62,8 +62,14 @@ def main():
         print(f"{c.get('name', '?'):22s} {bar} ({tot:g} imp)")
 
     print("\nCONTENT GAPS (pages with impressions but zero clicks)")
-    gaps = [p for p in pages if fnum(p.get("impressions")) > 0 and fnum(p.get("clicks")) == 0]
-    for p in gaps[:10]:
+    seen = {}
+    for p in pages:
+        if fnum(p.get("impressions")) > 0 and fnum(p.get("clicks")) == 0:
+            key = p.get("page")
+            if fnum(p.get("impressions")) > fnum(seen.get(key, {}).get("impressions")):
+                seen[key] = p
+    gaps = list(seen.values())[:10]
+    for p in gaps:
         print(f"- {p.get('page')}  ({p.get('impressions')} imp, 0 clicks) -> snippet/FAQ pass")
     if not gaps:
         print("(none)")
