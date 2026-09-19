@@ -49,7 +49,7 @@ for u, st, final, p in rows:
     c = tag(r'<link rel="canonical" href="([^"]*)"', p)
     og = tag(r'og:image"\s+content="([^"]*)"', p)
     has_faq = '"@type":"FAQPage"' in p or '"@type": "FAQPage"' in p
-    has_app = "SoftwareApplication" in p
+    has_app = "SoftwareApplication" in p or ("Article" in p and "/guides/" in u)
     has_crumb = "BreadcrumbList" in p
     titles.setdefault(t, []).append(u)
     descs.setdefault(d, []).append(u)
