@@ -1,3 +1,4 @@
 query,clicks,impressions,ctr,position,page,country,device,date_range,notes
 age,0,1,0,UNKNOWN,UNKNOWN,UNKNOWN,UNKNOWN,2026-06-18 to 2026-09-18,only query visible in GSC; avg site position 5
 UNKNOWN (click query hidden),1,UNKNOWN,UNKNOWN,UNKNOWN,https://developerskit99.github.io/,India,Desktop,2026-06-18 to 2026-09-18,"GSC shows 1 click (India, desktop, likely homepage) but the responsible query is not exposed in the queries table (privacy threshold)"
+essay words counter,0,1,0,UNKNOWN,https://developerskit99.github.io/word-counter/,UNKNOWN,UNKNOWN,2026-09-12 to 2026-09-16,first long-tail query observed; validates word-count long-tail thesis
